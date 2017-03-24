@@ -3,8 +3,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/defaultBackground"
+    android:orientation="vertical"
     tools:context=".nearby.NearbyFragment">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="@string/nearby_title"/>
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
     <GridView
         android:id="@+id/gv_nearby_fragment"
         android:layout_width="match_parent"

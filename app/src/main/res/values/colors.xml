@@ -4,7 +4,18 @@
     <color name="colorPrimaryDark">#FFEFB600</color>
     <color name="colorAccent">#FFFF4081</color>
     <color name="tabBackground">#FF242424</color>
+    <!--导航栏文字颜色-->
     <color name="defaultBlackText">#FF242424</color>
     <color name="white">#FFFFFFFF</color>
+    <!--页面背景颜色-->
     <color name="defaultBackground">#FFF2F2F2</color>
+    <!--按下变灰色-->
+    <color name="defaultItemOnClickBgd">#FFE0E0E0</color>
+    <!--默认颜色(没有按下的状态)-->
+    <color name="defaultItemBgd">#FFFAFAFA</color>
+    <!--菜单栏文字默认颜色-->
+    <color name="menu_text_color_free">#FF9FA0A0</color>
+    <!--菜单栏文字选中颜色-->
+    <color name="menu_text_color_press">#FFFFCE0F</color>
+    <color name="toolbar_title_text_color">#FF121212</color>
 </resources>

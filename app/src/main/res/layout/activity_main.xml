@@ -8,22 +8,15 @@
     tools:context="cn.sportstory.sportstory.MainActivity">
 
     <!--<include layout="@layout/nearby_title"></include>-->
-    <include layout="@layout/menu_tab"
-        android:id="@+id/menu_tab">
-    </include>
-    <fragment
-        android:layout_width="match_parent"
-        android:layout_above="@id/menu_tab"
-        android:layout_height="match_parent"
-        android:name="cn.sportstory.sportstory.nearby.NearbyFragment">
-    </fragment>
+    <include
+        layout="@layout/menu_tab"
+        android:id="@+id/menu_tab"></include>
 
     <fragment
         android:layout_width="match_parent"
         android:layout_above="@id/menu_tab"
         android:layout_height="match_parent"
-        android:name="cn.sportstory.sportstory.chat.ChatFragment">
-    </fragment>
+        android:name="cn.sportstory.sportstory.chat.ChatFragment"></fragment>
 
 
 </RelativeLayout>

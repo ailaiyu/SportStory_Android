@@ -1,15 +1,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     tools:context="cn.sportstory.sportstory.chat.ChatFragment">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:text="@string/chat_title">
+        app:contentInsetLeft="@dimen/toolbar_content_insert"
+        app:contentInsetStart="@dimen/toolbar_content_insert"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/chat_title"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/toolbar_title_text_color"
+            android:textSize="@dimen/toolbat_title_text_size" />
     </android.support.v7.widget.Toolbar>
 
 </LinearLayout>

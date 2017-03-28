@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">运动故事</string>
     <string name="nearby_title">附近的人</string>
-    <string name="chat_title">消息</string>
+    <string name="chat_title">消 息</string>
     <string name="focus_title">关注</string>
+    <string name="timeline_title">动态</string>
     <string name="activity_title">活动</string>
     <string name="me_title">我的主页</string>
 

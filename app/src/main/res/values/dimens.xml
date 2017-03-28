@@ -15,5 +15,5 @@
 
     <!--文字大小-->
     <dimen name="menu_text_size">10sp</dimen>
-    <dimen name="toolbat_title_text_size">20sp</dimen>
+    <dimen name="toolbar_title_text_size">20sp</dimen>
 </resources>

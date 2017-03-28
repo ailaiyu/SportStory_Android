@@ -5,7 +5,7 @@ import android.os.Bundle;
 
 import cn.sportstory.sportstory.activity.ActivityFragment;
 import cn.sportstory.sportstory.chat.ChatFragment;
-import cn.sportstory.sportstory.focus.FocusFragment;
+import cn.sportstory.sportstory.timeline.FocusFragment;
 import cn.sportstory.sportstory.me.MeFragment;
 import cn.sportstory.sportstory.nearby.NearbyFragment;
 

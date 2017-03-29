@@ -10,10 +10,27 @@
     <dimen name="menu_img_width">22dp</dimen>
     <dimen name="menu_baseline_width">40dp</dimen>
     <dimen name="menu_baseline_height">1.5dp</dimen>
-    <dimen name="chat_item_height">58dp</dimen>
     <dimen name="toolbar_content_insert">0dp</dimen>
+
 
     <!--文字大小-->
     <dimen name="menu_text_size">10sp</dimen>
     <dimen name="toolbar_title_text_size">20sp</dimen>
+
+    <!--chatitem模块-->
+    <dimen name="chat_avatar_size">38dp</dimen>
+    <dimen name="chat_avatar_margin_left">24dp</dimen>
+    <dimen name="chat_avatar_margin_top">10dp</dimen>
+    <dimen name="chat_nickname_margin_top">14dp</dimen>
+    <dimen name="chat_nickname_margin_left">11dp</dimen>
+    <dimen name="chat_msg_margin_top">3dp</dimen>
+    <dimen name="chat_msg_margin_left">11dp</dimen>
+    <dimen name="chat_time_margin_top">14dp</dimen>
+    <dimen name="chat_time_margin_right">18dp</dimen>
+    <dimen name="chat_item_height">58dp</dimen>
+    <dimen name="chat_nickname_size">12sp</dimen>
+    <dimen name="chat_time_size">12sp</dimen>
+    <dimen name="chat_msg_size">11sp</dimen>
+    <dimen name="chat_msg_margin_right">97dp</dimen>
+
 </resources>

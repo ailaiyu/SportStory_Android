@@ -6,6 +6,7 @@
     <color name="tabBackground">#FF242424</color>
     <!--导航栏文字颜色-->
     <color name="defaultBlackText">#FF242424</color>
+
     <color name="white">#FFFFFFFF</color>
     <!--页面背景颜色-->
     <color name="defaultBackground">#FFF2F2F2</color>
@@ -18,4 +19,10 @@
     <!--菜单栏文字选中颜色-->
     <color name="menu_text_color_press">#FFFFCE0F</color>
     <color name="toolbar_title_text_color">#FF121212</color>
+
+    <!--chatitem 颜色-->
+    <color name="chat_nickname_color">#FF242424</color>
+    <color name="chat_time_color">#FF595959</color>
+    <color name="chat_msg_color">#FFB5B5B5</color>
+
 </resources>

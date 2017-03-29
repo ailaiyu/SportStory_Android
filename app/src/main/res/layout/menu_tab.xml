@@ -7,6 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
+        android:id="@+id/rl_menu_nearby"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
@@ -34,6 +35,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_menu_timeline"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -59,6 +61,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_menu_activities"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -84,6 +87,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_menu_chat"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent">
@@ -110,6 +114,7 @@
 
 
     <RelativeLayout
+        android:id="@+id/rl_menu_me"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent">

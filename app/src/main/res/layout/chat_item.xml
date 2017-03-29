@@ -1,6 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_chat_item"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/toolbat_title_text_size">
+    android:background="@drawable/chat_item_bg"
+    android:layout_height="@dimen/chat_item_height">
 
-</LinearLayout>
+    <cn.sportstory.sportstory.customViews.RoundImageView
+        android:id="@+id/riv_chat_item_avatar"
+        android:layout_width="@dimen/chat_avatar_size"
+        android:layout_marginLeft="@dimen/chat_avatar_margin_left"
+        android:src="@mipmap/ic_launcher"
+        android:layout_marginStart="@dimen/chat_avatar_margin_left"
+        android:layout_marginTop="@dimen/chat_avatar_margin_top"
+        android:layout_height="@dimen/chat_avatar_size" />
+
+    <TextView
+        android:id="@+id/tv_chat_item_nickname"
+        android:layout_width="wrap_content"
+        android:textColor="@color/chat_nickname_color"
+        android:layout_toRightOf="@id/riv_chat_item_avatar"
+        android:text="测试用户"
+        android:layout_toEndOf="@id/riv_chat_item_avatar"
+        android:layout_marginTop="@dimen/chat_nickname_margin_top"
+        android:layout_marginLeft="@dimen/chat_nickname_margin_left"
+        android:layout_marginStart="@dimen/chat_nickname_margin_left"
+        android:textSize="@dimen/chat_nickname_size"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_chat_item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="11:11"
+        android:textSize="@dimen/chat_time_size"
+        android:textColor="@color/chat_time_color"
+        android:layout_marginRight="@dimen/chat_time_margin_right"
+        android:layout_marginEnd="@dimen/chat_time_margin_right"
+        android:layout_marginTop="@dimen/chat_time_margin_top"/>
+
+    <TextView
+        android:id="@+id/tv_chat_item_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxLines="1"
+        android:layout_below="@id/tv_chat_item_nickname"
+        android:layout_toRightOf="@id/riv_chat_item_avatar"
+        android:layout_toEndOf="@id/riv_chat_item_avatar"
+        android:layout_marginTop="@dimen/chat_msg_margin_top"
+        android:layout_marginLeft="@dimen/chat_msg_margin_left"
+        android:layout_marginStart="@dimen/chat_msg_margin_left"
+        android:textSize="@dimen/chat_msg_size"
+        android:textColor="@color/chat_msg_color"
+        android:text="测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息"
+        android:layout_marginRight="@dimen/chat_msg_margin_right"
+        android:layout_marginEnd="@dimen/chat_msg_margin_right"/>
+</RelativeLayout>

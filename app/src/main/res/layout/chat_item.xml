@@ -3,6 +3,7 @@
     android:id="@+id/rl_chat_item"
     android:layout_width="match_parent"
     android:background="@drawable/chat_item_bg"
+    android:clickable="true"
     android:layout_height="@dimen/chat_item_height">
 
     <cn.sportstory.sportstory.customViews.RoundImageView
@@ -53,7 +54,14 @@
         android:layout_marginStart="@dimen/chat_msg_margin_left"
         android:textSize="@dimen/chat_msg_size"
         android:textColor="@color/chat_msg_color"
+        android:ellipsize="end"
         android:text="测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息测试消息"
         android:layout_marginRight="@dimen/chat_msg_margin_right"
         android:layout_marginEnd="@dimen/chat_msg_margin_right"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/menu_text_color_free"/>
 </RelativeLayout>

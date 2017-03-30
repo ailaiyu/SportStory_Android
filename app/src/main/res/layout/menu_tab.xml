@@ -108,7 +108,7 @@
             android:layout_centerHorizontal="true"
             android:layout_height="wrap_content"
             android:text="@string/chat_title"
-            android:textColor="@color/menu_text_color_press"
+            android:textColor="@color/menu_text_color_free"
             android:textSize="@dimen/menu_text_size" />
     </RelativeLayout>
 

@@ -1,6 +1,5 @@
 package cn.sportstory.sportstory;
 
-import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.sportstory.sportstory.activity.ActivityFragment;
-import cn.sportstory.sportstory.chat.ChatFragment;
+import cn.sportstory.sportstory.chat.view.ChatFragment;
 import cn.sportstory.sportstory.timeline.TimelineFragment;
 import cn.sportstory.sportstory.me.MeFragment;
 import cn.sportstory.sportstory.nearby.NearbyFragment;
@@ -128,6 +127,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
      */
     private void changeTab(int tabId){
         fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        hideFragments();
         switch (tabId){
             case R.id.rl_menu_nearby:
                 mIvNearby.setImageResource(R.mipmap.nearby_press);
@@ -138,7 +138,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                     nearbyFragment.setArguments(getIntent().getExtras());
                     fragmentTransaction.add(R.id.fl_main_container, nearbyFragment).commit();
                 }else {
-                    fragmentTransaction.replace(R.id.fl_main_container, nearbyFragment).commit();
+                    fragmentTransaction.show(nearbyFragment).commit();
                 }
                 break;
             case R.id.rl_menu_timeline:
@@ -150,21 +150,21 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                     timelineFragment.setArguments(getIntent().getExtras());
                     fragmentTransaction.add(R.id.fl_main_container, timelineFragment).commit();
                 }else {
-                    fragmentTransaction.replace(R.id.fl_main_container, timelineFragment).commit();
+                    fragmentTransaction.show(timelineFragment).commit();
                 }
                 break;
             case R.id.rl_menu_activities:
                 mIvActivities.setImageResource(R.mipmap.activities_press);
                 mTvActivities.setTextColor(tabTextColorPress);
+
                 if(activityFragment == null)
                 {
                     activityFragment = new ActivityFragment();
                     activityFragment.setArguments(getIntent().getExtras());
                     fragmentTransaction.add(R.id.fl_main_container, activityFragment).commit();
                 }else {
-                    fragmentTransaction.replace(R.id.fl_main_container, activityFragment).commit();
+                    fragmentTransaction.show(activityFragment).commit();
                 }
-
                 break;
             case R.id.rl_menu_chat:
                 mIvChat.setImageResource(R.mipmap.chat_press);
@@ -175,7 +175,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                     chatFragment.setArguments(getIntent().getExtras());
                     fragmentTransaction.add(R.id.fl_main_container, chatFragment).commit();
                 }else {
-                    fragmentTransaction.replace(R.id.fl_main_container, chatFragment).commit();
+                    fragmentTransaction.show(chatFragment).commit();
                 }
                 break;
             case R.id.rl_menu_me:
@@ -187,9 +187,22 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                     meFragment.setArguments(getIntent().getExtras());
                     fragmentTransaction.add(R.id.fl_main_container, meFragment).commit();
                 }else {
-                    fragmentTransaction.replace(R.id.fl_main_container, meFragment).commit();
+                    fragmentTransaction.show(meFragment).commit();
                 }
                 break;
         }
+    }
+
+    private void hideFragments(){
+        if (nearbyFragment!=null)
+            fragmentTransaction.hide(nearbyFragment);
+        if (timelineFragment!=null)
+            fragmentTransaction.hide(timelineFragment);
+        if (activityFragment!=null)
+            fragmentTransaction.hide(activityFragment);
+        if (chatFragment!=null)
+            fragmentTransaction.hide(chatFragment);
+        if (meFragment!=null)
+            fragmentTransaction.hide(meFragment);
     }
 }

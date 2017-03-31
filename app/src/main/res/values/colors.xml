@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FFFFCE0F</color>
     <color name="colorPrimaryDark">#FFEFB600</color>
-    <color name="colorAccent">#FFFF4081</color>
+    <color name="colorAccent">#FFFFCE0F</color>
     <color name="tabBackground">#FF242424</color>
     <!--导航栏文字颜色-->
     <color name="defaultBlackText">#FF242424</color>

@@ -15,7 +15,8 @@ import java.util.List;
 
 import cn.sportstory.sportstory.R;
 import cn.sportstory.sportstory.chat.bean.ChatItemBean;
-import cn.sportstory.sportstory.customViews.RoundImageView;
+import cn.sportstory.sportstory.tools.ImageLoader;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by  Aaron.Zhang on 17-3-29.
@@ -60,7 +61,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
     public static class ChatItemViewHolder extends RecyclerView.ViewHolder{
         public Context context;
         public RelativeLayout mRlChatItem;
-        public RoundImageView mRivAvatar;
+        public CircleImageView mRivAvatar;
         public TextView mTvNickname;
         public TextView mTvMsg;
         public TextView mTvTime;
@@ -70,7 +71,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
             super(itemView);
             this.context = context;
             this.mRlChatItem = (RelativeLayout)itemView.findViewById(R.id.rl_chat_item);
-            this.mRivAvatar = (RoundImageView)itemView.findViewById(R.id.riv_chat_item_avatar);
+            this.mRivAvatar = (CircleImageView) itemView.findViewById(R.id.civ_chat_item_avatar);
             this.mTvNickname = (TextView)itemView.findViewById(R.id.tv_chat_item_nickname);
             this.mTvTime = (TextView) itemView.findViewById(R.id.tv_chat_item_time);
             this.mTvMsg = (TextView) itemView.findViewById(R.id.tv_chat_item_msg);
@@ -92,12 +93,12 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
     }
 
     @Override
-    public void onBindViewHolder(ChatItemViewHolder holder, int position) {
+    public void onBindViewHolder(final ChatItemViewHolder holder, int position) {
         ChatItemBean chatItemBean = chats.get(position);
         holder.mTvMsg.setText(chatItemBean.getMsg());
         holder.mTvTime.setText(chatItemBean.getTime());
         holder.mTvNickname.setText(chatItemBean.getNickname());
-
+        ImageLoader.displayImage(chatItemBean.getAvatarPath(), holder.mRivAvatar, context);
     }
 
     @Override
@@ -109,6 +110,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
             for (String key: bundle.keySet()){
                 switch (key){
                     case "avatarPath":
+                        ImageLoader.displayImage(bundle.get(key), holder.mRivAvatar, context);
                         break;
                     case "nickname":
                         holder.mTvNickname.setText((CharSequence) bundle.get(key));
@@ -130,4 +132,6 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
             return 0;
         return chats.size();
     }
+
+
 }

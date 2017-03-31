@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import cn.sportstory.sportstory.R;
 import cn.sportstory.sportstory.chat.bean.ChatItemBean;
+import cn.sportstory.sportstory.constants.TestConstants;
 
 
 /**
@@ -164,18 +165,24 @@ public class ChatFragment extends Fragment {
             switch (msg.what){
                 case MSG_WHAT_CHAT_UPDATE:
                     DiffUtil.DiffResult result = (DiffUtil.DiffResult)msg.obj;
-                    adapter.setChats(chats);
                     result.dispatchUpdatesTo(adapter);
+                    adapter.setChats(chats);
             }
         }
     };
 
     private void fillTestData(){
         int name = 0;
-        for (int i = 0; i < 300; i ++)
+        for (int i = 0; i < 3000; i ++)
         {
             ChatItemBean bean = new ChatItemBean();
-            bean.setAvatarPath(null);
+            bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH);
+            if (i%4 ==0)
+                bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH4);
+            else if(i%3 == 0)
+                bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH3);
+            else if (i % 2 == 0)
+                bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH5);
             bean.setUserId("" + i);
             bean.setNickname("用户名" + name ++ );
             bean.setMsg("测试测试测试测试测试测试测试测试test测试哈hahahahhahahaha哈哈哈哈哈哈哈去消息" + name);
@@ -184,12 +191,14 @@ public class ChatFragment extends Fragment {
         }
     }
 
-    int kk = 0;
+    int k = 0;
     private void testUpdateData(){
-//        for (int i = 0; i < 10;i ++){
-//           int j = i * 10 + kk ++;
-            chats.get(kk++).setMsg("修改之后的数据");
-//        }
+        k++;
+        for (int kk =0; kk < chats.size(); kk ++) {
+            chats.get(kk).setMsg("第" + k +"次修改之后的数据");
+            chats.get(kk).setAvatarPath(TestConstants.TEST_AVATAR_PATH6);
+            kk++;
+        }
         updateChats();
     }
 }

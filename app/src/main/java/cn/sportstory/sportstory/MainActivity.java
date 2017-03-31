@@ -8,11 +8,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import cn.sportstory.sportstory.activity.ActivityFragment;
+import cn.sportstory.sportstory.activities.view.ActivityFragment;
 import cn.sportstory.sportstory.chat.view.ChatFragment;
-import cn.sportstory.sportstory.timeline.TimelineFragment;
-import cn.sportstory.sportstory.me.MeFragment;
-import cn.sportstory.sportstory.nearby.NearbyFragment;
+import cn.sportstory.sportstory.timeline.view.TimelineFragment;
+import cn.sportstory.sportstory.me.view.MeFragment;
+import cn.sportstory.sportstory.nearby.view.NearbyFragment;
 
 /**
  * Created by Aaron.Zhang on 17-3-25.

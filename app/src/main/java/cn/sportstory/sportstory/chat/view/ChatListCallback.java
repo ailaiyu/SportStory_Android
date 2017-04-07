@@ -22,11 +22,15 @@ public class ChatListCallback extends DiffUtil.Callback {
 
     @Override
     public int getOldListSize() {
+        if (old_chats == null || old_chats.isEmpty())
+            return 0;
         return old_chats.size();
     }
 
     @Override
     public int getNewListSize() {
+        if (new_chats == null || new_chats.isEmpty())
+            return 0;
         return new_chats.size();
     }
 

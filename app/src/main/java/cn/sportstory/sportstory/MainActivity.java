@@ -136,9 +136,9 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 {
                     nearbyFragment = new NearbyFragment();
                     nearbyFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, nearbyFragment).commit();
+                    fragmentTransaction.add(R.id.fl_main_container, nearbyFragment);
                 }else {
-                    fragmentTransaction.show(nearbyFragment).commit();
+                    fragmentTransaction.show(nearbyFragment);
                 }
                 break;
             case R.id.rl_menu_timeline:
@@ -148,9 +148,9 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 {
                     timelineFragment = new TimelineFragment();
                     timelineFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, timelineFragment).commit();
+                    fragmentTransaction.add(R.id.fl_main_container, timelineFragment);
                 }else {
-                    fragmentTransaction.show(timelineFragment).commit();
+                    fragmentTransaction.show(timelineFragment);
                 }
                 break;
             case R.id.rl_menu_activities:
@@ -161,9 +161,9 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 {
                     activityFragment = new ActivityFragment();
                     activityFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, activityFragment).commit();
+                    fragmentTransaction.add(R.id.fl_main_container, activityFragment);
                 }else {
-                    fragmentTransaction.show(activityFragment).commit();
+                    fragmentTransaction.show(activityFragment);
                 }
                 break;
             case R.id.rl_menu_chat:
@@ -173,9 +173,9 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 {
                     chatFragment = new ChatFragment();
                     chatFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, chatFragment).commit();
+                    fragmentTransaction.add(R.id.fl_main_container, chatFragment);
                 }else {
-                    fragmentTransaction.show(chatFragment).commit();
+                    fragmentTransaction.show(chatFragment);
                 }
                 break;
             case R.id.rl_menu_me:
@@ -185,11 +185,13 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 {
                     meFragment = new MeFragment();
                     meFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, meFragment).commit();
+                    fragmentTransaction.add(R.id.fl_main_container, meFragment);
                 }else {
-                    fragmentTransaction.show(meFragment).commit();
+                    fragmentTransaction.show(meFragment);
                 }
                 break;
+            default:
+                fragmentTransaction.commit();
         }
     }
 

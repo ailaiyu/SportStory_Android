@@ -66,7 +66,6 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
         public TextView mTvMsg;
         public TextView mTvTime;
 
-
         public ChatItemViewHolder(View itemView, final Context context) {
             super(itemView);
             this.context = context;

@@ -78,6 +78,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
             this.mRlChatItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                    // TODO: 2017/4/8 进入聊天界面
                     Toast.makeText(context, "你点击了和" + mTvNickname.getText().toString() + "的对话", Toast.LENGTH_SHORT ).show();
                 }
             });

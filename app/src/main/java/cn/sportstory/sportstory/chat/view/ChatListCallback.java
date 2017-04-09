@@ -78,6 +78,12 @@ public class ChatListCallback extends DiffUtil.Callback {
         return true;
     }
 
+    /**
+     * 获取改变内容结果集
+     * @param oldItemPosition
+     * @param newItemPosition
+     * @return 差异内容结果
+     */
     @Nullable
     @Override
     public Object getChangePayload(int oldItemPosition, int newItemPosition) {

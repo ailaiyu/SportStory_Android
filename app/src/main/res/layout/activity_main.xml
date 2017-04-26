@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/defaultBackground"
-    tools:context="cn.sportstory.sportstory.MainActivity">
+    tools:context="cn.sportstory.android.cn.sportstory.androi.MainActivity">
 
     <include layout="@layout/menu_tab" android:id="@+id/menu_tab" />
 

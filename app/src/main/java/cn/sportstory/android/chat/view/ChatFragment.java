@@ -3,23 +3,13 @@ package cn.sportstory.android.chat.view;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v7.util.DiffUtil;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import java.util.ArrayList;
-
-import cn.sportstory.android.chat.bean.ChatItemBean;
 import cn.sportstory.android.R;
-import cn.sportstory.android.constants.TestConstants;
-
 
 /**
  * A simple {@link Fragment} subclass.
@@ -35,16 +25,15 @@ public class ChatFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private RecyclerView recyclerView;
-    private ChatRecyclerAdapter adapter;
-    private  LinearLayoutManager layoutManager;
-    private Button mBtnUpdate;
-    private ArrayList<ChatItemBean> chats = new ArrayList<ChatItemBean>();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
+    private RecyclerView recyclerView;
+
+
     private OnFragmentInteractionListener mListener;
+
     public ChatFragment() {
         // Required empty public constructor
     }
@@ -74,29 +63,13 @@ public class ChatFragment extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view =  inflater.inflate(R.layout.fragment_chat, container, false);
-        mBtnUpdate = (Button)view.findViewById(R.id.btn_update);
-        layoutManager = new LinearLayoutManager(getContext());
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView = (RecyclerView)view.findViewById(R.id.recycle_chat);
-        recyclerView.setLayoutManager(layoutManager);
-        fillTestData();
-        adapter = new ChatRecyclerAdapter(chats, getContext());
-        recyclerView.setAdapter(adapter);
-        mBtnUpdate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                testUpdateData();
-            }
-        });
-        return view;
+        return inflater.inflate(R.layout.fragment_chat, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -136,69 +109,5 @@ public class ChatFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    private static final int MSG_WHAT_CHAT_UPDATE = 1;
-
-    /**
-     *更新列表
-     */
-    private void updateChats(){
-
-        //为了防止数据量过大，比对算法耗时，将算法放入新线程执行
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                ArrayList<ChatItemBean> oldChats = adapter.getChats();
-                DiffUtil.DiffResult result = DiffUtil.calculateDiff(new ChatListCallback(oldChats, chats));
-                Message message = updateChatsHandler.obtainMessage(MSG_WHAT_CHAT_UPDATE);
-                message.obj = result;
-                message.sendToTarget();
-            }
-        }).start();
-
-    }
-
-    private Handler updateChatsHandler = new Handler() {
-        @Override
-        public void handleMessage(Message msg) {
-            switch (msg.what){
-                case MSG_WHAT_CHAT_UPDATE:
-                    DiffUtil.DiffResult result = (DiffUtil.DiffResult)msg.obj;
-                    result.dispatchUpdatesTo(adapter);
-                    adapter.setChats(chats);
-            }
-        }
-    };
-
-    private void fillTestData(){
-        int name = 0;
-        for (int i = 0; i < 3000; i ++)
-        {
-            ChatItemBean bean = new ChatItemBean();
-            bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH);
-            if (i%4 ==0)
-                bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH4);
-            else if(i%3 == 0)
-                bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH3);
-            else if (i % 2 == 0)
-                bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH5);
-            bean.setUserId("" + i);
-            bean.setNickname("用户名" + name ++ );
-            bean.setMsg("测试测试测试测试测试测试测试测试test测试哈hahahahhahahaha哈哈哈哈哈哈哈去消息" + name);
-            bean.setTime("12:12");
-            chats.add(bean);
-        }
-    }
-
-    int k = 0;
-    private void testUpdateData(){
-        k++;
-        for (int kk =0; kk < chats.size(); kk ++) {
-            chats.get(kk).setMsg("第" + k +"次修改之后的数据");
-            chats.get(kk).setAvatarPath(TestConstants.TEST_AVATAR_PATH6);
-            kk++;
-        }
-        updateChats();
     }
 }

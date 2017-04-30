@@ -20,14 +20,15 @@ import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
  * Created by  Aaron.Zhang on 17-3-29.
+ * 会话列表界面adapter
  */
 
-public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapter.ChatItemViewHolder>{
+public class ConversationRecyclerAdapter extends RecyclerView.Adapter <ConversationRecyclerAdapter.ChatItemViewHolder>{
 
     private ArrayList<ChatItemBean> chats;
     private Context context;
 
-    public ChatRecyclerAdapter(ArrayList<ChatItemBean> chats, Context context) {
+    public ConversationRecyclerAdapter(ArrayList<ChatItemBean> chats, Context context) {
         this.chats = new ArrayList<>();
         cloneChats(chats);
         this.context = context;
@@ -87,7 +88,7 @@ public class ChatRecyclerAdapter extends RecyclerView.Adapter <ChatRecyclerAdapt
 
     @Override
     public ChatItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.conversation_item, parent, false);
         ChatItemViewHolder viewHolder = new ChatItemViewHolder(v, context);
         return viewHolder;
     }

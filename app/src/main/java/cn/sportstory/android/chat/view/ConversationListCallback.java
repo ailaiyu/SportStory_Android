@@ -12,10 +12,10 @@ import cn.sportstory.android.chat.bean.ChatItemBean;
  * 会话消息对比Callback
  */
 
-public class ChatListCallback extends DiffUtil.Callback {
+public class ConversationListCallback extends DiffUtil.Callback {
     private ArrayList<ChatItemBean> old_chats, new_chats;
 
-    public ChatListCallback(ArrayList<ChatItemBean> old_chats, ArrayList<ChatItemBean> new_chats) {
+    public ConversationListCallback(ArrayList<ChatItemBean> old_chats, ArrayList<ChatItemBean> new_chats) {
         this.old_chats = old_chats;
         this.new_chats = new_chats;
     }

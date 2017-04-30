@@ -17,7 +17,7 @@
     <dimen name="menu_text_size">10sp</dimen>
     <dimen name="toolbar_title_text_size">20sp</dimen>
 
-    <!--chatitem模块-->
+    <!--conversationitem模块-->
     <dimen name="chat_avatar_size">38dp</dimen>
     <dimen name="chat_avatar_margin_left">24dp</dimen>
     <dimen name="chat_avatar_margin_top">10dp</dimen>
@@ -33,4 +33,6 @@
     <dimen name="chat_msg_size">11sp</dimen>
     <dimen name="chat_msg_margin_right">97dp</dimen>
 
+    <!--chat模块-->
+    <dimen name="chat_padding_left_right">15dp</dimen>
 </resources>

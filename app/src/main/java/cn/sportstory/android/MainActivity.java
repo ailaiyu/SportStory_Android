@@ -9,7 +9,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import cn.sportstory.android.activities.view.ActivityFragment;
-import cn.sportstory.android.chat.view.ChatFragment;
+import cn.sportstory.android.chat.view.ConversationFragment;
 import cn.sportstory.android.me.view.MeFragment;
 import cn.sportstory.android.nearby.view.NearbyFragment;
 import cn.sportstory.android.timeline.view.TimelineFragment;
@@ -20,7 +20,7 @@ import cn.sportstory.android.R;
  */
 
 public class MainActivity extends BaseActivity implements NearbyFragment.OnFragmentInteractionListener,
-        ChatFragment.OnFragmentInteractionListener, TimelineFragment.OnFragmentInteractionListener,
+        ConversationFragment.OnFragmentInteractionListener, TimelineFragment.OnFragmentInteractionListener,
         ActivityFragment.OnFragmentInteractionListener, MeFragment.OnFragmentInteractionListener, View.OnClickListener{
 
     private View mMenuTab;
@@ -49,7 +49,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     private NearbyFragment nearbyFragment;
     private TimelineFragment timelineFragment;
     private ActivityFragment activityFragment;
-    private ChatFragment chatFragment;
+    private ConversationFragment ConversationFragment;
     private MeFragment meFragment;
     private FragmentTransaction fragmentTransaction;
     @Override
@@ -170,13 +170,13 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
             case R.id.rl_menu_chat:
                 mIvChat.setImageResource(R.mipmap.chat_press);
                 mTvChat.setTextColor(tabTextColorPress);
-                if(chatFragment == null)
+                if(ConversationFragment == null)
                 {
-                    chatFragment = new ChatFragment();
-                    chatFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, chatFragment).commit();
+                    ConversationFragment = new ConversationFragment();
+                    ConversationFragment.setArguments(getIntent().getExtras());
+                    fragmentTransaction.add(R.id.fl_main_container, ConversationFragment).commit();
                 }else {
-                    fragmentTransaction.show(chatFragment).commit();
+                    fragmentTransaction.show(ConversationFragment).commit();
                 }
                 break;
             case R.id.rl_menu_me:
@@ -202,8 +202,8 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
             fragmentTransaction.hide(timelineFragment);
         if (activityFragment!=null)
             fragmentTransaction.hide(activityFragment);
-        if (chatFragment!=null)
-            fragmentTransaction.hide(chatFragment);
+        if (ConversationFragment!=null)
+            fragmentTransaction.hide(ConversationFragment);
         if (meFragment!=null)
             fragmentTransaction.hide(meFragment);
     }

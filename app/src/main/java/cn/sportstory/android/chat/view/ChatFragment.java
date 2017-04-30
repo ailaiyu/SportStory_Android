@@ -30,6 +30,7 @@ public class ChatFragment extends Fragment {
     private String mParam2;
 
     private RecyclerView recyclerView;
+    private ChatListRecyclerAdapter adapter;
 
 
     private OnFragmentInteractionListener mListener;

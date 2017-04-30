@@ -4,6 +4,8 @@ import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
 
+import cn.sportstory.android.chat.customeMessageType.LocalTipMessage;
+import io.rong.imlib.AnnotationNotFoundException;
 import io.rong.imlib.RongIMClient;
 
 /**
@@ -24,6 +26,12 @@ public class SportStoryApp extends Application {
         if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext()))
                 || "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
             RongIMClient.init(this);
+            try {
+                // 注册融云自定义消息类型， 在init之后立即注册
+                RongIMClient.registerMessageType(LocalTipMessage.class);
+            }catch (AnnotationNotFoundException e){
+                e.printStackTrace();
+            }
         }
     }
 

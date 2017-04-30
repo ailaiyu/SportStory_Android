@@ -20,9 +20,12 @@
     <color name="menu_text_color_press">#FFFFCE0F</color>
     <color name="toolbar_title_text_color">#FF121212</color>
 
-    <!--chatitem 颜色-->
-    <color name="chat_nickname_color">#FF242424</color>
-    <color name="chat_time_color">#FF595959</color>
-    <color name="chat_msg_color">#FFB5B5B5</color>
+    <!--conversation item 颜色-->
+    <color name="conversation_nickname_color">#FF242424</color>
+    <color name="conversation_time_color">#FF595959</color>
+    <color name="conversation_msg_color">#FFB5B5B5</color>
+
+    <color name="chat_item_tip_msg_backgroud_color">#FFB5B5B5</color>
+    <color name="chat_item_tip_msg_text_color">#FF242424</color>
 
 </resources>

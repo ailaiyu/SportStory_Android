@@ -19,7 +19,6 @@
         android:layout_width="match_parent"
         android:layout_marginRight="50dp"
         android:layout_marginEnd="50dp"
-        android:background="@drawable/chat_bubble_left"
         android:layout_marginLeft="5dp"
         android:paddingLeft="40dp"
         android:paddingRight="40dp"

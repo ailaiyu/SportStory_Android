@@ -3,6 +3,10 @@ package cn.sportstory.android;
 import android.app.ActivityManager;
 import android.app.Application;
 import android.content.Context;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageManager;
+
+import com.umeng.analytics.MobclickAgent;
 
 import cn.sportstory.android.chat.customeMessageType.LocalTipMessage;
 import io.rong.imlib.AnnotationNotFoundException;
@@ -32,6 +36,19 @@ public class SportStoryApp extends Application {
             }catch (AnnotationNotFoundException e){
                 e.printStackTrace();
             }
+        }
+
+        try {
+            //配置APM信息
+            ApplicationInfo applicationInfo = this.getPackageManager()
+                    .getApplicationInfo(getPackageName(), PackageManager.GET_META_DATA);
+            MobclickAgent.UMAnalyticsConfig config = new MobclickAgent.
+                    UMAnalyticsConfig(getApplicationContext(),
+                    applicationInfo.metaData.getString("UMENG_APPKEY"),
+                    applicationInfo.metaData.getString("UMENG_CHANNEL"));
+            MobclickAgent.startWithConfigure(config);
+        }catch (PackageManager.NameNotFoundException e){
+            e.printStackTrace();
         }
     }
 

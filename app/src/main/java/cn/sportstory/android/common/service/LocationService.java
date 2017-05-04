@@ -1,9 +1,15 @@
 package cn.sportstory.android.common.service;
 
+import android.Manifest;
 import android.app.Service;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.IBinder;
+import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
@@ -12,6 +18,9 @@ import com.amap.api.location.AMapLocationListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import cn.sportstory.android.common.PermissionCode;
+
 
 /**
  * Created by aaron on 2017/4/26.
@@ -47,6 +56,7 @@ public class LocationService extends Service {
                     aMapLocation.getAoiName();//获取当前定位点的AOI信息
                     aMapLocation.getBuildingId();//获取当前室内定位的建筑物Id
                     aMapLocation.getFloor();//获取当前室内定位的楼层
+                    Toast.makeText(LocationService.this, aMapLocation.getLatitude() + "" + aMapLocation.getLatitude() + " " + aMapLocation.getAddress(), Toast.LENGTH_LONG);
                     //aMapLocation.getGpsStatus();//获取GPS的当前状态
                     //获取定位时间
 //                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -62,15 +72,20 @@ public class LocationService extends Service {
         }
     };
 
-
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
+        return null;
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
         client = new AMapLocationClient(getApplicationContext());
         client.setLocationListener(listener);
         option = new AMapLocationClientOption();
         //低功耗模式，只使用WIFI或基站定位
-        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
+        option.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
         //每五分钟定位一次
         option.setInterval(FIVE_MINUTES);
         option.setNeedAddress(true);
@@ -78,17 +93,16 @@ public class LocationService extends Service {
         option.setHttpTimeOut(30000);
         client.setLocationOption(option);
         client.startLocation();
-        return null;
+
     }
 
     @Override
-    public boolean onUnbind(Intent intent) {
+    public void onDestroy() {
+        super.onDestroy();
         client.stopLocation();
         client.onDestroy();
         client = null;
 
         listener = null;
-        return super.onUnbind(intent);
     }
-
 }

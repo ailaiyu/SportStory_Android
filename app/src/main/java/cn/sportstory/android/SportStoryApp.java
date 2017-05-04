@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 
 import com.umeng.analytics.MobclickAgent;
 
+import cn.jpush.android.api.JPushInterface;
 import cn.sportstory.android.chat.customeMessageType.LocalTipMessage;
 import io.rong.imlib.AnnotationNotFoundException;
 import io.rong.imlib.RongIMClient;
@@ -18,6 +19,7 @@ import io.rong.imlib.RongIMClient;
  */
 public class SportStoryApp extends Application {
 
+    public static int sActivityCount = 0;
     @Override
     public void onCreate() {
         super.onCreate();
@@ -29,7 +31,7 @@ public class SportStoryApp extends Application {
          */
         if (getApplicationInfo().packageName.equals(getCurProcessName(getApplicationContext()))
                 || "io.rong.push".equals(getCurProcessName(getApplicationContext()))) {
-            RongIMClient.init(this);
+//            RongIMClient.init(this);
             try {
                 // 注册融云自定义消息类型， 在init之后立即注册
                 RongIMClient.registerMessageType(LocalTipMessage.class);
@@ -50,6 +52,11 @@ public class SportStoryApp extends Application {
         }catch (PackageManager.NameNotFoundException e){
             e.printStackTrace();
         }
+
+        //初始化极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+
     }
 
     /**
@@ -68,4 +75,5 @@ public class SportStoryApp extends Application {
         }
         return null;
     }
+
 }

@@ -1,6 +1,7 @@
 package cn.sportstory.android.chat.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -66,6 +67,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
         public TextView mTvNickname;
         public TextView mTvMsg;
         public TextView mTvTime;
+        public String userId;
 
         public ChatItemViewHolder(View itemView, final Context context) {
             super(itemView);
@@ -80,7 +82,13 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
                 @Override
                 public void onClick(View view) {
                     // TODO: 2017/4/8 进入聊天界面
-                    Toast.makeText(context, "你点击了和" + mTvNickname.getText().toString() + "的对话", Toast.LENGTH_SHORT ).show();
+                    Intent intent = new Intent();
+                    Bundle args = new Bundle();
+                    args.putString(ChatActivity.BUNDLE_CHAT_TYPE, ChatActivity.CHAT_TYPE_P2P);
+                    args.putString(ChatActivity.BUNDLE_CHAT_TARGET_ID, userId);
+                    intent.putExtras(args);
+                    intent.setClass(context, ChatActivity.class);
+                    context.startActivity(intent);
                 }
             });
         }
@@ -100,6 +108,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
         holder.mTvTime.setText(chatItemBean.getTime());
         holder.mTvNickname.setText(chatItemBean.getNickname());
         ImageLoader.displayImage(chatItemBean.getAvatarPath(), holder.mRivAvatar, context);
+        holder.userId = chatItemBean.getUserId();
     }
 
     @Override
@@ -111,17 +120,19 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
             for (String key: bundle.keySet()){
                 switch (key){
                     case "avatarPath":
-                        ImageLoader.displayImage(bundle.get(key), holder.mRivAvatar, context);
+                        ImageLoader.displayImage(bundle.getString(key), holder.mRivAvatar, context);
                         break;
                     case "nickname":
-                        holder.mTvNickname.setText((CharSequence) bundle.get(key));
+                        holder.mTvNickname.setText(bundle.getString(key));
                         break;
                     case "time":
-                        holder.mTvTime.setText((CharSequence) bundle.get(key));
+                        holder.mTvTime.setText(bundle.getString(key));
                         break;
                     case "msg":
-                        holder.mTvMsg.setText((CharSequence) bundle.get(key));
+                        holder.mTvMsg.setText(bundle.getString(key));
                         break;
+                    case "userId":
+                        holder.userId = bundle.getString(key);
                 }
             }
         }

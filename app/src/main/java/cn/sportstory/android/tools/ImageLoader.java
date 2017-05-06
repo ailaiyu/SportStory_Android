@@ -22,7 +22,6 @@ public class ImageLoader {
     private static final String IMAGE_TYPE_GIF = "gif";
     private static final String IMAGE_TYPE_JPG = "jpg";
     private static final String IMAGE_TYPE_JPEG = "jpeg";
-    String a = "012345";
 
     public static void displayImage(Object url, ImageView imageView, Context context){
         String picUrl = null;

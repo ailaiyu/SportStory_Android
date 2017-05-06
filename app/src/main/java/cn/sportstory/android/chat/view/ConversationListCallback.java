@@ -22,16 +22,12 @@ public class ConversationListCallback extends DiffUtil.Callback {
 
     @Override
     public int getOldListSize() {
-        if (old_chats == null || old_chats.isEmpty())
-            return 0;
-        return old_chats.size();
+        return old_chats == null ? 0 : old_chats.size();
     }
 
     @Override
     public int getNewListSize() {
-        if (new_chats == null || new_chats.isEmpty())
-            return 0;
-        return new_chats.size();
+        return new_chats == null ? 0 : new_chats.size();
     }
 
     /**

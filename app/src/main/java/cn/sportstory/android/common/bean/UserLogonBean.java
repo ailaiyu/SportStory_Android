@@ -6,7 +6,7 @@ package cn.sportstory.android.common.bean;
 public class UserLogonBean extends CommonBean {
     private String phone;
     private String password;
-    private String uid;
+    private String code;
     private String token;
 
     public String getPhone() {
@@ -25,12 +25,12 @@ public class UserLogonBean extends CommonBean {
         this.password = password;
     }
 
-    public String getUid() {
-        return uid;
+    public String getCode() {
+        return code;
     }
 
-    public void setUid(String uid) {
-        this.uid = uid;
+    public void setCode(String code) {
+        this.code = code;
     }
 
     public String getToken() {

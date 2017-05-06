@@ -1,25 +1,15 @@
 package cn.sportstory.android.common.service;
 
-import android.Manifest;
 import android.app.Service;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.IBinder;
-import android.support.annotation.IntDef;
 import android.support.annotation.Nullable;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.widget.Toast;
 
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
-import cn.sportstory.android.common.PermissionCode;
 
 
 /**

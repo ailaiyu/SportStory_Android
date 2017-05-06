@@ -5,13 +5,13 @@ package cn.sportstory.android.common.bean;
  * 发送短信验证码
  */
 public class SendVCodeBean extends CommonBean {
-    private String item;
+    private String phone;
 
     public String getItem() {
-        return item;
+        return phone;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void setItem(String phone) {
+        this.phone = phone;
     }
 }

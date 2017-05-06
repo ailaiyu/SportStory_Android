@@ -26,9 +26,8 @@ public class JpushMessageReceiver extends BroadcastReceiver {
     private static final String MSG_TYPE_LIKE =  "CUSTOM_PUSH_TYPE_TIMELINE_LIKE";
     private static final String MSG_TYPE_OFFLINE_ACTIVITY =  "CUSTOM_PUSH_TYPE_OFFLINE_ACTIVITY";
     private static final String MSG_TYPE_NEW_NEARBY =  "CUSTOM_PUSH_TYPE_NEW_NEARBY";
+    private static final String MSG_TYPE_OPEN_H5 =  "CUSTOM_PUSH_TYPE_OPEN_H5";
 
-    private static final String MSG_TYPE_1 = "1";
-    private static final String MSG_TYPE_2 = "2";
 
 
     @Override
@@ -91,12 +90,20 @@ public class JpushMessageReceiver extends BroadcastReceiver {
             //解析消息失败
         }
 
-        if (MSG_TYPE_1.equals(messageType)) {
-            //处理消息类型1
-        } else if (MSG_TYPE_2.equals(messageType)) {
-            //处理消息类型2
-        } else {
-            //位置消息类型
+        if (MSG_TYPE_COMMENT.equals(messageType)) {
+            //处理评论消息
+        } else if (MSG_TYPE_FOLLOW.equals(messageType)) {
+            //处理关注消息
+        } else if (MSG_TYPE_LIKE.equals(messageType)) {
+            //处理点赞消息
+        } else if (MSG_TYPE_NEW_NEARBY.equals(messageType)) {
+            //处理有新用户加入消息消息
+        } else if (MSG_TYPE_OFFLINE_ACTIVITY.equals(messageType)) {
+            //处理线下活动消息
+        } else if (MSG_TYPE_OPEN_H5.equals(messageType)) {
+            //打开h5页面
+        }else {
+            //其他消息类型
         }
 
     }

@@ -270,6 +270,11 @@
         <activity android:name="cn.sportstory.android.LoginActivity"
             android:screenOrientation="portrait">
         </activity>
+
+        <!--聊天界面-->
+        <activity android:name=".chat.view.ChatActivity"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

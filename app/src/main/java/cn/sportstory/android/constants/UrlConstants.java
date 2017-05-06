@@ -8,25 +8,31 @@ package cn.sportstory.android.constants;
 
 public class UrlConstants {
 
-    public static final String DOMAIN = "http://www.sportstory.cn/";                //企业域名
+    public static final String DOMAIN = "http://59.111.92.6:80/v1/";                //企业ip
 
-    public static final String SEND_VCODE = "vcode/send";                           //发送短信验证码
-    public static final String USER_LOGON = "user/logon";                           //用户注册
-    public static final String USER_PERFECT = "user/perfect";                       //完善用户信息
-    public static final String USER_LOGIN = "user/login";                           //用户登录
-    public static final String USER_RESET_PASSWORD = "user/reset/password";         //重置密码
-    public static final String USER_NEIGBOR_LIST = "user/neigbor/list";             //附近的人
-    public static final String USER_SEARCH = "user/search";                         //重置密码
-    public static final String USER_HOME_LOAD = "user/home/load";                   //用户主页
-    public static final String FEED_LIST = "feed/list";                             //动态列表
-    public static final String FEED_COMMENT = "feed/comment";                       //点赞/踩/评论
-    public static final String FELLOW_LIST = "follow/list";                         //关注/粉丝
-    public static final String VIDEO_LIST = "video/list";                           //视频列表
-    public static final String FEED_LISTOFONE = "feed/listofone";                   //指定用户动态
-    public static final String ALBUM_LIST = "album/list";                           //用户相册
-    public static final String ALBUM_EDIT = "album/edit";                           //编辑相册（隐私设置， 仅自己可见/粉丝可见/关注可见/公开）
-    public static final String ALBUM_DELETE = "album/delete";                       //删除相册
-    public static final String ALBUM_UPLOAD = "album/upload";                       //上传照片
-    public static final String ALBUM_IMAGE_COMMENT = "album/image/comment";         //评论照片
+    public static final String SEND_VCODE = "vcode/send";                           //发送短信验证码 POST
+    public static final String PHONE_INFO = "phone/info";                           //上传手机信息 POST
+    public static final String USER_LOGON = "user/logon";                           //用户注册  POST
+    public static final String USER_LOGIN = "user/login";                           //用户登录  POST
+    public static final String USER_NICKNAME = "user/nickname";                     //用户修改昵称  POST
+    public static final String USER_AVATAR = "user/avatar";                         //用户修改头像  POST
+    public static final String USER_BACKGROUND = "user/background";                 //用户修改背景  POST
+    public static final String USER_GENDER = "user/gender";                         //用户修改性别  POST
+    public static final String USER_BODY = "user/body";                             //用户修改身高体重信息  POST
+    public static final String USER_AREA = "user/area";                             //用户修改地区  POST
+    public static final String USER_SPORT = "user/sport";                           //用户修改运动类型  POST
+    public static final String USER_LOCATION = "user/location";                     //上传地理位置  POST
+    public static final String USER_NEARBY = "user/nearby";                         //附近的人  GET
+    public static final String USER_PROFILE = "user/profile";                       //获取用户信息  GET
+    public static final String USER_GALLERY = "user/gallery";                       //获取用户相册  GET
+    public static final String USER_SEARCH = "user/search";                         //用户搜索  GET
+
+    public static final String TIMELINE_GET = "timeline/get";                       //获取动态  GET
+    public static final String TIMELINE_POST = "timeline/post";                     //发表动态  POST
+    public static final String TIMELINE_LIKE = "timeline/like";                     //动态点赞  POST
+    public static final String TIMELINE_COMMENT = "timeline/comment";               //动态评论  POST
+    public static final String TIMELINE_FOLLOW = "timeline/follow";                 //关注/取关  GET
+    public static final String TIMELINE_FOLLOWER = "timeline/follower";             //粉丝列表  GET
+
 
 }

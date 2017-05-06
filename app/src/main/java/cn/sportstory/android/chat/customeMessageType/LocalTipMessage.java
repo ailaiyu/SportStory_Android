@@ -51,6 +51,7 @@ public class LocalTipMessage extends MessageContent {
             return new LocalTipMessage[size];
         }
     };
+
     @Override
     public byte[] encode() {
         JSONObject jsonObject = new JSONObject();

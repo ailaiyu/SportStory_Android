@@ -35,4 +35,6 @@
 
     <!--chat模块-->
     <dimen name="chat_padding_left_right">15dp</dimen>
+    <dimen name="chat_activity_title_height">60dp</dimen>
+
 </resources>

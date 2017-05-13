@@ -20,11 +20,17 @@
     <string name="login_with_password">密码登录</string>
     <string name="login_with_vcode">验证码登录</string>
     <string name="login_forgot_password">忘记密码?</string>
-    <string name="login_logon">注册></string>
+    <string name="login_logon">注 册></string>
     <string name="login_login_with_third_way">其他方式登录></string>
     <string name="login_tip_if_not_register">未注册手机号登录时将自动注册</string>
     <string name="verify_phone">验证手机</string>
-    <string name="verify">验证</string>
+    <string name="verify">验 证</string>
     <string name="set_password">设置密码</string>
-    <string name="confirm">确定</string>
+    <string name="confirm">确 定</string>
+    <string name="register">注 册</string>
+    <string name="upload_avatar">上传头像</string>
+    <string name="nickname_with_4_30">昵称(4~30个字符)</string>
+    <string name="gender">性别</string>
+
+
 </resources>

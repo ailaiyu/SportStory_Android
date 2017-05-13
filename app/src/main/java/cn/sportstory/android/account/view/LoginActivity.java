@@ -24,6 +24,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         mBtnSendVCode.setOnClickListener(this);
         findViewById(R.id.btn_send_vcode).setOnClickListener(this);
         findViewById(R.id.btn_login_login).setOnClickListener(this);
+        findViewById(R.id.tv_login_register).setOnClickListener(this);
     }
 
     @Override
@@ -46,6 +47,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 // TODO: 2017/5/13 发送验证码
                 CountTimerButton countTimerButton = new CountTimerButton(60 * 1000, 1000, mBtnSendVCode);
                 countTimerButton.start();
+                break;
+            case R.id.tv_login_register:
+                intent.setClass(this, RegisterActivity.class);
+                startActivity(intent);
                 break;
         }
     }

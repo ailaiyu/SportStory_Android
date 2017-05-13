@@ -266,6 +266,7 @@
         <activity android:name=".account.view.LoginWithPasswordActivity"/>
         <activity android:name=".account.view.VerifyPhoneActivity"/>
         <activity android:name=".account.view.SetPasswordActivity"/>
+        <activity android:name=".account.view.RegisterActivity"/>
         <activity android:name="cn.sportstory.android.account.view.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>

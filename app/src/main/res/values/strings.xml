@@ -15,6 +15,7 @@
     <string name="phone">手机</string>
     <string name="email">邮箱</string>
     <string name="password">密码</string>
+    <string name="password_8_to_20">密码(8~20位)</string>
     <string name="vcode">验证码</string>
     <string name="login_with_password">密码登录</string>
     <string name="login_with_vcode">验证码登录</string>
@@ -22,4 +23,8 @@
     <string name="login_logon">注册></string>
     <string name="login_login_with_third_way">其他方式登录></string>
     <string name="login_tip_if_not_register">未注册手机号登录时将自动注册</string>
+    <string name="verify_phone">验证手机</string>
+    <string name="verify">验证</string>
+    <string name="set_password">设置密码</string>
+    <string name="confirm">确定</string>
 </resources>

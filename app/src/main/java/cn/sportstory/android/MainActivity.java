@@ -207,4 +207,5 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
         if (meFragment!=null)
             fragmentTransaction.hide(meFragment);
     }
+
 }

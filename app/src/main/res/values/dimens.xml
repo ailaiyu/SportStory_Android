@@ -11,6 +11,7 @@
     <dimen name="menu_baseline_width">40dp</dimen>
     <dimen name="menu_baseline_height">1.5dp</dimen>
     <dimen name="toolbar_content_insert">0dp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
 
 
     <!--文字大小-->

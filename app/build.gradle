@@ -61,6 +61,8 @@ dependencies {
     testCompile 'junit:junit:4.12'
 //    七牛云存储
     compile 'com.qiniu:qiniu-android-sdk:7.3.+'
+    compile 'com.android.support:design:25.2.0'
+
 
 
 }

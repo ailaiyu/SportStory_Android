@@ -4,13 +4,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context="cn.sportstory.android.cn.sportstory.androi.timeline.view.TimelineFragment">
+    tools:context="cn.sportstory.android.timeline.view.TimelineFragment">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:contentInsetLeft="@dimen/toolbar_content_insert"
         app:contentInsetStart="@dimen/toolbar_content_insert"
+        android:elevation="@dimen/toolbar_elevation"
+
         android:background="@color/colorPrimary">
 
         <TextView

@@ -9,6 +9,8 @@
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
+        android:elevation="@dimen/toolbar_elevation"
+
         android:background="@color/colorPrimary"
         app:contentInsetLeft="@dimen/toolbar_content_insert"
         app:contentInsetStart="@dimen/toolbar_content_insert"

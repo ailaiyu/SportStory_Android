@@ -3,10 +3,23 @@
     <string name="nearby_title">附近的人</string>
     <string name="chat_title">消 息</string>
     <string name="focus_title">关 注</string>
-    <string name="timeline_title">动态</string>
+    <string name="timeline_title">动 态</string>
     <string name="activity_title">活 动</string>
     <string name="me_title">我的主页</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--登录注册-->
+    <string name="login_login">登 录</string>
+    <string name="phone">手机</string>
+    <string name="email">邮箱</string>
+    <string name="password">密码</string>
+    <string name="vcode">验证码</string>
+    <string name="login_with_password">密码登录</string>
+    <string name="login_with_vcode">验证码登录</string>
+    <string name="login_forgot_password">忘记密码?</string>
+    <string name="login_logon">注册></string>
+    <string name="login_login_with_third_way">其他方式登录></string>
+    <string name="login_tip_if_not_register">未注册手机号登录时将自动注册</string>
 </resources>

@@ -267,6 +267,11 @@
         <activity android:name=".account.view.VerifyPhoneActivity"/>
         <activity android:name=".account.view.SetPasswordActivity"/>
         <activity android:name=".account.view.RegisterActivity"/>
+        <activity android:name=".account.view.PerfectInfoAddressActivity"/>
+        <activity android:name=".account.view.ChooseCityActivity"/>
+        <activity android:name=".account.view.PerfectInfoShapeActivity"/>
+        <activity android:name=".account.view.PerfectInfoChooseSportsActivity"/>
+        <activity android:name=".account.view.PerfectInfoChooseSportsScoreActivity"/>
         <activity android:name="cn.sportstory.android.account.view.LoginActivity"
             android:screenOrientation="portrait">
             <intent-filter>

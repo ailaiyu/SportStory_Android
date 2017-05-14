@@ -1,8 +1,11 @@
 package cn.sportstory.android.account.view;
 
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -46,11 +49,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent();
         switch (v.getId())
         {
             case R.id.btn_register_finish:
+                intent.setClass(this, PerfectInfoAddressActivity.class);
+                startActivity(intent);
                 break;
             case R.id.img_register_avatar:
+                AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle("上传头像")
+                        .setItems(new String[]{"拍照", "相册"}, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (which == 0) {
+                            // TODO: 2017/5/13  打开相机
+                        }else {
+                            // TODO: 2017/5/13 打开相册
+                        }
+                    }
+                }).create();
+                alertDialog.show();
                 break;
             case R.id.img_register_female:
                 if (!isFemale){
@@ -59,6 +77,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     mImgMale.setImageResource(R.mipmap.male_free);
                     mImgFemale.setImageResource(R.mipmap.female_choose);
                     gender = GENDER_FEMALE;
+                }else {
+                    isFemale = false;
+                    mImgFemale.setImageResource(R.mipmap.female_free);
                 }
                 break;
             case R.id.img_register_male:
@@ -68,6 +89,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     mImgMale.setImageResource(R.mipmap.male_choose);
                     mImgFemale.setImageResource(R.mipmap.female_free);
                     gender = GENDER_MALE;
+                }else {
+                    isMale = false;
+                    mImgMale.setImageResource(R.mipmap.male_free);
                 }
                 break;
         }

@@ -31,6 +31,13 @@
     <string name="upload_avatar">上传头像</string>
     <string name="nickname_with_4_30">昵称(4~30个字符)</string>
     <string name="gender">性别</string>
+    <string name="perfect_info">完善信息</string>
+    <string name="your_location">所在地区</string>
+    <string name="next_step">下一步</string>
+    <string name="skip">跳过</string>
+    <string name="locate_city">定位城市</string>
+    <string name="choose_one_to_three_sports">请选择最喜欢的1到3项运动类型</string>
+    <string name="click_to_change_sports_level">点击修改您的运动水平</string>
 
 
 </resources>

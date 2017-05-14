@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_login_with_psd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/toolbar_elevation"
+        app:contentInsetLeft="@dimen/toolbar_content_insert"
+        android:navigationIcon="@mipmap/chat_press"
+        app:contentInsetStart="@dimen/toolbar_content_insert"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/locate_city"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/toolbar_title_text_color"
+            android:textSize="@dimen/toolbar_title_text_size" />
+    </android.support.v7.widget.Toolbar>
+
+
+
+</LinearLayout>

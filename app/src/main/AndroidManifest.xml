@@ -272,6 +272,13 @@
         <activity android:name=".account.view.PerfectInfoShapeActivity"/>
         <activity android:name=".account.view.PerfectInfoChooseSportsActivity"/>
         <activity android:name=".account.view.PerfectInfoChooseSportsScoreActivity"/>
+        <activity android:name=".profile.view.ProfileOtherActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".profile.view.TestActivity">
 
         </activity>
@@ -281,10 +288,7 @@
         </activity>
         <activity android:name=".account.view.LoginActivity"
             android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+
         </activity>
 
         <!--聊天界面-->

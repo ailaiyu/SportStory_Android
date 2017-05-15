@@ -18,11 +18,9 @@ import cn.sportstory.android.R;
 
 public class ImageLoader {
 
-    private static ImageLoader instance = null;
+    private static ImageLoader instance = new ImageLoader();
 
     public static ImageLoader getInstance() {
-        if (instance == null)
-            instance = new ImageLoader();
         return instance;
     }
 

@@ -24,6 +24,7 @@ public class ImageLoader {
     private static final String IMAGE_TYPE_JPEG = "jpeg";
 
     public static void displayImage(Object url, ImageView imageView, Context context){
+        context = context.getApplicationContext();
         String picUrl = null;
         if (url == null)
         {

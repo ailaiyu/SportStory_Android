@@ -37,7 +37,7 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     public ChatListRecyclerAdapter(ArrayList<Message> messages, Context context) {
         this.messages = messages;
-        this.context = context;
+        this.context = context.getApplicationContext();
     }
 
     @Override

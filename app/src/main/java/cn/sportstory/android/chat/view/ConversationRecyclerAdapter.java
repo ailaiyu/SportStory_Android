@@ -32,7 +32,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
     public ConversationRecyclerAdapter(ArrayList<ChatItemBean> chats, Context context) {
         this.chats = new ArrayList<>();
         cloneChats(chats);
-        this.context = context;
+        this.context = context.getApplicationContext();
     }
 
     public ArrayList<ChatItemBean> getChats() {
@@ -61,7 +61,6 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
     }
 
     public static class ChatItemViewHolder extends RecyclerView.ViewHolder{
-        public Context context;
         public RelativeLayout mRlChatItem;
         public CircleImageView mRivAvatar;
         public TextView mTvNickname;
@@ -71,7 +70,6 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
 
         public ChatItemViewHolder(View itemView, final Context context) {
             super(itemView);
-            this.context = context;
             this.mRlChatItem = (RelativeLayout)itemView.findViewById(R.id.rl_chat_item);
             this.mRivAvatar = (CircleImageView) itemView.findViewById(R.id.civ_chat_item_avatar);
             this.mTvNickname = (TextView)itemView.findViewById(R.id.tv_chat_item_nickname);

@@ -60,7 +60,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
         }
     }
 
-    public static class ChatItemViewHolder extends RecyclerView.ViewHolder{
+    public class ChatItemViewHolder extends RecyclerView.ViewHolder{
         public RelativeLayout mRlChatItem;
         public CircleImageView mRivAvatar;
         public TextView mTvNickname;
@@ -105,7 +105,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
         holder.mTvMsg.setText(chatItemBean.getMsg());
         holder.mTvTime.setText(chatItemBean.getTime());
         holder.mTvNickname.setText(chatItemBean.getNickname());
-        ImageLoader.displayImage(chatItemBean.getAvatarPath(), holder.mRivAvatar, context);
+        ImageLoader.getInstance().displayImage(chatItemBean.getAvatarPath(), holder.mRivAvatar, context);
         holder.userId = chatItemBean.getUserId();
     }
 
@@ -118,7 +118,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
             for (String key: bundle.keySet()){
                 switch (key){
                     case "avatarPath":
-                        ImageLoader.displayImage(bundle.getString(key), holder.mRivAvatar, context);
+                        ImageLoader.getInstance().displayImage(bundle.getString(key), holder.mRivAvatar, context);
                         break;
                     case "nickname":
                         holder.mTvNickname.setText(bundle.getString(key));

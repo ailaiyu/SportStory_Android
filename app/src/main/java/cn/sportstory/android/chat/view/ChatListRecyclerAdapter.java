@@ -109,13 +109,13 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             {
                 //我发出的消息
                 ((ChatListViewTextRightHolder) holder).textView.setText(((TextMessage) message.getContent()).getContent());
-                ImageLoader.displayImage(message.getContent().getUserInfo().getPortraitUri(),
+                ImageLoader.getInstance().displayImage(message.getContent().getUserInfo().getPortraitUri(),
                         ((ChatListViewTextRightHolder) holder).avatar, context);
             }else
             {
                 //我接收的消息
                 ((ChatListViewTextLeftHolder) holder).textView.setText(((TextMessage) message.getContent()).getContent());
-                ImageLoader.displayImage(message.getContent().getUserInfo().getPortraitUri(),
+                ImageLoader.getInstance().displayImage(message.getContent().getUserInfo().getPortraitUri(),
                         ((ChatListViewTextLeftHolder) holder).avatar, context);
             }
         }else if (message.getContent() instanceof ImageMessage)
@@ -124,15 +124,15 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             if (message.getSenderUserId().equals(RongIMClient.getInstance().getCurrentUserId()))
             {
                 //自己发送的消息
-                ImageLoader.displayImage(message.getContent().getUserInfo().getPortraitUri(),
+                ImageLoader.getInstance().displayImage(message.getContent().getUserInfo().getPortraitUri(),
                         ((ChatListViewImgRightHolder) holder).avatar, context);
-                ImageLoader.displayImage(((ImageMessage) message.getContent()).getThumUri(),
+                ImageLoader.getInstance().displayImage(((ImageMessage) message.getContent()).getThumUri(),
                         ((ChatListViewImgRightHolder) holder).avatar, context);
             }else {
                 //自己接收的消息
-                ImageLoader.displayImage(message.getContent().getUserInfo().getPortraitUri(),
+                ImageLoader.getInstance().displayImage(message.getContent().getUserInfo().getPortraitUri(),
                         ((ChatListViewImgLeftHolder) holder).avatar, context);
-                ImageLoader.displayImage(((ImageMessage) message.getContent()).getThumUri(),
+                ImageLoader.getInstance().displayImage(((ImageMessage) message.getContent()).getThumUri(),
                         ((ChatListViewImgLeftHolder) holder).avatar, context);
             }
         }else if (message.getContent() instanceof LocalTipMessage){
@@ -153,7 +153,7 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     /**
      * 接收到的文字消息viewholder
      */
-    public static class ChatListViewTextLeftHolder extends RecyclerView.ViewHolder{
+    private class ChatListViewTextLeftHolder extends RecyclerView.ViewHolder{
         public CircleImageView avatar;
         public TextView textView;
         public Context context;
@@ -181,7 +181,7 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     /**
      * 我发送的文字消息viewholder
      */
-    public static class ChatListViewTextRightHolder extends RecyclerView.ViewHolder{
+    private class ChatListViewTextRightHolder extends RecyclerView.ViewHolder{
         public CircleImageView avatar;
         public TextView textView;
         public Context context;
@@ -210,7 +210,7 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     /**
      * 接收到的图片消息viewholder
      */
-    public static class ChatListViewImgLeftHolder extends RecyclerView.ViewHolder{
+    private class ChatListViewImgLeftHolder extends RecyclerView.ViewHolder{
         public CircleImageView avatar;
         public TextView textView;
         public Context context;
@@ -239,7 +239,7 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     /**
      * 聊天消息
      */
-    public static class ChatListViewImgRightHolder extends RecyclerView.ViewHolder{
+    private class ChatListViewImgRightHolder extends RecyclerView.ViewHolder{
         public CircleImageView avatar;
         public ImageView imageView;
         public Context context;
@@ -269,7 +269,7 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     /**
      * 提示消息viewholder
      */
-    public static class ChatListViewTipViewHolder extends RecyclerView.ViewHolder{
+    private class ChatListViewTipViewHolder extends RecyclerView.ViewHolder{
         public Context context;
         public TextView textView;
 
@@ -279,5 +279,7 @@ public class ChatListRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             this.textView = (TextView)itemView.findViewById(R.id.text_chat_local_tip);
         }
     }
+
+
 
 }

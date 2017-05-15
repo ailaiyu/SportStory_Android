@@ -18,12 +18,22 @@ import cn.sportstory.android.R;
 
 public class ImageLoader {
 
+    private static ImageLoader instance = null;
+
+    public static ImageLoader getInstance() {
+        if (instance == null)
+            instance = new ImageLoader();
+        return instance;
+    }
+
+    private ImageLoader(){}
+
     private static final String IMAGE_TYPE_PNG = "png";
     private static final String IMAGE_TYPE_GIF = "gif";
     private static final String IMAGE_TYPE_JPG = "jpg";
     private static final String IMAGE_TYPE_JPEG = "jpeg";
 
-    public static void displayImage(Object url, ImageView imageView, Context context){
+    public void displayImage(Object url, ImageView imageView, Context context){
         context = context.getApplicationContext();
         String picUrl = null;
         if (url == null)
@@ -49,7 +59,7 @@ public class ImageLoader {
         }
     }
 
-    private static void displayNormalImage(String picUrl, final ImageView imageView, Context context){
+    private void displayNormalImage(String picUrl, final ImageView imageView, Context context){
         Glide
                 .with(context)
                 .load(picUrl)
@@ -73,7 +83,7 @@ public class ImageLoader {
                 .into(imageView);
     }
 
-    private static void displayGifImage(String picUrl, final ImageView imageView, Context context){
+    private void displayGifImage(String picUrl, final ImageView imageView, Context context){
         Glide
                 .with(context)
                 .load(picUrl)

@@ -10,10 +10,9 @@ import android.widget.TextView;
 
 import cn.sportstory.android.activities.view.ActivityFragment;
 import cn.sportstory.android.chat.view.ConversationFragment;
-import cn.sportstory.android.me.view.MeFragment;
+import cn.sportstory.android.profile.view.MeFragment;
 import cn.sportstory.android.nearby.view.NearbyFragment;
 import cn.sportstory.android.timeline.view.TimelineFragment;
-import cn.sportstory.android.R;
 
 /**
  * Created by Aaron.Zhang on 17-3-25.

@@ -1,4 +1,4 @@
-package cn.sportstory.android.me.view;
+package cn.sportstory.android.profile.view;
 
 import android.content.Context;
 import android.net.Uri;

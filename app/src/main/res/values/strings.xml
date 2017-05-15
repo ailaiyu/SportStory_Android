@@ -30,7 +30,12 @@
     <string name="register">注 册</string>
     <string name="upload_avatar">上传头像</string>
     <string name="nickname_with_4_30">昵称(4~30个字符)</string>
+    <string name="nickname">昵称</string>
     <string name="gender">性别</string>
+    <string name="height">身高</string>
+    <string name="weight">体重</string>
+    <string name="birthday">生日</string>
+    <string name="address">地区</string>
     <string name="perfect_info">完善信息</string>
     <string name="your_location">所在地区</string>
     <string name="next_step">下一步</string>
@@ -39,5 +44,7 @@
     <string name="choose_one_to_three_sports">请选择最喜欢的1到3项运动类型</string>
     <string name="click_to_change_sports_level">点击修改您的运动水平</string>
 
+    <!--个人账号-->
 
+    <string name="edit_profile">修改资料</string>
 </resources>

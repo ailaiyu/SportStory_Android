@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_login_with_psd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/toolbar_elevation"
+        app:contentInsetLeft="@dimen/toolbar_content_insert"
+        android:navigationIcon="@mipmap/chat_press"
+        app:contentInsetStart="@dimen/toolbar_content_insert"
+        android:background="@color/colorPrimary">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/edit_profile"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:textColor="@color/toolbar_title_text_color"
+            android:textSize="@dimen/toolbar_title_text_size" />
+    </android.support.v7.widget.Toolbar>
+
+    
+    <ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/img_edit_profile_avatar"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/ic_launcher"
+                android:layout_width="100dp"
+                android:layout_height="100dp" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/grey"/>
+            <LinearLayout
+                android:id="@+id/ll_edit_profile_nickname"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_height="45dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/nickname"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:text="玲玲芳"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@mipmap/right"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"/>
+            <LinearLayout
+                android:id="@+id/ll_edit_profile_gender"
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/gender"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:text="女"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@mipmap/right"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"/>
+            <LinearLayout
+                android:id="@+id/ll_edit_profile_height"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/height"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:text="170cm"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@mipmap/right"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"/>
+            <LinearLayout
+                android:id="@+id/ll_edit_profile_weight"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/weight"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:text="60kg"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@mipmap/right"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"/>
+            <LinearLayout
+                android:id="@+id/ll_edit_profile_birthday"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/birthday"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/tv_edit_profile_birthday"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:text="1988年8月9日"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@mipmap/right"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"/>
+            <LinearLayout
+                android:id="@+id/ll_edit_profile_address"
+                android:layout_width="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:layout_height="45dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/address"
+                    android:layout_marginRight="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_weight="5"
+                    android:text="北京"
+                    android:textSize="16sp"
+                    android:textColor="@color/black"
+                    android:layout_height="wrap_content" />
+                <ImageView
+                    android:src="@mipmap/right"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="20dp" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/grey"/>
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>

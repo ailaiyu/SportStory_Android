@@ -1,7 +1,6 @@
 package cn.sportstory.android.nearby.view;
 
 import android.content.Intent;
-import android.graphics.Matrix;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,7 +40,6 @@ public class NearbyAdapter extends BaseAdapter {
         return position;
     }
 
-    private ViewGroup.LayoutParams m = null;
     @Override
     public View getView(final int position, View convertView, final ViewGroup parent) {
         NearbyHolder nearbyHolder = new NearbyHolder();
@@ -59,13 +57,6 @@ public class NearbyAdapter extends BaseAdapter {
         NearbyBean bean = beans.get(position);
         nearbyHolder.info.setText(beans.get(position).getNickname());
 
-        if (m == null)
-        {
-            m = nearbyHolder.avatar.getLayoutParams();
-            m.height = m.width;
-        }
-        
-        nearbyHolder.avatar.setLayoutParams(m);
         ImageLoader.getInstance().displayImage(bean.getAvatarPath(),
                 nearbyHolder.avatar, parent.getContext().getApplicationContext());
         nearbyHolder.item.setOnClickListener(new View.OnClickListener() {

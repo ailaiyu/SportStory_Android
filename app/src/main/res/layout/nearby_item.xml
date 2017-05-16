@@ -6,11 +6,13 @@
     android:layout_height="wrap_content">
 
     <ImageView
+        class="cn.sportstory.android.common.view.MySquareImageView"
         android:id="@+id/img_nearby_item_avatar"
         android:layout_width="match_parent"
+        android:adjustViewBounds="true"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher"
-        android:scaleType="fitXY"/>
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher" />
 
     <LinearLayout
         android:layout_width="match_parent"

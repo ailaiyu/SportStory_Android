@@ -1,45 +1,41 @@
-package cn.sportstory.android.nearby.view;
+package cn.sportstory.android.profile.view;
 
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
-
-import java.util.ArrayList;
 
 import cn.sportstory.android.R;
-import cn.sportstory.android.constants.TestConstants;
-import cn.sportstory.android.nearby.bean.NearbyBean;
+import cn.sportstory.android.timeline.view.TimelineAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link NearbyFragment.OnFragmentInteractionListener} interface
+ * {@link ProfileTimelineFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link NearbyFragment#newInstance} factory method to
+ * Use the {@link ProfileTimelineFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NearbyFragment extends Fragment {
+public class ProfileTimelineFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
-    private GridView gridView;
-    private NearbyAdapter adapter;
+    private RecyclerView recyclerView;
+    private TimelineAdapter adapter;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    //每次请求的数据量
-    private static final int NUMBER_PER_REQUEST = 30;
 
     private OnFragmentInteractionListener mListener;
 
-    public NearbyFragment() {
+    public ProfileTimelineFragment() {
         // Required empty public constructor
     }
 
@@ -49,11 +45,11 @@ public class NearbyFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment NearbyFragment.
+     * @return A new instance of fragment ProfileTimelineFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static NearbyFragment newInstance(String param1, String param2) {
-        NearbyFragment fragment = new NearbyFragment();
+    public static ProfileTimelineFragment newInstance(String param1, String param2) {
+        ProfileTimelineFragment fragment = new ProfileTimelineFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,11 +70,11 @@ public class NearbyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_nearby, container, false);
-        gridView = (GridView)view.findViewById(R.id.gv_nearby_fragment);
-        adapter = new NearbyAdapter();
-        gridView.setAdapter(adapter);
-        initData();
+        View view = inflater.inflate(R.layout.fragment_profile_timeline, container, false);
+
+        recyclerView = (RecyclerView)view.findViewById(R.id.recycle_profile_timeline);
+        adapter = new TimelineAdapter();
+        recyclerView.setAdapter(adapter);
         return view;
     }
 
@@ -119,17 +115,5 @@ public class NearbyFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
-    }
-
-    private void initData(){
-        ArrayList<NearbyBean> users = new ArrayList<>();
-        for (int i = 0; i < NUMBER_PER_REQUEST; i ++){
-            NearbyBean bean = new NearbyBean();
-            bean.setNickname("昵称" + i);
-            bean.setUserId(i + "");
-            bean.setAvatarPath(TestConstants.AVATARS[i%4]);
-            users.add(bean);
-        }
-        adapter.appendUser(users);
     }
 }

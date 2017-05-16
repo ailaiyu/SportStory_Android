@@ -11,4 +11,14 @@ public class TestConstants {
     public static final String TEST_AVATAR_PATH4 = "http://7zhan.com/uploads/allimg/140517/09351J304-3.jpg";
     public static final String TEST_AVATAR_PATH5 = "http://thumbs.dreamstime.com/x/phu-tup-berk-48638597.jpg";
     public static final String TEST_AVATAR_PATH6 = "http://img2.imgtn.bdimg.com/it/u=970957814,1818945840&fm=23&gp=0.jpg";
+
+    public static final String[] AVATARS = {
+            "https://img1.doubanio.com/img/celebrity/medium/22137.jpg",
+            "https://img3.doubanio.com/img/celebrity/medium/13151.jpg",
+            "https://img1.doubanio.com/img/celebrity/large/419.jpg",
+            "https://img3.doubanio.com/img/celebrity/large/34813.jpg",
+            "https://img3.doubanio.com/img/celebrity/medium/22120.jpg",
+            "https://img3.doubanio.com/icon/ul66576541-31.jpg",
+    };
+
 }

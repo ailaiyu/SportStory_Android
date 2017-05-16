@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/toolbar_elevation"
+        app:contentInsetLeft="@dimen/toolbar_content_insert"
+        app:contentInsetStart="@dimen/toolbar_content_insert"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/tv_follower_list_following"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/following"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginRight="70dp"
+                android:layout_marginEnd="70dp"
+                android:textColor="@color/toolbar_title_text_color"
+                android:textSize="14sp" />
+            <TextView
+                android:id="@+id/tv_follower_list_followers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/followers"
+                android:gravity="center"
+                android:textStyle="bold"
+                android:layout_marginLeft="70dp"
+                android:layout_marginStart="70dp"
+                android:textColor="@color/toolbar_title_text_color"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <FrameLayout
+        android:id="@+id/fl_followers_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </FrameLayout>
+
+</LinearLayout>

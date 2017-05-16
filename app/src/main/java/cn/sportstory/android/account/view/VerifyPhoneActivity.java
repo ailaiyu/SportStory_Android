@@ -35,8 +35,7 @@ public class VerifyPhoneActivity extends BaseActivity implements View.OnClickLis
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
-        switch (v.getId())
-        {
+        switch (v.getId()) {
             case R.id.btn_verify_phone_send_vcode:
                 CountTimerButton countTimerButton = new CountTimerButton(60 * 1000, 1000, mBtnSendVcode);
                 countTimerButton.start();

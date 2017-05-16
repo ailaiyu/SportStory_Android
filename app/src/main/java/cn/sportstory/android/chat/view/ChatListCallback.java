@@ -52,9 +52,7 @@ public class ChatListCallback extends DiffUtil.Callback {
     public boolean areItemsTheSame(int oldItemPosition, int newItemPosition) {
         Message oldMsg = oldMessage.get(oldItemPosition);
         Message newMsg = newMessage.get(newItemPosition);
-        if (oldMsg == null || newMsg == null)
-            return false;
-        return oldMsg.getMessageId() == newMsg.getMessageId();
+        return !(oldMsg == null || newMsg == null) && oldMsg.getMessageId() == newMsg.getMessageId();
     }
 
     /**

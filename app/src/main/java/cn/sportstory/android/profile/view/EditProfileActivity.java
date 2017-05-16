@@ -67,7 +67,7 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
                             d = "0" + d;
                         ((TextView)findViewById(R.id.tv_edit_profile_birthday)).setText(year + "年" + m + "月" + d + "日");
                     }
-                }, Integer.valueOf("2010"),Integer.valueOf(1), Integer.valueOf(1));
+                }, 2010,1, 1);
                 datePickerDialog.show();
 
                 break;

@@ -195,6 +195,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     }
 
     private void hideFragments(){
+
         if (nearbyFragment!=null)
             fragmentTransaction.hide(nearbyFragment);
         if (timelineFragment!=null)

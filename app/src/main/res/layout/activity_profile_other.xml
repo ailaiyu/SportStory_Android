@@ -32,5 +32,6 @@
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:background="#f2f2f2"/>
+
     <include layout="@layout/profile_content" android:id="@+id/profile_content"/>
 </LinearLayout>

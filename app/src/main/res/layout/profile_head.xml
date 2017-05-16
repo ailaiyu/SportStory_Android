@@ -41,6 +41,7 @@
         android:baselineAligned="false"
         android:layout_height="60dp">
         <LinearLayout
+            android:id="@+id/ll_profile_following_number"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:orientation="vertical"
@@ -58,6 +59,7 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
+            android:id="@+id/ll_profile_followers_number"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:orientation="vertical"

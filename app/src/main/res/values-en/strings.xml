@@ -6,4 +6,47 @@
     <string name="timeline_title">Timeline</string>
     <string name="activity_title">Activities</string>
     <string name="me_title">Me</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--登录注册-->
+    <string name="login_login">Login</string>
+    <string name="phone">phone</string>
+    <string name="email">email</string>
+    <string name="password">password</string>
+    <string name="password_8_to_20">password(8~20)</string>
+    <string name="vcode">verify code</string>
+    <string name="login_with_password">login with password</string>
+    <string name="login_with_vcode">login with verify code</string>
+    <string name="login_forgot_password">忘记密码?</string>
+    <string name="login_logon">注 册></string>
+    <string name="login_login_with_third_way">其他方式登录></string>
+    <string name="login_tip_if_not_register">未注册手机号登录时将自动注册</string>
+    <string name="verify_phone">验证手机</string>
+    <string name="verify">验 证</string>
+    <string name="set_password">设置密码</string>
+    <string name="confirm">确 定</string>
+    <string name="register">注 册</string>
+    <string name="upload_avatar">上传头像</string>
+    <string name="nickname_with_4_30">昵称(4~30个字符)</string>
+    <string name="nickname">昵称</string>
+    <string name="gender">性别</string>
+    <string name="height">身高</string>
+    <string name="weight">体重</string>
+    <string name="birthday">生日</string>
+    <string name="address">地区</string>
+    <string name="perfect_info">完善信息</string>
+    <string name="your_location">所在地区</string>
+    <string name="next_step">下一步</string>
+    <string name="skip">跳过</string>
+    <string name="locate_city">定位城市</string>
+    <string name="choose_one_to_three_sports">请选择最喜欢的1到3项运动类型</string>
+    <string name="click_to_change_sports_level">点击修改您的运动水平</string>
+
+    <!--个人账号-->
+
+    <string name="edit_profile">修改资料</string>
+    <string name="following">关注</string>
+    <string name="followers">粉丝</string>
 </resources>

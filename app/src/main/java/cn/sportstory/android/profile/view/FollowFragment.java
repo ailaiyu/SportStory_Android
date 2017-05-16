@@ -9,7 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import cn.sportstory.android.R;
+import cn.sportstory.android.profile.bean.FollowerBean;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,10 +29,11 @@ public class FollowFragment extends Fragment {
     private static final String ARG_TAG = "tag";
 
     private RecyclerView recyclerView;
-
+    private FollowerAdapter adapter;
     // TODO: Rename and change types of parameters
     private static String userId;
     private static int tag;
+
 
     private OnFragmentInteractionListener mListener;
 
@@ -63,13 +67,17 @@ public class FollowFragment extends Fragment {
             tag = getArguments().getInt(ARG_TAG);
         }
 
-        recyclerView = (RecyclerView)getActivity().findViewById(R.id.recycle_followers);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_follow, container, false);
+
+        View view = inflater.inflate(R.layout.fragment_follow, container, false);
+        recyclerView = (RecyclerView)view.findViewById(R.id.recycle_followers);
+        initData();
+        recyclerView.setAdapter(adapter);
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -109,5 +117,18 @@ public class FollowFragment extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    private void initData(){
+        ArrayList<FollowerBean> followers = new ArrayList<>();
+        for (int i = 0; i < 100; i ++)
+        {
+            FollowerBean bean = new FollowerBean();
+            bean.setmAvatarPath(null);
+            bean.setNickname("用户名" + i);
+            bean.setUserId(i + "");
+            followers.add(bean);
+        }
+        adapter = new FollowerAdapter(followers);
     }
 }

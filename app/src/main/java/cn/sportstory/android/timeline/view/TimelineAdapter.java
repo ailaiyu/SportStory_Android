@@ -1,12 +1,18 @@
 package cn.sportstory.android.timeline.view;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+
+import cn.sportstory.android.R;
+import cn.sportstory.android.profile.view.FollowerAdapter;
+import cn.sportstory.android.tools.ImageLoader;
 
 /**
  * Created by aaron on 2017/5/16.
@@ -16,19 +22,38 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.Timeli
 
     ArrayList<TimelineBean> timelines = new ArrayList<>();
 
+    private Context context;
+
+    public TimelineAdapter() {
+        TimelineBean timelineBean = new TimelineBean();
+        timelineBean.setDate("28/04");
+        timelineBean.setLikeCount("92");
+        timelineBean.setCommentCount("18");
+        timelineBean.setContent("明天加油！");
+        timelines.add(timelineBean);
+    }
+
     @Override
     public TimelineViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        context = parent.getContext().getApplicationContext();
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.timeline_item, parent, false);
+        TimelineViewHolder holder = new TimelineViewHolder(v);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(TimelineViewHolder holder, int position) {
-
+        TimelineBean timelineBean = timelines.get(position);
+        ImageLoader.getInstance().displayImage(timelineBean.getPicPath(), holder.pic, context);
+        holder.date.setText(timelineBean.getDate());
+        holder.content.setText(timelineBean.getContent());
+        holder.likeCount.setText(timelineBean.getLikeCount());
+        holder.commentCount.setText(timelineBean.getCommentCount());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return timelines.size();
     }
 
     public class TimelineViewHolder extends RecyclerView.ViewHolder {
@@ -40,6 +65,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.Timeli
 
         public TimelineViewHolder(View itemView) {
             super(itemView);
+            date = (TextView)itemView.findViewById(R.id.tv_timeline_item_date);
+            content = (TextView)itemView.findViewById(R.id.tv_timeline_item_content);
+            pic = (ImageView) itemView.findViewById(R.id.img_timeline_item_pic);
+            likeCount = (TextView)itemView.findViewById(R.id.tv_timeline_item_like_count);
+            commentCount = (TextView)itemView.findViewById(R.id.tv_timeline_item_comment_count);
         }
     }
 }

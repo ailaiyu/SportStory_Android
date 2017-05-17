@@ -11,6 +11,15 @@ public class TimelineBean {
     private String picPath;
     private String likeCount;
     private String commentCount;
+    private String date;
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
 
     public String getTimelineId() {
         return timelineId;

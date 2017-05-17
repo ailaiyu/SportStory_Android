@@ -18,6 +18,16 @@ public class UserLoginBean extends CommonBean {
     private String background;
     private String stature;
     private String nickname;
+    private int loginType;
+
+    public int getLoginType() {
+
+        return loginType;
+    }
+
+    public void setLoginType(int loginType) {
+        this.loginType = loginType;
+    }
 
     public String getPhone() {
         return phone;

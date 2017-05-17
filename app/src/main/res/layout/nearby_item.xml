@@ -16,11 +16,35 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:gravity="center_vertical"
+        android:padding="5dp"
         android:layout_height="wrap_content">
         <TextView
-            android:id="@+id/tv_nearby_item__user_info"
+            android:id="@+id/tv_nearby_item_distance"
             android:layout_width="wrap_content"
-            android:text="张利高"
+            android:text="0.5km"
+            android:textSize="16sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_height="wrap_content" />
+        <ImageView
+            android:layout_marginLeft="15dp"
+            android:id="@+id/img_nearby_item_sport1"
+            android:layout_width="15dp"
+            android:src="@mipmap/baolingqiu_free"
+            android:layout_height="15dp" />
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/img_nearby_item_sport2"
+            android:layout_width="15dp"
+            android:src="@mipmap/pingpong_free"
+            android:layout_height="15dp" />
+        <ImageView
+            android:layout_marginLeft="5dp"
+            android:id="@+id/img_nearby_item_sport3"
+            android:layout_width="15dp"
+            android:src="@mipmap/juzhong_free"
+            android:layout_height="15dp" />
+
     </LinearLayout>
 </LinearLayout>

@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 
-import com.squareup.leakcanary.LeakCanary;
 import com.umeng.analytics.MobclickAgent;
 
 import cn.jpush.android.api.JPushInterface;
@@ -25,10 +24,10 @@ public class SportStoryApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        if(LeakCanary.isInAnalyzerProcess(this)) {
-            return;
-        }
-        LeakCanary.install(this);
+//        if(LeakCanary.isInAnalyzerProcess(this)) {
+//            return;
+//        }
+//        LeakCanary.install(this);
         /**
          * OnCreate函数会被多个进程进入
          * 这段保护代码确保只有RongIMCient的进程和push进程执行了init

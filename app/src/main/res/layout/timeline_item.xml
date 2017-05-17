@@ -24,14 +24,14 @@
         android:adjustViewBounds="true"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:src="@mipmap/ic_launcher"
+        android:src="@drawable/time_contet"
         android:layout_height="wrap_content" />
 
     <TextView
         android:id="@+id/tv_timeline_item_content"
         android:layout_width="wrap_content"
         android:layout_below="@id/img_timeline_item_pic"
-        android:text="好开心啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊"
+        android:text="今天在健身房锻炼两小时，明天继续！"
         android:layout_alignStart="@+id/img_timeline_item_pic"
         android:textSize="13sp"
         android:textColor="@color/black"

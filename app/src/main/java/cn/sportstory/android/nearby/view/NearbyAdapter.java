@@ -47,7 +47,7 @@ public class NearbyAdapter extends BaseAdapter {
             convertView = LayoutInflater.from(parent.getContext().getApplicationContext())
                     .inflate(R.layout.nearby_item, null);
             nearbyHolder.avatar = (ImageView)convertView.findViewById(R.id.img_nearby_item_avatar);
-            nearbyHolder.info = (TextView)convertView.findViewById(R.id.tv_nearby_item__user_info);
+//            nearbyHolder.info = (TextView)convertView.findViewById(R.id.tv_nearby_item__user_info);
             nearbyHolder.item = (LinearLayout)convertView.findViewById(R.id.ll_nearby_item);
             convertView.setTag(nearbyHolder);
         }else {
@@ -55,7 +55,7 @@ public class NearbyAdapter extends BaseAdapter {
         }
 
         NearbyBean bean = beans.get(position);
-        nearbyHolder.info.setText(beans.get(position).getNickname());
+//        nearbyHolder.info.setText(beans.get(position).getNickname());
 
         ImageLoader.getInstance().displayImage(bean.getAvatarPath(),
                 nearbyHolder.avatar, parent.getContext().getApplicationContext());

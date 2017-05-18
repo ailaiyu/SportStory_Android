@@ -9,8 +9,7 @@ import cn.sportstory.android.common.bean.UserLoginBean;
 public class LoginEmailPassword extends LoginModel {
 
     @Override
-    void login(UserLoginBean bean) {
-        super.login(bean);
+    public void login(UserLoginBean bean) {
         // TODO: 2017/5/17 手机密码登录
     }
 

@@ -9,7 +9,6 @@ import cn.sportstory.android.im.UserLogin;
  */
 
 public abstract class LoginModel {
-    UserLoginBean bean;
-    public void login(UserLoginBean bean){};
+    abstract public void login(UserLoginBean bean);
 
 }

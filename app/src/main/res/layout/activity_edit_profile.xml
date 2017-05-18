@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:toolbar="http://schemas.android.com/tools"
     android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar_login_with_psd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:elevation="@dimen/toolbar_elevation"
+        toolbar:elevation="@dimen/toolbar_elevation"
         app:contentInsetLeft="@dimen/toolbar_content_insert"
-        android:navigationIcon="@mipmap/chat_press"
+        toolbar:navigationIcon="@mipmap/chat_press"
         app:contentInsetStart="@dimen/toolbar_content_insert"
         android:background="@color/colorPrimary">
 

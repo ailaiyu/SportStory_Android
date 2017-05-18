@@ -2,30 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        toolbar:elevation="@dimen/toolbar_elevation"
         android:elevation="@dimen/toolbar_elevation"
-        app:contentInsetLeft="@dimen/toolbar_content_insert"
-        app:contentInsetStart="@dimen/toolbar_content_insert"
+        android:navigationIcon="@mipmap/back"
+        toolbar:navigationIcon="@mipmap/back"
         android:background="@color/colorPrimary">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:gravity="center"
-            android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
             <TextView
                 android:id="@+id/tv_follower_list_following"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/following"
                 android:textStyle="bold"
-                android:gravity="center"
-                android:layout_marginRight="70dp"
-                android:layout_marginEnd="70dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginEnd="40dp"
                 android:textColor="@color/toolbar_title_text_color"
                 android:textSize="14sp" />
             <TextView
@@ -33,13 +34,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/followers"
-                android:gravity="center"
                 android:textStyle="bold"
-                android:layout_marginLeft="70dp"
-                android:layout_marginStart="70dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginStart="40dp"
                 android:textColor="@color/toolbar_title_text_color"
                 android:textSize="14sp" />
-        </RelativeLayout>
+        </LinearLayout>
 
     </android.support.v7.widget.Toolbar>
 

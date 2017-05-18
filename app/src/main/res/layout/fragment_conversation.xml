@@ -4,21 +4,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     tools:context="cn.sportstory.android.chat.view.ConversationFragment">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:contentInsetLeft="@dimen/toolbar_content_insert"
+        toolbar:elevation="@dimen/toolbar_elevation"
         android:elevation="@dimen/toolbar_elevation"
-        app:contentInsetStart="@dimen/toolbar_content_insert"
         android:background="@color/colorPrimary">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="@string/chat_title"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:textStyle="bold"
             android:textColor="@color/toolbar_title_text_color"
             android:textSize="@dimen/toolbar_title_text_size" />

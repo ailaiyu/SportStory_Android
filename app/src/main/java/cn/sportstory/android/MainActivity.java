@@ -3,6 +3,7 @@ package cn.sportstory.android;
 import android.support.v4.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -59,8 +60,11 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     }
 
     private void initView(){
-        tabTextColorFree = getResources().getColor(R.color.menu_text_color_free);
-        tabTextColorPress = getResources().getColor(R.color.menu_text_color_press);
+        tabTextColorFree = ContextCompat.getColor(getApplicationContext(),R.color.menu_text_color_free);
+        tabTextColorPress = ContextCompat.getColor(getApplicationContext(),R.color.menu_text_color_press);
+//        tabTextColorFree = getResources().getColor(R.color.menu_text_color_free);
+//        tabTextColorPress = getResources().getColor(R.color.menu_text_color_press);
+
 
         mMenuTab = (View)findViewById(R.id.menu_tab);
         // 每个tab

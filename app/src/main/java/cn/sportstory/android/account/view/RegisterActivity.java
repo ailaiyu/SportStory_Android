@@ -1,18 +1,30 @@
 package cn.sportstory.android.account.view;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.RegionIterator;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TabHost;
+import android.widget.Toast;
+
+import java.io.File;
+import java.io.IOException;
 
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.common.tools.CameraHelper;
+import cn.sportstory.android.common.tools.ImageTools;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 /**
@@ -31,6 +43,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private int gender = -1;
     private static final int GENDER_MALE = 0;
     private static final int GENDER_FEMALE = 1;
+    CameraHelper cameraHelper = new CameraHelper();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -57,14 +70,17 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 startActivity(intent);
                 break;
             case R.id.img_register_avatar:
-                AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle("上传头像")
+                final AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle("上传头像")
                         .setItems(new String[]{"拍照", "相册"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+
                         if (which == 0) {
                             // TODO: 2017/5/13  打开相机
+                            cameraHelper.takePhoto(RegisterActivity.this);
                         }else {
                             // TODO: 2017/5/13 打开相册
+
                         }
                     }
                 }).create();
@@ -94,6 +110,40 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     mImgMale.setImageResource(R.mipmap.male_free);
                 }
                 break;
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (data == null)
+            return;
+        if (resultCode == Activity.RESULT_OK){
+            if (requestCode == CameraHelper.CAMERA_REQUEST_CODE)
+            {
+                try{
+                    Uri uri = data.getData();
+                    cameraHelper.startCropImage(RegisterActivity.this, uri);
+                }catch (Exception e){
+                    Toast.makeText(this, getString(R.string.operation_failed), Toast.LENGTH_SHORT).show();
+                }
+
+            }else if (requestCode == CameraHelper.ALBUM_REQUEST_CODE){
+
+            }else if (requestCode == CameraHelper.CROP_REQUEST){
+                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".jpg");
+                Uri uri = Uri.fromFile(cropFile);
+                try{
+                    Bitmap pic = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                    pic = ImageTools.imageZoom(pic, 500);
+                    mImgAvatar.setImageBitmap(pic);
+                }catch (IOException e){
+                    Toast.makeText(RegisterActivity.this, getString(R.string.operation_failed), Toast.LENGTH_SHORT).show();
+                }
+
+            }else {
+                return;
+            }
         }
     }
 }

@@ -62,8 +62,6 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     private void initView(){
         tabTextColorFree = ContextCompat.getColor(getApplicationContext(),R.color.menu_text_color_free);
         tabTextColorPress = ContextCompat.getColor(getApplicationContext(),R.color.menu_text_color_press);
-//        tabTextColorFree = getResources().getColor(R.color.menu_text_color_free);
-//        tabTextColorPress = getResources().getColor(R.color.menu_text_color_press);
 
 
         mMenuTab = (View)findViewById(R.id.menu_tab);

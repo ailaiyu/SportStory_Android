@@ -18,6 +18,5 @@ public interface LoginTaskContract {
     }
 
     interface Presenter extends BasePresenter {
-        void setUpTask(UserLoginBean bean);               //登录
     }
 }

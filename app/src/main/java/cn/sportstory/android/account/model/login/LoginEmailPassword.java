@@ -1,6 +1,8 @@
 package cn.sportstory.android.account.model.login;
 
+import cn.sportstory.android.account.presenter.LoginPresenter;
 import cn.sportstory.android.common.bean.UserLoginBean;
+import retrofit2.Callback;
 
 /**
  * Created by aaron on 2017/5/17.
@@ -8,9 +10,13 @@ import cn.sportstory.android.common.bean.UserLoginBean;
 
 public class LoginEmailPassword extends LoginModel {
 
+    public LoginEmailPassword(LoginPresenter presenter) {
+        super(presenter);
+    }
+
     @Override
-    public void login(UserLoginBean bean) {
-        // TODO: 2017/5/17 手机密码登录
+    public void login(UserLoginBean bean, Callback<UserLoginBean> callback) {
+
     }
 
 }

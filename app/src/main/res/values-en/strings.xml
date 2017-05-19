@@ -43,10 +43,22 @@
     <string name="locate_city">定位城市</string>
     <string name="choose_one_to_three_sports">请选择最喜欢的1到3项运动类型</string>
     <string name="click_to_change_sports_level">点击修改您的运动水平</string>
+    <string name="enter_right_phone">请输入正确的手机号</string>
 
     <!--个人账号-->
 
     <string name="edit_profile">修改资料</string>
     <string name="following">关注</string>
     <string name="followers">粉丝</string>
+    <string name="tip_confirm_has_sdcard">请确认已插入sdk卡</string>
+    <string name="operation_failed">操作失败，请重试</string>
+
+
+    <!--提示语-->
+    <string name="net_disconnect">已断开连接，请检查您的网络设置</string>
+    <string name="send_vcode_failed">发送失败，请重试</string>
+    <string name="send_vcode_success">发送成功</string>
+
+
+
 </resources>

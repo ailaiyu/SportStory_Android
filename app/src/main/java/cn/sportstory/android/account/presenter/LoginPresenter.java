@@ -35,13 +35,13 @@ public class LoginPresenter implements LoginTaskContract.Presenter {
         switch (bean.getLoginType())
         {
             case LOGIN_TYPE_PHONE_VCODE:
-                loginModel = new LoginPhoneVCode();
+                loginModel = new LoginPhoneVCode(this);
                 break;
             case LOGIN_TYPE_EMAIL_PASSWORD:
-                loginModel = new LoginEmailPassword();
+                loginModel = new LoginEmailPassword(this);
                 break;
             case LOGIN_TYPE_EMAIL_VCODE:
-                loginModel = new LoginEmailVCode();
+                loginModel = new LoginEmailVCode(this);
                 break;
             case LOGIN_TYPE_PHONE_PASSWORD:
                 loginModel = new LoginPhonePassword(this);

@@ -28,7 +28,7 @@ public class SendVCodePresenter implements SendVCodeTaskContract.Presenter {
 
             @Override
             public void onFailure(Call<SendVCodeBean> call, Throwable t) {
-                view.showSendFailed();
+                view.showSendVCodeFailed();
             }
         });
     }

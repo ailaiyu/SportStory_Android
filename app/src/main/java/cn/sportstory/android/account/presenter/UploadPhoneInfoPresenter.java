@@ -1,0 +1,44 @@
+package cn.sportstory.android.account.presenter;
+
+import cn.sportstory.android.account.contract.UploadPhoneInfoContract;
+import cn.sportstory.android.account.model.uploadPhoneInfo.UploadPhoneInfoModelImpl;
+import cn.sportstory.android.common.baseinterface.BaseView;
+import cn.sportstory.android.common.bean.CommonBean;
+import cn.sportstory.android.common.bean.PhoneInfoBean;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
+/**
+ * Created by aaron on 2017/5/20.
+ */
+
+public class UploadPhoneInfoPresenter extends UploadPhoneInfoContract.Presenter {
+
+    private PhoneInfoBean bean;
+    private UploadPhoneInfoModelImpl model;
+    private UploadPhoneInfoContract.View view;
+
+    @Override
+    public void setupTask(CommonBean bean, BaseView view) {
+        model = new UploadPhoneInfoModelImpl(this);
+        this.bean = (PhoneInfoBean) bean;
+        this.view = (UploadPhoneInfoContract.View)view;
+    }
+
+    @Override
+    public void doTask() {
+
+        model.uploadPhoneInfo(bean, new Callback<PhoneInfoBean>() {
+            @Override
+            public void onResponse(Call<PhoneInfoBean> call, Response<PhoneInfoBean> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<PhoneInfoBean> call, Throwable t) {
+
+            }
+        });
+    }
+}

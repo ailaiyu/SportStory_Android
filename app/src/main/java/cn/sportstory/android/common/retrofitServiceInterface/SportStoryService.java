@@ -1,22 +1,14 @@
 package cn.sportstory.android.common.retrofitServiceInterface;
 
-import java.net.URL;
 import java.util.Map;
 
 import cn.sportstory.android.common.bean.PhoneInfoBean;
-import cn.sportstory.android.common.bean.UserAreaBean;
-import cn.sportstory.android.common.bean.UserAvatarBean;
-import cn.sportstory.android.common.bean.UserBackgroundBean;
-import cn.sportstory.android.common.bean.UserBodyBean;
-import cn.sportstory.android.common.bean.UserGenderBean;
+import cn.sportstory.android.common.bean.UserBean;
 import cn.sportstory.android.common.bean.UserLocationBean;
 import cn.sportstory.android.common.bean.UserLoginBean;
-import cn.sportstory.android.common.bean.UserLogonBean;
-import cn.sportstory.android.common.bean.UserNicknameBean;
 import cn.sportstory.android.common.bean.UserSportBean;
 import cn.sportstory.android.constants.UrlConstants;
 import cn.sportstory.android.common.bean.SendVCodeBean;
-import cn.sportstory.android.im.UserLogin;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -58,7 +50,7 @@ public interface SportStoryService {
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_LOGON)
-    Call<UserLogonBean> userLogon(
+    Call<UserBean> uploadUserInfo(
             @FieldMap Map<String, String> fields
     );
 
@@ -73,16 +65,40 @@ public interface SportStoryService {
             @FieldMap Map<String, String> fields
     );
 
-    /**
+      /**
      * 用户更新昵称
      * @param fields
      * @return
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_NICKNAME)
-    Call<UserNicknameBean> updateNickname(
+    Call<UserBean> updateNickname(
             @FieldMap Map<String, String> fields
     );
+
+    /**
+     * 用户更新邮箱
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.USER_EMAIL)
+    Call<UserBean> updateEmail(
+            @FieldMap Map<String, String> fields
+    );
+
+    /**
+     * 用户更新手机
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.USER_PHONE)
+    Call<UserBean> updatePhone(
+            @FieldMap Map<String, String> fields
+    );
+
+
 
     /**
      * 更新用户头像
@@ -91,7 +107,7 @@ public interface SportStoryService {
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_AVATAR)
-    Call<UserAvatarBean> updateUserAvatar(
+    Call<UserBean> updateUserAvatar(
             @FieldMap Map<String, String> fields
     );
 
@@ -102,7 +118,7 @@ public interface SportStoryService {
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_BACKGROUND)
-    Call<UserBackgroundBean> updateUserBackground(
+    Call<UserBean> updateUserBackground(
             @FieldMap Map<String, String> fields
     );
 
@@ -113,7 +129,7 @@ public interface SportStoryService {
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_GENDER)
-    Call<UserGenderBean> updateUserGender(
+    Call<UserBean> updateUserGender(
             @FieldMap Map <String, String> fields
     );
 
@@ -124,7 +140,7 @@ public interface SportStoryService {
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_BODY)
-    Call<UserBodyBean> updateUserBody(
+    Call<UserBean> updateUserBody(
             @FieldMap Map<String, String> fields
     );
 
@@ -135,7 +151,7 @@ public interface SportStoryService {
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_AREA)
-    Call<UserAreaBean> updateUserArea(
+    Call<UserBean> updateUserArea(
             @FieldMap Map<String, String> fields
     );
 
@@ -146,7 +162,7 @@ public interface SportStoryService {
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_SPORT)
-    Call<UserSportBean> updateUserSport(
+    Call<UserBean> updateUserSport(
             @FieldMap Map<String, String> fields
     );
 

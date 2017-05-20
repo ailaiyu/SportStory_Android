@@ -6,58 +6,22 @@ package cn.sportstory.android.common.bean;
  */
 
 public class UserSportBean extends CommonBean {
-    private String sport1;
-    private String level1;
-    private String sport2;
-    private String level2;
-    private String sport3;
-    private String level3;
+    private String name;
+    private String level;
 
-    public String getSport1() {
-        return sport1;
+    public String getName() {
+        return name;
     }
 
-    public void setSport1(String sport1) {
-        this.sport1 = sport1;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getLevel1() {
-        return level1;
+    public String getLevel() {
+        return level;
     }
 
-    public void setLevel1(String level1) {
-        this.level1 = level1;
-    }
-
-    public String getSport2() {
-        return sport2;
-    }
-
-    public void setSport2(String sport2) {
-        this.sport2 = sport2;
-    }
-
-    public String getLevel2() {
-        return level2;
-    }
-
-    public void setLevel2(String level2) {
-        this.level2 = level2;
-    }
-
-    public String getSport3() {
-        return sport3;
-    }
-
-    public void setSport3(String sport3) {
-        this.sport3 = sport3;
-    }
-
-    public String getLevel3() {
-        return level3;
-    }
-
-    public void setLevel3(String level3) {
-        this.level3 = level3;
+    public void setLevel(String level) {
+        this.level = level;
     }
 }

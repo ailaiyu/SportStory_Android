@@ -15,6 +15,8 @@ public class UrlConstants {
     public static final String USER_LOGON = "user/logon";                           //用户注册  POST
     public static final String USER_LOGIN = "user/login";                           //用户登录  POST
     public static final String USER_NICKNAME = "user/nickname";                     //用户修改昵称  POST
+    public static final String USER_EMAIL = "user/email";                           //用户修改邮箱  POST
+    public static final String USER_PHONE = "user/phone";                           //用户修手机  POST
     public static final String USER_AVATAR = "user/avatar";                         //用户修改头像  POST
     public static final String USER_BACKGROUND = "user/background";                 //用户修改背景  POST
     public static final String USER_GENDER = "user/gender";                         //用户修改性别  POST

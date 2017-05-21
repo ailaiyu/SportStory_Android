@@ -3,6 +3,7 @@ package cn.sportstory.android.common.retrofitServiceInterface;
 import java.util.Map;
 
 import cn.sportstory.android.common.bean.PhoneInfoBean;
+import cn.sportstory.android.common.bean.TimelineFollowBean;
 import cn.sportstory.android.common.bean.UserBean;
 import cn.sportstory.android.common.bean.UserGalleryBean;
 import cn.sportstory.android.common.bean.UserLocationBean;
@@ -209,6 +210,16 @@ public interface SportStoryService {
      */
     @GET(UrlConstants.USER_SEARCH)
     Call<UserSearchBean> searchUser(
+            @QueryMap Map<String, String> options
+    );
+
+    /**
+     * 获取动态
+     * @param options
+     * @return
+     */
+    @GET(UrlConstants.TIMELINE_FOLLOW)
+    Call<TimelineFollowBean> getTimeline(
             @QueryMap Map<String, String> options
     );
 

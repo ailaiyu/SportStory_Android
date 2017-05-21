@@ -1,7 +1,5 @@
 package cn.sportstory.android.account.presenter;
 
-import com.squareup.haha.trove.THash;
-
 import cn.sportstory.android.account.contract.UpdateUserInfoContract;
 import cn.sportstory.android.account.model.updateUserInfo.UpdateUserAvatar;
 import cn.sportstory.android.account.model.updateUserInfo.UpdateUserBackground;

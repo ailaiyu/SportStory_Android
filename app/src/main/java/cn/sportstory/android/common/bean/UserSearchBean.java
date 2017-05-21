@@ -1,29 +1,45 @@
 package cn.sportstory.android.common.bean;
 
-import java.util.List;
-
 /**
- * Created by aaron on 2017/4/9.
- * 用户搜索
- * 我认为还要加三个字段:搜索起始位置 搜索结束位置 搜索类型
+ * Created by aaron on 2017/5/21.
  */
+
 public class UserSearchBean extends CommonBean {
-    private String item;                                //搜索内容：昵称，电话，运动类型
-    private List<NeigborInfoBean> neigborInfoList;
+    private int searchType;
+    private String keyword;
+    private String start;
+    private String num;
+    private QueryUserBean[] users;
 
-    public String getItem() {
-        return item;
+    public int getSearchType() {
+        return searchType;
     }
 
-    public void setItem(String item) {
-        this.item = item;
+    public void setSearchType(int searchType) {
+        this.searchType = searchType;
     }
 
-    public List<NeigborInfoBean> getNeigborInfoList() {
-        return neigborInfoList;
+    public String getKeyword() {
+        return keyword;
     }
 
-    public void setNeigborInfoList(List<NeigborInfoBean> neigborInfoList) {
-        this.neigborInfoList = neigborInfoList;
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public String getStart() {
+        return start;
+    }
+
+    public void setStart(String start) {
+        this.start = start;
+    }
+
+    public String getNum() {
+        return num;
+    }
+
+    public void setNum(String num) {
+        this.num = num;
     }
 }

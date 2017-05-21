@@ -4,15 +4,19 @@ import java.util.Map;
 
 import cn.sportstory.android.common.bean.PhoneInfoBean;
 import cn.sportstory.android.common.bean.UserBean;
+import cn.sportstory.android.common.bean.UserGalleryBean;
 import cn.sportstory.android.common.bean.UserLocationBean;
 import cn.sportstory.android.common.bean.UserLoginBean;
-import cn.sportstory.android.common.bean.UserSportBean;
+import cn.sportstory.android.common.bean.UserNearbyBean;
+import cn.sportstory.android.common.bean.UserSearchBean;
 import cn.sportstory.android.constants.UrlConstants;
 import cn.sportstory.android.common.bean.SendVCodeBean;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.QueryMap;
 
 /**
  * Created by aaron on 2017/4/7.
@@ -177,6 +181,36 @@ public interface SportStoryService {
             @FieldMap Map<String, String> fields
     );
 
+    /**
+     * 获取用户相册
+     * @param options
+     * @return
+     */
+    @GET(UrlConstants.USER_GALLERY)
+    Call<UserGalleryBean> getUserGallery(
+        @QueryMap Map<String, String> options
+    );
+
+
+    /**
+     * 获取附近的人
+     * @param options
+     * @return
+     */
+    @GET(UrlConstants.USER_NEARBY)
+    Call<UserNearbyBean> getUserNearby(
+            @QueryMap Map<String, String> options
+    );
+
+    /**
+     * 搜索用户
+     * @param options
+     * @return
+     */
+    @GET(UrlConstants.USER_SEARCH)
+    Call<UserSearchBean> searchUser(
+            @QueryMap Map<String, String> options
+    );
 
 
 }

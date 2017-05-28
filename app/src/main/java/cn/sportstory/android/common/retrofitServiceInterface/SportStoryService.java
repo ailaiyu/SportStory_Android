@@ -8,6 +8,8 @@ import cn.sportstory.android.common.bean.TimelineCommentBean;
 import cn.sportstory.android.common.bean.TimelineGetBean;
 import cn.sportstory.android.common.bean.TimelineLikeBean;
 import cn.sportstory.android.common.bean.UserBean;
+import cn.sportstory.android.common.bean.UserFollowerBean;
+import cn.sportstory.android.common.bean.UserFollowingBean;
 import cn.sportstory.android.common.bean.UserGalleryBean;
 import cn.sportstory.android.common.bean.UserLocationBean;
 import cn.sportstory.android.common.bean.UserLoginBean;
@@ -31,6 +33,7 @@ public interface SportStoryService {
 
     /**
      * 发送短信验证码
+     *
      * @param fields
      * @return
      */
@@ -42,6 +45,7 @@ public interface SportStoryService {
 
     /**
      * 上传手机信息
+     *
      * @param fields
      * @return
      */
@@ -53,6 +57,7 @@ public interface SportStoryService {
 
     /**
      * 用户注册
+     *
      * @param fields
      * @return
      */
@@ -64,6 +69,7 @@ public interface SportStoryService {
 
     /**
      * 用户登录
+     *
      * @param fields
      * @return
      */
@@ -73,8 +79,9 @@ public interface SportStoryService {
             @FieldMap Map<String, String> fields
     );
 
-      /**
+    /**
      * 用户更新昵称
+     *
      * @param fields
      * @return
      */
@@ -86,6 +93,7 @@ public interface SportStoryService {
 
     /**
      * 用户更新邮箱
+     *
      * @param fields
      * @return
      */
@@ -97,6 +105,7 @@ public interface SportStoryService {
 
     /**
      * 用户更新手机
+     *
      * @param fields
      * @return
      */
@@ -107,9 +116,9 @@ public interface SportStoryService {
     );
 
 
-
     /**
      * 更新用户头像
+     *
      * @param fields
      * @return
      */
@@ -121,6 +130,7 @@ public interface SportStoryService {
 
     /**
      * 更新用户背景图片
+     *
      * @param fields
      * @return
      */
@@ -132,17 +142,19 @@ public interface SportStoryService {
 
     /**
      * 更新用户性别
+     *
      * @param fields
      * @return
      */
     @FormUrlEncoded
     @POST(UrlConstants.USER_GENDER)
     Call<UserBean> updateUserGender(
-            @FieldMap Map <String, String> fields
+            @FieldMap Map<String, String> fields
     );
 
     /**
      * 更新用户体格信息
+     *
      * @param fields
      * @return
      */
@@ -154,6 +166,7 @@ public interface SportStoryService {
 
     /**
      * 更新用户地区信息
+     *
      * @param fields
      * @return
      */
@@ -165,6 +178,7 @@ public interface SportStoryService {
 
     /**
      * 更新用户运动类型
+     *
      * @param fields
      * @return
      */
@@ -176,6 +190,7 @@ public interface SportStoryService {
 
     /**
      * 上传用户地理位置
+     *
      * @param fields
      * @return
      */
@@ -187,17 +202,19 @@ public interface SportStoryService {
 
     /**
      * 获取用户相册
+     *
      * @param options
      * @return
      */
     @GET(UrlConstants.USER_GALLERY)
     Call<UserGalleryBean> getUserGallery(
-        @QueryMap Map<String, String> options
+            @QueryMap Map<String, String> options
     );
 
 
     /**
      * 获取附近的人
+     *
      * @param options
      * @return
      */
@@ -208,6 +225,7 @@ public interface SportStoryService {
 
     /**
      * 搜索用户
+     *
      * @param options
      * @return
      */
@@ -218,6 +236,7 @@ public interface SportStoryService {
 
     /**
      * 获取动态
+     *
      * @param options
      * @return
      */
@@ -229,6 +248,7 @@ public interface SportStoryService {
 
     /**
      * 发送状态
+     *
      * @param fields
      * @return
      */
@@ -240,6 +260,7 @@ public interface SportStoryService {
 
     /**
      * 删除动态
+     *
      * @param fields
      * @return
      */
@@ -251,6 +272,7 @@ public interface SportStoryService {
 
     /**
      * 点赞动态或取消赞
+     *
      * @param fields
      * @return
      */
@@ -262,6 +284,7 @@ public interface SportStoryService {
 
     /**
      * 点赞动态或取消赞
+     *
      * @param fields
      * @return
      */
@@ -270,4 +293,53 @@ public interface SportStoryService {
     Call<TimelineCommentBean> timelineComment(
             @FieldMap Map<String, String> fields
     );
+
+
+    /**
+     * 获取粉丝列表
+     *
+     * @param options
+     * @return
+     */
+    @GET(UrlConstants.USER_FOLLOWER)
+    Call<UserBean[]> getFollowers(
+            @QueryMap Map<String, String> options
+    );
+
+    /**
+     * 移除粉丝
+     *
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.USER_FOLLOWER)
+    Call<UserFollowerBean> userFollow(
+            @FieldMap Map<String, String> fields
+    );
+
+
+    /**
+     * 获取关注列表
+     *
+     * @param options
+     * @return
+     */
+    @GET(UrlConstants.USER_FOLLOWING)
+    Call<UserBean[]> getFollowing(
+            @QueryMap Map<String, String> options
+    );
+
+    /**
+     * 关注或取关
+     *
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.USER_FOLLOWING)
+    Call<UserFollowingBean> userFollowing(
+            @FieldMap Map<String, String> fields
+    );
+
 }

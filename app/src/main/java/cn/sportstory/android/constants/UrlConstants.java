@@ -25,7 +25,6 @@ public class UrlConstants {
     public static final String USER_SPORT = "user/sport";                           //用户修改运动类型  POST
     public static final String USER_LOCATION = "user/location";                     //上传地理位置  POST
     public static final String USER_NEARBY = "user/nearby";                         //附近的人  GET
-    public static final String USER_PROFILE = "user/profile";                       //获取用户信息  GET
     public static final String USER_GALLERY = "user/gallery";                       //获取用户相册  GET
     public static final String USER_SEARCH = "user/search";                         //用户搜索  GET
 
@@ -34,8 +33,8 @@ public class UrlConstants {
     public static final String TIMELINE_DEL = "timeline/del";                       //删除动态  POST
     public static final String TIMELINE_LIKE = "timeline/like";                     //动态点赞  POST
     public static final String TIMELINE_COMMENT = "timeline/comment";               //动态评论  POST
-    public static final String TIMELINE_FOLLOW = "timeline/follow";                 //关注/取关  GET
-    public static final String TIMELINE_FOLLOWER = "timeline/follower";             //粉丝列表  GET
+    public static final String USER_FOLLOWING = "user/following";                 //关注/取关  GET
+    public static final String USER_FOLLOWER = "user/follower";             //粉丝列表  GET
 
 
 }

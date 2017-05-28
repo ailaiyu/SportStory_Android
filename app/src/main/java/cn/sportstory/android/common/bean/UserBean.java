@@ -5,6 +5,7 @@ package cn.sportstory.android.common.bean;
  */
 
 public class UserBean extends CommonBean{
+    private String uid;
     private int updateType;
     private String nickname;
     private String phone;
@@ -21,6 +22,14 @@ public class UserBean extends CommonBean{
     private String address;
     private String assignment;
     private UserSportBean[] sport;
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
+    }
 
     public int getUpdateType() {
         return updateType;

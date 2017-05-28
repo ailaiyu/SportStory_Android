@@ -1,5 +1,7 @@
 package cn.sportstory.android.common.baseinterface;
 
+import com.google.gson.GsonBuilder;
+
 import java.util.concurrent.TimeUnit;
 
 import cn.sportstory.android.common.retrofitServiceInterface.SportStoryService;
@@ -28,7 +30,9 @@ public abstract class BaseModel {
                 .build();
 
         Retrofit retrofit = new Retrofit.Builder().baseUrl(UrlConstants.DOMAIN)
-                .addConverterFactory(GsonConverterFactory.create()).client(client).build();
+                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
+                .client(client)
+                .build();
 
         service = retrofit.create(SportStoryService.class);
     }

@@ -1,10 +1,12 @@
 package cn.sportstory.android.common.bean;
 
+import cn.sportstory.android.common.baseinterface.BaseModel;
+
 /**
  * Created by aaron on 2017/5/21.
  */
 
-public class TimelineBean {
+public class TimelineBean extends CommonBean {
     private String t_id;
     private String uid;
     private String url;

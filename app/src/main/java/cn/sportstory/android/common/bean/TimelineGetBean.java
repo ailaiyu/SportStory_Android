@@ -5,7 +5,7 @@ package cn.sportstory.android.common.bean;
  * Created by aaron on 2017/5/21.
  */
 
-public class TimelineFollowBean extends CommonBean {
+public class TimelineGetBean extends CommonBean {
     private String type;
     private String uid;
     private TimelineBean[] timeline;

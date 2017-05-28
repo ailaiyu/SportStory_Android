@@ -3,7 +3,10 @@ package cn.sportstory.android.common.retrofitServiceInterface;
 import java.util.Map;
 
 import cn.sportstory.android.common.bean.PhoneInfoBean;
-import cn.sportstory.android.common.bean.TimelineFollowBean;
+import cn.sportstory.android.common.bean.TimelineBean;
+import cn.sportstory.android.common.bean.TimelineCommentBean;
+import cn.sportstory.android.common.bean.TimelineGetBean;
+import cn.sportstory.android.common.bean.TimelineLikeBean;
 import cn.sportstory.android.common.bean.UserBean;
 import cn.sportstory.android.common.bean.UserGalleryBean;
 import cn.sportstory.android.common.bean.UserLocationBean;
@@ -218,10 +221,53 @@ public interface SportStoryService {
      * @param options
      * @return
      */
-    @GET(UrlConstants.TIMELINE_FOLLOW)
-    Call<TimelineFollowBean> getTimeline(
+    @GET(UrlConstants.TIMELINE_GET)
+    Call<TimelineGetBean> getTimeline(
             @QueryMap Map<String, String> options
     );
 
 
+    /**
+     * 发送状态
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.TIMELINE_POST)
+    Call<TimelineBean> postTimeline(
+            @FieldMap Map<String, String> fields
+    );
+
+    /**
+     * 删除动态
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.TIMELINE_DEL)
+    Call<TimelineBean> delTimeline(
+            @FieldMap Map<String, String> fields
+    );
+
+    /**
+     * 点赞动态或取消赞
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.TIMELINE_LIKE)
+    Call<TimelineLikeBean> timelineLike(
+            @FieldMap Map<String, String> fields
+    );
+
+    /**
+     * 点赞动态或取消赞
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.TIMELINE_COMMENT)
+    Call<TimelineCommentBean> timelineComment(
+            @FieldMap Map<String, String> fields
+    );
 }

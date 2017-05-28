@@ -31,6 +31,7 @@ public class UrlConstants {
 
     public static final String TIMELINE_GET = "timeline/get";                       //获取动态  GET
     public static final String TIMELINE_POST = "timeline/post";                     //发表动态  POST
+    public static final String TIMELINE_DEL = "timeline/del";                       //删除动态  POST
     public static final String TIMELINE_LIKE = "timeline/like";                     //动态点赞  POST
     public static final String TIMELINE_COMMENT = "timeline/comment";               //动态评论  POST
     public static final String TIMELINE_FOLLOW = "timeline/follow";                 //关注/取关  GET

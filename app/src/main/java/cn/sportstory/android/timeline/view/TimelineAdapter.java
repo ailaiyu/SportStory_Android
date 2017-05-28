@@ -11,6 +11,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import cn.sportstory.android.R;
+import cn.sportstory.android.common.bean.TimelineBean;
 import cn.sportstory.android.profile.view.FollowerAdapter;
 import cn.sportstory.android.tools.ImageLoader;
 
@@ -26,9 +27,9 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.Timeli
 
     public TimelineAdapter() {
         TimelineBean timelineBean = new TimelineBean();
-        timelineBean.setDate("28/04");
-        timelineBean.setLikeCount("92");
-        timelineBean.setCommentCount("18");
+        timelineBean.setCreate_time("28/04");
+        timelineBean.setLike(null);
+        timelineBean.setComment(null);
         timelineBean.setContent("明天加油！");
         timelines.add(timelineBean);
     }
@@ -44,11 +45,11 @@ public class TimelineAdapter extends RecyclerView.Adapter<TimelineAdapter.Timeli
     @Override
     public void onBindViewHolder(TimelineViewHolder holder, int position) {
         TimelineBean timelineBean = timelines.get(position);
-        ImageLoader.getInstance().displayImage(timelineBean.getPicPath(), holder.pic, context);
-        holder.date.setText(timelineBean.getDate());
+        ImageLoader.getInstance().displayImage(timelineBean.getUrl(), holder.pic, context);
+        holder.date.setText(timelineBean.getCreate_time());
         holder.content.setText(timelineBean.getContent());
-        holder.likeCount.setText(timelineBean.getLikeCount());
-        holder.commentCount.setText(timelineBean.getCommentCount());
+        holder.likeCount.setText("10");
+        holder.commentCount.setText("10");
     }
 
     @Override

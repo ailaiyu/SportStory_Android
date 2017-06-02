@@ -27,6 +27,7 @@
     <string name="verify">验 证</string>
     <string name="set_password">设置密码</string>
     <string name="confirm">确 定</string>
+    <string name="cancel">取 消</string>
     <string name="register">注 册</string>
     <string name="upload_avatar">上传头像</string>
     <string name="nickname_with_4_30">昵称(4~30个字符)</string>
@@ -59,5 +60,23 @@
     <string name="server_error">服务器错误</string>
     <string name="send_vcode_failed">发送失败，请重试</string>
     <string name="send_vcode_success">发送成功</string>
+
+    <string name="cancel_without_space">取消</string>
+    <string name="confirm_without_space">确定</string>
+
+    <!--星座-->
+    <string name="constellation_0">Aquarius</string>
+    <string name="constellation_1">Pisces</string>
+    <string name="constellation_2">Aries</string>
+    <string name="constellation_3">Taurus</string>
+    <string name="constellation_4">Gemini</string>
+    <string name="constellation_5">Cancer</string>
+    <string name="constellation_6">Leo</string>
+    <string name="constellation_7">Virgo</string>
+    <string name="constellation_8">Libra</string>
+    <string name="constellation_9">Scorpio</string>
+    <string name="constellation_10">Sagittarius</string>
+    <string name="constellation_11">Capricorn</string>
+
 
 </resources>

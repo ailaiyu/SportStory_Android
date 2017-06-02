@@ -32,7 +32,9 @@ public class UploadPhoneInfoPresenter extends UploadPhoneInfoContract.Presenter 
         model.uploadPhoneInfo(bean, new Callback<PhoneInfoBean>() {
             @Override
             public void onResponse(Call<PhoneInfoBean> call, Response<PhoneInfoBean> response) {
-
+                String token = response.headers().get("header");
+                String err = response.headers().get("err");
+                String success = response.headers().get("success");
             }
 
             @Override

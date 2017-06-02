@@ -21,6 +21,10 @@ import io.rong.imlib.RongIMClient;
 public class SportStoryApp extends Application {
 
     public static int sActivityCount = 0;
+
+    public static String USER_TOKEN = "";
+    public static String USER_ID = "";
+
     @Override
     public void onCreate() {
         super.onCreate();

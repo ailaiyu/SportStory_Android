@@ -19,4 +19,5 @@ public class UserTokenHelper {
                     PreferencesConstants.USER_TOKEN, PreferencesConstants.ACCOUNT_FILE_NAME, context);
         }
     }
+
 }

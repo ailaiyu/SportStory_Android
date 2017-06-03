@@ -43,10 +43,11 @@ public class UsrTableOpenHelper extends SQLiteOpenHelper {
 
     /**
      * 插入用户表
+     *
      * @param bean
      * @return
      */
-    public long insert(UserBean bean){
+    public long insert(UserBean bean) {
         SQLiteDatabase db = getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(UsrTableContract.COLUMN_NAME_ID, bean.getUid());

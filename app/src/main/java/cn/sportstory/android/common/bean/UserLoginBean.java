@@ -7,6 +7,7 @@ package cn.sportstory.android.common.bean;
 public class UserLoginBean extends CommonBean {
     private String phone;
     private String password;
+    private String email;
     private String code;
     private String is_perfect;
     private String province;
@@ -18,15 +19,23 @@ public class UserLoginBean extends CommonBean {
     private String background;
     private String stature;
     private String nickname;
+    private String login_type;
     private int loginType;
 
-    public int getLoginType() {
+    public String getLogin_type() {
+        return login_type;
+    }
 
+    public int getLoginType() {
         return loginType;
     }
 
     public void setLoginType(int loginType) {
         this.loginType = loginType;
+    }
+
+    public void setLogin_type(String login_type) {
+        this.login_type = login_type;
     }
 
     public String getPhone() {
@@ -41,8 +50,17 @@ public class UserLoginBean extends CommonBean {
         return password;
     }
 
+
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getCode() {

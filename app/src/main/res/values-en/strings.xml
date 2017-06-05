@@ -78,5 +78,8 @@
     <string name="constellation_10">Sagittarius</string>
     <string name="constellation_11">Capricorn</string>
 
+    <!--附近的人-->
+    <string name="search">search</string>
+    <string name="filter">filter</string>
 
 </resources>

@@ -78,4 +78,9 @@
     <string name="constellation_10">射手座</string>
     <string name="constellation_11">摩羯座</string>
 
+    <!--附近的人-->
+    <string name="search">搜索</string>
+    <string name="filter">筛选</string>
+
+
 </resources>

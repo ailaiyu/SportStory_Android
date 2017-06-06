@@ -86,5 +86,7 @@
     <string name="sport_type">sport</string>
     <string name="click_to_select">select</string>
 
+    <!--网络相关-->
+    <string name="net_time_out">No Internet</string>
 
 </resources>

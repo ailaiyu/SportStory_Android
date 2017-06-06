@@ -86,4 +86,6 @@
     <string name="sport_type">运动类型</string>
     <string name="click_to_select">点击选择</string>
 
+    <!--网络相关-->
+    <string name="net_time_out">连接超时, 请检查您的网络设置</string>
 </resources>

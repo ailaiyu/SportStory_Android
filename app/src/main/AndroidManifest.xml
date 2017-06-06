@@ -59,6 +59,11 @@
 
     <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"-->
     <uses-permission android:name="android.permission.CAMERA"/>
+
+    <!--读取短信验证码-->
+    <uses-permission android:name="android.permission.RECEIVE_SMS"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
+
     <application
         android:allowBackup="true"
         android:supportsRtl="true"
@@ -260,6 +265,14 @@
         <!--友盟-->
         <meta-data android:value="5906dd6b82b63510670013c6" android:name="UMENG_APPKEY"/>
         <meta-data android:value="001hs" android:name="UMENG_CHANNEL"/>
+
+
+        <receiver android:name=".common.tools.SmsReader">
+            <intent-filter android:priority="1000"> <!--优先级：-1000~1000，系统短信优先级为-1-->
+                <!--订阅广播事件类型-->
+                <action android:name="android.provider.Telephony.SMS_RECEIVED"/>
+            </intent-filter>
+        </receiver>
 
         <activity android:name="cn.sportstory.android.MainActivity"
             android:label="@string/app_name"

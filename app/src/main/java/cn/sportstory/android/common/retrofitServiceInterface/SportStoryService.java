@@ -7,6 +7,7 @@ import cn.sportstory.android.common.bean.TimelineBean;
 import cn.sportstory.android.common.bean.TimelineCommentBean;
 import cn.sportstory.android.common.bean.TimelineGetBean;
 import cn.sportstory.android.common.bean.TimelineLikeBean;
+import cn.sportstory.android.common.bean.UserAccountBean;
 import cn.sportstory.android.common.bean.UserBean;
 import cn.sportstory.android.common.bean.UserFollowerBean;
 import cn.sportstory.android.common.bean.UserFollowingBean;
@@ -185,6 +186,29 @@ public interface SportStoryService {
     @FormUrlEncoded
     @POST(UrlConstants.USER_SPORT)
     Call<UserBean> updateUserSport(
+            @FieldMap Map<String, String> fields
+    );
+
+    /**
+     * 更换手机号
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.USER_SPORT)
+    Call<UserAccountBean> changePhone(
+            @FieldMap Map<String, String> fields
+    );
+
+
+    /**
+     * 更换邮箱
+     * @param fields
+     * @return
+     */
+    @FormUrlEncoded
+    @POST(UrlConstants.USER_SPORT)
+    Call<UserAccountBean> changeEmail(
             @FieldMap Map<String, String> fields
     );
 

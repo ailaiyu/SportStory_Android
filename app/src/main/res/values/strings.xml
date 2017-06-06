@@ -33,6 +33,7 @@
     <string name="nickname_with_4_30">昵称(4~30个字符)</string>
     <string name="nickname">昵称</string>
     <string name="gender">性别</string>
+    <string name="age">年龄</string>
     <string name="height">身高</string>
     <string name="weight">体重</string>
     <string name="birthday">生日</string>
@@ -81,6 +82,8 @@
     <!--附近的人-->
     <string name="search">搜索</string>
     <string name="filter">筛选</string>
-
+    <string name="sport_level">运动水平</string>
+    <string name="sport_type">运动类型</string>
+    <string name="click_to_select">点击选择</string>
 
 </resources>

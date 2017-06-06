@@ -29,40 +29,52 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
         android:orientation="horizontal"
+        android:paddingBottom="10dp"
         android:paddingLeft="20dp"
         android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_height="wrap_content">
+        android:paddingTop="10dp">
+
         <TextView
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:text="@string/gender"
             android:textColor="#242424"
-            android:textSize="16sp"
-            android:text="@string/gender"/>
-        <LinearLayout
+            android:textSize="16sp" />
+
+        <RelativeLayout
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:gravity="start"
+            android:layout_height="wrap_content">
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@mipmap/male_free"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:gravity="left"
-                android:layout_height="match_parent"
-                android:src="@mipmap/female_free"/>
-        </LinearLayout>
+                android:id="@+id/img_male"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/male_free" />
+        </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="start"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:id="@+id/img_female"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@mipmap/female_free" />
+        </RelativeLayout>
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/grey"/>
     <LinearLayout
+        android:id="@+id/ll_age"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
@@ -71,40 +83,52 @@
         android:paddingBottom="10dp"
         android:layout_height="wrap_content">
         <TextView
+            android:id="@+id/tv_age"
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:textColor="#242424"
             android:textSize="16sp"
             android:text="@string/age"/>
+        <TextView
+            android:id="@+id/tv_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
     </LinearLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/grey"/>
+
     <LinearLayout
+        android:id="@+id/ll_sport"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
+        android:paddingBottom="10dp"
         android:paddingLeft="20dp"
         android:paddingStart="20dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_height="wrap_content">
+        android:paddingTop="10dp">
+
         <TextView
             android:layout_width="110dp"
             android:layout_height="wrap_content"
+            android:text="@string/sport_type"
             android:textColor="#242424"
-            android:textSize="16sp"
-            android:text="@string/sport_type"/>
+            android:textSize="16sp" />
+
         <TextView
+            android:id="@+id/tv_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/click_to_select"/>
+            android:text="@string/click_to_select" />
     </LinearLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:background="@color/grey"/>
     <LinearLayout
+        android:id="@+id/ll_level"
         android:layout_width="match_parent"
         android:orientation="horizontal"
         android:paddingLeft="20dp"
@@ -119,6 +143,7 @@
             android:layout_height="wrap_content"
             android:text="@string/sport_level"/>
         <TextView
+            android:id="@+id/tv_level"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/click_to_select"/>
@@ -128,6 +153,13 @@
         android:layout_height="1dp"
         android:background="@color/grey"/>
 
-
+    <Button
+        android:id="@+id/search"
+        android:layout_margin="50dp"
+        android:layout_width="match_parent"
+        style="@style/RoundButton45"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="@string/search"/>
 
 </LinearLayout>

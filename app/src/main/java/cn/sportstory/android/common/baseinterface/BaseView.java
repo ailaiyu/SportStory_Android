@@ -20,7 +20,7 @@ public abstract class BaseView<T> {
         }
     }
 
-    protected void showNetDisconnect(){
+    public void showNetDisconnect(){
         Context context = getViewContext();
         if (context != null)
             Toast.makeText(context, context.getString(R.string.net_disconnect), Toast.LENGTH_SHORT).show();

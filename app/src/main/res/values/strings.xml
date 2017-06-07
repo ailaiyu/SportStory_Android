@@ -88,4 +88,22 @@
 
     <!--网络相关-->
     <string name="net_time_out">连接超时, 请检查您的网络设置</string>
+
+    <!--设置-->
+    <string name="settings">设 置</string>
+    <string name="update_account">修改资料</string>
+    <string name="account_security">账号安全</string>
+    <string name="message_setting">消息推送</string>
+    <string name="real_name_verify">实名认证</string>
+    <string name="about_sport_story">关于运动故事</string>
+    <string name="invite_friends">邀请好友</string>
+    <string name="upload_contacts">同步通讯录</string>
+    <string name="check_for_update">检查更新</string>
+    <string name="clear_storage">清除缓存</string>
+    <string name="logout">退出登录</string>
+    <string name="change_phone">修改手机号</string>
+    <string name="binding_email">绑定邮箱</string>
+    <string name="change_password">修改密码</string>
+    <string name="your_current_phone_is">您当前绑定手机号为:</string>
+
 </resources>

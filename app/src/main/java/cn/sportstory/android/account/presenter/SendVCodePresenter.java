@@ -1,5 +1,10 @@
 package cn.sportstory.android.account.presenter;
 
+import java.net.ConnectException;
+import java.net.SocketException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
+
 import cn.sportstory.android.account.contract.SendVCodeTaskContract;
 import cn.sportstory.android.account.model.sendVCode.SendVCodeModel;
 import cn.sportstory.android.account.model.sendVCode.SendVCodeModelImpl;
@@ -28,7 +33,7 @@ public class SendVCodePresenter implements SendVCodeTaskContract.Presenter {
 
             @Override
             public void onFailure(Call<SendVCodeBean> call, Throwable t) {
-                view.showSendVCodeFailed();
+                   view.showSendVCodeFailed();
             }
         });
     }

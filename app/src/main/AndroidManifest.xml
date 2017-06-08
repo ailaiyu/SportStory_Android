@@ -319,7 +319,20 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".nearby.view.FilterActivity"
             android:screenOrientation="portrait"/>
-
+        <activity android:name=".settings.view.SettingsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.AccountSecurityActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.CurrentPhoneActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.SettingVerifyPhoneActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.UpdatePasswordActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.SettingBindingEmailActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.AboutActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

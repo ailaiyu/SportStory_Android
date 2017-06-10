@@ -11,6 +11,7 @@
     tools:context="cn.sportstory.android.account.view.LoginActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         toolbar:elevation="@dimen/toolbar_elevation"
@@ -135,12 +136,19 @@
                     android:layout_height="match_parent"
                     android:src="@mipmap/go"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="@color/gray_divider"/>
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/gray_divider"/>
-
+                android:layout_height="1px"
+                android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/about"
                 android:layout_width="match_parent"

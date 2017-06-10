@@ -9,30 +9,45 @@
         android:layout_height="100dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_width="@dimen/profile_title_avatar_size"
-            android:layout_marginTop="15dp"
-            android:layout_marginLeft="20dp"
             android:id="@+id/img_profile_avatar"
-            android:src="@drawable/time_contet"
-            android:layout_height="@dimen/profile_title_avatar_size" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:id="@+id/tv_profile_nickname"
-            android:text="多多"
-            android:layout_toRightOf="@id/img_profile_avatar"
-            android:layout_marginTop="25dp"
-            android:textSize="16sp"
+            android:layout_width="@dimen/profile_title_avatar_size"
+            android:layout_height="@dimen/profile_title_avatar_size"
             android:layout_marginLeft="20dp"
-            android:layout_height="wrap_content" />
+            android:layout_marginTop="15dp"
+            android:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/tv_profile_nickname"
             android:layout_width="wrap_content"
-            android:id="@+id/tv_profile_age_shape"
-            android:text="24岁 176cm 57kg"
-            android:layout_below="@id/tv_profile_nickname"
-            android:layout_toRightOf="@id/img_profile_avatar"
-            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="25dp"
+            android:layout_toRightOf="@id/img_profile_avatar"
+            android:text="@string/nickname"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_profile_age_shape"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_profile_nickname"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/img_profile_avatar"
+            android:text="24岁 176cm 57kg"
+            android:textColor="@color/black" />
+
+        <ImageView
+            android:id="@+id/go"
+            android:src="@mipmap/go"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="15dp"
+            android:padding="20dp"
+            android:layout_marginEnd="15dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
     </RelativeLayout>
 
@@ -52,10 +67,12 @@
                 android:textSize="20sp"
                 android:id="@+id/tv_profile_following_number"
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content" />
             <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/following"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content" />
         </LinearLayout>
         <LinearLayout
@@ -70,10 +87,12 @@
                 android:textSize="20sp"
                 android:id="@+id/tv_profile_followers_number"
                 android:layout_width="wrap_content"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content" />
             <TextView
                 android:layout_width="wrap_content"
                 android:text="@string/followers"
+                android:textColor="@color/black"
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>

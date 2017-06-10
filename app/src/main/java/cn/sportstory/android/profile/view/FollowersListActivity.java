@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
@@ -30,11 +31,19 @@ public class FollowersListActivity extends BaseActivity implements View.OnClickL
     private FollowFragment followingFragment;
 
     private String userId = "1";
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_follower_list);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         fragment_tag = getIntent().getExtras().getInt(FRAGMENT_TAG, FOLLOWING_LIST);
         initView();
     }

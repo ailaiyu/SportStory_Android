@@ -68,7 +68,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
         public TextView mTvTime;
         public String userId;
 
-        public ChatItemViewHolder(View itemView, final Context context) {
+        public ChatItemViewHolder(View itemView) {
             super(itemView);
             this.mRlChatItem = (RelativeLayout)itemView.findViewById(R.id.rl_chat_item);
             this.mRivAvatar = (CircleImageView) itemView.findViewById(R.id.civ_chat_item_avatar);
@@ -86,6 +86,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
                     args.putString(ChatActivity.BUNDLE_CHAT_TARGET_ID, userId);
                     intent.putExtras(args);
                     intent.setClass(context, ChatActivity.class);
+                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     context.startActivity(intent);
                 }
             });
@@ -95,7 +96,7 @@ public class ConversationRecyclerAdapter extends RecyclerView.Adapter <Conversat
     @Override
     public ChatItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.conversation_item, parent, false);
-        ChatItemViewHolder viewHolder = new ChatItemViewHolder(v, context);
+        ChatItemViewHolder viewHolder = new ChatItemViewHolder(v);
         return viewHolder;
     }
 

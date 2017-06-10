@@ -1,9 +1,12 @@
 package cn.sportstory.android.timeline.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,8 +31,11 @@ public class TimelineFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ViewGroup contentList;
+    private RecyclerView recyclerView;
+    private TimelineAdapter adapter;
     private OnFragmentInteractionListener mListener;
-
+    private FloatingActionButton post;
     public TimelineFragment() {
         // Required empty public constructor
     }
@@ -65,7 +71,19 @@ public class TimelineFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_timeline, container, false);
+        View view =  inflater.inflate(R.layout.fragment_timeline, container, false);
+        contentList = (ViewGroup) view.findViewById(R.id.content);
+        post = (FloatingActionButton)view.findViewById(R.id.post);
+        recyclerView = (RecyclerView)contentList.findViewById(R.id.content);
+        adapter = new TimelineAdapter();
+        recyclerView.setAdapter(adapter);
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), PostTimelineActivity.class));
+            }
+        });
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

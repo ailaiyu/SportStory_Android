@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:weightSum="1">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_login_with_psd"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         toolbar:elevation="@dimen/toolbar_elevation"

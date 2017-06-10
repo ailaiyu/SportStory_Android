@@ -11,6 +11,7 @@
     tools:context="cn.sportstory.android.account.view.LoginActivity">
 
     <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         toolbar:elevation="@dimen/toolbar_elevation"

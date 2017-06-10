@@ -42,4 +42,21 @@
 
     </android.support.v7.widget.Toolbar>
 
+    <include layout="@layout/profile_head" android:id="@+id/profile_head"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="1px" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:background="@color/gray_divider"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:background="@color/grey"
+        android:layout_height="1px" />
+
+    <include layout="@layout/profile_content" android:id="@+id/profile_content"/>
 </LinearLayout>

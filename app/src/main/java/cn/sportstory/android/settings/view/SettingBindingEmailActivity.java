@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
@@ -29,6 +30,12 @@ public class SettingBindingEmailActivity extends BaseActivity {
         setContentView(R.layout.activity_settings_binding_email);
         currentEmail = getIntent().getStringExtra(EXTRA_STRING_CURRENT_EMAIL);
         email = (TextInputEditText)findViewById(R.id.email);
+        ((Toolbar)findViewById(R.id.toolbar)).setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         findViewById(R.id.confirm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

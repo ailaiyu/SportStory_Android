@@ -1,5 +1,6 @@
 package cn.sportstory.android;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,6 +14,10 @@ import cn.sportstory.android.activities.view.ActivityFragment;
 import cn.sportstory.android.chat.view.ConversationFragment;
 import cn.sportstory.android.profile.view.MeFragment;
 import cn.sportstory.android.nearby.view.NearbyFragment;
+import cn.sportstory.android.profile.view.ProfileAlbumFragment;
+import cn.sportstory.android.profile.view.ProfileSportsFragment;
+import cn.sportstory.android.timeline.view.TimelineContentList;
+import cn.sportstory.android.timeline.view.PostTimelineActivity;
 import cn.sportstory.android.timeline.view.TimelineFragment;
 
 /**
@@ -21,25 +26,28 @@ import cn.sportstory.android.timeline.view.TimelineFragment;
 
 public class MainActivity extends BaseActivity implements NearbyFragment.OnFragmentInteractionListener,
         ConversationFragment.OnFragmentInteractionListener, TimelineFragment.OnFragmentInteractionListener,
-        ActivityFragment.OnFragmentInteractionListener, MeFragment.OnFragmentInteractionListener, View.OnClickListener{
+        ActivityFragment.OnFragmentInteractionListener,
+        MeFragment.OnFragmentInteractionListener,
+        TimelineContentList.OnFragmentInteractionListener,
+        ProfileSportsFragment.OnFragmentInteractionListener,
+        ProfileAlbumFragment.OnFragmentInteractionListener,
+        View.OnClickListener{
 
     private View mMenuTab;
 
     private RelativeLayout mRlNearby;
     private RelativeLayout mRlTimeline;
-    private RelativeLayout mRlActivities;
+    private RelativeLayout mRlPost;
     private RelativeLayout mRlChat;
     private RelativeLayout mRlMe;
 
     private ImageView mIvNearby;
     private ImageView mIvTimeline;
-    private ImageView mIvActivities;
     private ImageView mIvChat;
     private ImageView mIvMe;
 
     private TextView mTvNearby;
     private TextView mTvTimeline;
-    private TextView mTvActivities;
     private TextView mTvChat;
     private TextView mTvMe;
 
@@ -48,7 +56,6 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
 
     private NearbyFragment nearbyFragment;
     private TimelineFragment timelineFragment;
-    private ActivityFragment activityFragment;
     private ConversationFragment ConversationFragment;
     private MeFragment meFragment;
     private FragmentTransaction fragmentTransaction;
@@ -68,27 +75,25 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
         // 每个tab
         mRlNearby = (RelativeLayout)mMenuTab.findViewById(R.id.rl_menu_nearby);
         mRlTimeline = (RelativeLayout)mMenuTab.findViewById(R.id.rl_menu_timeline);
-        mRlActivities = (RelativeLayout)mMenuTab.findViewById(R.id.rl_menu_activities);
+        mRlPost = (RelativeLayout)mMenuTab.findViewById(R.id.rl_menu_post);
         mRlChat = (RelativeLayout)mMenuTab.findViewById(R.id.rl_menu_chat);
         mRlMe = (RelativeLayout)mMenuTab.findViewById(R.id.rl_menu_me);
 
         // 每个tab的图片
         mIvNearby = (ImageView) mMenuTab.findViewById(R.id.iv_menu_nearby);
         mIvTimeline = (ImageView)mMenuTab.findViewById(R.id.iv_menu_timeline);
-        mIvActivities = (ImageView)mMenuTab.findViewById(R.id.iv_menu_activities);
         mIvChat = (ImageView)mMenuTab.findViewById(R.id.iv_menu_chat);
         mIvMe = (ImageView)mMenuTab.findViewById(R.id.iv_menu_me);
 
         // 每个tab的文字
         mTvNearby = (TextView) mMenuTab.findViewById(R.id.tv_menu_nearby);
         mTvTimeline = (TextView)mMenuTab.findViewById(R.id.tv_menu_timeline);
-        mTvActivities = (TextView)mMenuTab.findViewById(R.id.tv_menu_activities);
         mTvChat = (TextView)mMenuTab.findViewById(R.id.tv_menu_chat);
         mTvMe = (TextView)mMenuTab.findViewById(R.id.tv_menu_me);
 
         mRlNearby.setOnClickListener(this);
         mRlTimeline.setOnClickListener(this);
-        mRlActivities.setOnClickListener(this);
+        mRlPost.setOnClickListener(this);
         mRlChat.setOnClickListener(this);
         mRlMe.setOnClickListener(this);
 
@@ -111,13 +116,11 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     private void initAllTab(){
         mTvNearby.setTextColor(tabTextColorFree);
         mTvTimeline.setTextColor(tabTextColorFree);
-        mTvActivities.setTextColor(tabTextColorFree);
         mTvChat.setTextColor(tabTextColorFree);
         mTvMe.setTextColor(tabTextColorFree);
 
         mIvNearby.setImageResource(R.mipmap.nearby_free);
         mIvTimeline.setImageResource(R.mipmap.timeline_free);
-        mIvActivities.setImageResource(R.mipmap.activities_free);
         mIvChat.setImageResource(R.mipmap.chat_free);
         mIvMe.setImageResource(R.mipmap.me_free);
     }
@@ -154,20 +157,12 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 }else {
                     fragmentTransaction.show(timelineFragment).commit();
                 }
-                break;
-            case R.id.rl_menu_activities:
-                mIvActivities.setImageResource(R.mipmap.activities_press);
-                mTvActivities.setTextColor(tabTextColorPress);
 
-                if(activityFragment == null)
-                {
-                    activityFragment = new ActivityFragment();
-                    activityFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, activityFragment).commit();
-                }else {
-                    fragmentTransaction.show(activityFragment).commit();
-                }
                 break;
+            case R.id.rl_menu_post:
+                startActivity(new Intent(MainActivity.this, PostTimelineActivity.class));
+                break;
+
             case R.id.rl_menu_chat:
                 mIvChat.setImageResource(R.mipmap.chat_press);
                 mTvChat.setTextColor(tabTextColorPress);
@@ -197,13 +192,10 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     }
 
     private void hideFragments(){
-
         if (nearbyFragment!=null)
             fragmentTransaction.hide(nearbyFragment);
         if (timelineFragment!=null)
             fragmentTransaction.hide(timelineFragment);
-        if (activityFragment!=null)
-            fragmentTransaction.hide(activityFragment);
         if (ConversationFragment!=null)
             fragmentTransaction.hide(ConversationFragment);
         if (meFragment!=null)

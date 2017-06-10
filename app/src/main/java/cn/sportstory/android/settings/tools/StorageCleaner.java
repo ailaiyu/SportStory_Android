@@ -1,4 +1,4 @@
-package cn.sportstory.android.setting.tools;
+package cn.sportstory.android.settings.tools;
 
 /**
  * Created by aaron on 2017/6/6.

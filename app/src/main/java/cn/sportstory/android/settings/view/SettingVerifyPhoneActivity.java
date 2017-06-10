@@ -1,10 +1,12 @@
 package cn.sportstory.android.settings.view;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +26,7 @@ public class SettingVerifyPhoneActivity extends BaseActivity {
     private Button confirm;
     private String comeFrom;
     public static final String COME_FROM_EXTRA_KEY = "comefrom";
+    public static final String CURRENT_PHONE_EXTRA_KEY = "phone";
     public static final String COME_FROM_CHANGE_PHONE = "update_phone";
     public static final String COME_FROM_VERIFY_PHONE = "verifyphone";
     private String phoneNumber;
@@ -31,8 +34,15 @@ public class SettingVerifyPhoneActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings_verify_phone);
-        comeFrom = getIntent().getStringExtra(COME_FROM_EXTRA_KEY);
+        comeFrom = getIntent().getExtras().getString(COME_FROM_EXTRA_KEY);
         initView();
+
+        ((Toolbar)findViewById(R.id.toolbar)).setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     private void initView(){
@@ -60,6 +70,7 @@ public class SettingVerifyPhoneActivity extends BaseActivity {
         // TODO: 2017/6/8 发送验证码
         phoneNumber = phone.getText().toString();
     }
+
     private void verify() {
         if (!TextUtils.isEmpty(comeFrom))
         {
@@ -87,6 +98,9 @@ public class SettingVerifyPhoneActivity extends BaseActivity {
                 .setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent();
+                        intent.putExtra("phone", phoneNumber);
+                        setResult(CurrentPhoneActivity.RESPONSE_CODE_CHANGE_PHONE_SUCCESS, intent);
                         finish();
                     }
                 }).show();

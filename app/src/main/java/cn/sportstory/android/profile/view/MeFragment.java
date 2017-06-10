@@ -5,14 +5,20 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import cn.sportstory.android.R;
 import cn.sportstory.android.settings.view.SettingsActivity;
-import cn.sportstory.android.tools.ImageLoader;
+import cn.sportstory.android.timeline.view.TimelineContentList;
+
+import static cn.sportstory.android.profile.view.FollowersListActivity.FRAGMENT_TAG;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -31,10 +37,23 @@ public class MeFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private ViewGroup head;
+    private ViewGroup content;
+
+    private ProfileAlbumFragment albumFragment;
+    private ProfileSportsFragment sportsFragment;
+    private TimelineContentList timelineFragment;
+    private FragmentTransaction fragmentTransaction;
 
     private ImageView setting;
     private OnFragmentInteractionListener mListener;
+    private static final int FRAGMENT_TIMELINE = 0, FRAGMENT_DATA = 1, FRAGMENT_ALBUM = 2;
 
+    private TextView mTvFollowersNumber, mTvFollowingNumber;
+    private LinearLayout mLlFollowingNumber, mLlFollowersNumber;
+
+    private FrameLayout mFlContent;
+    private LinearLayout mLlTimeline, mLlData, mLlAlbum;
     public MeFragment() {
         // Required empty public constructor
     }
@@ -72,6 +91,14 @@ public class MeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_me, container, false);
         setting = (ImageView)view.findViewById(R.id.setting);
+        head = (ViewGroup)view.findViewById(R.id.profile_head);
+        content = (ViewGroup)view.findViewById(R.id.profile_content);
+        head.findViewById(R.id.go).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), EditProfileActivity.class));
+            }
+        });
         initView();
         return view;
 
@@ -79,10 +106,69 @@ public class MeFragment extends Fragment {
 
 
     private void initView(){
+        mTvFollowersNumber = (TextView)head.findViewById(R.id.tv_profile_followers_number);
+        mTvFollowingNumber = (TextView)head.findViewById(R.id.tv_profile_following_number);
+        mLlFollowingNumber = (LinearLayout) head.findViewById(R.id.ll_profile_following_number);
+        mLlFollowersNumber = (LinearLayout)head.findViewById(R.id.ll_profile_followers_number);
+
+        mFlContent = (FrameLayout)content.findViewById(R.id.fl_profile_content);
+        mLlTimeline = (LinearLayout)content.findViewById(R.id.ll_profile_content_timeline);
+        mLlData = (LinearLayout)content.findViewById(R.id.ll_profile_content_data);
+        mLlAlbum = (LinearLayout)content.findViewById(R.id.ll_profile_content_album);
         setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getActivity(), SettingsActivity.class));
+            }
+        });
+
+        mLlFollowersNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putInt(FRAGMENT_TAG, FollowersListActivity.FOLLOWERS_LIST);
+                intent.putExtras(bundle);
+                intent.setClass(getActivity(), FollowersListActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
+        mLlFollowingNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent();
+                Bundle bundle = new Bundle();
+                bundle.putInt(FRAGMENT_TAG, FollowersListActivity.FOLLOWING_LIST);
+                intent.putExtras(bundle);
+                intent.setClass(getActivity(), FollowersListActivity.class);
+                startActivity(intent);
+
+
+            }
+        });
+
+
+        mLlAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(FRAGMENT_ALBUM);
+            }
+        });
+
+        mLlData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(FRAGMENT_DATA);
+
+            }
+        });
+
+        mLlTimeline.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                changeFragment(FRAGMENT_TIMELINE);
             }
         });
     }
@@ -124,4 +210,53 @@ public class MeFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+    private void changeFragment(int tag){
+        if (getActivity() == null || getActivity().isFinishing())
+            return;
+        fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+        hideFragment();
+        switch (tag){
+            case FRAGMENT_ALBUM:
+                if (albumFragment == null)
+                {
+                    albumFragment = new ProfileAlbumFragment();
+                    fragmentTransaction.add(R.id.fl_profile_content, albumFragment).commit();
+                }else
+                {
+                    fragmentTransaction.show(albumFragment).commit();
+                }
+                break;
+            case FRAGMENT_DATA:
+                if (sportsFragment == null)
+                {
+                    sportsFragment = new ProfileSportsFragment();
+                    fragmentTransaction.add(R.id.fl_profile_content, sportsFragment).commit();
+                }else
+                {
+                    fragmentTransaction.show(sportsFragment).commit();
+                }
+                break;
+            case FRAGMENT_TIMELINE:
+                if (timelineFragment == null)
+                {
+                    timelineFragment = new TimelineContentList();
+                    fragmentTransaction.add(R.id.fl_profile_content, timelineFragment).commit();
+                }else
+                {
+                    fragmentTransaction.show(timelineFragment).commit();
+                }
+                break;
+        }
+    }
+
+    private void hideFragment(){
+        if (timelineFragment != null)
+            fragmentTransaction.hide(timelineFragment);
+        if (albumFragment != null)
+            fragmentTransaction.hide(albumFragment);
+        if (sportsFragment != null)
+            fragmentTransaction.hide(sportsFragment);
+    }
+
 }

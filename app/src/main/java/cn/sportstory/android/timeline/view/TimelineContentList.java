@@ -1,4 +1,4 @@
-package cn.sportstory.android.profile.view;
+package cn.sportstory.android.timeline.view;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,17 +10,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cn.sportstory.android.R;
-import cn.sportstory.android.timeline.view.TimelineAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ProfileTimelineFragment.OnFragmentInteractionListener} interface
+ * {@link TimelineContentList.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ProfileTimelineFragment#newInstance} factory method to
+ * Use the {@link TimelineContentList#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ProfileTimelineFragment extends Fragment {
+public class TimelineContentList extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -35,7 +34,7 @@ public class ProfileTimelineFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ProfileTimelineFragment() {
+    public TimelineContentList() {
         // Required empty public constructor
     }
 
@@ -45,11 +44,11 @@ public class ProfileTimelineFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ProfileTimelineFragment.
+     * @return A new instance of fragment TimelineContentList.
      */
     // TODO: Rename and change types and number of parameters
-    public static ProfileTimelineFragment newInstance(String param1, String param2) {
-        ProfileTimelineFragment fragment = new ProfileTimelineFragment();
+    public static TimelineContentList newInstance(String param1, String param2) {
+        TimelineContentList fragment = new TimelineContentList();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -69,10 +68,9 @@ public class ProfileTimelineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile_timeline, container, false);
+        View view = inflater.inflate(R.layout.timeline_content, container, false);
 
-        recyclerView = (RecyclerView)view.findViewById(R.id.recycle_profile_timeline);
+        recyclerView = (RecyclerView)view.findViewById(R.id.timeline_list);
         adapter = new TimelineAdapter();
         recyclerView.setAdapter(adapter);
         return view;

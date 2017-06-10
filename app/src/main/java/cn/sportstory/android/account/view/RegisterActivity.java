@@ -12,6 +12,7 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -36,6 +37,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private ImageView mImgMale;
     private Button mBtnConfirm;
     private CircleImageView mImgAvatar;
+    private Toolbar toolbar;
 
     private boolean isFemale = false;
     private boolean isMale = false;
@@ -53,6 +55,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mImgMale = (ImageView)findViewById(R.id.img_register_male);
         mImgFemale = (ImageView)findViewById(R.id.img_register_female);
         mBtnConfirm = (Button)findViewById(R.id.btn_register_finish);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         mImgFemale.setOnClickListener(this);
         mImgMale.setOnClickListener(this);
         mImgAvatar.setOnClickListener(this);

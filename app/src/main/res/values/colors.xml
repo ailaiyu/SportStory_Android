@@ -29,5 +29,5 @@
     <color name="chat_item_tip_msg_text_color">#FF242424</color>
     <color name="black">#000</color>
     <color name="grey">#c0c0c0</color>
-    <color name="gray_divider">#EEE</color>
+    <color name="gray_divider">#DEDEDE</color>
 </resources>

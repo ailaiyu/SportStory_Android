@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.ContextCompat;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -21,7 +22,7 @@ import cn.sportstory.android.tools.CountTimerButton;
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     private Button mBtnSendVCode;
-    private TextInputEditText mEvPhone;
+    private TextInputEditText mEvPhone, mEvCode;
     private SendVCodePresenter sendVCodePresenter;
     private SendVCodeView sendVCodeView;
     private CountTimerButton countTimerButton;
@@ -36,7 +37,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         findViewById(R.id.btn_send_vcode).setOnClickListener(this);
         findViewById(R.id.btn_login_login).setOnClickListener(this);
         findViewById(R.id.tv_login_register).setOnClickListener(this);
-
+        mEvPhone = (TextInputEditText)findViewById(R.id.ev_login_phone);
+        mEvCode = (TextInputEditText)findViewById(R.id.ev_login_vcode);
         mBtnSendVCode.setOnClickListener(this);
         sendVCodePresenter = new SendVCodePresenter();
         sendVCodeView = new SendVCodeView();
@@ -72,8 +74,16 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
      * 设置发送按钮为倒计时状态
      */
     private void sendVCode(){
+        if (mEvPhone.getText() == null
+                || TextUtils.isEmpty(mEvPhone.getText().toString())
+                || !TextCheckUtil.IsPhone(mEvPhone.getText().toString()) ){
+            Toast.makeText(this, getString(R.string.enter_right_phone), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         SendVCodeBean bean = new SendVCodeBean();
-        String phone = mEvPhone.getText().toString();
+
+        String phone = (mEvPhone.getText()).toString();
         if (TextCheckUtil.IsPhone(phone)) {
             bean.setPhone(phone);
             sendVCodePresenter.setupTask(bean, sendVCodeView);

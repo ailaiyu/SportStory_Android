@@ -17,7 +17,6 @@
         app:contentInsetLeft="@dimen/toolbar_content_insert"
         app:contentInsetStart="@dimen/toolbar_content_insert"
         android:gravity="center"
-        toolbar:navigationIcon="@mipmap/back"
         android:elevation="4dp"
         android:background="@color/colorPrimary">
 

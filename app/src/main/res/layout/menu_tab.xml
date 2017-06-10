@@ -62,29 +62,27 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:id="@+id/rl_menu_activities"
+        android:id="@+id/rl_menu_post"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent">
 
         <ImageView
-            android:id="@+id/iv_menu_activities"
-            android:src="@mipmap/activities_free"
-            android:layout_marginTop="@dimen/menu_img_margin_top"
-            android:layout_marginBottom="@dimen/menu_img_margin_bottom"
-            android:layout_width="@dimen/menu_img_width"
-            android:layout_centerHorizontal="true"
-            android:layout_height="@dimen/menu_img_height" />
+            android:src="@drawable/ic_add_box_black_24dp"
+            android:layout_margin="5dp"
+            android:layout_width="match_parent"
+            android:layout_centerInParent="true"
+            android:layout_height="match_parent" />
 
-        <TextView
-            android:layout_below="@id/iv_menu_activities"
-            android:id="@+id/tv_menu_activities"
-            android:layout_width="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_height="wrap_content"
-            android:text="@string/activity_title"
-            android:textColor="@color/menu_text_color_free"
-            android:textSize="@dimen/menu_text_size" />
+        <!--<TextView-->
+            <!--android:layout_below="@id/iv_menu_activities"-->
+            <!--android:id="@+id/tv_menu_activities"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="@string/activity_title"-->
+            <!--android:textColor="@color/menu_text_color_free"-->
+            <!--android:textSize="@dimen/menu_text_size" />-->
     </RelativeLayout>
 
     <RelativeLayout

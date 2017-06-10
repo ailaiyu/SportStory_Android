@@ -24,7 +24,7 @@
         android:adjustViewBounds="true"
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
-        android:src="@drawable/time_contet"
+        android:src="@mipmap/ic_launcher"
         android:layout_height="wrap_content" />
 
     <TextView

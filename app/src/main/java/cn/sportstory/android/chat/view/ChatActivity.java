@@ -3,7 +3,9 @@ package cn.sportstory.android.chat.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.View;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -24,6 +26,7 @@ import cn.sportstory.android.R;
  */
 
 public class ChatActivity extends BaseActivity {
+    private Toolbar toolbar;
 
     public static final String CHAT_TYPE_P2P = "0";      //单聊
     public static final String CHAT_TYPE_GROUP = "1";    //群聊
@@ -40,6 +43,13 @@ public class ChatActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chat);
         Intent intent = getIntent();
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         Bundle bundle = intent.getExtras();
         if (bundle == null)
             return;

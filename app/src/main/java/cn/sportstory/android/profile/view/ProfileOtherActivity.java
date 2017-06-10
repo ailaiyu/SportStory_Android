@@ -1,11 +1,11 @@
 package cn.sportstory.android.profile.view;
 
-import android.app.Fragment;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.timeline.view.TimelineContentList;
 
 import static cn.sportstory.android.profile.view.FollowersListActivity.FRAGMENT_TAG;
 
@@ -22,18 +23,19 @@ import static cn.sportstory.android.profile.view.FollowersListActivity.FRAGMENT_
  */
 
 public class ProfileOtherActivity extends BaseActivity implements View.OnClickListener,
-        ProfileTimelineFragment.OnFragmentInteractionListener,
+        TimelineContentList.OnFragmentInteractionListener,
         ProfileSportsFragment.OnFragmentInteractionListener,
         ProfileAlbumFragment.OnFragmentInteractionListener {
     private ViewGroup mProfileHead;
     private View mProfileContent;
+    private Toolbar toolbar;
     private FrameLayout mFlContent;
     private TextView mTvFollowersNumber, mTvFollowingNumber;
     private LinearLayout mLlFollowersNumber, mLlFollowingNumber, mLlTimeline, mLlData, mLlAlbum;
 
     private ProfileAlbumFragment albumFragment;
     private ProfileSportsFragment sportsFragment;
-    private ProfileTimelineFragment timelineFragment;
+    private TimelineContentList timelineFragment;
     private static final int FRAGMENT_TIMELINE = 0, FRAGMENT_DATA = 1, FRAGMENT_ALBUM = 2;
 
     private FragmentTransaction fragmentTransaction;
@@ -43,12 +45,19 @@ public class ProfileOtherActivity extends BaseActivity implements View.OnClickLi
         setContentView(R.layout.activity_profile_other);
         mProfileHead = (ViewGroup)findViewById(R.id.profile_head);
         mProfileContent = (View)findViewById(R.id.profile_content);
-
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
         mTvFollowersNumber = (TextView)mProfileHead.findViewById(R.id.tv_profile_followers_number);
         mTvFollowingNumber = (TextView)mProfileHead.findViewById(R.id.tv_profile_following_number);
         mLlFollowingNumber = (LinearLayout) mProfileHead.findViewById(R.id.ll_profile_following_number);
         mLlFollowersNumber = (LinearLayout)mProfileHead.findViewById(R.id.ll_profile_followers_number);
-
+        mProfileHead.findViewById(R.id.go).setVisibility(View.GONE);
+        
         mFlContent = (FrameLayout)mProfileContent.findViewById(R.id.fl_profile_content);
         mLlTimeline = (LinearLayout)mProfileContent.findViewById(R.id.ll_profile_content_timeline);
         mLlData = (LinearLayout)mProfileContent.findViewById(R.id.ll_profile_content_data);
@@ -122,7 +131,7 @@ public class ProfileOtherActivity extends BaseActivity implements View.OnClickLi
             case FRAGMENT_TIMELINE:
                 if (timelineFragment == null)
                 {
-                    timelineFragment = new ProfileTimelineFragment();
+                    timelineFragment = new TimelineContentList();
                     timelineFragment.setArguments(getIntent().getExtras());
                     fragmentTransaction.add(R.id.fl_profile_content, timelineFragment).commit();
                 }else

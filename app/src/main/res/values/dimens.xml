@@ -41,4 +41,6 @@
     <!--个人账号-->
     <dimen name="profile_title_avatar_size">65dp</dimen>
 
+    <!--动态-->
+    <dimen name="fab_margin">20dp</dimen>
 </resources>

@@ -54,6 +54,8 @@
     <string name="followers">粉丝</string>
     <string name="tip_confirm_has_sdcard">请确认已插入sdk卡</string>
     <string name="operation_failed">操作失败，请重试</string>
+    <string name="tip">提示</string>
+    <string name="edit_unsave">更改尚未保存，是否确认退出？</string>
 
 
     <!--提示语-->
@@ -121,5 +123,6 @@
     <string name="already_binding_this_email">您已绑定至此邮箱</string>
     <string name="binding_email_successful">绑定成功</string>
 
-
+    <!--朋友圈-->
+    <string name="post_timeline">发表动态</string>
 </resources>

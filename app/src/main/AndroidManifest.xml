@@ -339,6 +339,8 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".settings.view.CurrentEmailActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".timeline.view.PostTimelineActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

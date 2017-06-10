@@ -1,5 +1,6 @@
 package cn.sportstory.android.settings.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -32,6 +33,7 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // TODO: 2017/6/7 security
+                startActivity(new Intent(SettingsActivity.this, AccountSecurityActivity.class));
             }
         });
 
@@ -39,18 +41,23 @@ public class SettingsActivity extends BaseActivity {
             @Override
             public void onClick(View v) {
                 // TODO: 2017/6/7 消息推送
+                startActivity(new Intent(SettingsActivity.this, NotificationSettingActivity.class));
+
             }
         });
         findViewById(R.id.verify).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: 2017/6/7 实名认证
+//                startActivity(new Intent(SettingsActivity.this, .class));
             }
         });
         findViewById(R.id.about).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: 2017/6/7 about
+                startActivity(new Intent(SettingsActivity.this, AboutActivity.class));
+
             }
         });
 

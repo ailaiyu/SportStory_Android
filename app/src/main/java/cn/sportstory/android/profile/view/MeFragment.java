@@ -1,14 +1,18 @@
 package cn.sportstory.android.profile.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import cn.sportstory.android.R;
+import cn.sportstory.android.settings.view.SettingsActivity;
+import cn.sportstory.android.tools.ImageLoader;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,6 +32,7 @@ public class MeFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    private ImageView setting;
     private OnFragmentInteractionListener mListener;
 
     public MeFragment() {
@@ -65,9 +70,22 @@ public class MeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_me, container, false);
+        View view = inflater.inflate(R.layout.fragment_me, container, false);
+        setting = (ImageView)view.findViewById(R.id.setting);
+        initView();
+        return view;
+
     }
 
+
+    private void initView(){
+        setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), SettingsActivity.class));
+            }
+        });
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

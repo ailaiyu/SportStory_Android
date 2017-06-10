@@ -1,5 +1,6 @@
 package cn.sportstory.android.settings.view;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -43,5 +44,10 @@ public class AboutActivity extends BaseActivity {
 
     private void gotoFeedback(){}
 
-    private void gotoProtocol(){}
+    private void gotoProtocol(){
+        Intent intent = new Intent();
+        intent.putExtra("url", "file:///android_asset/protocol.html");
+        intent.setClass(this, ProtocolActivity.class);
+        startActivity(intent);
+    }
 }

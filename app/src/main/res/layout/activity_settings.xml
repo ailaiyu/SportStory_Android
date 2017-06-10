@@ -33,6 +33,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
         android:layout_height="wrap_content">
         <LinearLayout
             android:layout_width="match_parent"
@@ -60,8 +61,8 @@
                     android:src="@mipmap/go"/>
             </LinearLayout>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/security"
@@ -85,8 +86,8 @@
                     android:src="@mipmap/go"/>
             </LinearLayout>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/msg_setting"
@@ -110,8 +111,8 @@
                     android:src="@mipmap/go"/>
             </LinearLayout>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/verify"
@@ -136,7 +137,7 @@
             </LinearLayout>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@color/gray_divider"/>
 
@@ -161,6 +162,10 @@
                     android:layout_height="match_parent"
                     android:src="@mipmap/go"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/invite"
                 android:layout_width="match_parent"
@@ -182,6 +187,10 @@
                     android:layout_height="match_parent"
                     android:src="@mipmap/go"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/contact"
                 android:layout_width="match_parent"
@@ -203,6 +212,10 @@
                     android:layout_height="match_parent"
                     android:src="@mipmap/go"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/update"
                 android:layout_width="match_parent"
@@ -224,6 +237,10 @@
                     android:layout_height="match_parent"
                     android:src="@mipmap/go"/>
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/clear_storagy"
                 android:layout_width="match_parent"
@@ -247,6 +264,10 @@
                     android:textColor="@color/black"
                     android:drawableRight="@mipmap/go" />
             </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/grey"/>
 
             <Button
                 android:id="@+id/logout"

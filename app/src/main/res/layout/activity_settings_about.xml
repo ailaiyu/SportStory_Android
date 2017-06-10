@@ -38,8 +38,8 @@
         android:layout_marginTop="20dp"
         android:layout_height="96dp" />
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:layout_marginTop="20dp"
         android:background="@color/grey"/>
             <LinearLayout
@@ -64,8 +64,8 @@
                     android:src="@mipmap/go"/>
             </LinearLayout>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/feedback"
@@ -89,8 +89,8 @@
                     android:src="@mipmap/go"/>
             </LinearLayout>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/help"
@@ -114,8 +114,8 @@
                     android:src="@mipmap/go"/>
             </LinearLayout>
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="2dp"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
                 android:background="@color/grey"/>
 
 

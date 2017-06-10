@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.R;
@@ -41,5 +42,7 @@ public class UpdatePasswordActivity extends BaseActivity {
 
     private void confirm(){
         // TODO: 2017/6/8 更新密码请求
+        Toast.makeText(this, "更改成功", Toast.LENGTH_SHORT).show();
+        finish();
     }
 }

@@ -49,7 +49,7 @@
         android:textColor="@color/black"
         android:layout_height="wrap_content" />
     <Button
-        android:id="@+id/change"
+        android:id="@+id/binding"
         android:layout_width="match_parent"
         android:layout_margin="50dp"
         style="@style/RoundButton45"

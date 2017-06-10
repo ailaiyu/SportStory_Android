@@ -38,6 +38,7 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
         android:paddingTop="12dp"
+        android:layout_marginTop="5dp"
         android:paddingBottom="12dp"
         android:layout_height="wrap_content">
         <TextView
@@ -53,8 +54,8 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:background="@color/grey"/>
     <LinearLayout
         android:id="@+id/change_email"
@@ -79,8 +80,8 @@
 
     </LinearLayout>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:background="@color/grey"/>
     <LinearLayout
         android:id="@+id/change_password"
@@ -104,8 +105,8 @@
             android:layout_height="wrap_content" />
     </LinearLayout>
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:background="@color/grey"/>
 
 
@@ -151,8 +152,8 @@
     </RelativeLayout>
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="2dp"
+        android:layout_width="match_parent"
+        android:layout_height="1px"
         android:background="@color/grey"/>
 </LinearLayout>
 

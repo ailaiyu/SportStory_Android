@@ -24,7 +24,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/change_phone"
+            android:text="@string/verify_phone"
             android:textStyle="bold"
             android:layout_gravity="center"
             android:textColor="@color/toolbar_title_text_color"
@@ -77,14 +77,12 @@
             style="@style/RoundButtonSendVcode" />
     </LinearLayout>
 
-
-
     <Button
         android:id="@+id/verify"
         android:layout_width="match_parent"
         android:layout_margin="50dp"
         style="@style/RoundButton45"
-        android:text="@string/confirm_change"
+        android:text="@string/verify"
         android:layout_height="wrap_content" />
 
 </LinearLayout>

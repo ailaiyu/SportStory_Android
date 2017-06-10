@@ -333,6 +333,12 @@
             android:screenOrientation="portrait"/>
         <activity android:name=".settings.view.AboutActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.NotificationSettingActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.ProtocolActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".settings.view.CurrentEmailActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

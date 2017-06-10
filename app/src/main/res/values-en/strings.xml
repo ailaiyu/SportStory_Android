@@ -115,4 +115,7 @@
     <string name="vibration">Vibration</string>
     <string name="voice">Voice</string>
     <string name="no_disturb">No Disturb</string>
+    <string name="already_binding_this_email">Can\'t  bind to the same email</string>
+    <string name="binding_email_successful">Binding Successful</string>
+
 </resources>

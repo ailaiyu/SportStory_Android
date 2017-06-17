@@ -35,7 +35,7 @@ public class AboutActivity extends BaseActivity {
         findViewById(R.id.feedback).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gotoFeedback();
+                startActivity(new Intent(AboutActivity.this, PostFeedbackActivity.class));
             }
         });
 
@@ -47,9 +47,9 @@ public class AboutActivity extends BaseActivity {
         });
     }
 
-    private void gotoHelp(){}
+    private void gotoHelp(){
 
-    private void gotoFeedback(){}
+    }
 
     private void gotoProtocol(){
         Intent intent = new Intent();

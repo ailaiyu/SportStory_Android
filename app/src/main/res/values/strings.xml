@@ -122,6 +122,9 @@
     <string name="no_disturb">消息免打扰</string>
     <string name="already_binding_this_email">您已绑定至此邮箱</string>
     <string name="binding_email_successful">绑定成功</string>
+    <string name="write_your_feedback">写下您的宝贵意见吧！</string>
+    <string name="has_not_commit">尚未提交，是否退出？</string>
+    <string name="tip_input_content">请输入反馈意见</string>
 
     <!--朋友圈-->
     <string name="post_timeline">发表动态</string>

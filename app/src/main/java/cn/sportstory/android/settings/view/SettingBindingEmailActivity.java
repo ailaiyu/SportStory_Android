@@ -24,6 +24,7 @@ public class SettingBindingEmailActivity extends BaseActivity {
     String newEmail;
 
     private TextInputEditText email;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

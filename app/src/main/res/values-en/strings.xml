@@ -119,6 +119,9 @@
     <string name="no_disturb">No Disturb</string>
     <string name="already_binding_this_email">Can\'t  bind to the same email</string>
     <string name="binding_email_successful">Binding Successful</string>
+    <string name="write_your_feedback">Feedback content here</string>
+    <string name="has_not_commit">Not commit, confirm back?</string>
+    <string name="tip_input_content">Please input feedback message</string>
 
     <!--朋友圈-->
     <string name="post_timeline">Post Timeline</string>

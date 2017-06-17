@@ -4,9 +4,9 @@ package cn.sportstory.android.common.sqliteContract;
  * Created by aaron on 2017/6/2.
  */
 
-public final class UsrTableContract {
+public interface UsrTableContract {
 
-    private UsrTableContract() {}
+//    private UsrTableContract() {}
 
     public static final String TABLE_NAME = "USR";
 
@@ -27,9 +27,13 @@ public final class UsrTableContract {
     public static final String COLUMN_NAME_ASSIGNMENT = "assignment";
 
 
-    private static final String INTEGER_TYPE = " INTEGER";
-    private static final String TEXT_TYPE = " TEXT";
-    private static final String COMMA_SEP = ",";
+//    private static final String INTEGER_TYPE = " INTEGER";
+//    private static final String TEXT_TYPE = " TEXT";
+//    private static final String COMMA_SEP = ",";
+
+    String INTEGER_TYPE = " INTEGER";
+    String TEXT_TYPE = " TEXT";
+    String COMMA_SEP = ",";
     public static final String SQL_CREATE_TABLE_USR =
             "CREATE TABLE " + TABLE_NAME + " (" + COLUMN_NAME_ID + " INTEGER PRIMARY KEY," +
                     COLUMN_NAME_NICKNAME + TEXT_TYPE + COMMA_SEP +

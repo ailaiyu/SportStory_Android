@@ -13,9 +13,12 @@ import android.widget.Toast;
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.contract.SendVCodeTaskContract;
+import cn.sportstory.android.account.presenter.LoginPresenter;
 import cn.sportstory.android.account.presenter.SendVCodePresenter;
 import cn.sportstory.android.common.bean.SendVCodeBean;
+import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.common.tools.TextCheckUtil;
 import cn.sportstory.android.tools.CountTimerButton;
 
@@ -25,7 +28,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private TextInputEditText mEvPhone, mEvCode;
     private SendVCodePresenter sendVCodePresenter;
     private SendVCodeView sendVCodeView;
+    private LoginView loginView;
     private CountTimerButton countTimerButton;
+    private LoginPresenter loginPresenter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +45,8 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         mEvPhone = (TextInputEditText)findViewById(R.id.ev_login_phone);
         mEvCode = (TextInputEditText)findViewById(R.id.ev_login_vcode);
         mBtnSendVCode.setOnClickListener(this);
-        sendVCodePresenter = new SendVCodePresenter();
+        sendVCodePresenter = new SendVCodePresenter(sendVCodeView);
+        loginPresenter = new LoginPresenter(loginView);
         sendVCodeView = new SendVCodeView();
     }
 
@@ -50,10 +56,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         switch (v.getId())
         {
             case R.id.btn_login_login:
-                intent.setClass(this, MainActivity.class);
-                startActivity(intent);
-                finish();
-                // TODO: 2017/5/13 验证登录信息 
+                login();
                 break;
             case R.id.tv_login_with_password:
                 intent.setClass(this, LoginWithPasswordActivity.class);
@@ -66,6 +69,22 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
                 intent.setClass(this, RegisterActivity.class);
                 startActivity(intent);
                 break;
+        }
+    }
+
+    private void login(){
+        String phone = mEvPhone.getText() == null ? null : mEvPhone.getText().toString();
+        String code = mEvCode.getText() == null ? null : mEvCode.getText().toString();
+        if (TextUtils.isEmpty(phone) || TextUtils.isEmpty(code))
+        {
+            Toast.makeText(LoginActivity.this, getString(R.string.account_or_code_wrong), Toast.LENGTH_SHORT).show();
+            return;
+        }else {
+            UserLoginBean bean = new UserLoginBean();
+            bean.setCode(code);
+            bean.setPhone(phone);
+            loginPresenter.setupTask(bean);
+            loginPresenter.doTask();
         }
     }
 
@@ -82,11 +101,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         }
 
         SendVCodeBean bean = new SendVCodeBean();
-
         String phone = (mEvPhone.getText()).toString();
         if (TextCheckUtil.IsPhone(phone)) {
             bean.setPhone(phone);
-            sendVCodePresenter.setupTask(bean, sendVCodeView);
+            sendVCodePresenter.setupTask(bean);
             sendVCodePresenter.doTask();
             countTimerButton = new CountTimerButton(60 * 1000, 1000, mBtnSendVCode);
             countTimerButton.start();
@@ -108,7 +126,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
     private class SendVCodeView extends SendVCodeTaskContract.View {
 
         @Override
-        protected Context getViewContext() {
+        public Context getViewContext() {
             return getBaseContext();
         }
 
@@ -124,5 +142,36 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
         }
     }
+
+    private class LoginView extends LoginTaskContract.View{
+        @Override
+        public Context getViewContext() {
+            return getBaseContext();
+        }
+
+        @Override
+        protected void showVCodeError() {
+            Toast.makeText(getBaseContext(), getString(R.string.account_or_code_wrong), Toast.LENGTH_SHORT).show();
+        }
+
+        @Override
+        protected boolean isActive() {
+            return false;
+        }
+
+        @Override
+        public void loginSuccess() {
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
+        @Override
+        public void register() {
+            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+            finish();
+        }
+    }
+
+
 
 }

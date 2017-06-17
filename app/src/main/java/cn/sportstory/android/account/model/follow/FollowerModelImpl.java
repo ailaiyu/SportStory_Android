@@ -1,9 +1,12 @@
 package cn.sportstory.android.account.model.follow;
 
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
 import cn.sportstory.android.account.contract.UserFollowContract;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserBean;
 import cn.sportstory.android.common.bean.UserFollowerBean;
 import retrofit2.Call;
@@ -14,10 +17,10 @@ import retrofit2.Callback;
  */
 
 public class FollowerModelImpl extends FollowModel {
-    public FollowerModelImpl(UserFollowContract.Presenter presenter) {
+
+    public FollowerModelImpl(BasePresenter presenter) {
         super(presenter);
     }
-
 
     public void getFollowers(UserFollowerBean bean, Callback<UserBean[]> callback){
         Map<String, String> map = new HashMap<>();

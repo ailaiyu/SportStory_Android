@@ -1,10 +1,13 @@
 package cn.sportstory.android.account.model.sendVCode;
 
 
+import android.content.Context;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import cn.sportstory.android.account.presenter.SendVCodePresenter;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.SendVCodeBean;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -16,7 +19,7 @@ import retrofit2.Callback;
 
 public class SendVCodeModelImpl extends SendVCodeModel {
 
-    public SendVCodeModelImpl(SendVCodePresenter presenter) {
+    public SendVCodeModelImpl(BasePresenter presenter) {
         super(presenter);
     }
 

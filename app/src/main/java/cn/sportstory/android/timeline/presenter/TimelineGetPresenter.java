@@ -17,9 +17,12 @@ import retrofit2.Response;
 
 public class TimelineGetPresenter extends TimelineGetContract.Presenter {
 
-    private TimelineGetContract.View view;
     private TimelineGetBean bean;
     private TimelineGetModel model;
+
+    public TimelineGetPresenter(BaseView baseView) {
+        super(baseView);
+    }
 
     @Override
     public void doTask() {
@@ -31,15 +34,15 @@ public class TimelineGetPresenter extends TimelineGetContract.Presenter {
 
             @Override
             public void onFailure(Call<TimelineGetBean> call, Throwable t) {
+                view.showNetDisconnect();
 
             }
         });
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         model = new TimelineGet(this);
-        this.view = (TimelineGetContract.View)view;
-        this.bean = new TimelineGetBean();
+        this.bean = (TimelineGetBean)bean;
     }
 }

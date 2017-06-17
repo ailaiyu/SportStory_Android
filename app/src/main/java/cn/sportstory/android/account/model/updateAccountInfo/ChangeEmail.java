@@ -1,9 +1,12 @@
 package cn.sportstory.android.account.model.updateAccountInfo;
 
+import android.content.Context;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import cn.sportstory.android.account.contract.UpdateAccountInfoContract;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserAccountBean;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -13,7 +16,7 @@ import retrofit2.Callback;
  */
 
 public class ChangeEmail extends UpdateAccountInfoModel{
-    public ChangeEmail(UpdateAccountInfoContract.Presenter presenter) {
+    public ChangeEmail(BasePresenter presenter) {
         super(presenter);
     }
 

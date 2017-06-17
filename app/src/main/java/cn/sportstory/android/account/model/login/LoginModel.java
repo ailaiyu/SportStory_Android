@@ -1,7 +1,10 @@
 package cn.sportstory.android.account.model.login;
 
+import android.content.Context;
+
 import cn.sportstory.android.account.presenter.LoginPresenter;
 import cn.sportstory.android.common.baseinterface.BaseModel;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserLocationBean;
 import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.im.UserLogin;
@@ -12,12 +15,10 @@ import retrofit2.Callback;
  */
 
 public abstract class LoginModel extends BaseModel {
-    protected LoginPresenter presenter;
 
-    public LoginModel(LoginPresenter presenter) {
-        this.presenter = presenter;
+    public LoginModel(BasePresenter presenter) {
+        super(presenter);
     }
 
     abstract public void login(UserLoginBean bean, Callback<UserLoginBean> callback);
-
 }

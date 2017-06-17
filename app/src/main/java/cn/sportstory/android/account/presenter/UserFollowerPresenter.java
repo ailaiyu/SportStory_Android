@@ -1,5 +1,7 @@
 package cn.sportstory.android.account.presenter;
 
+import android.content.Context;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +23,6 @@ import retrofit2.Response;
 
 public class UserFollowerPresenter extends UserFollowContract.Presenter {
 
-    private UserFollowContract.View view;
     private UserFollowerBean followerBean;
     private UserFollowingBean followingBean;
     private FollowerModelImpl followerModel;
@@ -101,6 +102,9 @@ public class UserFollowerPresenter extends UserFollowContract.Presenter {
     }
 
 
+    public UserFollowerPresenter(BaseView baseView) {
+        super(baseView);
+    }
 
     public void setupFollowerTask(CommonBean bean, BaseView view){
         followingBean = (UserFollowingBean)bean;
@@ -112,6 +116,12 @@ public class UserFollowerPresenter extends UserFollowContract.Presenter {
         followingBean = (UserFollowingBean)bean;
         this.view = (UserFollowContract.View)view;
         followingModel = new FollowingModelImpl(this);
+    }
+
+
+    @Override
+    public void setupTask(CommonBean bean) {
+
     }
 
 }

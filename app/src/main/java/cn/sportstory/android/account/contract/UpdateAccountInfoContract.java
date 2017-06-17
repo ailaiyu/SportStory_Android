@@ -9,7 +9,11 @@ import cn.sportstory.android.common.bean.UserAccountBean;
  */
 
 public interface UpdateAccountInfoContract {
-    public abstract class Presenter implements BasePresenter{
+    public abstract class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
+
         public abstract void changePhone();
         public abstract void changeEmail();
         public abstract void changePassword();

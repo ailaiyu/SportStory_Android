@@ -14,8 +14,9 @@ public interface UserGalleryContract {
         abstract public void getGalleriesFailed(UserGalleryBean bean);
     }
 
-    abstract class Presenter implements BasePresenter{
-
-
+    abstract class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 }

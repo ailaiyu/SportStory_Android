@@ -17,11 +17,14 @@ import retrofit2.Response;
 
 public class UserSearchPresenter extends UserSearchContract.Presenter {
     private UserSearchModel model;
-    private UserSearchContract.View view;
     private UserSearchBean bean;
 
     private static final int USER_SEARCH_TYPE_SEARCH = 1;
     private static final int USER_SEARCH_TYPE_FILTER = 2;
+
+    public UserSearchPresenter(BaseView baseView) {
+        super(baseView);
+    }
 
     @Override
     public void doTask() {
@@ -40,9 +43,8 @@ public class UserSearchPresenter extends UserSearchContract.Presenter {
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         this.bean = (UserSearchBean)bean;
-        this.view = (UserSearchContract.View)view;
         switch (((UserSearchBean) bean).getSearchType()){
             case USER_SEARCH_TYPE_FILTER:
                 model = new UserFilter(this);

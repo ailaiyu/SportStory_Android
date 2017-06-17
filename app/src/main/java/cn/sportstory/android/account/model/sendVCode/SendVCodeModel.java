@@ -1,7 +1,10 @@
 package cn.sportstory.android.account.model.sendVCode;
 
+import android.content.Context;
+
 import cn.sportstory.android.account.presenter.SendVCodePresenter;
 import cn.sportstory.android.common.baseinterface.BaseModel;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.SendVCodeBean;
 import cn.sportstory.android.constants.UrlConstants;
 import retrofit2.Callback;
@@ -14,10 +17,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public abstract class SendVCodeModel extends BaseModel {
 
-    protected SendVCodePresenter presenter;
-
-    public SendVCodeModel(SendVCodePresenter presenter) {
-        this.presenter = presenter;
+    public SendVCodeModel(BasePresenter presenter) {
+        super(presenter);
     }
 
     abstract public void sendVCode(SendVCodeBean bean, Callback<SendVCodeBean> callback);

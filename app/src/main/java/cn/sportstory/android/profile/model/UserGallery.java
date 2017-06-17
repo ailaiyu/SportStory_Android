@@ -1,9 +1,12 @@
 package cn.sportstory.android.profile.model;
 
+import android.content.Context;
+
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 import cn.sportstory.android.common.baseinterface.BaseModel;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.SendVCodeBean;
 import cn.sportstory.android.common.bean.UserGalleryBean;
 import cn.sportstory.android.profile.contract.UserGalleryContract;
@@ -16,7 +19,7 @@ import retrofit2.Callback;
 
 public class UserGallery extends UserGalleryModel {
 
-    public UserGallery(UserGalleryContract.Presenter presenter) {
+    public UserGallery(BasePresenter presenter) {
         super(presenter);
     }
 

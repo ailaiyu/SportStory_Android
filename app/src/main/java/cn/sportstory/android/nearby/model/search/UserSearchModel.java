@@ -1,6 +1,7 @@
 package cn.sportstory.android.nearby.model.search;
 
 import cn.sportstory.android.common.baseinterface.BaseModel;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserSearchBean;
 import cn.sportstory.android.nearby.contract.UserSearchContract;
 import retrofit2.Callback;
@@ -10,10 +11,9 @@ import retrofit2.Callback;
  */
 
 public abstract class UserSearchModel extends BaseModel{
-    private UserSearchContract.Presenter presenter;
 
-    public UserSearchModel(UserSearchContract.Presenter presenter) {
-        this.presenter = presenter;
+    public UserSearchModel(BasePresenter presenter) {
+        super(presenter);
     }
 
     abstract public void searchUser(UserSearchBean bean, Callback<UserSearchBean> callback);

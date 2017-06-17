@@ -10,8 +10,10 @@ import cn.sportstory.android.common.bean.TimelineBean;
 
 public interface TimelineLikeContract {
 
-    abstract public class Presenter implements BasePresenter{
-
+    abstract  class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 
     abstract class View extends BaseView<Presenter> {

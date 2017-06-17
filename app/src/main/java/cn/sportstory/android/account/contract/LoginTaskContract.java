@@ -18,8 +18,15 @@ public interface LoginTaskContract {
         protected abstract void showVCodeError();              //验证码错误
 
         protected abstract boolean isActive();
+        public abstract void loginSuccess();
+        public abstract void register();
     }
 
-    interface Presenter extends BasePresenter {
+    abstract class Presenter extends BasePresenter {
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
+
+
     }
 }

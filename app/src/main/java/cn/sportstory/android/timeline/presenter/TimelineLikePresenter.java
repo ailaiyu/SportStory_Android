@@ -18,8 +18,11 @@ import retrofit2.Response;
 public class TimelineLikePresenter extends TimelineLikeContract.Presenter {
 
     private TimelineLikeBean bean;
-    private TimelineLikeContract.View view;
     private TimelineLikeModel model;
+
+    public TimelineLikePresenter(BaseView baseView) {
+        super(baseView);
+    }
 
     @Override
     public void doTask() {
@@ -32,16 +35,16 @@ public class TimelineLikePresenter extends TimelineLikeContract.Presenter {
 
             @Override
             public void onFailure(Call<TimelineLikeBean> call, Throwable t) {
+                view.showNetDisconnect();
 
             }
         });
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
 
         this.bean = (TimelineLikeBean)bean;
-        this.view = (TimelineLikeContract.View) view;
         model = new TimelineLike(this);
     }
 }

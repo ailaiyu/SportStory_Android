@@ -1,7 +1,10 @@
 package cn.sportstory.android.account.model.uploadUserLocation;
 
+import android.content.Context;
+
 import cn.sportstory.android.account.contract.UploadUserLocationContract;
 import cn.sportstory.android.common.baseinterface.BaseModel;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserLocationBean;
 import retrofit2.Callback;
 
@@ -10,10 +13,8 @@ import retrofit2.Callback;
  */
 
 public abstract class UploadUserLocationModel extends BaseModel {
-    private UploadUserLocationContract.Presenter presenter;
-
-    public UploadUserLocationModel(UploadUserLocationContract.Presenter presenter) {
-        this.presenter = presenter;
+    public UploadUserLocationModel(BasePresenter presenter) {
+        super(presenter);
     }
 
     abstract public void uploadLocation(UserLocationBean bean, Callback<UserLocationBean> callback);

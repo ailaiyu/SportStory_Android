@@ -18,7 +18,11 @@ public class TimelinePostPresenter extends TimelinePostContract.Presenter {
 
     TimelineBean bean;
     TimelinePostModel model;
-    TimelinePostContract.View view;
+
+    public TimelinePostPresenter(BaseView baseView) {
+        super(baseView);
+    }
+
     @Override
     public void doTask() {
         model.postTimeline(bean, new Callback<TimelineBean>() {
@@ -29,15 +33,15 @@ public class TimelinePostPresenter extends TimelinePostContract.Presenter {
 
             @Override
             public void onFailure(Call<TimelineBean> call, Throwable t) {
+                view.showNetDisconnect();
 
             }
         });
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         this.bean = (TimelineBean)bean;
-        this.view = (TimelinePostContract.View)view;
         model = new TimelinePost(this);
     }
 }

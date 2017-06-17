@@ -1,10 +1,12 @@
 package cn.sportstory.android.timeline.model.comment;
 
+import android.content.Context;
 import android.text.TextUtils;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.TimelineCommentBean;
 import cn.sportstory.android.timeline.contract.TimelineCommentContract;
 import cn.sportstory.android.timeline.contract.TimelineLikeContract;
@@ -17,7 +19,7 @@ import retrofit2.Callback;
  */
 
 public class TimelineComment extends TimelineCommentModel {
-    public TimelineComment(TimelineCommentContract.Presenter presenter) {
+    public TimelineComment(BasePresenter presenter) {
         super(presenter);
     }
 

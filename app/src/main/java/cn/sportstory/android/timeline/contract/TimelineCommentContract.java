@@ -11,8 +11,10 @@ import cn.sportstory.android.common.bean.TimelineCommentBean;
 
 public interface TimelineCommentContract {
 
-    abstract public class Presenter implements BasePresenter{
-
+    abstract public class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 
     abstract class View extends BaseView<Presenter> {

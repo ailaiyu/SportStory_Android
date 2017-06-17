@@ -17,13 +17,15 @@ public class UploadPhoneInfoPresenter extends UploadPhoneInfoContract.Presenter 
 
     private PhoneInfoBean bean;
     private UploadPhoneInfoModelImpl model;
-    private UploadPhoneInfoContract.View view;
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         model = new UploadPhoneInfoModelImpl(this);
         this.bean = (PhoneInfoBean) bean;
-        this.view = (UploadPhoneInfoContract.View)view;
+    }
+
+    public UploadPhoneInfoPresenter(BaseView baseView) {
+        super(baseView);
     }
 
     @Override
@@ -39,8 +41,9 @@ public class UploadPhoneInfoPresenter extends UploadPhoneInfoContract.Presenter 
 
             @Override
             public void onFailure(Call<PhoneInfoBean> call, Throwable t) {
-
+                view.showNetDisconnect();
             }
         });
     }
+
 }

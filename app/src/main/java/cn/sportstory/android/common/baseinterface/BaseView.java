@@ -12,7 +12,7 @@ import cn.sportstory.android.R;
 
 public abstract class BaseView<T> {
 
-    protected abstract Context getViewContext();
+    public abstract Context getViewContext();
     public void showError(String error){
         Context context = getViewContext();
         if (context != null) {

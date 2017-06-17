@@ -1,6 +1,9 @@
 package cn.sportstory.android.timeline.model.getTimeline;
 
+import android.content.Context;
+
 import cn.sportstory.android.common.baseinterface.BaseModel;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.TimelineGetBean;
 import cn.sportstory.android.timeline.contract.TimelineGetContract;
 import retrofit2.Callback;
@@ -10,10 +13,8 @@ import retrofit2.Callback;
  */
 
 public abstract class TimelineGetModel extends BaseModel {
-    private TimelineGetContract.Presenter presenter;
-
-    public TimelineGetModel(TimelineGetContract.Presenter presenter) {
-        this.presenter = presenter;
+    public TimelineGetModel(BasePresenter presenter) {
+        super(presenter);
     }
 
     abstract public void getTimeline(TimelineGetBean bean, Callback<TimelineGetBean> beanCallback);

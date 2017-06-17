@@ -1,7 +1,10 @@
 package cn.sportstory.android.account.model.updateUserInfo;
 
+import android.content.Context;
+
 import cn.sportstory.android.account.contract.UpdateUserInfoContract;
 import cn.sportstory.android.common.baseinterface.BaseModel;
+import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserBean;
 import retrofit2.Callback;
 
@@ -10,10 +13,8 @@ import retrofit2.Callback;
  */
 
 public abstract class UpdateUserInfoModel extends BaseModel {
-    private UpdateUserInfoContract.Presenter presenter;
-
-    public UpdateUserInfoModel(UpdateUserInfoContract.Presenter presenter) {
-        this.presenter = presenter;
+    public UpdateUserInfoModel(BasePresenter presenter) {
+        super(presenter);
     }
 
     abstract public void updateUserInfo(UserBean bean, Callback<UserBean> callback);

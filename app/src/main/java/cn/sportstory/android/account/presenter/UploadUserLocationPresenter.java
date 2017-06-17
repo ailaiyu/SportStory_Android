@@ -18,7 +18,6 @@ import retrofit2.Response;
 
 public class UploadUserLocationPresenter extends UploadUserLocationContract.Presenter {
 
-    private UploadUserLocationContract.View view;
     private UploadUserLocationModel model;
     private UserLocationBean bean;
 
@@ -33,15 +32,18 @@ public class UploadUserLocationPresenter extends UploadUserLocationContract.Pres
 
             @Override
             public void onFailure(Call<UserLocationBean> call, Throwable t) {
-
+                view.showNetDisconnect();
             }
         });
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
-        this.view = (UploadUserLocationContract.View)view;
+    public void setupTask(CommonBean bean) {
         this.bean = (UserLocationBean) bean;
         model = new UploadUserLocation(this);
+    }
+
+    public UploadUserLocationPresenter(BaseView baseView) {
+        super(baseView);
     }
 }

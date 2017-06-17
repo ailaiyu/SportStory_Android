@@ -24,7 +24,6 @@ import retrofit2.Response;
 
 public class UpdateUserInfoPresenter extends UpdateUserInfoContract.Presenter {
     private UserBean bean;
-    private UpdateUserInfoContract.View view;
     private UpdateUserInfoModel model;
 
     private static final int UPDATE_TYPE_UPLOAD = 100;
@@ -38,6 +37,10 @@ public class UpdateUserInfoPresenter extends UpdateUserInfoContract.Presenter {
     private static final int UPDATE_TYPE_SHAPE = 8;
     private static final int UPDATE_TYPE_SPORT = 9;
 
+    public UpdateUserInfoPresenter(BaseView baseView) {
+        super(baseView);
+    }
+
     @Override
     public void doTask() {
         model.updateUserInfo(bean, new Callback<UserBean>() {
@@ -48,13 +51,13 @@ public class UpdateUserInfoPresenter extends UpdateUserInfoContract.Presenter {
 
             @Override
             public void onFailure(Call<UserBean> call, Throwable t) {
-
+                view.showNetDisconnect();
             }
         });
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         this.bean = (UserBean) bean;
         this.view = (UpdateUserInfoContract.View) view;
         switch (((UserBean) bean).getUpdateType()) {

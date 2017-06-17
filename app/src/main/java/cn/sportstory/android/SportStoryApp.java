@@ -5,12 +5,15 @@ import android.app.Application;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
+import android.text.TextUtils;
 
 import com.squareup.leakcanary.LeakCanary;
 import com.umeng.analytics.MobclickAgent;
 
 import cn.jpush.android.api.JPushInterface;
+import cn.sportstory.android.account.tools.UserTokenHelper;
 import cn.sportstory.android.chat.customeMessageType.LocalTipMessage;
+import cn.sportstory.android.common.tools.SharedPreferenceHelper;
 import io.rong.imlib.AnnotationNotFoundException;
 import io.rong.imlib.RongIMClient;
 
@@ -84,5 +87,7 @@ public class SportStoryApp extends Application {
         }
         return null;
     }
+
+
 
 }

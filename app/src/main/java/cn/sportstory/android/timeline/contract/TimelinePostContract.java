@@ -10,7 +10,11 @@ import cn.sportstory.android.nearby.contract.UserNearbyContract;
  */
 
 public interface TimelinePostContract {
-    abstract class Presenter implements BasePresenter{
+    abstract class Presenter extends BasePresenter{
+
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
 
         public static final String TIMELINE_TYPE_TEXT = "00";
         public static final String TIMELINE_TYPE_IMG = "01";

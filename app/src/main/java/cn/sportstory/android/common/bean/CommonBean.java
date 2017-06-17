@@ -4,15 +4,16 @@ package cn.sportstory.android.common.bean;
  * Created by aaron on 2017/4/9.
  */
 public class CommonBean {
-    private String status_code;
+    private int status_code;
     private String err;
     private String success;
+    private String token;
 
-    public String getStatus_code() {
+    public int getStatus_code() {
         return status_code;
     }
 
-    public void setStatus_code(String status_code) {
+    public void setStatus_code(int status_code) {
         this.status_code = status_code;
     }
 

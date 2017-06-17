@@ -9,8 +9,10 @@ import cn.sportstory.android.common.baseinterface.BaseView;
 
 public interface UploadUserLocationContract {
 
-    abstract class Presenter implements BasePresenter{
-
+    abstract class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 
     abstract class View extends BaseView<UploadUserLocationContract.Presenter>{

@@ -11,15 +11,9 @@ import cn.sportstory.android.common.bean.UserFollowerBean;
  */
 
 public interface UserFollowContract {
-    abstract class Presenter implements BasePresenter {
-        @Override
-        public void doTask() {
-
-        }
-
-        @Override
-        public void setupTask(CommonBean bean, BaseView view) {
-
+    abstract class Presenter extends BasePresenter {
+        public Presenter(BaseView baseView) {
+            super(baseView);
         }
 
         abstract public void getFollowers();

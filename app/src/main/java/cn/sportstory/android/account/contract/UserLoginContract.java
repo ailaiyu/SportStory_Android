@@ -14,7 +14,9 @@ public interface UserLoginContract {
         public abstract void loginSuccess();        //登录成功
     }
 
-    abstract class Presenter implements BasePresenter{
-
+    abstract class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 }

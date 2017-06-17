@@ -17,8 +17,12 @@ import retrofit2.Response;
 public class UserGalleryPresenter extends UserGalleryContract.Presenter {
 
     private UserGalleryModel model;
-    private UserGalleryContract.View view;
     private UserGalleryBean bean;
+
+    public UserGalleryPresenter(BaseView baseView) {
+        super(baseView);
+    }
+
     @Override
     public void doTask() {
 
@@ -30,15 +34,16 @@ public class UserGalleryPresenter extends UserGalleryContract.Presenter {
 
             @Override
             public void onFailure(Call<UserGalleryBean> call, Throwable t) {
-
+                view.showNetDisconnect();
             }
         });
     }
 
+
+
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         this.bean = (UserGalleryBean)bean;
-        this.view = (UserGalleryContract.View)view;
         model = new UserGallery(this);
     }
 }

@@ -14,7 +14,9 @@ public interface UploadPhoneInfoContract {
         abstract public void uploadSuccess();   //上传信息成功
     }
 
-    abstract class Presenter implements BasePresenter{
-
+    abstract class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 }

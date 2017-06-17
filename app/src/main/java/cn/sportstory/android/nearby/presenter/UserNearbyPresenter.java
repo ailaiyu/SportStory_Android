@@ -16,8 +16,11 @@ import retrofit2.Response;
 
 public class UserNearbyPresenter extends UserNearbyContract.Presenter {
     private UserNearbyModel model;
-    private UserNearbyContract.View view;
     private UserNearbyBean bean;
+
+    public UserNearbyPresenter(BaseView baseView) {
+        super(baseView);
+    }
 
     @Override
     public void doTask() {
@@ -36,9 +39,8 @@ public class UserNearbyPresenter extends UserNearbyContract.Presenter {
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         this.bean = (UserNearbyBean) bean;
-        this.view = (UserNearbyContract.View) view;
         model = new UserNearby(this);
     }
 }

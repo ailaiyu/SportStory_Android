@@ -20,6 +20,10 @@ public class TimelineCommentPresenter extends TimelineCommentContract.Presenter 
     private TimelineCommentContract.View view;
     private TimelineCommentModel model;
 
+    public TimelineCommentPresenter(BaseView baseView) {
+        super(baseView);
+    }
+
     @Override
     public void doTask() {
 
@@ -31,16 +35,15 @@ public class TimelineCommentPresenter extends TimelineCommentContract.Presenter 
 
             @Override
             public void onFailure(Call<TimelineCommentBean> call, Throwable t) {
+                view.showNetDisconnect();
 
             }
         });
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
-
+    public void setupTask(CommonBean bean) {
         this.bean = (TimelineCommentBean)bean;
-        this.view = (TimelineCommentContract.View)view;
         model = new TimelineComment(this);
     }
 }

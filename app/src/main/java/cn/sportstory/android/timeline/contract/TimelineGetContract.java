@@ -9,7 +9,11 @@ import cn.sportstory.android.common.bean.TimelineGetBean;
  */
 
 public interface TimelineGetContract {
-    abstract class Presenter implements BasePresenter{}
+    abstract class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
+    }
 
     abstract class View extends BaseView<Presenter>{
         abstract void getTimelineSuccess(TimelineGetBean[] been);

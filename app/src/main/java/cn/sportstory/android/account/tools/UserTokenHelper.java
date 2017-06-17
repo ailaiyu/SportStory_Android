@@ -12,12 +12,18 @@ import cn.sportstory.android.constants.PreferencesConstants;
  */
 
 public class UserTokenHelper {
-    public static void dealWithToken(String token, Context context){
-        if (TextUtils.isEmpty(SportStoryApp.USER_TOKEN))
-        {
-            SportStoryApp.USER_TOKEN = SharedPreferenceHelper.getString(
-                    PreferencesConstants.USER_TOKEN, PreferencesConstants.ACCOUNT_FILE_NAME, context);
-        }
+
+    public static void updateToken(String token, Context context){
+        if (TextUtils.isEmpty(token))
+            return;
+        SportStoryApp.USER_TOKEN = token;
+        SharedPreferenceHelper.writeString(PreferencesConstants.USER_TOKEN, token, PreferencesConstants.ACCOUNT_FILE_NAME, context);
+
     }
 
+    public static String getToken(Context context) {
+        if (TextUtils.isEmpty(SportStoryApp.USER_TOKEN))
+            SportStoryApp.USER_TOKEN = SharedPreferenceHelper.getString(PreferencesConstants.USER_TOKEN, PreferencesConstants.ACCOUNT_FILE_NAME, context);
+        return SportStoryApp.USER_TOKEN;
+    }
 }

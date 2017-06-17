@@ -30,7 +30,9 @@ public interface SendVCodeTaskContract {
         }
     }
 
-    interface Presenter extends BasePresenter {
-
+    abstract class Presenter extends BasePresenter {
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 }

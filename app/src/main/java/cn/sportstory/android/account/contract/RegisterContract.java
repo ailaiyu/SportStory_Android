@@ -9,8 +9,10 @@ import cn.sportstory.android.common.bean.UserBean;
  */
 
 public interface RegisterContract {
-    abstract class Presenter implements BasePresenter{
-
+    abstract class Presenter extends BasePresenter{
+        public Presenter(BaseView baseView) {
+            super(baseView);
+        }
     }
 
     abstract class RegisterView extends BaseView{

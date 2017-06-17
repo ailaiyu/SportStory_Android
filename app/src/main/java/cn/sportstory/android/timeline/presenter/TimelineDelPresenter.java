@@ -16,9 +16,12 @@ import retrofit2.Response;
  */
 
 public class TimelineDelPresenter extends TimelineDelContract.Presenter {
-    private TimelineDelContract.View view;
     private TimelineBean bean;
     private TimelineDelModel model;
+
+    public TimelineDelPresenter(BaseView baseView) {
+        super(baseView);
+    }
 
     @Override
     public void doTask() {
@@ -30,16 +33,16 @@ public class TimelineDelPresenter extends TimelineDelContract.Presenter {
 
             @Override
             public void onFailure(Call<TimelineBean> call, Throwable t) {
+                view.showNetDisconnect();
 
             }
         });
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
 
         this.bean = (TimelineBean)bean;
-        this.view = (TimelineDelContract.View) view;
         model = new TimelineDel(this);
     }
 }

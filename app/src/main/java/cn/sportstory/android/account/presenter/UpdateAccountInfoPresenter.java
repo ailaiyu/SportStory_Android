@@ -17,12 +17,18 @@ import retrofit2.Response;
  */
 
 public class UpdateAccountInfoPresenter extends UpdateAccountInfoContract.Presenter {
-    private UpdateAccountInfoContract.View view;
+
+
+
     private UpdateAccountInfoModel model;
     private UserAccountBean bean;
     @Override
     public void doTask() {
 
+    }
+
+    public UpdateAccountInfoPresenter(BaseView baseView) {
+        super(baseView);
     }
 
     @Override
@@ -36,7 +42,7 @@ public class UpdateAccountInfoPresenter extends UpdateAccountInfoContract.Presen
 
             @Override
             public void onFailure(Call<UserAccountBean> call, Throwable t) {
-
+                view.showNetDisconnect();
             }
         });
     }
@@ -76,8 +82,7 @@ public class UpdateAccountInfoPresenter extends UpdateAccountInfoContract.Presen
     }
 
     @Override
-    public void setupTask(CommonBean bean, BaseView view) {
+    public void setupTask(CommonBean bean) {
         this.bean = (UserAccountBean) bean;
-        this.view = (UpdateAccountInfoContract.View) view;
     }
 }

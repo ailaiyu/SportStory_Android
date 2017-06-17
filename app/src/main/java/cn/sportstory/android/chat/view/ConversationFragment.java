@@ -173,7 +173,7 @@ public class ConversationFragment extends Fragment {
 
     private void fillTestData(){
         int name = 0;
-        for (int i = 0; i < 3000; i ++)
+        for (int i = 0; i < 300; i ++)
         {
             ChatItemBean bean = new ChatItemBean();
             bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH);
@@ -185,7 +185,7 @@ public class ConversationFragment extends Fragment {
                 bean.setAvatarPath(TestConstants.TEST_AVATAR_PATH5);
             bean.setUserId("" + i);
             bean.setNickname("用户名" + name ++ );
-            bean.setMsg("测试测试测试测试测试测试测试测试test测试哈hahahahhahahaha哈哈哈哈哈哈哈去消息" + name);
+            bean.setMsg("哈哈哈哈哈哈哈,消息" + name);
             bean.setTime("12:12");
             chats.add(bean);
         }

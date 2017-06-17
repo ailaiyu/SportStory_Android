@@ -6,5 +6,17 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:actionBarSize">48dp</item>
+
+    </style>
+
+    <style name="toolBarTextViewStyle">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textColor">#FF121212</item>
+
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="@dimen/toolbar_title_text_size"-->
+        <!--android:textColor="@color/toolbar_title_text_color"-->
     </style>
 </resources>

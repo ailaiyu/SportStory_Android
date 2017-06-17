@@ -93,7 +93,7 @@
 
         <ImageView
             android:id="@+id/iv_menu_chat"
-            android:src="@mipmap/chat_press"
+            android:src="@mipmap/chat_free"
             android:layout_marginTop="@dimen/menu_img_margin_top"
             android:layout_marginBottom="@dimen/menu_img_margin_bottom"
             android:layout_centerHorizontal="true"

@@ -22,6 +22,8 @@ import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.common.tools.TextCheckUtil;
 import cn.sportstory.android.tools.CountTimerButton;
 
+import static cn.sportstory.android.common.bean.UserLoginBean.LOGIN_TYPE_PHONE_VCODE;
+
 public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
     private Button mBtnSendVCode;
@@ -45,9 +47,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         mEvPhone = (TextInputEditText)findViewById(R.id.ev_login_phone);
         mEvCode = (TextInputEditText)findViewById(R.id.ev_login_vcode);
         mBtnSendVCode.setOnClickListener(this);
+        sendVCodeView = new SendVCodeView();
+        loginView = new LoginView();
         sendVCodePresenter = new SendVCodePresenter(sendVCodeView);
         loginPresenter = new LoginPresenter(loginView);
-        sendVCodeView = new SendVCodeView();
     }
 
     @Override
@@ -83,6 +86,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             UserLoginBean bean = new UserLoginBean();
             bean.setCode(code);
             bean.setPhone(phone);
+            bean.setLogin_type(UserLoginBean.LOGIN_TYPE_PHONE);
+            bean.setLoginType(LOGIN_TYPE_PHONE_VCODE);
+
             loginPresenter.setupTask(bean);
             loginPresenter.doTask();
         }
@@ -104,6 +110,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
         String phone = (mEvPhone.getText()).toString();
         if (TextCheckUtil.IsPhone(phone)) {
             bean.setPhone(phone);
+            bean.setType(SendVCodeBean.SEND_TYPE_PHONE);
             sendVCodePresenter.setupTask(bean);
             sendVCodePresenter.doTask();
             countTimerButton = new CountTimerButton(60 * 1000, 1000, mBtnSendVCode);

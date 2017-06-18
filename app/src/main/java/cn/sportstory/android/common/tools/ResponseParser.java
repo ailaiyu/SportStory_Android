@@ -17,6 +17,7 @@ import retrofit2.Response;
 
 public class ResponseParser {
 
+    public static final int RESPONSE_CODE_OK = 200;
     private static final int TOKEN_OVERDUE = 401;
     public static final int RESPONSE_ERR = 400;
     public static void parseResponse(Response response, Context context){

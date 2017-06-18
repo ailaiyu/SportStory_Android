@@ -2,6 +2,7 @@ package cn.sportstory.android.nearby.view;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -26,6 +27,7 @@ public class FilterActivity extends BaseActivity implements View.OnClickListener
     private TextView level;
     private LinearLayout llLevel;
     private Button search;
+    private Toolbar toolbar;
 
 
     @Override
@@ -45,13 +47,19 @@ public class FilterActivity extends BaseActivity implements View.OnClickListener
         llAge = (LinearLayout)findViewById(R.id.ll_age);
         llLevel = (LinearLayout)findViewById(R.id.ll_level);
         llSport = (LinearLayout)findViewById(R.id.ll_sport);
-
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
         female.setOnClickListener(this);
         male.setOnClickListener(this);
         llAge.setOnClickListener(this);
         llSport.setOnClickListener(this);
         llLevel.setOnClickListener(this);
         search.setOnClickListener(this);
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
     }
 

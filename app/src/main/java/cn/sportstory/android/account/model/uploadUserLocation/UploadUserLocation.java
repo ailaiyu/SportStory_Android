@@ -21,10 +21,7 @@ public class UploadUserLocation extends UploadUserLocationModel {
 
     @Override
     public void uploadLocation(UserLocationBean bean, Callback<UserLocationBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("lat", bean.getLat());
-        map.put("lon", bean.getLon());
-        Call<UserLocationBean> repos = service.uploadUserLocation(map);
+        Call<UserLocationBean> repos = service.uploadUserLocation(bean);
         repos.enqueue(callback);
     }
 }

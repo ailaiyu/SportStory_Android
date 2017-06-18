@@ -24,9 +24,7 @@ public class UpdateUserGender extends UpdateUserInfoModel {
 
     @Override
     public void updateUserInfo(UserBean bean, Callback<UserBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("gender", bean.getGender());
-        Call<UserBean> repos = service.updateUserGender(map);
+        Call<UserBean> repos = service.updateUserGender(bean);
         repos.enqueue(callback);
 
     }

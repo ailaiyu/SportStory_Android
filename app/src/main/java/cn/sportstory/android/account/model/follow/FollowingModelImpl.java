@@ -24,20 +24,13 @@ public class FollowingModelImpl extends FollowModel {
 
     public void getFollowing(UserFollowingBean bean, Callback<UserBean[]> callback){
 
-        Map<String, String> map = new HashMap<>();
-        map.put("f_id", bean.getF_id());
-        map.put("start", bean.getStart());
-        map.put("num", bean.getNum());
-        Call<UserBean[]> repos = service.getFollowing(map);
+        Call<UserBean[]> repos = service.getFollowing(bean);
         repos.enqueue(callback);
 
     }
 
     public void follow(UserFollowingBean bean, Callback<UserFollowingBean> callback){
-        Map<String, String> map = new HashMap<>();
-        map.put("f_id", bean.getF_id());
-        map.put("f_type", bean.getF_type());
-        Call<UserFollowingBean> repos = service.userFollowing(map);
+        Call<UserFollowingBean> repos = service.userFollowing(bean);
         repos.enqueue(callback);
     }
 }

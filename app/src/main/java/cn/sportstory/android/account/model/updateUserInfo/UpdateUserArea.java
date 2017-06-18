@@ -25,12 +25,7 @@ public class UpdateUserArea extends UpdateUserInfoModel {
 
     @Override
     public void updateUserInfo(UserBean bean, Callback<UserBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("province", bean.getProvince());
-        map.put("city", bean.getCity());
-        map.put("district", bean.getDistrict());
-        map.put("address", bean.getAddress());
-        Call<UserBean> repos = service.updateUserArea(map);
+        Call<UserBean> repos = service.updateUserArea(bean);
         repos.enqueue(callback);
 
     }

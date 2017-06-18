@@ -14,17 +14,13 @@
         android:elevation="@dimen/toolbar_elevation"
         app:contentInsetLeft="@dimen/toolbar_content_insert"
         toolbar:navigationIcon="@mipmap/back"
-        android:navigationIcon="@mipmap/back"
         android:background="@color/colorPrimary">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/perfect_info"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/toolbar_title_text_color"
-            android:textSize="@dimen/toolbar_title_text_size" />
+            style="@style/toolBarTextViewStyle" />
     </android.support.v7.widget.Toolbar>
 
     <TextView

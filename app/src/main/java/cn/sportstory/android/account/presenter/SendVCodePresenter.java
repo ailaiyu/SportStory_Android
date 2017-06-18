@@ -1,5 +1,6 @@
 package cn.sportstory.android.account.presenter;
 
+import cn.sportstory.android.R;
 import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.contract.SendVCodeTaskContract;
 import cn.sportstory.android.account.model.sendVCode.SendVCodeModel;
@@ -33,8 +34,10 @@ public class SendVCodePresenter extends SendVCodeTaskContract.Presenter {
                 SendVCodeBean bean = response.body();
                 if (response.code() == ResponseParser.RESPONSE_ERR){
                         view.showError(bean.getErr());
-                }else {
+                }else if (response.code() == ResponseParser.RESPONSE_CODE_OK){
                     ((SendVCodeTaskContract.View)view).showSendSuccess();
+                }else {
+                    view.showError(view.getViewContext().getString(R.string.server_error));
                 }
             }
 

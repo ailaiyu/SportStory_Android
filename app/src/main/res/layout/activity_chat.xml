@@ -12,6 +12,8 @@
         android:layout_height="wrap_content"
         toolbar:elevation="@dimen/toolbar_elevation"
         android:elevation="@dimen/toolbar_elevation"
+        app:contentInsetLeft="@dimen/toolbar_content_insert"
+        app:contentInsetStart="@dimen/toolbar_content_insert"
         toolbar:navigationIcon="@mipmap/back"
         android:background="@color/colorPrimary">
 
@@ -19,10 +21,7 @@
             android:id="@+id/tv_chat_title_nickname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/toolbar_title_text_color"
-            android:textSize="@dimen/toolbar_title_text_size" />
+            style="@style/toolBarTextViewStyle" />
     </android.support.v7.widget.Toolbar>
 
 

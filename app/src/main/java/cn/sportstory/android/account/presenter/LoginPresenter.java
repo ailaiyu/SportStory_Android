@@ -3,6 +3,7 @@ package cn.sportstory.android.account.presenter;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import cn.sportstory.android.R;
 import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.model.login.LoginEmailPassword;
 import cn.sportstory.android.account.model.login.LoginEmailVCode;
@@ -17,16 +18,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static cn.sportstory.android.common.bean.UserLoginBean.LOGIN_TYPE_EMAIL_PASSWORD;
+import static cn.sportstory.android.common.bean.UserLoginBean.LOGIN_TYPE_EMAIL_VCODE;
+import static cn.sportstory.android.common.bean.UserLoginBean.LOGIN_TYPE_PHONE_PASSWORD;
+import static cn.sportstory.android.common.bean.UserLoginBean.LOGIN_TYPE_PHONE_VCODE;
+
 /**
  * Created by aaron on 2017/5/17.
  */
 
 public class LoginPresenter extends LoginTaskContract.Presenter {
 
-    private static final int LOGIN_TYPE_PHONE_VCODE = 1;
-    private static final int LOGIN_TYPE_PHONE_PASSWORD = 2;
-    private static final int LOGIN_TYPE_EMAIL_VCODE = 3;
-    private static final int LOGIN_TYPE_EMAIL_PASSWORD = 4;
+
     private static final String IS_VALID_REGISTER = "00";
     private LoginModel loginModel;
     private UserLoginBean bean;
@@ -53,6 +56,7 @@ public class LoginPresenter extends LoginTaskContract.Presenter {
                 loginModel = new LoginPhonePassword(this);
                 break;
         }
+        bean.setLoginType(null);
     }
 
 
@@ -68,12 +72,14 @@ public class LoginPresenter extends LoginTaskContract.Presenter {
                 UserLoginBean bean = response.body();
                 if (response.code() == ResponseParser.RESPONSE_ERR){
                     view.showError(bean.getErr());
-                }else {
+                }else if (response.code() == ResponseParser.RESPONSE_CODE_OK){
                     if (!TextUtils.isEmpty(bean.getIs_valid()) && bean.getIs_valid().equals(IS_VALID_REGISTER))
                     {
                         ((LoginTaskContract.View)view).register();
                     }else
                         ((LoginTaskContract.View)view).loginSuccess();
+                }else {
+                    view.showError(view.getViewContext().getString(R.string.common_error));
                 }
             }
 

@@ -25,9 +25,7 @@ public class UpdateUserBackground extends UpdateUserInfoModel {
 
     @Override
     public void updateUserInfo(UserBean bean, Callback<UserBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("background", bean.getBackground());
-        Call<UserBean> repos = service.updateUserBackground(map);
+        Call<UserBean> repos = service.updateUserBackground(bean);
         repos.enqueue(callback);
 
     }

@@ -12,7 +12,8 @@
         android:layout_height="?attr/actionBarSize"
         toolbar:elevation="@dimen/toolbar_elevation"
         android:elevation="@dimen/toolbar_elevation"
-
+        app:contentInsetLeft="@dimen/toolbar_content_insert"
+        app:contentInsetStart="@dimen/toolbar_content_insert"
         android:background="@color/colorPrimary">
 
         <TextView

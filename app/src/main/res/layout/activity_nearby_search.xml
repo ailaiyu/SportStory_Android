@@ -8,10 +8,11 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar_login_with_psd"
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         toolbar:elevation="@dimen/toolbar_elevation"
+        android:elevation="@dimen/toolbar_elevation"
         app:contentInsetLeft="@dimen/toolbar_content_insert"
         toolbar:navigationIcon="@mipmap/back"
         app:contentInsetStart="@dimen/toolbar_content_insert"
@@ -21,13 +22,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/search"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/toolbar_title_text_color"
-            android:textSize="@dimen/toolbar_title_text_size" />
+            style="@style/toolBarTextViewStyle"/>
     </android.support.v7.widget.Toolbar>
 
     <LinearLayout
+        android:id="@+id/ll_search"
         android:layout_width="match_parent"
         android:background="@drawable/round_input_layout"
         android:layout_margin="25dp"
@@ -35,10 +34,17 @@
         <SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:gravity="center_vertical"
+            android:layout_height="match_parent">
         </SearchView>
-
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btn_search"
+        android:layout_width="match_parent"
+        style="@style/RoundButton45"
+        android:layout_margin="50dp"
+        android:layout_height="wrap_content"
+        android:text="@string/search"/>
 
 </LinearLayout>

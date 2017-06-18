@@ -26,11 +26,7 @@ public class ChangePhone extends UpdateAccountInfoModel {
 
     @Override
     public void updatePhone(UserAccountBean bean, Callback<UserAccountBean> callback) {
-        super.updatePhone(bean, callback);
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("phone", bean.getPhone());
-        map.put("code", bean.getCode());
-        Call<UserAccountBean> repos = service.changePhone(map);
+        Call<UserAccountBean> repos = service.changePhone(bean);
         repos.enqueue(callback);
     }
 }

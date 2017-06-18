@@ -25,10 +25,7 @@ public class UpdateUserEmail extends UpdateUserInfoModel {
 
     @Override
     public void updateUserInfo(UserBean bean, Callback<UserBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("email", bean.getEmail());
-        Call<UserBean> repos = service.updateEmail(map);
+        Call<UserBean> repos = service.updateEmail(bean);
         repos.enqueue(callback);
-
     }
 }

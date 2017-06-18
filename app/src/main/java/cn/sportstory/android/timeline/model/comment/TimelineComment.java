@@ -25,13 +25,7 @@ public class TimelineComment extends TimelineCommentModel {
 
     @Override
     public void comment(TimelineCommentBean bean, Callback<TimelineCommentBean> callback) {
-
-        Map<String, String> map = new HashMap<>();
-        map.put("t_id", bean.getT_id());
-        map.put("content", bean.getContent());
-        if (!TextUtils.isEmpty(bean.getTo()))
-            map.put("to", bean.getTo());
-        Call<TimelineCommentBean> repos = service.timelineComment(map);
+        Call<TimelineCommentBean> repos = service.timelineComment(bean);
         repos.enqueue(callback);
     }
 }

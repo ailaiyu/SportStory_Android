@@ -23,10 +23,7 @@ public class TimelineGet extends TimelineGetModel {
 
     @Override
     public void getTimeline(TimelineGetBean bean, Callback<TimelineGetBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("type", bean.getType());
-        map.put("uid", bean.getUid());
-        Call<TimelineGetBean> repos = service.getTimeline(map);
+        Call<TimelineGetBean> repos = service.getTimeline(bean);
         repos.enqueue(callback);
 
     }

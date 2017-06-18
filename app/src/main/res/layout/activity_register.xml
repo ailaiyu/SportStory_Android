@@ -24,10 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/register"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:textColor="@color/toolbar_title_text_color"
-            android:textSize="@dimen/toolbar_title_text_size" />
+            style="@style/toolBarTextViewStyle" />
     </android.support.v7.widget.Toolbar>
 
     <de.hdodenhof.circleimageview.CircleImageView

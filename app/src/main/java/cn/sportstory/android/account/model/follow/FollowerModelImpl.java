@@ -23,11 +23,8 @@ public class FollowerModelImpl extends FollowModel {
     }
 
     public void getFollowers(UserFollowerBean bean, Callback<UserBean[]> callback){
-        Map<String, String> map = new HashMap<>();
-        map.put("f_id", bean.getF_id());
-        map.put("start", bean.getStart());
-        map.put("num", bean.getNum());
-        Call<UserBean[]> repos = service.getFollowers(map);
+
+        Call<UserBean[]> repos = service.getFollowers(bean);
         repos.enqueue(callback);
     }
 

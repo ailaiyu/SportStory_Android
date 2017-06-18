@@ -25,9 +25,7 @@ public class SendVCodeModelImpl extends SendVCodeModel {
 
     @Override
     public void sendVCode(SendVCodeBean bean, Callback<SendVCodeBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("phone", bean.getPhone());
-        Call<SendVCodeBean> repos = service.sendVcode(map);
+        Call<SendVCodeBean> repos = service.sendVcode(bean);
         repos.enqueue(callback);
 
     }

@@ -25,10 +25,7 @@ public class UpdateUserSport extends UpdateUserInfoModel {
 
     @Override
     public void updateUserInfo(UserBean bean, Callback<UserBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        Gson gson = new Gson();
-        map.put("sport", gson.toJson(bean.getSport()));
-        Call<UserBean> repos = service.updateUserSport(map);
+        Call<UserBean> repos = service.updateUserSport(bean);
         repos.enqueue(callback);
 
     }

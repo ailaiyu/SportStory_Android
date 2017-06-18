@@ -18,10 +18,15 @@ import cn.sportstory.android.common.bean.UserNearbyBean;
 import cn.sportstory.android.common.bean.UserSearchBean;
 import cn.sportstory.android.constants.UrlConstants;
 import cn.sportstory.android.common.bean.SendVCodeBean;
+import cn.sportstory.android.im.UserLogin;
+import cn.sportstory.android.nearby.model.search.UserSearch;
+import cn.sportstory.android.timeline.model.getTimeline.TimelineGet;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
+import retrofit2.http.Headers;
 import retrofit2.http.POST;
 import retrofit2.http.QueryMap;
 
@@ -35,34 +40,32 @@ public interface SportStoryService {
     /**
      * 发送短信验证码
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.SEND_VCODE)
     Call<SendVCodeBean> sendVcode(
-            @FieldMap Map<String, String> fields
+            @Body SendVCodeBean bean
     );
 
     /**
      * 上传手机信息
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.PHONE_INFO)
     Call<PhoneInfoBean> uploadPhoneInfo(
-            @FieldMap Map<String, String> fields
+            @Body PhoneInfoBean bean
     );
 
     /**
      * 用户注册
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_LOGON)
     Call<UserBean> uploadUserInfo(
             @FieldMap Map<String, String> fields
@@ -71,59 +74,56 @@ public interface SportStoryService {
     /**
      * 用户登录
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_LOGIN)
     Call<UserLoginBean> userLogin(
-            @FieldMap Map<String, String> fields
+            @Body UserLoginBean bean
     );
 
     /**
      * 用户更新昵称
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_NICKNAME)
     Call<UserBean> updateNickname(
-            @FieldMap Map<String, String> fields
+            @Body Map<String, String> fields
     );
 
     /**
      * 用户更新邮箱
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_EMAIL)
     Call<UserBean> updateEmail(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
     );
 
     /**
      * 用户更新手机
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_PHONE)
     Call<UserBean> updatePhone(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
     );
 
 
     /**
      * 更新用户头像
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_AVATAR)
     Call<UserBean> updateUserAvatar(
             @FieldMap Map<String, String> fields
@@ -132,107 +132,105 @@ public interface SportStoryService {
     /**
      * 更新用户背景图片
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_BACKGROUND)
     Call<UserBean> updateUserBackground(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
     );
 
     /**
      * 更新用户性别
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_GENDER)
     Call<UserBean> updateUserGender(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
+
     );
 
     /**
      * 更新用户体格信息
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_BODY)
     Call<UserBean> updateUserBody(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
     );
 
     /**
      * 更新用户地区信息
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_AREA)
     Call<UserBean> updateUserArea(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
     );
 
     /**
      * 更新用户运动类型
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_SPORT)
     Call<UserBean> updateUserSport(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
     );
 
     /**
      * 更换手机号
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_SPORT)
     Call<UserAccountBean> changePhone(
-            @FieldMap Map<String, String> fields
+            @Body UserAccountBean bean
     );
 
 
     /**
      * 更换邮箱
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_SPORT)
     Call<UserAccountBean> changeEmail(
-            @FieldMap Map<String, String> fields
+            @Body UserAccountBean bean
     );
 
     /**
      * 上传用户地理位置
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_LOCATION)
     Call<UserLocationBean> uploadUserLocation(
-            @FieldMap Map<String, String> fields
+            @Body UserLocationBean bean
     );
 
     /**
      * 获取用户相册
      *
-     * @param options
      * @return
      */
     @GET(UrlConstants.USER_GALLERY)
     Call<UserGalleryBean> getUserGallery(
-            @QueryMap Map<String, String> options
+        @Body UserGalleryBean bean
     );
 
 
@@ -250,33 +248,31 @@ public interface SportStoryService {
     /**
      * 搜索用户
      *
-     * @param options
      * @return
      */
     @GET(UrlConstants.USER_SEARCH)
     Call<UserSearchBean> searchUser(
-            @QueryMap Map<String, String> options
-    );
+            @Body UserSearchBean bean
+            );
 
     /**
      * 获取动态
      *
-     * @param options
      * @return
      */
     @GET(UrlConstants.TIMELINE_GET)
     Call<TimelineGetBean> getTimeline(
-            @QueryMap Map<String, String> options
-    );
+            @Body TimelineGetBean bean
+            );
 
 
     /**
      * 发送状态
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.TIMELINE_POST)
     Call<TimelineBean> postTimeline(
             @FieldMap Map<String, String> fields
@@ -285,85 +281,79 @@ public interface SportStoryService {
     /**
      * 删除动态
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.TIMELINE_DEL)
     Call<TimelineBean> delTimeline(
-            @FieldMap Map<String, String> fields
+            @Body TimelineBean bean
     );
 
     /**
      * 点赞动态或取消赞
      *
-     * @param fields
      * @return
      */
-    @FormUrlEncoded
+    @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.TIMELINE_LIKE)
     Call<TimelineLikeBean> timelineLike(
-            @FieldMap Map<String, String> fields
+        @Body TimelineLikeBean bean
     );
 
     /**
      * 点赞动态或取消赞
      *
-     * @param fields
      * @return
      */
     @FormUrlEncoded
     @POST(UrlConstants.TIMELINE_COMMENT)
     Call<TimelineCommentBean> timelineComment(
-            @FieldMap Map<String, String> fields
+            @Body TimelineCommentBean bean
     );
 
 
     /**
      * 获取粉丝列表
      *
-     * @param options
      * @return
      */
     @GET(UrlConstants.USER_FOLLOWER)
     Call<UserBean[]> getFollowers(
-            @QueryMap Map<String, String> options
+            @Body UserFollowerBean bean
     );
 
     /**
      * 移除粉丝
      *
-     * @param fields
+    
      * @return
      */
-    @FormUrlEncoded
     @POST(UrlConstants.USER_FOLLOWER)
     Call<UserFollowerBean> userFollow(
-            @FieldMap Map<String, String> fields
+            @Body UserFollowerBean bean
     );
 
 
     /**
      * 获取关注列表
      *
-     * @param options
      * @return
      */
     @GET(UrlConstants.USER_FOLLOWING)
     Call<UserBean[]> getFollowing(
-            @QueryMap Map<String, String> options
+            @Body UserFollowingBean been
     );
 
     /**
      * 关注或取关
      *
-     * @param fields
+     * @param bean
      * @return
      */
-    @FormUrlEncoded
     @POST(UrlConstants.USER_FOLLOWING)
     Call<UserFollowingBean> userFollowing(
-            @FieldMap Map<String, String> fields
+            @Body UserFollowingBean bean
     );
 
 }

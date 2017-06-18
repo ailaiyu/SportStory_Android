@@ -21,12 +21,7 @@ public class LoginEmailVCode extends LoginModel {
 
     @Override
     public void login(UserLoginBean bean, Callback<UserLoginBean> callback) {
-
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("email", bean.getEmail());
-        map.put("code", bean.getCode());
-        map.put("login_type", bean.getLogin_type());
-        Call<UserLoginBean> repos = service.userLogin(map);
+        Call<UserLoginBean> repos = service.userLogin(bean);
         repos.enqueue(callback);
     }
 }

@@ -1,6 +1,7 @@
 package cn.sportstory.android.nearby.view;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 
@@ -31,6 +33,8 @@ public class NearbyFragment extends Fragment {
 
     private GridView gridView;
     private NearbyAdapter adapter;
+    private ImageView filter;
+    private ImageView search;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -76,8 +80,11 @@ public class NearbyFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_nearby, container, false);
         gridView = (GridView)view.findViewById(R.id.gv_nearby_fragment);
+        filter = (ImageView)view.findViewById(R.id.filter);
+        search = (ImageView)view.findViewById(R.id.search);
         adapter = new NearbyAdapter();
         gridView.setAdapter(adapter);
+        initEvent();
         initData();
         return view;
     }
@@ -89,6 +96,22 @@ public class NearbyFragment extends Fragment {
         }
     }
 
+    private void initEvent(){
+        filter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),FilterActivity.class));
+
+            }
+        });
+
+        search.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(),NearbySearchActivity.class));
+            }
+        });
+    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

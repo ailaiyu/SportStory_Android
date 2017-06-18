@@ -23,9 +23,7 @@ public class TimelineDel extends TimelineDelModel {
 
     @Override
     public void delTimeline(TimelineBean bean, Callback<TimelineBean> callback) {
-        Map<String, String> map = new HashMap<>();
-        map.put("t_id", bean.getT_id());
-        Call<TimelineBean> repos = service.delTimeline(map);
+        Call<TimelineBean> repos = service.delTimeline(bean);
         repos.enqueue(callback);
 
     }

@@ -25,10 +25,7 @@ public class UpdateUserShape extends UpdateUserInfoModel {
 
     @Override
     public void updateUserInfo(UserBean bean, Callback<UserBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("stature", bean.getStature());
-        map.put("weight", bean.getWeight());
-        Call<UserBean> repos = service.updateUserBody(map);
+        Call<UserBean> repos = service.updateUserBody(bean);
         repos.enqueue(callback);
     }
 }

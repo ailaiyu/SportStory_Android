@@ -25,11 +25,7 @@ public class UserGallery extends UserGalleryModel {
 
     @Override
     public void getUserGallery(UserGalleryBean bean, Callback<UserGalleryBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("f_id", bean.getF_id());
-        map.put("start", bean.getStart());
-        map.put("num", bean.getNum());
-        Call<UserGalleryBean> repos = service.getUserGallery(map);
+        Call<UserGalleryBean> repos = service.getUserGallery(bean);
         repos.enqueue(callback);
     }
 }

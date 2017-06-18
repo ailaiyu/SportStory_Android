@@ -25,9 +25,7 @@ public class UpdateUserPhone extends UpdateUserInfoModel {
 
     @Override
     public void updateUserInfo(UserBean bean, Callback<UserBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("phone", bean.getPhone());
-        Call<UserBean> repos = service.updatePhone(map);
+        Call<UserBean> repos = service.updatePhone(bean);
         repos.enqueue(callback);
 
     }

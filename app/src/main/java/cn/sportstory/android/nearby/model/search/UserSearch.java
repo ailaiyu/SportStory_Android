@@ -20,11 +20,7 @@ public class UserSearch extends UserSearchModel {
 
     @Override
     public void searchUser(UserSearchBean bean, Callback<UserSearchBean> callback) {
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("keyword", bean.getKeyword());
-        map.put("start", bean.getStart());
-        map.put("num", bean.getNum());
-        Call<UserSearchBean> repos = service.searchUser(map);
+        Call<UserSearchBean> repos = service.searchUser(bean);
         repos.enqueue(callback);
     }
 }

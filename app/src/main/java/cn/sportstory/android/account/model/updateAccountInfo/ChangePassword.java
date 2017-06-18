@@ -23,13 +23,7 @@ public class ChangePassword extends UpdateAccountInfoModel{
 
     @Override
     public void updateEmail(UserAccountBean bean, Callback<UserAccountBean> callback) {
-        super.updateEmail(bean, callback);
-        super.updatePhone(bean, callback);
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("type", bean.getType());
-        map.put("password", bean.getPassword());
-        map.put("code", bean.getCode());
-        Call<UserAccountBean> repos = service.changePhone(map);
+        Call<UserAccountBean> repos = service.changePhone(bean);
         repos.enqueue(callback);
     }
 }

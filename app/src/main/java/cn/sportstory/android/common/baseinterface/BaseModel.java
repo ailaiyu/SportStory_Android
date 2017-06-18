@@ -18,6 +18,7 @@ import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -35,28 +36,31 @@ public abstract class BaseModel {
     protected BaseModel(BasePresenter presenter) {
         final String token = UserTokenHelper.getToken(presenter.getContext());
         final String language = Environment.isZh(presenter.getContext()) ? "zh_CN" : "en_US";
-        OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(DEFAULT_CONNECT_TIME_OUT, TimeUnit.SECONDS)
-                .readTimeout(DEFAULT_READ_TIME_OUT, TimeUnit.SECONDS)
-                .writeTimeout(DEFAULT_WRITE_TIME_OUT, TimeUnit.SECONDS)
-                .addInterceptor(new Interceptor() {
-                    @Override
-                    public Response intercept(Chain chain) throws IOException {
-                        Request request = chain.request()
-                                .newBuilder()
-                                .addHeader("Content-Type", "application/json")
-                                .addHeader("token", token)
-                                .addHeader("Accept-Language", language)
-                                .build();
-                        return chain.proceed(request);
-                    }
-                })
-                .build();
 
+        OkHttpClient.Builder builder = new OkHttpClient.Builder();
+
+        builder.connectTimeout(DEFAULT_CONNECT_TIME_OUT, TimeUnit.SECONDS)
+        .readTimeout(DEFAULT_READ_TIME_OUT, TimeUnit.SECONDS)
+        .writeTimeout(DEFAULT_WRITE_TIME_OUT, TimeUnit.SECONDS)
+        .addInterceptor(new Interceptor() {
+            @Override
+            public Response intercept(Chain chain) throws IOException {
+                Request request = chain.request()
+                        .newBuilder()
+                        .addHeader("token", token)
+                        .addHeader("Accept-Language", language)
+                        .build();
+                return chain.proceed(request);
+            }
+        });
+
+        HttpLoggingInterceptor logging = new HttpLoggingInterceptor();
+        logging.setLevel(HttpLoggingInterceptor.Level.BODY);
+        builder.interceptors().add(logging);
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(UrlConstants.DOMAIN)
-                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
-                .client(client)
+                .addConverterFactory(GsonConverterFactory.create())
+                .client(builder.build())
                 .build();
 
         service = retrofit.create(SportStoryService.class);

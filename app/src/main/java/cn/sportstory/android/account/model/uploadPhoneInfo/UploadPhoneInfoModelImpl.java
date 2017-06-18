@@ -24,16 +24,7 @@ public class UploadPhoneInfoModelImpl extends UploadPhoneInfoModel {
 
     @Override
     public void uploadPhoneInfo(PhoneInfoBean bean, Callback<PhoneInfoBean> callback) {
-
-        Map<String, String> map = new LinkedHashMap<>();
-        map.put("brand", bean.getBrand());
-        map.put("model", bean.getModel());
-        map.put("network_type", bean.getNetwork_type());
-        map.put("lat", bean.getLat());
-        map.put("lon", bean.getLon());
-        map.put("city", bean.getCity());
-        map.put("imei", bean.getImei());
-        Call<PhoneInfoBean> repos = service.uploadPhoneInfo(map);
+        Call<PhoneInfoBean> repos = service.uploadPhoneInfo(bean);
         repos.enqueue(callback);
     }
 }

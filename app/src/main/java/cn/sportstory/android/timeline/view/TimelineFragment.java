@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,6 +36,7 @@ public class TimelineFragment extends Fragment {
     private RecyclerView recyclerView;
     private TimelineAdapter adapter;
     private OnFragmentInteractionListener mListener;
+    private LinearLayoutManager layoutManager;
     private FloatingActionButton post;
     public TimelineFragment() {
         // Required empty public constructor
@@ -76,6 +78,9 @@ public class TimelineFragment extends Fragment {
         post = (FloatingActionButton)view.findViewById(R.id.post);
         recyclerView = (RecyclerView)contentList.findViewById(R.id.content);
         adapter = new TimelineAdapter();
+        layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
         post.setOnClickListener(new View.OnClickListener() {
             @Override

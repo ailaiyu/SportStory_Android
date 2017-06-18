@@ -22,10 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/perfect_info"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/toolbar_title_text_color"
-            android:textSize="@dimen/toolbar_title_text_size" />
+            style="@style/toolBarTextViewStyle"/>
     </android.support.v7.widget.Toolbar>
 
     <TextView
@@ -42,17 +39,21 @@
         android:layout_marginTop="20dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="0.01">
+        android:gravity="center">
         
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginRight="20dp"
             android:src="@mipmap/ic_launcher"/>
+
         <RatingBar
-            style="@style/MyStar"
-            android:layout_width="wrap_content"
-            android:layout_height="15dp" 
-            android:numStars="5"/>
+            android:id="@+id/ratingBar"
+            style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:numStars="5" />
     </LinearLayout>
 
     <LinearLayout
@@ -60,15 +61,18 @@
         android:layout_marginRight="50dp"
         android:layout_width="wrap_content"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginRight="20dp"
             android:src="@mipmap/ic_launcher"/>
         <RatingBar
+            style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:numStars="5"/>
     </LinearLayout>
 
@@ -76,16 +80,19 @@
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginTop="10dp"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginRight="20dp"
             android:src="@mipmap/ic_launcher"/>
         <RatingBar
+            style="@style/Base.Widget.AppCompat.RatingBar.Indicator"
             android:layout_width="wrap_content"
-            android:layout_height="15dp"
+            android:layout_height="wrap_content"
             android:numStars="5"/>
     </LinearLayout>
     <Button

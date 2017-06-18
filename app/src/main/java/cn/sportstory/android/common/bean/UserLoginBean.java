@@ -5,6 +5,12 @@ package cn.sportstory.android.common.bean;
  * 用户登录 返回用户token 我认为还需要加一个返回字段：uid
  */
 public class UserLoginBean extends CommonBean {
+    public static final String LOGIN_TYPE_PHONE = "phone";
+    public static final String LOGIN_TYPE_EMAIL = "email";
+    public static final String LOGIN_TYPE_PHONE_VCODE = "1";
+    public static final String LOGIN_TYPE_PHONE_PASSWORD = "2";
+    public static final String LOGIN_TYPE_EMAIL_VCODE = "3";
+    public static final String LOGIN_TYPE_EMAIL_PASSWORD = "4";
     private String phone;
     private String password;
     private String email;
@@ -20,17 +26,17 @@ public class UserLoginBean extends CommonBean {
     private String stature;
     private String nickname;
     private String login_type;
-    private int loginType;
+    private String loginType;
 
     public String getLogin_type() {
         return login_type;
     }
 
-    public int getLoginType() {
+    public String getLoginType() {
         return loginType;
     }
 
-    public void setLoginType(int loginType) {
+    public void setLoginType(String loginType) {
         this.loginType = loginType;
     }
 

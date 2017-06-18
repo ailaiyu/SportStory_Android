@@ -10,7 +10,7 @@ public class UrlConstants {
 
     public static final String DOMAIN = "http://59.111.92.6:80/v1/";                //企业ip
 
-    public static final String SEND_VCODE = "vcode/send";                           //发送短信验证码 POST
+    public static final String SEND_VCODE = "common/code";                           //发送短信验证码 POST
     public static final String PHONE_INFO = "phone/info";                           //上传手机信息 POST
     public static final String USER_LOGON = "user/logon";                           //用户注册  POST
     public static final String USER_LOGIN = "user/login";                           //用户登录  POST

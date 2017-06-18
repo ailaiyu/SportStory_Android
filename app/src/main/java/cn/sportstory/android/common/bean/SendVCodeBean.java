@@ -7,6 +7,17 @@ package cn.sportstory.android.common.bean;
 public class SendVCodeBean extends CommonBean {
     private String phone;
     private String code;
+    private String type;
+    public static final String SEND_TYPE_PHONE = "phone";
+    public static final String SEND_TYPE_EMAIL = "emial";
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
 
     public String getPhone() {
         return phone;

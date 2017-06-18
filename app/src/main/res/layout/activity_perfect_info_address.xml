@@ -22,12 +22,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:layout_gravity="center_horizontal"
                 android:text="@string/perfect_info"
-                android:textColor="@color/toolbar_title_text_color"
-                android:textSize="@dimen/toolbar_title_text_size"
-                android:textStyle="bold" />
+                style="@style/toolBarTextViewStyle" />
 
             <TextView
                 android:id="@+id/tv_perfect_info_address_skip"

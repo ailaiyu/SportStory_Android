@@ -66,6 +66,7 @@
     <!--提示语-->
     <string name="net_disconnect">已断开连接，请检查您的网络设置</string>
     <string name="server_error">服务器错误</string>
+    <string name="common_error">操作失败，请重试</string>
     <string name="send_vcode_failed">发送失败，请重试</string>
     <string name="send_vcode_success">发送成功</string>
 

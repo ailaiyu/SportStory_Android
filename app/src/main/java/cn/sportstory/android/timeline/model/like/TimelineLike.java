@@ -20,11 +20,7 @@ public class TimelineLike extends TimelineLikeModel {
 
     @Override
     public void like(TimelineLikeBean bean, Callback<TimelineLikeBean> callback) {
-
-        Map<String, String> map = new HashMap<>();
-        map.put("t_id", bean.getT_id());
-        map.put("type", bean.getType());
-        Call<TimelineLikeBean> repos = service.timelineLike(map);
+        Call<TimelineLikeBean> repos = service.timelineLike(bean);
         repos.enqueue(callback);
     }
 }

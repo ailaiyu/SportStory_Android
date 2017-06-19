@@ -279,25 +279,29 @@
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".account.view.LoginWithPasswordActivity"
-            android:windowSoftInputMode="stateHidden" />
-        <activity android:name=".account.view.VerifyPhoneActivity"/>
-        <activity android:name=".account.view.SetPasswordActivity"/>
-        <activity android:name=".account.view.RegisterActivity"/>
-        <activity android:name=".account.view.PerfectInfoAddressActivity"/>
-        <activity android:name=".account.view.ChooseCityActivity"/>
-        <activity android:name=".account.view.PerfectInfoShapeActivity"/>
-        <activity android:name=".account.view.PerfectInfoChooseSportsActivity"/>
-        <activity android:name=".account.view.PerfectInfoChooseSportsScoreActivity"/>
-        <activity android:name=".profile.view.FollowersListActivity"/>
-        <activity android:name=".profile.view.ProfileOtherActivity">
+            android:windowSoftInputMode="stateHidden"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".account.view.VerifyPhoneActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".account.view.SetPasswordActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".account.view.RegisterActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".account.view.PerfectInfoAddressActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".account.view.ChooseCityActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".account.view.PerfectInfoShapeActivity"
+            android:screenOrientation="portrait">
         </activity>
-        <activity android:name=".profile.view.TestActivity">
-
+        <activity android:name=".account.view.PerfectInfoChooseSportsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity android:name=".account.view.PerfectInfoChooseSportsScoreActivity"
+            android:screenOrientation="portrait">
         </activity>
 
-        <activity android:name=".profile.view.EditProfileActivity">
+        <activity android:name=".profile.view.FollowersListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".profile.view.ProfileOtherActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".profile.view.TestActivity" android:screenOrientation="portrait"/>
 
-        </activity>
+        <activity android:name=".profile.view.EditProfileActivity" android:screenOrientation="portrait"/>
         <activity android:name=".account.view.LoginActivity"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait">
@@ -344,6 +348,16 @@
         <activity android:name=".settings.view.PostFeedbackActivity"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
     </application>
 
 </manifest>

@@ -9,6 +9,7 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.support.v4.content.FileProvider;
 import android.widget.Toast;
 
 import java.io.File;
@@ -43,8 +44,8 @@ public class CameraHelper {
             if (!dir.exists()){
                 dir.mkdirs();
             }
+            Uri uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", new File(cameraPath));
 
-            Uri uri = Uri.fromFile(new File(cameraPath));
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
             activity.startActivityForResult(intent, CAMERA_REQUEST_CODE);
         }else {

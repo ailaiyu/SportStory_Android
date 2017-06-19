@@ -5,12 +5,11 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.RegionIterator;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.Nullable;
+import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -83,13 +82,11 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         .setItems(new String[]{"拍照", "相册"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
                         if (which == 0) {
                             // TODO: 2017/5/13  打开相机
                             cameraHelper.takePhoto(RegisterActivity.this);
                         }else {
                             // TODO: 2017/5/13 打开相册
-
                         }
                     }
                 }).create();
@@ -141,7 +138,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
             }else if (requestCode == CameraHelper.CROP_REQUEST){
                 File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".jpg");
-                Uri uri = Uri.fromFile(cropFile);
+                Uri uri = FileProvider.getUriForFile(this,getPackageName() + ".provider", cropFile);
+
                 try{
                     Bitmap pic = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                     pic = ImageTools.imageZoom(pic, 500);

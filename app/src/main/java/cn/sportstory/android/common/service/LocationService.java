@@ -25,7 +25,8 @@ public class LocationService extends Service {
     public AMapLocationClient client = null;
     public AMapLocationClientOption option = null;
     public static final int FIVE_MINUTES = 300000;
-    public static final String ACTION_LOCATION_SUCCESS = "cn.sportstory.android.common.service.LocationService.LocationSuccess";
+    public static final String ACTION_LOCATION_SUCCESS =
+            "cn.sportstory.android.common.service.LocationService.LocationSuccess";
     public AMapLocationListener listener = new AMapLocationListener() {
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {

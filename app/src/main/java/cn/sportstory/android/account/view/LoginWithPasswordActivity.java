@@ -11,7 +11,6 @@ import cn.sportstory.android.R;
 
 public class LoginWithPasswordActivity extends BaseActivity implements View.OnClickListener{
 
-
     private Toolbar toolbar;
 
     @Override

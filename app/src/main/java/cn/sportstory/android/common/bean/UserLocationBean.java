@@ -1,6 +1,5 @@
 package cn.sportstory.android.common.bean;
 
-import android.content.SyncRequest;
 import android.os.Parcel;
 import android.os.Parcelable;
 

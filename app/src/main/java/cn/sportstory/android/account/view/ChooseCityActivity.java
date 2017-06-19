@@ -7,10 +7,12 @@ import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import cn.sportstory.android.BaseActivity;
@@ -28,7 +30,9 @@ public class ChooseCityActivity extends BaseActivity {
     private LinearLayout mLlGps;
     private String gpsCity;
     private TextView mTvGpsCity;
+    private SearchView searchView;
     private LocationServiceReceiver receiver;
+    CityListAdapter adapter = new CityListAdapter();
 
     private boolean locateSuccess = false;
 
@@ -37,6 +41,8 @@ public class ChooseCityActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_city);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
+        searchView = (SearchView)findViewById(R.id.search);
+        searchView.setIconifiedByDefault(false);
         mLlGps = (LinearLayout)findViewById(R.id.ll_gps);
         mTvGpsCity = (TextView)findViewById(R.id.city);
         listView = (ListView)findViewById(R.id.city_list);
@@ -48,7 +54,7 @@ public class ChooseCityActivity extends BaseActivity {
             }
         });
 
-        final CityListAdapter adapter = new CityListAdapter();
+
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -67,6 +73,26 @@ public class ChooseCityActivity extends BaseActivity {
                 }
             }
         });
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                if (searchView.getQuery() == null || TextUtils.isEmpty(searchView.getQuery())){
+                    adapter.reset();
+                    adapter.notifyDataSetChanged();
+                }else {
+                    String str = searchView.getQuery().toString();
+                    adapter.setSearch(str);
+                }
+                return false;
+            }
+        });
+
+
     }
 
     @Override

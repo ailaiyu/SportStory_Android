@@ -118,7 +118,12 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_CODE_CITY){
-
+            if (resultCode == RESULT_OK) {
+                String city = data.getStringExtra("city");
+                if (!TextUtils.isEmpty(city))
+                    mTvCity.setText(city);
+                // TODO: 2017/6/19 更新用户地址
+            }
         }
     }
 
@@ -131,8 +136,6 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
         }
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         final NumberPicker numberPicker = new NumberPicker(this);
-//        int padding = (int)ViewUtils.dipToPx(this, 10f);
-//        numberPicker.setPadding(padding, padding, padding, padding);
         numberPicker.setMinValue(150);
         numberPicker.setMaxValue(220);
         numberPicker.setValue(height);
@@ -195,8 +198,6 @@ public class EditProfileActivity extends BaseActivity implements View.OnClickLis
         }
         final AlertDialog alertDialog = new AlertDialog.Builder(this).create();
         final NumberPicker numberPicker = new NumberPicker(this);
-//        int padding = (int)ViewUtils.dipToPx(this, 10f);
-//        numberPicker.setPadding(padding, padding, padding, padding);
         numberPicker.setMinValue(40);
         numberPicker.setMaxValue(100);
         numberPicker.setValue(height);

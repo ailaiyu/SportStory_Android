@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
@@ -67,6 +68,13 @@ public class PerfectInfoAddressActivity extends BaseActivity implements View.OnC
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        if (requestCode == GET_LOCATION){
+            if (resultCode == RESULT_OK) {
+                String city = data.getStringExtra("city");
+                if (!TextUtils.isEmpty(city))
+                    mTvAddress.setText(city);
+                // TODO: 2017/6/19 更新用户地址
+            }
+        }
     }
 }

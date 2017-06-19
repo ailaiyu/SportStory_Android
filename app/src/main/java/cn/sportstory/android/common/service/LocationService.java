@@ -2,6 +2,7 @@ package cn.sportstory.android.common.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.widget.Toast;
@@ -10,6 +11,8 @@ import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
 import com.amap.api.location.AMapLocationListener;
+
+import cn.sportstory.android.common.bean.UserLocationBean;
 
 
 /**
@@ -22,6 +25,7 @@ public class LocationService extends Service {
     public AMapLocationClient client = null;
     public AMapLocationClientOption option = null;
     public static final int FIVE_MINUTES = 300000;
+    public static final String ACTION_LOCATION_SUCCESS = "cn.sportstory.android.common.service.LocationService.LocationSuccess";
     public AMapLocationListener listener = new AMapLocationListener() {
         @Override
         public void onLocationChanged(AMapLocation aMapLocation) {
@@ -30,28 +34,30 @@ public class LocationService extends Service {
                 if (aMapLocation.getErrorCode() == 0)
                 {
                     // TODO: 2017/5/1  定位成功
-                    aMapLocation.getLocationType();//获取当前定位结果来源，如网络定位结果，详见定位类型表
-                    aMapLocation.getLatitude();//获取纬度
-                    aMapLocation.getLongitude();//获取经度
-                    aMapLocation.getAccuracy();//获取精度信息
-                    aMapLocation.getAddress();//地址，如果option中设置isNeedAddress为false，则没有此结果，网络定位结果中会有地址信息，GPS定位不返回地址信息。
-                    aMapLocation.getCountry();//国家信息
-                    aMapLocation.getProvince();//省信息
-                    aMapLocation.getCity();//城市信息
-                    aMapLocation.getDistrict();//城区信息
-                    aMapLocation.getStreet();//街道信息
-                    aMapLocation.getStreetNum();//街道门牌号信息
-                    aMapLocation.getCityCode();//城市编码
-                    aMapLocation.getAdCode();//地区编码
-                    aMapLocation.getAoiName();//获取当前定位点的AOI信息
-                    aMapLocation.getBuildingId();//获取当前室内定位的建筑物Id
-                    aMapLocation.getFloor();//获取当前室内定位的楼层
-                    Toast.makeText(LocationService.this, aMapLocation.getLatitude() + "" + aMapLocation.getLatitude() + " " + aMapLocation.getAddress(), Toast.LENGTH_LONG);
-                    //aMapLocation.getGpsStatus();//获取GPS的当前状态
-                    //获取定位时间
-//                    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//                    Date date = new Date(aMapLocation.getTime());
-//                    df.format(date);
+                    UserLocationBean bean = new UserLocationBean();
+                    bean.setLocationType(aMapLocation.getLocationType());//获取当前定位结果来源，如网络定位结果，详见定位类型表
+                    bean.setLat(aMapLocation.getLatitude());//获取纬度
+                    bean.setLon(aMapLocation.getLongitude());//获取经度
+                    bean.setAccuracy(aMapLocation.getAccuracy());//获取精度信息
+                    bean.setAddress(aMapLocation.getAddress());//地址，如果option中设置isNeedAddress为false，则没有此结果，网络定位结果中会有地址信息，GPS定位不返回地址信息。
+                    bean.setCountry(aMapLocation.getCountry());//国家信息
+                    bean.setProvince(aMapLocation.getProvince());//省信息
+                    bean.setCity(aMapLocation.getCity());//城市信息
+                    bean.setDistrict(aMapLocation.getDistrict());//城区信息
+                    bean.setStreet(aMapLocation.getStreet());//街道信息
+                    bean.setStreetNum(aMapLocation.getStreetNum());//街道门牌号信息
+                    bean.setCityCode(aMapLocation.getCityCode());//城市编码
+                    bean.setAdCode(aMapLocation.getAdCode());//地区编码
+                    bean.setAoiName(aMapLocation.getAoiName());//获取当前定位点的AOI信息
+                    bean.setBuildingId(aMapLocation.getBuildingId());//获取当前室内定位的建筑物Id
+                    bean.setFloor(aMapLocation.getFloor());//获取当前室内定位的楼层
+
+                    Intent intent = new Intent();
+                    intent.setAction(ACTION_LOCATION_SUCCESS);
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("location", bean);
+                    intent.putExtras(bundle);
+                    sendBroadcast(intent);
                 }else {
                     // TODO: 2017/5/1 定位失败 
                 }
@@ -92,7 +98,6 @@ public class LocationService extends Service {
         client.stopLocation();
         client.onDestroy();
         client = null;
-
         listener = null;
     }
 }

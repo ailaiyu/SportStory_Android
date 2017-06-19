@@ -63,7 +63,7 @@
     <string name="operation_failed">操作失败，请重试</string>
     <string name="tip">提示</string>
     <string name="edit_unsave">更改尚未保存，是否确认退出？</string>
-
+    <string name="locating">Locating...</string>
 
     <!--提示语-->
     <string name="net_disconnect">已断开连接，请检查您的网络设置</string>

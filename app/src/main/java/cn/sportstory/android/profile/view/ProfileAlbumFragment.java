@@ -4,11 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
+
+import java.util.ArrayList;
+
 import cn.sportstory.android.R;
+import cn.sportstory.android.profile.bean.Album;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +36,9 @@ public class ProfileAlbumFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private RecyclerView mRecyclerView;
+    private ArrayList<Album> albumData;
+    private AlbumAdapter albumAdapter;
 
     public ProfileAlbumFragment() {
         // Required empty public constructor
@@ -65,8 +75,33 @@ public class ProfileAlbumFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile_album, container, false);
+        View view =  inflater.inflate(R.layout.fragment_profile_album, container, false);
+
+        mRecyclerView = (RecyclerView) view.findViewById(R.id.rv_album);
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getActivity(),2));
+
+        initData();
+
+        initAdapter();
+        return view;
     }
+
+    private void initAdapter() {
+        albumAdapter = new AlbumAdapter(R.layout.album_item,albumData);
+        albumAdapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT); //开启动画效果
+        albumAdapter.isFirstOnly(false);   //动画默认执行一次，可对其修改
+        mRecyclerView.setAdapter(albumAdapter);
+    }
+
+    private void initData() {
+        albumData = new ArrayList<>();
+        for (int i = 1; i < 6; i++) {
+            Album item = new Album();
+            item.setAlbumName("相册"+i);
+            albumData.add(item);
+        }
+    }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

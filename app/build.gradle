@@ -60,4 +60,6 @@ dependencies {
     releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.1'
 //    七牛
     compile 'com.qiniu:qiniu-android-sdk:7.3.5'
+
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.18'
 }

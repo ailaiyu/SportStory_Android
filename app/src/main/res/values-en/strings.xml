@@ -33,6 +33,8 @@
     <string name="nickname_with_4_30">昵称(4~30个字符)</string>
     <string name="nickname">昵称</string>
     <string name="gender">性别</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female">Female</string>
     <string name="age">age</string>
     <string name="height">身高</string>
     <string name="weight">体重</string>
@@ -128,6 +130,7 @@
     <string name="write_your_feedback">Feedback content here</string>
     <string name="has_not_commit">Not commit, confirm back?</string>
     <string name="tip_input_content">Please input feedback message</string>
+    <string name="cleaning">Cleaning...</string>
 
     <!--朋友圈-->
     <string name="post_timeline">Post Timeline</string>

@@ -34,14 +34,14 @@
             android:layout_height="wrap_content">
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/img_edit_profile_avatar"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="25dp"
                 android:src="@mipmap/ic_launcher"
                 android:layout_width="100dp"
                 android:layout_height="100dp" />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="30dp"
                 android:background="@color/grey"/>
             <LinearLayout
                 android:id="@+id/ll_edit_profile_nickname"
@@ -59,14 +59,14 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_nickname"
                     android:layout_width="0dp"
                     android:layout_weight="5"
-                    android:text="玲玲芳"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <ImageView
-                    android:src="@mipmap/right"
+                    android:src="@mipmap/go"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="20dp" />
@@ -92,14 +92,14 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_gender"
                     android:layout_width="0dp"
                     android:layout_weight="5"
-                    android:text="女"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <ImageView
-                    android:src="@mipmap/right"
+                    android:src="@mipmap/go"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="20dp" />
@@ -123,14 +123,14 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_height"
                     android:layout_width="0dp"
                     android:layout_weight="5"
-                    android:text="170cm"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <ImageView
-                    android:src="@mipmap/right"
+                    android:src="@mipmap/go"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="20dp" />
@@ -154,14 +154,14 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_weight"
                     android:layout_width="0dp"
                     android:layout_weight="5"
-                    android:text="60kg"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <ImageView
-                    android:src="@mipmap/right"
+                    android:src="@mipmap/go"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="20dp" />
@@ -188,12 +188,11 @@
                     android:id="@+id/tv_edit_profile_birthday"
                     android:layout_width="0dp"
                     android:layout_weight="5"
-                    android:text="1988年8月9日"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <ImageView
-                    android:src="@mipmap/right"
+                    android:src="@mipmap/go"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="20dp" />
@@ -217,14 +216,14 @@
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <TextView
+                    android:id="@+id/tv_city"
                     android:layout_width="0dp"
                     android:layout_weight="5"
-                    android:text="北京"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:layout_height="wrap_content" />
                 <ImageView
-                    android:src="@mipmap/right"
+                    android:src="@mipmap/go"
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="20dp" />

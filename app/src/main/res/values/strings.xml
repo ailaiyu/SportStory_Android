@@ -33,6 +33,8 @@
     <string name="nickname_with_4_30">昵称(4~30个字符)</string>
     <string name="nickname">昵称</string>
     <string name="gender">性别</string>
+    <string name="gender_male">男</string>
+    <string name="gender_female">女</string>
     <string name="age">年龄</string>
     <string name="height">身高</string>
     <string name="weight">体重</string>
@@ -129,6 +131,7 @@
     <string name="write_your_feedback">写下您的宝贵意见吧！</string>
     <string name="has_not_commit">尚未提交，是否退出？</string>
     <string name="tip_input_content">请输入反馈意见</string>
+    <string name="cleaning">正在清除...</string>
 
     <!--朋友圈-->
     <string name="post_timeline">发表动态</string>

@@ -2,6 +2,7 @@ package cn.sportstory.android.common.retrofitServiceInterface;
 
 import java.util.Map;
 
+import cn.sportstory.android.common.bean.OSTokenBean;
 import cn.sportstory.android.common.bean.PhoneInfoBean;
 import cn.sportstory.android.common.bean.TimelineBean;
 import cn.sportstory.android.common.bean.TimelineCommentBean;
@@ -344,6 +345,16 @@ public interface SportStoryService {
     @POST(UrlConstants.USER_FOLLOWING)
     Call<UserFollowingBean> userFollowing(
             @Body UserFollowingBean bean
+    );
+
+    /**
+     * 获取关注列表
+     *
+     * @return
+     */
+    @GET(UrlConstants.STORAGE_TOKEN)
+    Call<OSTokenBean> getOsToken(
+            @Body OSTokenBean been
     );
 
 }

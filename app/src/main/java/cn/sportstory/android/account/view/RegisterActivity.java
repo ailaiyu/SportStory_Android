@@ -1,13 +1,14 @@
 package cn.sportstory.android.account.view;
 
 import android.app.Activity;
-import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
 import android.support.v7.app.AlertDialog;
@@ -15,17 +16,24 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TabHost;
 import android.widget.Toast;
+
 
 import java.io.File;
 import java.io.IOException;
 
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.account.contract.GetOSTokenContract;
+import cn.sportstory.android.account.presenter.GetOsTokenPresenter;
+import cn.sportstory.android.common.bean.OSTokenBean;
+import cn.sportstory.android.common.tools.AccountHelper;
 import cn.sportstory.android.common.tools.CameraHelper;
 import cn.sportstory.android.common.tools.ImageTools;
+import cn.sportstory.android.common.tools.PermissionUtils;
+import cn.sportstory.android.common.tools.QiNiuUploader;
 import de.hdodenhof.circleimageview.CircleImageView;
+import okhttp3.RequestBody;
 
 /**
  * Created by aaron on 2017/5/13.
@@ -37,6 +45,8 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private Button mBtnConfirm;
     private CircleImageView mImgAvatar;
     private Toolbar toolbar;
+    private GetTokenView getTokenView;
+    private GetOsTokenPresenter getOsTokenPresenter;
 
     private boolean isFemale = false;
     private boolean isMale = false;
@@ -44,7 +54,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private int gender = -1;
     private static final int GENDER_MALE = 0;
     private static final int GENDER_FEMALE = 1;
+    private String filePath;
     CameraHelper cameraHelper = new CameraHelper();
+    private int openWhat = -1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +78,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mImgAvatar.setOnClickListener(this);
         mBtnConfirm.setOnClickListener(this);
 
+        getTokenView = new GetTokenView();
+        getOsTokenPresenter = new GetOsTokenPresenter(getTokenView);
+
     }
 
     @Override
@@ -82,12 +97,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         .setItems(new String[]{"拍照", "相册"}, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        if (which == 0) {
-                            // TODO: 2017/5/13  打开相机
-                            cameraHelper.takePhoto(RegisterActivity.this);
-                        }else {
-                            // TODO: 2017/5/13 打开相册
+                        if (isPermissionGranted(PermissionUtils.REQUEST_CAMERA)) {
+                            openWhat = which;
+                            openCamera();
                         }
+                        else
+                            requestPermission(PermissionUtils.REQUEST_CAMERA, PermissionUtils.REQUEST_CODE_CAMERA);
                     }
                 }).create();
                 alertDialog.show();
@@ -119,6 +134,15 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         }
     }
 
+    private void openCamera(){
+        if (openWhat == 0) {
+            // TODO: 2017/5/13  打开相机
+            cameraHelper.takePhoto(RegisterActivity.this);
+        }else {
+            // TODO: 2017/5/13 打开相册
+        }
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -137,19 +161,64 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             }else if (requestCode == CameraHelper.ALBUM_REQUEST_CODE){
 
             }else if (requestCode == CameraHelper.CROP_REQUEST){
-                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".jpg");
+                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".png");
+                filePath = cropFile.getAbsolutePath();
+                OSTokenBean bean = new OSTokenBean();
+                bean.setType(OSTokenBean.FILE_TYPE_AVATAR);
+                getOsTokenPresenter.setupTask(bean);
+                getOsTokenPresenter.doTask();
                 Uri uri = FileProvider.getUriForFile(this,getPackageName() + ".provider", cropFile);
-
                 try{
                     Bitmap pic = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                     pic = ImageTools.imageZoom(pic, 500);
                     mImgAvatar.setImageBitmap(pic);
                 }catch (IOException e){
-                    Toast.makeText(RegisterActivity.this, getString(R.string.operation_failed), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegisterActivity.this, getString(R.string.operation_failed),
+                            Toast.LENGTH_SHORT).show();
                 }
 
             }else {
                 return;
+            }
+        }
+    }
+
+    private class GetTokenView extends GetOSTokenContract.View{
+
+        @Override
+        public Context getViewContext() {
+            return getBaseContext();
+        }
+        @Override
+        public void getTokenSuccess(OSTokenBean bean) {
+            QiNiuUploader uploader = QiNiuUploader.getInstance();
+            uploader.init(bean.getToken());
+            uploader.upload(filePath, AccountHelper.getUserId(RegisterActivity.this) + ".png");
+        }
+
+        @Override
+        public void getTokenFailed(OSTokenBean bean) {
+            Toast.makeText(RegisterActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == PermissionUtils.REQUEST_CODE_CAMERA){
+            if (isPermissionGranted(PermissionUtils.REQUEST_CAMERA))
+            {
+                openCamera();
+            }else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                builder.setTitle(getString(R.string.tip)).setMessage("打开相机权限")
+                        .setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                    }
+                }).create();
+                builder.show();
             }
         }
     }

@@ -35,6 +35,7 @@ public class UrlConstants {
     public static final String TIMELINE_COMMENT = "timeline/comment";               //动态评论  POST
     public static final String USER_FOLLOWING = "user/follow";                 //关注/取关  GET
     public static final String USER_FOLLOWER = "user/follower";             //粉丝列表  GET
+    public static final String STORAGE_TOKEN = "common/storage";             //获取七牛token  GET
 
 
 }

@@ -1,7 +1,9 @@
 package cn.sportstory.android.common.tools;
 
 import android.content.Context;
+import android.text.TextUtils;
 
+import cn.sportstory.android.SportStoryApp;
 import cn.sportstory.android.constants.PreferencesConstants;
 
 /**
@@ -21,5 +23,12 @@ public class AccountHelper {
             SharedPreferenceHelper.writeString(PreferencesConstants.LOGIN_STATUS, LOGIN_YES, PreferencesConstants.ACCOUNT_FILE_NAME, context);
         else
             SharedPreferenceHelper.writeString(PreferencesConstants.LOGIN_STATUS, LOGIN_NO, PreferencesConstants.ACCOUNT_FILE_NAME, context);
+    }
+
+    public static String getUserId(Context context){
+        if (TextUtils.isEmpty(SportStoryApp.USER_ID)){
+            SportStoryApp.USER_ID = SharedPreferenceHelper.getString(PreferencesConstants.USER_ID, PreferencesConstants.ACCOUNT_FILE_NAME, context);
+        }
+        return SportStoryApp.USER_ID;
     }
 }

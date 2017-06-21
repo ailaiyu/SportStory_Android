@@ -1,10 +1,7 @@
 package cn.sportstory.android;
 
-import android.*;
-import android.Manifest;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,8 +15,6 @@ import android.view.WindowManager;
 
 import com.umeng.analytics.MobclickAgent;
 
-import cn.sportstory.android.account.view.LoginActivity;
-import cn.sportstory.android.common.PermissionCode;
 import cn.sportstory.android.common.service.LocationService;
 import cn.sportstory.android.common.tools.PermissionUtils;
 
@@ -106,7 +101,7 @@ public class BaseActivity extends AppCompatActivity {
             }else {
                 ActivityCompat.requestPermissions(this, new String[]{permissionName}, requestCode);
             }
-        }
+        };
 
     }
 

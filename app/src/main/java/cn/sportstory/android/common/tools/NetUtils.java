@@ -11,7 +11,7 @@ import cn.sportstory.android.R;
  * Created by aaron on 2017/6/6.
  */
 
-public class NetUtil {
+public class NetUtils {
 
     public static final int IP_TYPE_NULL = 0;       //断开连接
     public static final int IP_TYPE_WIFI = 1;       //wifi

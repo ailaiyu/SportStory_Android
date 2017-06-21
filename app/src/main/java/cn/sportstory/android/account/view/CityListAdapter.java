@@ -1,17 +1,14 @@
 package cn.sportstory.android.account.view;
 
 import android.text.TextUtils;
-import android.util.ArrayMap;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import cn.sportstory.android.R;
 import cn.sportstory.android.constants.StringConstants;

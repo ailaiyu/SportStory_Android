@@ -9,6 +9,7 @@ public class UserFollowingBean extends CommonBean {
     private String start;
     private String num;
     private String f_type;
+    private UserBean [] follow;
 
     public String getF_id() {
         return f_id;
@@ -40,5 +41,13 @@ public class UserFollowingBean extends CommonBean {
 
     public void setF_type(String f_type) {
         this.f_type = f_type;
+    }
+
+    public UserBean[] getFollow() {
+        return follow;
+    }
+
+    public void setFollow(UserBean[] follow) {
+        this.follow = follow;
     }
 }

@@ -276,6 +276,7 @@
 
         <activity android:name="cn.sportstory.android.MainActivity"
             android:label="@string/app_name"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name=".account.view.LoginWithPasswordActivity"
@@ -304,6 +305,7 @@
         <activity android:name=".profile.view.EditProfileActivity" android:screenOrientation="portrait"/>
         <activity android:name=".account.view.LoginActivity"
             android:windowSoftInputMode="stateHidden"
+            android:launchMode="singleTask"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

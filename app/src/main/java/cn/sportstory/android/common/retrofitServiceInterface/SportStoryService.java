@@ -18,9 +18,6 @@ import cn.sportstory.android.common.bean.UserNearbyBean;
 import cn.sportstory.android.common.bean.UserSearchBean;
 import cn.sportstory.android.constants.UrlConstants;
 import cn.sportstory.android.common.bean.SendVCodeBean;
-import cn.sportstory.android.im.UserLogin;
-import cn.sportstory.android.nearby.model.search.UserSearch;
-import cn.sportstory.android.timeline.model.getTimeline.TimelineGet;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.FieldMap;
@@ -155,7 +152,6 @@ public interface SportStoryService {
     /**
      * 更新用户体格信息
      *
-    
      * @return
      */
     @Headers("Content-Type: application/json; charset=utf-8")
@@ -167,7 +163,6 @@ public interface SportStoryService {
     /**
      * 更新用户地区信息
      *
-    
      * @return
      */
     @Headers("Content-Type: application/json; charset=utf-8")
@@ -179,7 +174,6 @@ public interface SportStoryService {
     /**
      * 更新用户运动类型
      *
-    
      * @return
      */
     @Headers("Content-Type: application/json; charset=utf-8")
@@ -190,7 +184,6 @@ public interface SportStoryService {
 
     /**
      * 更换手机号
-    
      * @return
      */
     @Headers("Content-Type: application/json; charset=utf-8")
@@ -202,7 +195,6 @@ public interface SportStoryService {
 
     /**
      * 更换邮箱
-    
      * @return
      */
     @Headers("Content-Type: application/json; charset=utf-8")
@@ -319,14 +311,13 @@ public interface SportStoryService {
      * @return
      */
     @GET(UrlConstants.USER_FOLLOWER)
-    Call<UserBean[]> getFollowers(
+    Call<UserFollowerBean> getFollowers(
             @Body UserFollowerBean bean
     );
 
     /**
      * 移除粉丝
      *
-    
      * @return
      */
     @POST(UrlConstants.USER_FOLLOWER)
@@ -334,14 +325,13 @@ public interface SportStoryService {
             @Body UserFollowerBean bean
     );
 
-
     /**
      * 获取关注列表
      *
      * @return
      */
     @GET(UrlConstants.USER_FOLLOWING)
-    Call<UserBean[]> getFollowing(
+    Call<UserFollowingBean> getFollowing(
             @Body UserFollowingBean been
     );
 

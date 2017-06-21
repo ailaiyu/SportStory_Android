@@ -2,19 +2,26 @@ package cn.sportstory.android;
 
 import android.*;
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.WindowManager;
 
 import com.umeng.analytics.MobclickAgent;
 
+import cn.sportstory.android.account.view.LoginActivity;
 import cn.sportstory.android.common.PermissionCode;
 import cn.sportstory.android.common.service.LocationService;
+import cn.sportstory.android.common.tools.PermissionUtils;
 
 /**
  * Created by zlg on 17-3-24.
@@ -32,13 +39,13 @@ public class BaseActivity extends AppCompatActivity {
         SportStoryApp.sActivityCount ++;
         if (SportStoryApp.sActivityCount == 1)
         {
-            if (ContextCompat.checkSelfPermission(this,  android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            if (isPermissionGranted(PermissionUtils.REQUEST_ACCESS_LOCATION)) {
                 //开启定位service
                 Intent intent = new Intent();
                 intent.setClass(this.getApplicationContext(), LocationService.class);
                 startService(intent);
             }else {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION}, PermissionCode.ACCESS_COARSE_LOCATION_REQUEST_CODE);
+                requestPermission(PermissionUtils.REQUEST_ACCESS_LOCATION, PermissionUtils.REQUEST_CODE_ACCESS_LOCATION);
             }
         }
         super.onStart();
@@ -49,7 +56,6 @@ public class BaseActivity extends AppCompatActivity {
         SportStoryApp.sActivityCount --;
         if (SportStoryApp.sActivityCount <= 0)
         {
-            //停止定位service
             Intent intent = new Intent();
             intent.setClass(this.getApplicationContext(), LocationService.class);
             stopService(intent);
@@ -78,4 +84,55 @@ public class BaseActivity extends AppCompatActivity {
         super.onPause();
         MobclickAgent.onPause(this);
     }
+
+    public void requestPermission(final String permissionName, final int requestCode){
+        if (!isPermissionGranted(permissionName)){
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this,
+                    permissionName)){
+                String explanation = PermissionUtils.GetExplanationByRequestCode(this, requestCode);
+                if (!TextUtils.isEmpty(explanation)){
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                    builder.
+                            setTitle(getString(R.string.tip))
+                            .setMessage(explanation)
+                            .setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    ActivityCompat.requestPermissions(BaseActivity.this, new String[]{permissionName}, requestCode);
+
+                                }
+                            }).create().show();
+                }
+            }else {
+                ActivityCompat.requestPermissions(this, new String[]{permissionName}, requestCode);
+            }
+        }
+
+    }
+
+    public boolean isPermissionGranted(String permission){
+        return ContextCompat.checkSelfPermission(this, permission) == PackageManager.PERMISSION_GRANTED;
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case PermissionUtils.REQUEST_CODE_ACCESS_LOCATION:
+                if (grantResults[0] != PackageManager.PERMISSION_GRANTED)
+                {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                            .setTitle(getString(R.string.tip)).setMessage("你可以在设置中打开权限")
+                            .setPositiveButton(getString(R.string.confirm),
+                                    new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                    builder.create().show();
+                }
+        }
+    }
+
+
 }

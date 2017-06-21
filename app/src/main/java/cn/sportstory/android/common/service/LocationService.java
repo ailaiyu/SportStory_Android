@@ -101,4 +101,6 @@ public class LocationService extends Service {
         client = null;
         listener = null;
     }
+
+
 }

@@ -1,6 +1,9 @@
 package cn.sportstory.android;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.support.v4.app.FragmentTransaction;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,8 +13,11 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import cn.sportstory.android.account.view.LoginActivity;
 import cn.sportstory.android.activities.view.ActivityFragment;
 import cn.sportstory.android.chat.view.ConversationFragment;
+import cn.sportstory.android.common.bean.UserAccountBean;
+import cn.sportstory.android.common.tools.AccountHelper;
 import cn.sportstory.android.profile.view.MeFragment;
 import cn.sportstory.android.nearby.view.NearbyFragment;
 import cn.sportstory.android.profile.view.ProfileAlbumFragment;
@@ -33,8 +39,9 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
         ProfileAlbumFragment.OnFragmentInteractionListener,
         View.OnClickListener{
 
+    private LogoutReceiver receiver;
     private View mMenuTab;
-
+    private boolean inited = false;
     private RelativeLayout mRlNearby;
     private RelativeLayout mRlTimeline;
     private RelativeLayout mRlPost;
@@ -63,13 +70,45 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        initView();
+        if (AccountHelper.isLogin(this)) {
+            initView();
+        }else {
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        receiver = new LogoutReceiver();
+        IntentFilter intentFilter = new IntentFilter();
+        intentFilter.addAction(AccountHelper.ACTION_LOGOUT);
+        registerReceiver(receiver, intentFilter);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        unregisterReceiver(receiver);
+    }
+
+    @Override
+    protected void onNewIntent(Intent intent) {
+        super.onNewIntent(intent);
+        AccountHelper.changeLoginStatus(this, true);
+        if (!AccountHelper.isLogin(this))
+            startActivity(new Intent(this, LoginActivity.class));
+        else {
+            if (!inited){
+                initView();
+            }
+        }
     }
 
     private void initView(){
+        inited = true;
         tabTextColorFree = ContextCompat.getColor(getApplicationContext(),R.color.menu_text_color_free);
         tabTextColorPress = ContextCompat.getColor(getApplicationContext(),R.color.menu_text_color_press);
-
 
         mMenuTab = (View)findViewById(R.id.menu_tab);
         // 每个tab
@@ -200,6 +239,18 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
             fragmentTransaction.hide(ConversationFragment);
         if (meFragment!=null)
             fragmentTransaction.hide(meFragment);
+    }
+
+    private class LogoutReceiver extends BroadcastReceiver{
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            if (intent.getAction().equals(AccountHelper.ACTION_LOGOUT))
+            {
+                inited = false;
+                startActivity(new Intent(MainActivity.this, LoginActivity.class));
+
+            }
+        }
     }
 
 }

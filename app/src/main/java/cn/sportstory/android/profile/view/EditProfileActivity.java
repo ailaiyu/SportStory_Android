@@ -16,13 +16,9 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.TextView;
 
-import com.squareup.haha.trove.THash;
-
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.account.view.ChooseCityActivity;
-import cn.sportstory.android.common.tools.NetUtil;
-import cn.sportstory.android.common.tools.ViewUtils;
 
 /**
  * Created by aaron on 2017/5/14.

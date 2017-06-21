@@ -10,7 +10,7 @@ public class UserGalleryBean extends CommonBean {
     private String f_id;
     private String start;
     private String num;
-    private UserPhoto[] photos;
+    private UserPhoto[] gallery;
 
     public String getF_id() {
         return f_id;
@@ -36,11 +36,11 @@ public class UserGalleryBean extends CommonBean {
         this.num = num;
     }
 
-    public UserPhoto[] getPhotos() {
-        return photos;
+    public UserPhoto[] getGallery() {
+        return gallery;
     }
 
-    public void setPhotos(UserPhoto[] photos) {
-        this.photos = photos;
+    public void setGallery(UserPhoto[] gallery) {
+        this.gallery = gallery;
     }
 }

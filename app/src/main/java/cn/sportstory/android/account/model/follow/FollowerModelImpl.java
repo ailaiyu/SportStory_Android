@@ -22,9 +22,9 @@ public class FollowerModelImpl extends FollowModel {
         super(presenter);
     }
 
-    public void getFollowers(UserFollowerBean bean, Callback<UserBean[]> callback){
+    public void getFollowers(UserFollowerBean bean, Callback<UserFollowerBean> callback){
 
-        Call<UserBean[]> repos = service.getFollowers(bean);
+        Call<UserFollowerBean> repos = service.getFollowers(bean);
         repos.enqueue(callback);
     }
 

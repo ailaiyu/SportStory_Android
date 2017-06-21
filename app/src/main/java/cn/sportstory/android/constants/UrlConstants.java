@@ -33,7 +33,7 @@ public class UrlConstants {
     public static final String TIMELINE_DEL = "timeline/del";                       //删除动态  POST
     public static final String TIMELINE_LIKE = "timeline/like";                     //动态点赞  POST
     public static final String TIMELINE_COMMENT = "timeline/comment";               //动态评论  POST
-    public static final String USER_FOLLOWING = "user/following";                 //关注/取关  GET
+    public static final String USER_FOLLOWING = "user/follow";                 //关注/取关  GET
     public static final String USER_FOLLOWER = "user/follower";             //粉丝列表  GET
 
 

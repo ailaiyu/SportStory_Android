@@ -36,14 +36,14 @@ public class UserFollowerPresenter extends UserFollowContract.Presenter {
     //获取粉丝列表
     @Override
     public void getFollowers() {
-        followerModel.getFollowers(followerBean, new Callback<UserBean[]>() {
+        followerModel.getFollowers(followerBean, new Callback<UserFollowerBean>() {
             @Override
-            public void onResponse(Call<UserBean[]> call, Response<UserBean[]> response) {
+            public void onResponse(Call<UserFollowerBean> call, Response<UserFollowerBean> response) {
 
             }
 
             @Override
-            public void onFailure(Call<UserBean[]> call, Throwable t) {
+            public void onFailure(Call<UserFollowerBean> call, Throwable t) {
 
             }
         });
@@ -53,14 +53,14 @@ public class UserFollowerPresenter extends UserFollowContract.Presenter {
     @Override
     public void getFollowing() {
 
-        followingModel.getFollowing(followingBean, new Callback<UserBean[]>() {
+        followingModel.getFollowing(followingBean, new Callback<UserFollowingBean>() {
             @Override
-            public void onResponse(Call<UserBean[]> call, Response<UserBean[]> response) {
+            public void onResponse(Call<UserFollowingBean> call, Response<UserFollowingBean> response) {
 
             }
 
             @Override
-            public void onFailure(Call<UserBean[]> call, Throwable t) {
+            public void onFailure(Call<UserFollowingBean> call, Throwable t) {
 
             }
         });
@@ -100,7 +100,6 @@ public class UserFollowerPresenter extends UserFollowContract.Presenter {
         });
 
     }
-
 
     public UserFollowerPresenter(BaseView baseView) {
         super(baseView);

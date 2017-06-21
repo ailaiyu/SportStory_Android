@@ -22,9 +22,8 @@ public class FollowingModelImpl extends FollowModel {
         super(presenter);
     }
 
-    public void getFollowing(UserFollowingBean bean, Callback<UserBean[]> callback){
-
-        Call<UserBean[]> repos = service.getFollowing(bean);
+    public void getFollowing(UserFollowingBean bean, Callback<UserFollowingBean> callback){
+        Call<UserFollowingBean> repos = service.getFollowing(bean);
         repos.enqueue(callback);
 
     }

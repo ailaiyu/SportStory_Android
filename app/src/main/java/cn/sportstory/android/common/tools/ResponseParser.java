@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.Toast;
 
+import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.tools.UserTokenHelper;
 import cn.sportstory.android.account.view.LoginActivity;
 import cn.sportstory.android.common.bean.CommonBean;
@@ -30,8 +32,9 @@ public class ResponseParser {
         }
         int status_code = response.code();
         if (status_code == TOKEN_OVERDUE) {
+            AccountHelper.changeLoginStatus(ctx, false);
             Toast.makeText(ctx, context.getString(R.string.relogin), Toast.LENGTH_SHORT).show();
-            context.startActivity(new Intent(context, LoginActivity.class));
+            context.startActivity(new Intent(context, MainActivity.class));
             return;
         }
     }

@@ -25,6 +25,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/post_timeline"
+            android:gravity="center"
             style="@style/toolBarTextViewStyle" />
     </android.support.v7.widget.Toolbar>
 

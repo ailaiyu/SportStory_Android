@@ -16,7 +16,7 @@
         toolbar:elevation="@dimen/toolbar_elevation"
         app:contentInsetLeft="@dimen/toolbar_content_insert"
         app:contentInsetStart="@dimen/toolbar_content_insert"
-        android:gravity="center"
+        android:layout_gravity="center"
         android:elevation="4dp"
         android:background="@color/colorPrimary">
 
@@ -24,7 +24,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/login_login"
+            android:gravity="center"
             style="@style/toolBarTextViewStyle"/>
+
     </android.support.v7.widget.Toolbar>
 
     <android.support.design.widget.TextInputLayout

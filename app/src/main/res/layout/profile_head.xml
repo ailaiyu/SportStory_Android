@@ -25,6 +25,7 @@
             android:layout_toRightOf="@id/img_profile_avatar"
             android:text="@string/nickname"
             android:textColor="@color/black"
+            android:drawableRight="@mipmap/boy_yellow"
             android:textSize="16sp" />
 
         <TextView

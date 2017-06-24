@@ -18,7 +18,7 @@
 
         <ImageView
             android:id="@+id/iv_menu_nearby"
-            android:src="@mipmap/nearby_free"
+            android:src="@mipmap/people_nearby"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/menu_img_margin_top"
             android:layout_marginBottom="@dimen/menu_img_margin_bottom"
@@ -95,7 +95,7 @@
 
         <ImageView
             android:id="@+id/iv_menu_chat"
-            android:src="@mipmap/chat_free"
+            android:src="@mipmap/message"
             android:layout_marginTop="@dimen/menu_img_margin_top"
             android:layout_marginBottom="@dimen/menu_img_margin_bottom"
             android:layout_centerHorizontal="true"
@@ -122,7 +122,7 @@
 
         <ImageView
             android:id="@+id/iv_menu_me"
-            android:src="@mipmap/me_free"
+            android:src="@mipmap/home"
             android:layout_marginTop="@dimen/menu_img_margin_top"
             android:layout_marginBottom="@dimen/menu_img_margin_bottom"
             android:layout_width="@dimen/menu_img_width"

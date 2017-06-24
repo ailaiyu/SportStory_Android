@@ -52,7 +52,6 @@ public class LocationService extends Service {
                     bean.setAoiName(aMapLocation.getAoiName());//获取当前定位点的AOI信息
                     bean.setBuildingId(aMapLocation.getBuildingId());//获取当前室内定位的建筑物Id
                     bean.setFloor(aMapLocation.getFloor());//获取当前室内定位的楼层
-
                     Intent intent = new Intent();
                     intent.setAction(ACTION_LOCATION_SUCCESS);
                     Bundle bundle = new Bundle();

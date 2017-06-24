@@ -151,17 +151,16 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
         changeTab(v.getId());
     }
 
-
     private void initAllTab(){
         mTvNearby.setTextColor(tabTextColorFree);
         mTvTimeline.setTextColor(tabTextColorFree);
         mTvChat.setTextColor(tabTextColorFree);
         mTvMe.setTextColor(tabTextColorFree);
 
-        mIvNearby.setImageResource(R.mipmap.nearby_free);
+        mIvNearby.setImageResource(R.mipmap.people_nearby);
         mIvTimeline.setImageResource(R.mipmap.timeline_free);
-        mIvChat.setImageResource(R.mipmap.chat_free);
-        mIvMe.setImageResource(R.mipmap.me_free);
+        mIvChat.setImageResource(R.mipmap.message);
+        mIvMe.setImageResource(R.mipmap.home);
     }
 
 
@@ -174,7 +173,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
         hideFragments();
         switch (tabId){
             case R.id.rl_menu_nearby:
-                mIvNearby.setImageResource(R.mipmap.nearby_press);
+                mIvNearby.setImageResource(R.mipmap.people_nearby_yellow);
                 mTvNearby.setTextColor(tabTextColorPress);
                 if(nearbyFragment == null)
                 {
@@ -203,7 +202,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 break;
 
             case R.id.rl_menu_chat:
-                mIvChat.setImageResource(R.mipmap.chat_press);
+                mIvChat.setImageResource(R.mipmap.message_yellow);
                 mTvChat.setTextColor(tabTextColorPress);
                 if(ConversationFragment == null)
                 {
@@ -215,7 +214,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 }
                 break;
             case R.id.rl_menu_me:
-                mIvMe.setImageResource(R.mipmap.me_press);
+                mIvMe.setImageResource(R.mipmap.home_yellow);
                 mTvMe.setTextColor(tabTextColorPress);
                 if(meFragment == null)
                 {

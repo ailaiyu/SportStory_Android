@@ -1,5 +1,8 @@
 package cn.sportstory.android.common.bean;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 /**
  * Created by aaron on 2017/4/20.
  */
@@ -22,6 +25,9 @@ public class UserBean extends CommonBean{
     private String address;
     private String assignment;
     private UserSportBean[] sport;
+
+    
+        
 
     public String getUid() {
         return uid;

@@ -2,6 +2,7 @@ package cn.sportstory.android.common.tools;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.SyncRequest;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
@@ -25,6 +26,11 @@ public class PermissionUtils {
     public static final String REQUEST_READ_CONTACTS = Manifest.permission.READ_CONTACTS;
     public static final int REQUEST_CODE_READ_CONTACTS = 102;
 
+    /**
+     * 相机权限
+     */
+    public static final String REQUEST_CAMERA = Manifest.permission.CAMERA;
+    public static final int REQUEST_CODE_CAMERA = 103;
 
     /**
      * 根据请求code获取响应的请求说明

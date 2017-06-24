@@ -11,5 +11,6 @@ public class PreferencesConstants {
     public static final String FILE_NAME_ACCOUNT_INFO = "SPORT_STORY_ACCOUNT";
     public static final String LOGIN_STATUS = "login_status";
     public static final String USER_TOKEN = "token";
+    public static final String USER_ID = "userId";
 
 }

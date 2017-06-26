@@ -88,7 +88,6 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
             bean.setPhone(phone);
             bean.setLogin_type(UserLoginBean.LOGIN_TYPE_PHONE);
             bean.setLoginType(LOGIN_TYPE_PHONE_VCODE);
-
             loginPresenter.setupTask(bean);
             loginPresenter.doTask();
         }

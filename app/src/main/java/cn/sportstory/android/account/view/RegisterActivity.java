@@ -98,8 +98,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         if (isPermissionGranted(PermissionUtils.REQUEST_CAMERA)) {
-                            openWhat = which;
-                            openCamera();
+                            if (isPermissionGranted(PermissionUtils.REQUEST_WRITE_EXTERNAL_STORAGE)) {
+                                openWhat = which;
+                                openCamera();
+                            }else {
+                                requestPermission(PermissionUtils.REQUEST_WRITE_EXTERNAL_STORAGE, PermissionUtils.REQUEST_CODE_WRITE_EXTERNAL_STORAGE);
+                            }
                         }
                         else
                             requestPermission(PermissionUtils.REQUEST_CAMERA, PermissionUtils.REQUEST_CODE_CAMERA);
@@ -152,8 +156,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             if (requestCode == CameraHelper.CAMERA_REQUEST_CODE)
             {
                 try{
-                    Uri uri = data.getData();
-                    cameraHelper.startCropImage(RegisterActivity.this, uri);
+                    cameraHelper.startCropImage(RegisterActivity.this, cameraHelper.getUri());
                 }catch (Exception e){
                     Toast.makeText(this, getString(R.string.operation_failed), Toast.LENGTH_SHORT).show();
                 }
@@ -161,13 +164,13 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             }else if (requestCode == CameraHelper.ALBUM_REQUEST_CODE){
 
             }else if (requestCode == CameraHelper.CROP_REQUEST){
-                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".png");
+                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".jpg");
                 filePath = cropFile.getAbsolutePath();
                 OSTokenBean bean = new OSTokenBean();
                 bean.setType(OSTokenBean.FILE_TYPE_AVATAR);
                 getOsTokenPresenter.setupTask(bean);
                 getOsTokenPresenter.doTask();
-                Uri uri = FileProvider.getUriForFile(this,getPackageName() + ".provider", cropFile);
+                Uri uri = FileProvider.getUriForFile(this,getPackageName() + ".fileprovider", cropFile);
                 try{
                     Bitmap pic = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
                     pic = ImageTools.imageZoom(pic, 500);
@@ -193,7 +196,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         public void getTokenSuccess(OSTokenBean bean) {
             QiNiuUploader uploader = QiNiuUploader.getInstance();
             uploader.init(bean.getToken());
-            uploader.upload(filePath, AccountHelper.getUserId(RegisterActivity.this) + ".png");
+            uploader.upload(filePath, AccountHelper.getUserId(RegisterActivity.this) + ".jpg");
         }
 
         @Override
@@ -206,7 +209,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PermissionUtils.REQUEST_CODE_CAMERA){
-            if (isPermissionGranted(PermissionUtils.REQUEST_CAMERA))
+            if (isPermissionGranted(PermissionUtils.REQUEST_CAMERA) && isPermissionGranted(PermissionUtils.REQUEST_WRITE_EXTERNAL_STORAGE))
             {
                 openCamera();
             }else {
@@ -218,6 +221,22 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
                     }
                 }).create();
+                builder.show();
+            }
+        }
+        if (requestCode == PermissionUtils.REQUEST_CODE_WRITE_EXTERNAL_STORAGE){
+            if (isPermissionGranted(PermissionUtils.REQUEST_WRITE_EXTERNAL_STORAGE) && isPermissionGranted(PermissionUtils.REQUEST_CAMERA))
+            {
+                openCamera();
+            }else {
+                AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
+                builder.setTitle(getString(R.string.tip)).setMessage("打开存储空间权限")
+                        .setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        }).create();
                 builder.show();
             }
         }

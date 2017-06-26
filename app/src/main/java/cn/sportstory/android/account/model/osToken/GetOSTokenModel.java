@@ -17,7 +17,7 @@ public class GetOSTokenModel extends BaseModel {
     }
 
     public void getToken(OSTokenBean bean, Callback<OSTokenBean> callback) {
-        Call<OSTokenBean> repos = service.getOsToken(bean);
+        Call<OSTokenBean> repos = service.getOsToken(bean.getType());
         repos.enqueue(callback);
     }
 }

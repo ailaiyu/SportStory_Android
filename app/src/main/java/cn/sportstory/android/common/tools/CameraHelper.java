@@ -4,17 +4,23 @@ import android.app.Activity;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import java.io.File;
 import java.net.URI;
+import java.util.List;
 
+import cn.sportstory.android.BuildConfig;
 import cn.sportstory.android.R;
 
 /**
@@ -31,6 +37,7 @@ public class CameraHelper {
             Environment.getExternalStorageDirectory().getPath()
                     + "/SportStory/camera/";
     String cameraPath;
+    Uri uri;
 
     public void takePhoto(Activity activity){
         String state = Environment.getExternalStorageState();
@@ -44,19 +51,32 @@ public class CameraHelper {
             if (!dir.exists()){
                 dir.mkdirs();
             }
-            Uri uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".provider", new File(cameraPath));
-
+            uri = FileProvider.getUriForFile(activity, activity.getPackageName() + ".fileprovider", new File(cameraPath));
             intent.putExtra(MediaStore.EXTRA_OUTPUT, uri);
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
+                intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
+            }else{
+                List<ResolveInfo> resolveInfoList = activity
+                        .getPackageManager()
+                        .queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+                for (ResolveInfo resolveInfo : resolveInfoList){
+                    String packageName = resolveInfo.activityInfo.packageName;
+                    activity.grantUriPermission(packageName,
+                            uri, Intent.FLAG_GRANT_WRITE_URI_PERMISSION | Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                }
+            }
             activity.startActivityForResult(intent, CAMERA_REQUEST_CODE);
         }else {
             Toast.makeText(activity, activity.getString(R.string.tip_confirm_has_sdcard), Toast.LENGTH_SHORT).show();
         }
+
     }
 
     public void startCropImage(Activity activity, Uri uri){
         if (uri == null || activity == null)
             return;
         Intent intent = new Intent("com.android.camera.action.CROP");
+        intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
         intent.setDataAndType(uri, "image/*");
         // 使图片处于可裁剪状态
         intent.putExtra("crop", "true");
@@ -84,5 +104,11 @@ public class CameraHelper {
 
     }
 
+    public String getCameraPath() {
+        return cameraPath;
+    }
 
+    public Uri getUri() {
+        return uri;
+    }
 }

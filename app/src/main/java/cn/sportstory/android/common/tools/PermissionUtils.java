@@ -33,6 +33,12 @@ public class PermissionUtils {
     public static final int REQUEST_CODE_CAMERA = 103;
 
     /**
+     * 存储空间权限
+     */
+    public static final String REQUEST_WRITE_EXTERNAL_STORAGE = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+    public static final int REQUEST_CODE_WRITE_EXTERNAL_STORAGE = 104;
+
+    /**
      * 根据请求code获取响应的请求说明
      * @param context
      * @param requestCode
@@ -47,7 +53,12 @@ public class PermissionUtils {
             case REQUEST_CODE_READ_CONTACTS:
                 explanation = context.getString(R.string.request_explanation_read_contacts);
                 break;
-//            case
+            case REQUEST_CODE_WRITE_EXTERNAL_STORAGE:
+                explanation  = context.getString(R.string.request_explanation_WRITE_EXTERNAL_STORAGE);
+                break;
+            case REQUEST_CODE_CAMERA:
+                explanation = context.getString(R.string.request_explanation_camera);
+                break;
         }
         return explanation;
     }

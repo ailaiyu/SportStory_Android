@@ -6,7 +6,6 @@ package cn.sportstory.android.common.bean;
 public class CommonBean {
     private String err;
     private String success;
-    private String token;
 
     public String getErr() {
         return err;

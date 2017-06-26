@@ -33,10 +33,10 @@ public class GetOsTokenPresenter extends GetOSTokenContract.Presenter {
         model.getToken(bean, new Callback<OSTokenBean>() {
             @Override
             public void onResponse(Call<OSTokenBean> call, Response<OSTokenBean> response) {
-                ResponseParser.parseResponse(response, view.getViewContext());
+                ResponseParser.parseResponse(response, view);
                 OSTokenBean bean = response.body();
                 if (response.code() == ResponseParser.RESPONSE_ERR){
-                    view.showError(bean.getErr());
+                    return;
                 }else if (response.code() == ResponseParser.RESPONSE_CODE_OK){
                     ((GetOSTokenContract.View)view).getTokenSuccess(bean);
                 }else {

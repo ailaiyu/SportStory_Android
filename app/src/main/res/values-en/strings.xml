@@ -139,4 +139,7 @@
     <!--权限-->
     <string name="request_explanation_access_location">申请定位</string>
     <string name="request_explanation_read_contacts">申请读取通讯录</string>
+    <string name="request_explanation_WRITE_EXTERNAL_STORAGE">申请存储空间权限</string>
+    <string name="request_explanation_camera">申请相机权限</string>
+
 </resources>

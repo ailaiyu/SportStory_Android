@@ -30,10 +30,9 @@ public class SendVCodePresenter extends SendVCodeTaskContract.Presenter {
         model.sendVCode(bean, new Callback<SendVCodeBean>() {
             @Override
             public void onResponse(Call<SendVCodeBean> call, Response<SendVCodeBean> response) {
-                ResponseParser.parseResponse(response, view.getViewContext());
-                SendVCodeBean bean = response.body();
+                ResponseParser.parseResponse(response, view);
                 if (response.code() == ResponseParser.RESPONSE_ERR){
-                        view.showError(bean.getErr());
+                        return;
                 }else if (response.code() == ResponseParser.RESPONSE_CODE_OK){
                     ((SendVCodeTaskContract.View)view).showSendSuccess();
                 }else {

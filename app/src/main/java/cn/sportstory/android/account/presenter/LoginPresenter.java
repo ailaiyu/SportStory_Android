@@ -12,6 +12,7 @@ import cn.sportstory.android.account.model.login.LoginPhonePassword;
 import cn.sportstory.android.account.model.login.LoginPhoneVCode;
 import cn.sportstory.android.common.baseinterface.BaseView;
 import cn.sportstory.android.common.bean.CommonBean;
+import cn.sportstory.android.common.bean.ErrorBody;
 import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.common.tools.ResponseParser;
 import retrofit2.Call;
@@ -68,16 +69,17 @@ public class LoginPresenter extends LoginTaskContract.Presenter {
             @Override
             public void onResponse(Call<UserLoginBean> call, Response<UserLoginBean> response) {
 
-                ResponseParser.parseResponse(response, view.getViewContext());
+                ResponseParser.parseResponse(response, view);
                 UserLoginBean bean = response.body();
-                if (response.code() == ResponseParser.RESPONSE_ERR){
-                    view.showError(bean.getErr());
-                }else if (response.code() == ResponseParser.RESPONSE_CODE_OK){
+                if (response.code() == ResponseParser.RESPONSE_CODE_OK){
                     if (!TextUtils.isEmpty(bean.getIs_valid()) && bean.getIs_valid().equals(IS_VALID_REGISTER))
                     {
                         ((LoginTaskContract.View)view).register();
                     }else
                         ((LoginTaskContract.View)view).loginSuccess();
+                }else if (response.code() == ResponseParser.RESPONSE_ERR)
+                {
+                    return;
                 }else {
                     view.showError(view.getViewContext().getString(R.string.common_error));
                 }

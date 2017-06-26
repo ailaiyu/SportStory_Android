@@ -208,23 +208,21 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == PermissionUtils.REQUEST_CODE_CAMERA){
+        if (requestCode == PermissionUtils.REQUEST_CODE_CAMERA) {
             if (isPermissionGranted(PermissionUtils.REQUEST_CAMERA) && isPermissionGranted(PermissionUtils.REQUEST_WRITE_EXTERNAL_STORAGE))
-            {
                 openCamera();
-            }else {
+            else {
                 AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                 builder.setTitle(getString(R.string.tip)).setMessage("打开相机权限")
                         .setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
 
-                    }
-                }).create();
+                            }
+                        }).create();
                 builder.show();
             }
-        }
-        if (requestCode == PermissionUtils.REQUEST_CODE_WRITE_EXTERNAL_STORAGE){
+        } else if (requestCode == PermissionUtils.REQUEST_CODE_WRITE_EXTERNAL_STORAGE){
             if (isPermissionGranted(PermissionUtils.REQUEST_WRITE_EXTERNAL_STORAGE) && isPermissionGranted(PermissionUtils.REQUEST_CAMERA))
             {
                 openCamera();

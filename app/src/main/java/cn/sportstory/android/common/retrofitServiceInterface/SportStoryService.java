@@ -350,6 +350,7 @@ public interface SportStoryService {
 
     /**
      * 获取token
+     *
      * @return
      */
     @GET(UrlConstants.STORAGE_TOKEN)

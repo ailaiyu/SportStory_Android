@@ -35,13 +35,15 @@ public class GetOsTokenPresenter extends GetOSTokenContract.Presenter {
             public void onResponse(Call<OSTokenBean> call, Response<OSTokenBean> response) {
                 ResponseParser.parseResponse(response, view);
                 OSTokenBean bean = response.body();
-                if (response.code() == ResponseParser.RESPONSE_ERR){
+                if (response.code() == ResponseParser.RESPONSE_ERR) {
                     return;
-                }else if (response.code() == ResponseParser.RESPONSE_CODE_OK){
-                    ((GetOSTokenContract.View)view).getTokenSuccess(bean);
-                }else {
+                }
+                if (response.code() == ResponseParser.RESPONSE_CODE_OK) {
+                    ((GetOSTokenContract.View) view).getTokenSuccess(bean);
+                } else {
                     view.showError(view.getViewContext().getString(R.string.common_error));
                 }
+
             }
 
             @Override

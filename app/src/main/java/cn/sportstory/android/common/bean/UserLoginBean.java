@@ -27,6 +27,7 @@ public class UserLoginBean extends CommonBean {
     private String nickname;
     private String login_type;
     private String loginType;
+    private String f_id;
 
     public String getLogin_type() {
         return login_type;
@@ -155,5 +156,13 @@ public class UserLoginBean extends CommonBean {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public String getF_id() {
+        return f_id;
+    }
+
+    public void setF_id(String f_id) {
+        this.f_id = f_id;
     }
 }

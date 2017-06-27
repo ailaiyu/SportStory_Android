@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -164,7 +165,9 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             }else if (requestCode == CameraHelper.ALBUM_REQUEST_CODE){
 
             }else if (requestCode == CameraHelper.CROP_REQUEST){
-                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".jpg");
+//                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".jpg");
+                File cropFile = new File(Environment.getExternalStorageDirectory() + "/crop_image.jpg");
+
                 filePath = cropFile.getAbsolutePath();
                 OSTokenBean bean = new OSTokenBean();
                 bean.setType(OSTokenBean.FILE_TYPE_AVATAR);

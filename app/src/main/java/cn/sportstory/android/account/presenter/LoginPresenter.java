@@ -1,8 +1,10 @@
 package cn.sportstory.android.account.presenter;
 
+import android.content.Intent;
 import android.text.TextUtils;
 import android.widget.TextView;
 
+import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.model.login.LoginEmailPassword;
@@ -15,6 +17,8 @@ import cn.sportstory.android.common.bean.CommonBean;
 import cn.sportstory.android.common.bean.ErrorBody;
 import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.common.tools.ResponseParser;
+import cn.sportstory.android.common.tools.SharedPreferenceHelper;
+import cn.sportstory.android.constants.PreferencesConstants;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -62,7 +66,6 @@ public class LoginPresenter extends LoginTaskContract.Presenter {
 
 
 
-
     @Override
     public void doTask() {
         loginModel.login(bean, new Callback<UserLoginBean>() {
@@ -72,6 +75,9 @@ public class LoginPresenter extends LoginTaskContract.Presenter {
                 ResponseParser.parseResponse(response, view);
                 UserLoginBean bean = response.body();
                 if (response.code() == ResponseParser.RESPONSE_CODE_OK){
+                    bean.setF_id("1");
+                    SharedPreferenceHelper.writeString(PreferencesConstants.USER_ID,
+                                bean.getF_id(), PreferencesConstants.ACCOUNT_FILE_NAME, view.getViewContext());
                     if (!TextUtils.isEmpty(bean.getIs_valid()) && bean.getIs_valid().equals(IS_VALID_REGISTER))
                     {
                         ((LoginTaskContract.View)view).register();

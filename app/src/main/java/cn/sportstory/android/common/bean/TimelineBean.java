@@ -10,6 +10,7 @@ public class TimelineBean extends CommonBean {
     private String t_id;
     private String uid;
     private String url;
+    private int picCount;
     private String nickname;
     private String content;
     private String avatar;
@@ -96,5 +97,13 @@ public class TimelineBean extends CommonBean {
 
     public void setLike(LikeBean[] like) {
         this.like = like;
+    }
+
+    public int getPicCount() {
+        return picCount;
+    }
+
+    public void setPicCount(int picCount) {
+        this.picCount = picCount;
     }
 }

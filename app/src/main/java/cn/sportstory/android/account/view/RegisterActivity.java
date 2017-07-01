@@ -11,14 +11,17 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.content.FileProvider;
 import android.support.v4.print.PrintHelper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -49,6 +52,7 @@ import okhttp3.RequestBody;
  */
 
 public class RegisterActivity extends BaseActivity implements View.OnClickListener{
+    private TextView mEtNickname;
     private ImageView mImgFemale;
     private ImageView mImgMale;
     private Button mBtnConfirm;
@@ -71,10 +75,12 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     private boolean uploaded = false;
 
     private FrameLayout processFrameLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        mEtNickname = (TextInputEditText)findViewById(R.id.nickname);
         mImgAvatar = (CircleImageView)findViewById(R.id.img_register_avatar);
         mImgMale = (ImageView)findViewById(R.id.img_register_male);
         mImgFemale = (ImageView)findViewById(R.id.img_register_female);
@@ -94,17 +100,25 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         getTokenView = new GetTokenView();
         getOsTokenPresenter = new GetOsTokenPresenter(getTokenView);
-
     }
 
     @Override
     public void onClick(View v) {
         Intent intent = new Intent();
+        Bundle bundle = new Bundle();
         switch (v.getId())
         {
             case R.id.btn_register_finish:
-                intent.setClass(this, PerfectInfoAddressActivity.class);
-                startActivity(intent);
+                if (mEtNickname.getText() != null && !TextUtils.isEmpty(mEtNickname.getText().toString())) {
+                    String nickname = mEtNickname.getText().toString();
+                    bundle.putString("nickname", nickname);
+                    bundle.putInt("gender", gender);
+                    intent.putExtras(bundle);
+                    intent.setClass(this, PerfectInfoAddressActivity.class);
+                    startActivity(intent);
+                }else {
+                    Toast.makeText(getBaseContext(), "昵称不能为空", Toast.LENGTH_SHORT).show();
+                }
                 break;
             case R.id.img_register_avatar:
                 final AlertDialog alertDialog = new AlertDialog.Builder(this).setTitle("上传头像")
@@ -178,9 +192,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
             }else if (requestCode == CameraHelper.ALBUM_REQUEST_CODE){
 
             }else if (requestCode == CameraHelper.CROP_REQUEST){
-//                File cropFile = new File(CameraHelper.SAVED_IMAGE_DIR_PATH + System.currentTimeMillis() + ".jpg");
                 File cropFile = new File(Environment.getExternalStorageDirectory() + "/crop_image.jpg");
-
                 filePath = cropFile.getAbsolutePath();
                 OSTokenBean bean = new OSTokenBean();
                 bean.setType(OSTokenBean.FILE_TYPE_AVATAR);
@@ -230,6 +242,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
         @Override
         public void getTokenFailed(OSTokenBean bean) {
+            dismissProcess();
             Toast.makeText(RegisterActivity.this, "上传失败", Toast.LENGTH_SHORT).show();
         }
     }

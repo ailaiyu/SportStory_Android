@@ -14,7 +14,6 @@ public interface UpdateUserInfoContract {
             super(baseView);
         }
 
-
     }
 
     abstract class View extends BaseView{

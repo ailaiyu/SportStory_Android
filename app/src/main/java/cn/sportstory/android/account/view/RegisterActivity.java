@@ -12,13 +12,19 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.FileProvider;
+import android.support.v4.print.PrintHelper;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+
+import com.qiniu.android.http.ResponseInfo;
+
+import org.json.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +38,9 @@ import cn.sportstory.android.common.tools.AccountHelper;
 import cn.sportstory.android.common.tools.CameraHelper;
 import cn.sportstory.android.common.tools.ImageTools;
 import cn.sportstory.android.common.tools.PermissionUtils;
+import cn.sportstory.android.common.tools.QiNiuUploadCallback;
 import cn.sportstory.android.common.tools.QiNiuUploader;
+import cn.sportstory.android.common.view.ProcessView;
 import de.hdodenhof.circleimageview.CircleImageView;
 import okhttp3.RequestBody;
 
@@ -59,6 +67,10 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
     CameraHelper cameraHelper = new CameraHelper();
     private int openWhat = -1;
 
+    private ProcessView processView;
+    private boolean uploaded = false;
+
+    private FrameLayout processFrameLayout;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +79,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         mImgMale = (ImageView)findViewById(R.id.img_register_male);
         mImgFemale = (ImageView)findViewById(R.id.img_register_female);
         mBtnConfirm = (Button)findViewById(R.id.btn_register_finish);
+        processFrameLayout = (FrameLayout)findViewById(R.id.process);
         toolbar = (Toolbar)findViewById(R.id.toolbar);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,6 +186,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                 bean.setType(OSTokenBean.FILE_TYPE_AVATAR);
                 getOsTokenPresenter.setupTask(bean);
                 getOsTokenPresenter.doTask();
+                showProcess();
                 Uri uri = FileProvider.getUriForFile(this,getPackageName() + ".fileprovider", cropFile);
                 try{
                     Bitmap pic = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
@@ -199,7 +213,19 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
         public void getTokenSuccess(OSTokenBean bean) {
             QiNiuUploader uploader = QiNiuUploader.getInstance();
             uploader.init(bean.getToken());
-            uploader.upload(filePath, AccountHelper.getUserId(RegisterActivity.this) + ".jpg");
+            uploader.upload(filePath, AccountHelper.getUserId(RegisterActivity.this) + ".jpg", new QiNiuUploadCallback(){
+                @Override
+                public void success(String key, ResponseInfo info, JSONObject response) {
+                    dismissProcess();
+                    Toast.makeText(getViewContext(), "上传成功", Toast.LENGTH_SHORT).show();
+                }
+
+                @Override
+                public void failed(String key, ResponseInfo info, JSONObject response) {
+                    dismissProcess();
+                    Toast.makeText(getViewContext(), "上传失败，请重试", Toast.LENGTH_SHORT).show();
+                }
+            });
         }
 
         @Override
@@ -240,6 +266,26 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
                         }).create();
                 builder.show();
             }
+        }
+    }
+
+    private void showProcess(){
+        findViewById(R.id.content).setEnabled(false);
+        processFrameLayout.setVisibility(View.VISIBLE);
+        processView = new ProcessView(this, getString(R.string.uploading));
+        processFrameLayout.removeAllViews();
+        processFrameLayout.addView(processView);
+        uploaded = false;
+    }
+
+    private void dismissProcess(){
+        if (!uploaded) {
+            uploaded = true;
+            findViewById(R.id.content).setEnabled(true);
+            processView.removeAllViews();
+            processView = null;
+            processFrameLayout.removeAllViews();
+            processFrameLayout.setVisibility(View.GONE);
         }
     }
 }

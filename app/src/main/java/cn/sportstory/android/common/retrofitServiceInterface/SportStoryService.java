@@ -61,14 +61,25 @@ public interface SportStoryService {
     /**
      * 用户注册
      *
-    
      * @return
      */
     @Headers("Content-Type: application/json; charset=utf-8")
-    @POST(UrlConstants.USER_LOGON)
+    @POST(UrlConstants.USER_PROFILE)
     Call<UserBean> uploadUserInfo(
             @FieldMap Map<String, String> fields
     );
+
+
+    /**
+     * 获取用户信息
+     *
+     * @return
+     */
+    @GET(UrlConstants.USER_PROFILE)
+    Call<UserBean> getUserProfile(
+            @Query("f_id") String f_id
+    );
+
 
     /**
      * 用户登录

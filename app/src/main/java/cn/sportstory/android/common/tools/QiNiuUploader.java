@@ -38,17 +38,21 @@ public class QiNiuUploader {
      * @param filePath 文件路径
      * @param key   七牛服务器上的文件名
      */
-   public void upload(String filePath, String key){
+   public void upload(String filePath, String key, final QiNiuUploadCallback callBack){
        manager.put(filePath, key, token, new UpCompletionHandler() {
            @Override
            public void complete(String key, ResponseInfo info, JSONObject response) {
                 if (info.isOK()){
-                    // TODO: 2017/6/6 上传成功 
+                    // TODO: 2017/6/6 上传成功
+                    callBack.success(key, info, response);
                 }else {
                     // TODO: 2017/6/6 上传失败
+                    callBack.failed(key, info, response);
                 }
            }
        }, null);
    }
+
+
 
 }

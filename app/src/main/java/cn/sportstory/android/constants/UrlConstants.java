@@ -12,7 +12,7 @@ public class UrlConstants {
 
     public static final String SEND_VCODE = "common/code";                           //发送短信验证码 POST
     public static final String PHONE_INFO = "phone/info";                           //上传手机信息 POST
-    public static final String USER_LOGON = "user/logon";                           //用户注册  POST
+    public static final String USER_PROFILE = "user/profile";                       //用户信息  POST/GET
     public static final String USER_LOGIN = "user/login";                           //用户登录  POST
     public static final String USER_NICKNAME = "user/nickname";                     //用户修改昵称  POST
     public static final String USER_EMAIL = "user/email";                           //用户修改邮箱  POST
@@ -33,9 +33,8 @@ public class UrlConstants {
     public static final String TIMELINE_DEL = "timeline/del";                       //删除动态  POST
     public static final String TIMELINE_LIKE = "timeline/like";                     //动态点赞  POST
     public static final String TIMELINE_COMMENT = "timeline/comment";               //动态评论  POST
-    public static final String USER_FOLLOWING = "user/follow";                 //关注/取关  GET
-    public static final String USER_FOLLOWER = "user/follower";             //粉丝列表  GET
-    public static final String STORAGE_TOKEN = "common/storage";             //获取七牛token  GET
-
+    public static final String USER_FOLLOWING = "user/follow";                      //关注/取关  GET
+    public static final String USER_FOLLOWER = "user/follower";                     //粉丝列表  GET
+    public static final String STORAGE_TOKEN = "common/storage";                    //获取七牛token  GET
 
 }

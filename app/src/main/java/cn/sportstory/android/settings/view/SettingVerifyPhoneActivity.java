@@ -28,7 +28,7 @@ public class SettingVerifyPhoneActivity extends BaseActivity {
     public static final String COME_FROM_EXTRA_KEY = "comefrom";
     public static final String CURRENT_PHONE_EXTRA_KEY = "phone";
     public static final String COME_FROM_CHANGE_PHONE = "update_phone";
-    public static final String COME_FROM_VERIFY_PHONE = "verifyphone";
+    public static final String COME_FROM_VERIFY_PHONE = "verifyPhone";
     private String phoneNumber;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

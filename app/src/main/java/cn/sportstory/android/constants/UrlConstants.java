@@ -14,6 +14,7 @@ public class UrlConstants {
     public static final String PHONE_INFO = "phone/info";                           //上传手机信息 POST
     public static final String USER_PROFILE = "user/profile";                       //用户信息  POST/GET
     public static final String USER_LOGIN = "user/login";                           //用户登录  POST
+    public static final String USER_PASSWORD = "user/password";                     //用户修改密码  POST
     public static final String USER_NICKNAME = "user/nickname";                     //用户修改昵称  POST
     public static final String USER_EMAIL = "user/email";                           //用户修改邮箱  POST
     public static final String USER_PHONE = "user/phone";                           //用户修手机  POST

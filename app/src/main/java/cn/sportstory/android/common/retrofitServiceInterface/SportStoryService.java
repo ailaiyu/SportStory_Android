@@ -16,6 +16,7 @@ import cn.sportstory.android.common.bean.UserGalleryBean;
 import cn.sportstory.android.common.bean.UserLocationBean;
 import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.common.bean.UserNearbyBean;
+import cn.sportstory.android.common.bean.UserPasswordBean;
 import cn.sportstory.android.common.bean.UserSearchBean;
 import cn.sportstory.android.constants.UrlConstants;
 import cn.sportstory.android.common.bean.SendVCodeBean;
@@ -66,9 +67,19 @@ public interface SportStoryService {
     @Headers("Content-Type: application/json; charset=utf-8")
     @POST(UrlConstants.USER_PROFILE)
     Call<UserBean> uploadUserInfo(
-            @FieldMap Map<String, String> fields
+            @Body UserBean bean
     );
 
+    /**
+     * 修改密码
+     *
+     * @return
+     */
+    @Headers("Content-Type: application/json; charset=utf-8")
+    @POST(UrlConstants.USER_PASSWORD)
+    Call<UserPasswordBean> setPassword(
+            @Body UserPasswordBean bean
+    );
 
     /**
      * 获取用户信息
@@ -79,7 +90,6 @@ public interface SportStoryService {
     Call<UserBean> getUserProfile(
             @Query("f_id") String f_id
     );
-
 
     /**
      * 用户登录

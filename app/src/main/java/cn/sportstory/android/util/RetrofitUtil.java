@@ -1,8 +1,11 @@
 package cn.sportstory.android.util;
 
 
+import junit.framework.Test;
+
 import java.io.IOException;
 
+import cn.sportstory.android.constants.TestApiUrl;
 import cn.sportstory.android.constants.UrlConstants;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -18,6 +21,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitUtil {
     private static Retrofit sV2Retrofit;
+    private static Retrofit sTestRetrofit;
 
     static {
         sV2Retrofit = new Retrofit.Builder()
@@ -26,8 +30,15 @@ public class RetrofitUtil {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(genericClient())
                 .build();
+        sTestRetrofit=new Retrofit.Builder()
+                .baseUrl(TestApiUrl.DOMAIN)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                .client(genericClient())
+                .build();
+
     }
-    static OkHttpClient genericClient() {
+    private static OkHttpClient genericClient() {
         OkHttpClient httpClient = new OkHttpClient.Builder()
                 .addInterceptor(new Interceptor() {
                     @Override
@@ -35,7 +46,7 @@ public class RetrofitUtil {
                         Request request = chain.request()
                                 .newBuilder()
                                 .addHeader("Content-Type", "application/json; charset=UTF-8")
-                                .addHeader("Accept-Encoding", "gzip, deflate")
+                                .addHeader("Accept-Encoding", "utf-8, deflate")
                                 .addHeader("Connection", "keep-alive")
                                 .addHeader("token","cbe1715f7c7a4f5a9f7d8e88bbcf41ff")
                                 .build();
@@ -52,6 +63,9 @@ public class RetrofitUtil {
 
     public static Retrofit getRetrofit(){
         return sV2Retrofit;
+    }
+    public static Retrofit getTestRetrofit(){
+        return sTestRetrofit;
     }
 
 }

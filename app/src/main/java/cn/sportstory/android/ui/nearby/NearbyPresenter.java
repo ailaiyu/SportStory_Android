@@ -1,24 +1,18 @@
 package cn.sportstory.android.ui.nearby;
 
 import android.content.Context;
-import android.util.Log;
-
-import junit.framework.Test;
 
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
 import cn.sportstory.android.api.request.NearbyRequest;
-import cn.sportstory.android.api.result.TestResult;
+import cn.sportstory.android.entity.TestResult;
 import cn.sportstory.android.repository.UserRepository;
-import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Action;
-import io.reactivex.functions.Consumer;
 import io.reactivex.schedulers.Schedulers;
 
 /**

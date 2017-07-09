@@ -14,6 +14,7 @@ import android.widget.TextView;
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.ui.login.ChooseSportsActivity;
 
 /**
  * Created by aaron on 2017/5/13.
@@ -51,7 +52,7 @@ public class PerfectInfoAddressActivity extends BaseActivity implements View.OnC
         Intent intent = new Intent();
         switch (v.getId()){
             case R.id.btn_perfect_info_address_next:
-                intent.setClass(this, PerfectInfoChooseSportsActivity.class);
+                intent.setClass(this, ChooseSportsActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tv_perfect_info_address_skip:

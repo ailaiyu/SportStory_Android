@@ -2,11 +2,9 @@ package cn.sportstory.android.repository;
 
 import cn.sportstory.android.api.NearbyApi;
 import cn.sportstory.android.api.request.NearbyRequest;
-import cn.sportstory.android.api.result.TestResult;
+import cn.sportstory.android.entity.TestResult;
 import cn.sportstory.android.util.RetrofitUtil;
 import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import io.reactivex.disposables.Disposable;
 
 /**
  * Created by Tamas on 2017/7/6.

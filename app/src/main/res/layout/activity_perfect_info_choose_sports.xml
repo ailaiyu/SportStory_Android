@@ -100,6 +100,7 @@
                     android:orientation="vertical">
 
                     <ImageView
+                        android:id="@+id/imageView"
                         android:layout_width="55dp"
                         android:layout_height="55dp"
                         android:src="@mipmap/female_free" />

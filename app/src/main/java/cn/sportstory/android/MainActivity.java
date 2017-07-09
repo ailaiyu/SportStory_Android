@@ -23,8 +23,8 @@ import cn.sportstory.android.ui.nearby.NearbyFragment;
 import cn.sportstory.android.profile.view.ProfileAlbumFragment;
 import cn.sportstory.android.profile.view.ProfileSportsFragment;
 import cn.sportstory.android.timeline.view.TimelineContentList;
-import cn.sportstory.android.timeline.view.PostTimelineActivity;
 import cn.sportstory.android.timeline.view.TimelineFragment;
+import cn.sportstory.android.ui.timeline.TimeLineFragment;
 
 /**
  * Created by Aaron.Zhang on 17-3-25.
@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     private int tabTextColorPress;
 
     private NearbyFragment nearbyFragment;
-    private TimelineFragment timelineFragment;
+    private TimelineFragment timeLineFragment;
     private ConversationFragment ConversationFragment;
     private MeFragment meFragment;
     private FragmentTransaction fragmentTransaction;
@@ -187,13 +187,13 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
             case R.id.rl_menu_timeline:
                 mIvTimeline.setImageResource(R.mipmap.timeline_press);
                 mTvTimeline.setTextColor(tabTextColorPress);
-                if(timelineFragment == null)
+                if(timeLineFragment == null)
                 {
-                    timelineFragment = new TimelineFragment();
-                    timelineFragment.setArguments(getIntent().getExtras());
-                    fragmentTransaction.add(R.id.fl_main_container, timelineFragment).commit();
+                    timeLineFragment = new TimelineFragment();
+                    timeLineFragment.setArguments(getIntent().getExtras());
+                    fragmentTransaction.add(R.id.fl_main_container, timeLineFragment).commit();
                 }else {
-                    fragmentTransaction.show(timelineFragment).commit();
+                    fragmentTransaction.show(timeLineFragment).commit();
                 }
 
                 break;
@@ -232,8 +232,8 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     private void hideFragments(){
         if (nearbyFragment!=null)
             fragmentTransaction.hide(nearbyFragment);
-        if (timelineFragment!=null)
-            fragmentTransaction.hide(timelineFragment);
+        if (timeLineFragment!=null)
+            fragmentTransaction.hide(timeLineFragment);
         if (ConversationFragment!=null)
             fragmentTransaction.hide(ConversationFragment);
         if (meFragment!=null)

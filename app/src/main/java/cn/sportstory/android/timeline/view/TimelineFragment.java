@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import cn.sportstory.android.R;
+import cn.sportstory.android.ui.addmoment.AddMomentActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -85,7 +86,7 @@ public class TimelineFragment extends Fragment {
         post.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), PostTimelineActivity.class));
+                startActivity(new Intent(getActivity(), AddMomentActivity.class));
             }
         });
         return view;

@@ -1,10 +1,8 @@
 package cn.sportstory.android.api;
 
-import cn.sportstory.android.api.request.NearbyRequest;
-import cn.sportstory.android.api.result.TestResult;
+import cn.sportstory.android.entity.TestResult;
 import cn.sportstory.android.constants.UrlConstants;
 import io.reactivex.Flowable;
-import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 

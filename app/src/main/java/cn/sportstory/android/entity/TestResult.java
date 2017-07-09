@@ -1,4 +1,4 @@
-package cn.sportstory.android.api.result;
+package cn.sportstory.android.entity;
 
 /**
  * Created by Tamas on 2017/7/6.

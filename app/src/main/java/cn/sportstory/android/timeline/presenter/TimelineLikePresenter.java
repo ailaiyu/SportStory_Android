@@ -1,6 +1,5 @@
 package cn.sportstory.android.timeline.presenter;
 
-import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.baseinterface.BaseView;
 import cn.sportstory.android.common.bean.CommonBean;
 import cn.sportstory.android.common.bean.TimelineLikeBean;

@@ -1,13 +1,8 @@
 package cn.sportstory.android.account.model.login;
 
-import android.content.Context;
-
-import cn.sportstory.android.account.presenter.LoginPresenter;
 import cn.sportstory.android.common.baseinterface.BaseModel;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
-import cn.sportstory.android.common.bean.UserLocationBean;
 import cn.sportstory.android.common.bean.UserLoginBean;
-import cn.sportstory.android.im.UserLogin;
 import retrofit2.Callback;
 
 /**

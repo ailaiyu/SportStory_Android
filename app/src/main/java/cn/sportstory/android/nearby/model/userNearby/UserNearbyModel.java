@@ -3,7 +3,6 @@ package cn.sportstory.android.nearby.model.userNearby;
 import cn.sportstory.android.common.baseinterface.BaseModel;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserNearbyBean;
-import cn.sportstory.android.nearby.contract.UserNearbyContract;
 import retrofit2.Callback;
 
 /**

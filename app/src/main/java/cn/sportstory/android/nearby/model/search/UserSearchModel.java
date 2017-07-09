@@ -3,7 +3,6 @@ package cn.sportstory.android.nearby.model.search;
 import cn.sportstory.android.common.baseinterface.BaseModel;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserSearchBean;
-import cn.sportstory.android.nearby.contract.UserSearchContract;
 import retrofit2.Callback;
 
 /**

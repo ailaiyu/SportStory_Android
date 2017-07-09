@@ -2,7 +2,6 @@ package cn.sportstory.android.settings.model;
 
 import cn.sportstory.android.common.baseinterface.BaseModel;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
-import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.common.bean.UserPasswordBean;
 import retrofit2.Call;
 import retrofit2.Callback;

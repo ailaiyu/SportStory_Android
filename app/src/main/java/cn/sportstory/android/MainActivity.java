@@ -16,10 +16,10 @@ import android.widget.TextView;
 import cn.sportstory.android.account.view.LoginActivity;
 import cn.sportstory.android.activities.view.ActivityFragment;
 import cn.sportstory.android.chat.view.ConversationFragment;
-import cn.sportstory.android.common.bean.UserAccountBean;
 import cn.sportstory.android.common.tools.AccountHelper;
 import cn.sportstory.android.profile.view.MeFragment;
-import cn.sportstory.android.nearby.view.NearbyFragment;
+import cn.sportstory.android.ui.addmoment.AddMomentActivity;
+import cn.sportstory.android.ui.nearby.NearbyFragment;
 import cn.sportstory.android.profile.view.ProfileAlbumFragment;
 import cn.sportstory.android.profile.view.ProfileSportsFragment;
 import cn.sportstory.android.timeline.view.TimelineContentList;
@@ -198,7 +198,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
 
                 break;
             case R.id.rl_menu_post:
-                startActivity(new Intent(MainActivity.this, PostTimelineActivity.class));
+                startActivity(new Intent(MainActivity.this, AddMomentActivity.class));
                 break;
 
             case R.id.rl_menu_chat:

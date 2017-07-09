@@ -8,7 +8,7 @@ import cn.sportstory.android.common.bean.UserNearbyBean;
  * Created by aaron on 2017/5/21.
  */
 
-public interface UserNearbyContract {
+public interface NearbyContract {
 
     abstract class Presenter extends BasePresenter {
         public Presenter(BaseView baseView) {

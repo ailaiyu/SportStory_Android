@@ -1,6 +1,5 @@
 package cn.sportstory.android.timeline.contract;
 
-import cn.sportstory.android.account.contract.UploadPhoneInfoContract;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.baseinterface.BaseView;
 import cn.sportstory.android.common.bean.TimelineBean;

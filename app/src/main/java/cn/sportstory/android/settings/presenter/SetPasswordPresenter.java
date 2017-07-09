@@ -1,10 +1,8 @@
 package cn.sportstory.android.settings.presenter;
 
 import cn.sportstory.android.R;
-import cn.sportstory.android.account.contract.GetOSTokenContract;
 import cn.sportstory.android.common.baseinterface.BaseView;
 import cn.sportstory.android.common.bean.CommonBean;
-import cn.sportstory.android.common.bean.OSTokenBean;
 import cn.sportstory.android.common.bean.UserPasswordBean;
 import cn.sportstory.android.common.tools.ResponseParser;
 import cn.sportstory.android.settings.contract.SetPasswordContract;

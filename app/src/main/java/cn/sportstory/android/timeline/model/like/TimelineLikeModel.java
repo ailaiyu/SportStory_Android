@@ -2,9 +2,7 @@ package cn.sportstory.android.timeline.model.like;
 
 import cn.sportstory.android.common.baseinterface.BaseModel;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
-import cn.sportstory.android.common.bean.TimelineBean;
 import cn.sportstory.android.common.bean.TimelineLikeBean;
-import cn.sportstory.android.timeline.contract.TimelineLikeContract;
 import retrofit2.Callback;
 
 /**

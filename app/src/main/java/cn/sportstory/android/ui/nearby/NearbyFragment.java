@@ -1,4 +1,4 @@
-package cn.sportstory.android.nearby.view;
+package cn.sportstory.android.ui.nearby;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,6 +16,9 @@ import java.util.ArrayList;
 import cn.sportstory.android.R;
 import cn.sportstory.android.constants.TestConstants;
 import cn.sportstory.android.nearby.bean.NearbyBean;
+import cn.sportstory.android.nearby.view.FilterActivity;
+import cn.sportstory.android.nearby.view.NearbyAdapter;
+import cn.sportstory.android.nearby.view.NearbySearchActivity;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,7 +28,7 @@ import cn.sportstory.android.nearby.bean.NearbyBean;
  * Use the {@link NearbyFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class NearbyFragment extends Fragment {
+public class NearbyFragment extends Fragment implements NearbyContract.View{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -42,6 +45,8 @@ public class NearbyFragment extends Fragment {
     private static final int NUMBER_PER_REQUEST = 30;
 
     private OnFragmentInteractionListener mListener;
+
+    private NearbyContract.Presenter mPresenter;
 
     public NearbyFragment() {
         // Required empty public constructor
@@ -68,6 +73,7 @@ public class NearbyFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        new NearbyPresenter(this,getContext());
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -86,6 +92,12 @@ public class NearbyFragment extends Fragment {
         gridView.setAdapter(adapter);
         initEvent();
         initData();
+        view.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mPresenter.fetchNearbyUserList();
+            }
+        },1000);
         return view;
     }
 
@@ -127,6 +139,11 @@ public class NearbyFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void setPresenter(NearbyContract.Presenter presenter) {
+        mPresenter=presenter;
     }
 
     /**

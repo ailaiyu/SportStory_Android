@@ -1,16 +1,9 @@
 package cn.sportstory.android.common.baseinterface;
 
-import android.content.Context;
-
-import com.google.gson.GsonBuilder;
-
 import java.io.IOException;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
-import cn.sportstory.android.SportStoryApp;
 import cn.sportstory.android.account.tools.UserTokenHelper;
-import cn.sportstory.android.common.bean.UserAccountBean;
 import cn.sportstory.android.common.retrofitServiceInterface.SportStoryService;
 import cn.sportstory.android.common.tools.Environment;
 import cn.sportstory.android.constants.UrlConstants;

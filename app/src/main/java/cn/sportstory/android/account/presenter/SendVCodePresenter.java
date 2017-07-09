@@ -1,7 +1,6 @@
 package cn.sportstory.android.account.presenter;
 
 import cn.sportstory.android.R;
-import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.contract.SendVCodeTaskContract;
 import cn.sportstory.android.account.model.sendVCode.SendVCodeModel;
 import cn.sportstory.android.account.model.sendVCode.SendVCodeModelImpl;

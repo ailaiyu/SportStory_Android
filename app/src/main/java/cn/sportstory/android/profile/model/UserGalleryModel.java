@@ -1,11 +1,8 @@
 package cn.sportstory.android.profile.model;
 
-import android.content.Context;
-
 import cn.sportstory.android.common.baseinterface.BaseModel;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserGalleryBean;
-import cn.sportstory.android.profile.contract.UserGalleryContract;
 import retrofit2.Callback;
 
 /**

@@ -1,10 +1,7 @@
 package cn.sportstory.android.account.presenter;
 
-import android.content.Intent;
 import android.text.TextUtils;
-import android.widget.TextView;
 
-import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.model.login.LoginEmailPassword;
@@ -14,7 +11,6 @@ import cn.sportstory.android.account.model.login.LoginPhonePassword;
 import cn.sportstory.android.account.model.login.LoginPhoneVCode;
 import cn.sportstory.android.common.baseinterface.BaseView;
 import cn.sportstory.android.common.bean.CommonBean;
-import cn.sportstory.android.common.bean.ErrorBody;
 import cn.sportstory.android.common.bean.UserLoginBean;
 import cn.sportstory.android.common.tools.ResponseParser;
 import cn.sportstory.android.common.tools.SharedPreferenceHelper;

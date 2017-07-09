@@ -1,8 +1,5 @@
 package cn.sportstory.android.account.model.updateUserInfo;
 
-import android.content.Context;
-
-import cn.sportstory.android.account.contract.UpdateUserInfoContract;
 import cn.sportstory.android.common.baseinterface.BaseModel;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserBean;

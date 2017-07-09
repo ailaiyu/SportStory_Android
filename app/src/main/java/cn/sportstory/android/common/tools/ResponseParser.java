@@ -11,11 +11,8 @@ import java.io.IOException;
 
 import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
-import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.tools.UserTokenHelper;
-import cn.sportstory.android.account.view.LoginActivity;
 import cn.sportstory.android.common.baseinterface.BaseView;
-import cn.sportstory.android.common.bean.CommonBean;
 import cn.sportstory.android.common.bean.ErrorBody;
 import retrofit2.Response;
 

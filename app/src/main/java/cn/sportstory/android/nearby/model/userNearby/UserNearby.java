@@ -4,7 +4,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 import cn.sportstory.android.common.bean.UserNearbyBean;
-import cn.sportstory.android.nearby.contract.UserNearbyContract;
+import cn.sportstory.android.nearby.contract.NearbyContract;
 import retrofit2.Call;
 import retrofit2.Callback;
 
@@ -13,7 +13,7 @@ import retrofit2.Callback;
  */
 
 public class UserNearby extends UserNearbyModel {
-    public UserNearby(UserNearbyContract.Presenter presenter) {
+    public UserNearby(NearbyContract.Presenter presenter) {
         super(presenter);
     }
 

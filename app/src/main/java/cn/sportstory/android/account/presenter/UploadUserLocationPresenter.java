@@ -1,7 +1,5 @@
 package cn.sportstory.android.account.presenter;
 
-import java.net.URLEncoder;
-
 import cn.sportstory.android.account.contract.UploadUserLocationContract;
 import cn.sportstory.android.account.model.uploadUserLocation.UploadUserLocation;
 import cn.sportstory.android.account.model.uploadUserLocation.UploadUserLocationModel;

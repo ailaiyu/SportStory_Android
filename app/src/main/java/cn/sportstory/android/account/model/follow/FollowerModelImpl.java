@@ -1,13 +1,6 @@
 package cn.sportstory.android.account.model.follow;
 
-import android.content.Context;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import cn.sportstory.android.account.contract.UserFollowContract;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
-import cn.sportstory.android.common.bean.UserBean;
 import cn.sportstory.android.common.bean.UserFollowerBean;
 import retrofit2.Call;
 import retrofit2.Callback;

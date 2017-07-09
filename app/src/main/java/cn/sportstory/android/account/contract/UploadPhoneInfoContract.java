@@ -2,7 +2,6 @@ package cn.sportstory.android.account.contract;
 
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.baseinterface.BaseView;
-import cn.sportstory.android.common.bean.CommonBean;
 
 /**
  * Created by aaron on 2017/5/20.

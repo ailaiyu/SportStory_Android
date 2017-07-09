@@ -3,7 +3,7 @@ package cn.sportstory.android.nearby.presenter;
 import cn.sportstory.android.common.baseinterface.BaseView;
 import cn.sportstory.android.common.bean.CommonBean;
 import cn.sportstory.android.common.bean.UserNearbyBean;
-import cn.sportstory.android.nearby.contract.UserNearbyContract;
+import cn.sportstory.android.nearby.contract.NearbyContract;
 import cn.sportstory.android.nearby.model.userNearby.UserNearby;
 import cn.sportstory.android.nearby.model.userNearby.UserNearbyModel;
 import retrofit2.Call;
@@ -14,7 +14,7 @@ import retrofit2.Response;
  * Created by aaron on 2017/5/21.
  */
 
-public class UserNearbyPresenter extends UserNearbyContract.Presenter {
+public class UserNearbyPresenter extends NearbyContract.Presenter {
     private UserNearbyModel model;
     private UserNearbyBean bean;
 

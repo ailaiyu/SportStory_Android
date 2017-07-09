@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.sportstory.android.BaseActivity;
@@ -56,6 +57,7 @@ public class PostTimelineActivity extends BaseActivity{
     }
 
     private void initView(){
+        picPaths=new ArrayList<>();
         post = (TextView)findViewById(R.id.post);
         post.setEnabled(false);
         pics = (GridView)findViewById(R.id.imgs);

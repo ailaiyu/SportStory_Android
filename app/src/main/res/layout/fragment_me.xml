@@ -6,7 +6,7 @@
     xmlns:toolbar="http://schemas.android.com/apk/res-auto"
     android:background="@color/defaultBackground"
     android:orientation="vertical"
-    tools:context="cn.sportstory.android.nearby.view.NearbyFragment">
+    tools:context="cn.sportstory.android.ui.nearby.NearbyFragment">
 
     <android.support.v7.widget.Toolbar
         android:layout_width="match_parent"

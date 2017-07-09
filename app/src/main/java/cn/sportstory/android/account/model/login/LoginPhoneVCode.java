@@ -1,11 +1,5 @@
 package cn.sportstory.android.account.model.login;
 
-import android.content.Context;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
-import cn.sportstory.android.account.presenter.LoginPresenter;
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.UserLoginBean;
 import retrofit2.Call;

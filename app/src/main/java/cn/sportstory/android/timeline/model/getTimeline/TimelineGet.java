@@ -1,13 +1,7 @@
 package cn.sportstory.android.timeline.model.getTimeline;
 
-import android.content.Context;
-
-import java.util.LinkedHashMap;
-import java.util.Map;
-
 import cn.sportstory.android.common.baseinterface.BasePresenter;
 import cn.sportstory.android.common.bean.TimelineGetBean;
-import cn.sportstory.android.timeline.contract.TimelineGetContract;
 import retrofit2.Call;
 import retrofit2.Callback;
 

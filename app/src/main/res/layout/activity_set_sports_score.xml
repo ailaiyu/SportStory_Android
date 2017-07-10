@@ -25,30 +25,41 @@
             style="@style/toolBarTextViewStyle"/>
     </android.support.v7.widget.Toolbar>
 
-    <TextView
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="50dp"
-        android:text="@string/click_to_change_sports_level"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_score_list"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="50dp"
+                android:text="@string/click_to_change_sports_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
 
 
-    <Button
-        android:id="@+id/btn_to_main_activity"
-        style="@style/RoundButton45"
-        android:layout_width="match_parent"
-        android:layout_height="45dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="40dp"
-        android:text="进入运动故事"
-        android:textColor="@color/black" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_score_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+
+            <Button
+                android:id="@+id/btn_to_main_activity"
+                style="@style/RoundButton45"
+                android:layout_marginBottom="45dp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="40dp"
+                android:text="进入运动故事"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>

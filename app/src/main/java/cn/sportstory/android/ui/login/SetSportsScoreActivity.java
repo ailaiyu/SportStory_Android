@@ -6,7 +6,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 
 import com.google.gson.Gson;
@@ -22,6 +24,7 @@ import butterknife.OnClick;
 import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Sport;
+import cn.sportstory.android.ui.base.CustomLinearLayoutManager;
 
 /**
  * Created by Tamas on 2017/7/9.
@@ -36,6 +39,9 @@ public class SetSportsScoreActivity extends AppCompatActivity {
 
     @BindView(R.id.rv_score_list)
     RecyclerView mRvScoreList;
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     private ScoreListAdapter mAdapter;
 
@@ -52,10 +58,18 @@ public class SetSportsScoreActivity extends AppCompatActivity {
         mSportList.addAll(sportList);
         Log.i(TAG,"list size:"+sportList.size());
 
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
+        CustomLinearLayoutManager layoutManager=new CustomLinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL);
+        layoutManager.setScrollEnabled(false);
         mRvScoreList.setLayoutManager(layoutManager);
         mAdapter=new ScoreListAdapter(mSportList);
         mRvScoreList.setAdapter(mAdapter);
+
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
 

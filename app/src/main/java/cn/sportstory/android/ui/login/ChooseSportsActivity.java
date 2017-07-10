@@ -22,6 +22,7 @@ import butterknife.OnClick;
 import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Sport;
 import cn.sportstory.android.ui.base.BaseRvAdapter;
+import cn.sportstory.android.ui.base.CustomGridLayoutManager;
 
 /**
  * Created by Tamas on 2017/7/9
@@ -57,7 +58,8 @@ public class ChooseSportsActivity extends AppCompatActivity {
 
         makeSport();
 
-        RecyclerView.LayoutManager layoutManager=new GridLayoutManager(getApplicationContext(),3);
+        CustomGridLayoutManager layoutManager=new CustomGridLayoutManager(getApplicationContext(),3);
+        layoutManager.setScrollEnabled(false);
         mRvSportList.setLayoutManager(layoutManager);
         mAdapter=new SportListAdapter(mSportList);
         mRvSportList.setAdapter(mAdapter);

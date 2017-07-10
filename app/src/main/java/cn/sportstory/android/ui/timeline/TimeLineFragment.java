@@ -35,10 +35,12 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
     @BindView(R.id.rv_timeline_list)
     RecyclerView mRvTimeLineList;
 
-    private List<Story> mStoryList;
+    private List<Story> mStoryList=new ArrayList<>();;
 
     @BindView(R.id.swipe_timeline)
     SwipeRefreshLayout mSwipeRefresh;
+
+    private StoryListAdapter mAdapter;
 
 
     @Nullable
@@ -52,12 +54,13 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
         super.onViewCreated(view, savedInstanceState);
         ButterKnife.bind(this, view);
         new TimeLinePresenter(this,getContext());
-        mStoryList=new ArrayList<>();
 
         mSwipeRefresh.setOnRefreshListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         mRvTimeLineList.setLayoutManager(layoutManager);
-        //mRvTimeLineList
+        mAdapter=new StoryListAdapter(mStoryList,getContext());
+
+        mRvTimeLineList.setAdapter(mAdapter);
 
 
         mPresenter.fetchTimeLine();
@@ -80,6 +83,7 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
         mSwipeRefresh.setRefreshing(false);
         mStoryList.clear();
         mStoryList.addAll(storyList);
+        mAdapter.notifyDataSetChanged();
     }
 
     @Override

@@ -62,7 +62,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
     private int tabTextColorPress;
 
     private NearbyFragment nearbyFragment;
-    private TimelineFragment timeLineFragment;
+    private TimeLineFragment timeLineFragment;
     private ConversationFragment ConversationFragment;
     private MeFragment meFragment;
     private FragmentTransaction fragmentTransaction;
@@ -189,7 +189,7 @@ public class MainActivity extends BaseActivity implements NearbyFragment.OnFragm
                 mTvTimeline.setTextColor(tabTextColorPress);
                 if(timeLineFragment == null)
                 {
-                    timeLineFragment = new TimelineFragment();
+                    timeLineFragment = new TimeLineFragment();
                     timeLineFragment.setArguments(getIntent().getExtras());
                     fragmentTransaction.add(R.id.fl_main_container, timeLineFragment).commit();
                 }else {

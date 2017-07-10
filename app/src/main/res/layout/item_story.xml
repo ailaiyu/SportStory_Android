@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <ImageView
+        android:id="@+id/iv_avatar"
         android:src="@mipmap/ic_default_avatar"
         android:layout_width="@dimen/width_story_avatar"
         android:layout_height="@dimen/width_story_avatar" />
@@ -40,8 +41,10 @@
             app:bga_snpl_otherWhiteSpacing="100dp"
             app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_dark"
             app:bga_snpl_plusDrawable="@mipmap/bga_pp_ic_plus"
-            app:bga_snpl_plusEnable="true"
-            app:bga_snpl_sortable="true"/>
+            app:bga_snpl_editable="false"
+            app:bga_snpl_plusEnable="false"
+            app:bga_snpl_sortable="false"
+            />
     </LinearLayout>
 
 

@@ -1,18 +1,27 @@
 package cn.sportstory.android.ui.timeline;
 
 import android.content.Context;
+import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
 
+import org.reactivestreams.Publisher;
+
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import cn.sportstory.android.entity.GernericResultWithData;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.repository.StoryRepository;
+import io.reactivex.Flowable;
+import io.reactivex.Observable;
+import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -52,16 +61,36 @@ public class TimeLinePresenter implements TimeLineContract.Presenter {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<GernericResultWithData<Story>>() {
                     @Override
-                    public void accept(@NonNull GernericResultWithData<Story> storyGernericResultWithData) throws Exception {
-                        //onNext
-                        Log.i(TAG,"onNext when ftchTimeLine code:"+storyGernericResultWithData.getCode()+"  msg:"+storyGernericResultWithData.getMessage());
+                    public void accept(GernericResultWithData<Story> storyGernericResultWithData) throws Exception {
                         List<Story> storyList=storyGernericResultWithData.getDataList();
+                        if(storyList==null)storyList=new ArrayList<Story>();
+                        for(Story item:storyList){
+                            ArrayList<String> imageUrlList=new ArrayList<String>();
+                            String images=item.getImages();
+                            if("".equals(images))images=";";
+                            if(images==null)images=";";
+                            String[] imageArray=images.split(";");
+                            Collections.addAll(imageUrlList,imageArray);
+                            item.setImageUrlList(imageUrlList);
+                            switch (imageUrlList.size()){//设置动态类型 纯文字、单图、多图
+                                case 0:
+                                    item.setType(Story.TYPE_PURE_TEXT);
+                                    break;
+                                case 1:
+                                    item.setType(Story.TYPE_SINGLE_PICTUR);
+                                    break;
+                                default:
+                                    item.setType(Story.TYPE_MULTI_PICTUR);
+                                    break;
+                            }
+                        }
                         mView.onTimeLineFetched(storyList);
                     }
                 }, new Consumer<Throwable>() {
                     @Override
                     public void accept(@NonNull Throwable throwable) throws Exception {
                        //onError
+                        //TODO 提示获取动态列表失败
                         Log.e(TAG,"onError when fetchTimeLine e:"+throwable.getMessage());
                     }
                 });

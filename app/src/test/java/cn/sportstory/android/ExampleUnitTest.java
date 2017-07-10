@@ -2,6 +2,10 @@ package cn.sportstory.android;
 
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 /**
@@ -11,7 +15,13 @@ import static org.junit.Assert.*;
  */
 public class ExampleUnitTest {
     @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
+    public void testSplit() throws Exception {
+        String imageUrls="http://hahhah";
+        String[] imageUrlArray=imageUrls.split(";");
+        List<String> imageUrlList=new ArrayList<>();
+        Collections.addAll(imageUrlList,imageUrlArray);
+
+        System.out.println("array length : "+ imageUrlArray.length);
+        System.out.println("list size : "+imageUrlList.size());
     }
 }

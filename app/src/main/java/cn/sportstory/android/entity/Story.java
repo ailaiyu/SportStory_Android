@@ -2,6 +2,8 @@ package cn.sportstory.android.entity;
 
 import com.google.gson.annotations.Expose;
 
+import java.util.ArrayList;
+
 /**
  * Created by Tamas on 2017/7/9.
  */
@@ -20,6 +22,8 @@ public class Story {
     private long timeStamp;//创建时间戳
     @Expose//Gson忽略
     private int type;//类型
+    @Expose
+    private ArrayList<String> imageUrlList;
 
     public String getNickName() {
         return nickName;
@@ -83,5 +87,13 @@ public class Story {
 
     public void setType(int type) {
         this.type = type;
+    }
+
+    public ArrayList<String> getImageUrlList() {
+        return imageUrlList;
+    }
+
+    public void setImageUrlList(ArrayList<String> imageUrlList) {
+        this.imageUrlList = imageUrlList;
     }
 }

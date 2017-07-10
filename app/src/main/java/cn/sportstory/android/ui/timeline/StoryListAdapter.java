@@ -63,12 +63,22 @@ public class StoryListAdapter extends BaseRvAdapter {
 
         mImageLoader.displayImage(item.getAvatar(),viewHolder.ivAvatar,mContext);
 
-        String[] imageUrls=item.getImages().split(";");
-
-        ArrayList<String> urlList=new ArrayList<>();
-        Collections.addAll(urlList,imageUrls);
-
-        viewHolder.snplGrid.setData(urlList);
+        switch (item.getType()){
+            case Story.TYPE_PURE_TEXT:
+                viewHolder.ivSinglePic.setVisibility(View.GONE);
+                viewHolder.snplGrid.setVisibility(View.GONE);
+                break;
+            case Story.TYPE_SINGLE_PICTUR:
+                if(item.getImageUrlList().size()==1)mImageLoader.displayImage(item.getImageUrlList().get(0),viewHolder.ivSinglePic,mContext);
+                viewHolder.ivSinglePic.setVisibility(View.VISIBLE);
+                viewHolder.snplGrid.setVisibility(View.GONE);
+                break;
+            case Story.TYPE_MULTI_PICTUR:
+                viewHolder.ivSinglePic.setVisibility(View.GONE);
+                viewHolder.snplGrid.setVisibility(View.VISIBLE);
+                viewHolder.snplGrid.setData(item.getImageUrlList());
+                break;
+        }
 
 
 
@@ -91,6 +101,8 @@ public class StoryListAdapter extends BaseRvAdapter {
         TextView tvText;
         @BindView(R.id.snpl_story_grid)
         BGASortableNinePhotoLayout snplGrid;
+        @BindView(R.id.iv_single_pic)
+        ImageView ivSinglePic;
 
         public SimpleItemViewHolder(View itemView) {
             super(itemView);

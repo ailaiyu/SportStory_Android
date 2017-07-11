@@ -36,6 +36,9 @@ public class StoryRepository {
     public Flowable<GernericResultWithData<Story>> getTimeLine(){
         return mStoryApi.getTimeLine();
     }
+    public Flowable<GernericResultWithData<Story>> getTimeLineMoreOnePage(){
+        return mStoryApi.getTimeLinePage2();
+    }
 
 
 

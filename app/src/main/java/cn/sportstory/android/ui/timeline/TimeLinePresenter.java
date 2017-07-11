@@ -96,4 +96,47 @@ public class TimeLinePresenter implements TimeLineContract.Presenter {
                 });
         mDisposables.add(disposable);
     }
+
+    @Override
+    public void fetchTimeLineMoreOnePage() {
+        Disposable disposable=mStoryRepository.getTimeLineMoreOnePage()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<GernericResultWithData<Story>>() {
+                    @Override
+                    public void accept(GernericResultWithData<Story> storyGernericResultWithData) throws Exception {
+                        List<Story> storyList=storyGernericResultWithData.getDataList();
+                        if(storyList==null)storyList=new ArrayList<Story>();
+                        for(Story item:storyList){
+                            ArrayList<String> imageUrlList=new ArrayList<String>();
+                            String images=item.getImages();
+                            if("".equals(images))images=";";
+                            if(images==null)images=";";
+                            String[] imageArray=images.split(";");
+                            Collections.addAll(imageUrlList,imageArray);
+                            item.setImageUrlList(imageUrlList);
+                            switch (imageUrlList.size()){//设置动态类型 纯文字、单图、多图
+                                case 0:
+                                    item.setType(Story.TYPE_PURE_TEXT);
+                                    break;
+                                case 1:
+                                    item.setType(Story.TYPE_SINGLE_PICTUR);
+                                    break;
+                                default:
+                                    item.setType(Story.TYPE_MULTI_PICTUR);
+                                    break;
+                            }
+                        }
+                        mView.onTimeLineMoreOnePageFetched(storyList);
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        //onError
+                        //TODO 提示获取动态列表失败
+                        Log.e(TAG,"onError when fetchTimeLine e:"+throwable.getMessage());
+                    }
+                });
+        mDisposables.add(disposable);
+    }
 }

@@ -11,9 +11,11 @@ import retrofit2.http.Query;
 
 /**
  * Created by Tamas on 2017/7/9.
- */
+         */
 
 public interface StoryApi {
-    @GET(TestApiUrl.TIME_LINE)
+    @GET(TestApiUrl.TIME_LINE_2)
     Flowable<GernericResultWithData<Story>> getTimeLine();
+    @GET(TestApiUrl.TIME_LINE)
+    Flowable<GernericResultWithData<Story>> getTimeLinePage2();
 }

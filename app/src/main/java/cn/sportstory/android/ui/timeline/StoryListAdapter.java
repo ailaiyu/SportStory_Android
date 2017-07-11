@@ -59,7 +59,13 @@ public class StoryListAdapter extends BaseRvAdapter {
         SimpleItemViewHolder viewHolder=(SimpleItemViewHolder)vh;
 
         viewHolder.tvNickname.setText(item.getNickName());
-        viewHolder.tvText.setText(item.getText());
+
+        if("".equals(item.getText())){
+            viewHolder.tvText.setVisibility(View.GONE);
+        }else{
+            viewHolder.tvText.setVisibility(View.VISIBLE);
+            viewHolder.tvText.setText(item.getText());
+        }
 
         mImageLoader.displayImage(item.getAvatar(),viewHolder.ivAvatar,mContext);
 

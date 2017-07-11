@@ -1,12 +1,14 @@
 package cn.sportstory.android.ui.timeline;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +23,7 @@ import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.ui.addmoment.AddMomentActivity;
 import cn.sportstory.android.ui.base.BaseFragment;
+import cn.sportstory.android.ui.base.EndlessOnScrollListener;
 
 /**
  * Created by Tamas on 2017/7/9.
@@ -57,6 +60,15 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
 
         mSwipeRefresh.setOnRefreshListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager manager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        mRvTimeLineList.setOnScrollListener(new EndlessOnScrollListener(manager) {
+            @Override
+            public void onLoadMore(int currentPage) {
+                Log.i(TAG,"onLoadMore");
+                mPresenter.fetchTimeLineMoreOnePage();
+            }
+        });
+
         mRvTimeLineList.setLayoutManager(layoutManager);
         mAdapter=new StoryListAdapter(mStoryList,getContext());
 
@@ -82,6 +94,12 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
     public void onTimeLineFetched(List<Story> storyList) {
         mSwipeRefresh.setRefreshing(false);
         mStoryList.clear();
+        mStoryList.addAll(storyList);
+        mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onTimeLineMoreOnePageFetched(List<Story> storyList) {
         mStoryList.addAll(storyList);
         mAdapter.notifyDataSetChanged();
     }

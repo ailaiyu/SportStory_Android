@@ -8,4 +8,5 @@ public class TestApiUrl {
     public static final String DOMAIN = "http://tamas1994.qiniudn.com/";
 
     public static final String TIME_LINE="api_timeline3.json";
+    public static final String TIME_LINE_2="timeline_2.json";
 }

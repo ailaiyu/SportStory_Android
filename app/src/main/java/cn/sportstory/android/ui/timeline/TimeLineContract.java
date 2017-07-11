@@ -13,8 +13,10 @@ import cn.sportstory.android.ui.base.BaseView;
 public interface TimeLineContract {
     interface View extends BaseView<Presenter>{
         void onTimeLineFetched(List<Story> storyList);
+        void onTimeLineMoreOnePageFetched(List<Story> storyList);
     }
     interface Presenter extends BasePresenter{
         void fetchTimeLine();
+        void fetchTimeLineMoreOnePage();
     }
 }

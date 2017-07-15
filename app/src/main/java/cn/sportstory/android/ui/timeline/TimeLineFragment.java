@@ -23,6 +23,7 @@ import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.ui.addmoment.AddMomentActivity;
 import cn.sportstory.android.ui.base.BaseFragment;
+import cn.sportstory.android.ui.base.BaseRvAdapter;
 import cn.sportstory.android.ui.base.EndlessOnScrollListener;
 
 /**
@@ -32,6 +33,8 @@ import cn.sportstory.android.ui.base.EndlessOnScrollListener;
 public class TimeLineFragment extends BaseFragment implements TimeLineContract.View,SwipeRefreshLayout.OnRefreshListener {
 
     private static final String TAG=TimeLineFragment.class.getName();
+
+    public static final String KEY_STORY="story";
 
     private TimeLineContract.Presenter mPresenter;
 
@@ -44,6 +47,7 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
     SwipeRefreshLayout mSwipeRefresh;
 
     private StoryListAdapter mAdapter;
+    private StoryListNewAdapter mNewAdapter;
 
 
     @Nullable
@@ -60,7 +64,9 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
 
         mSwipeRefresh.setOnRefreshListener(this);
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
-        LinearLayoutManager manager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
+        LinearLayoutManager manager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
+        mRvTimeLineList.setLayoutManager(manager);
+        /*
         mRvTimeLineList.setOnScrollListener(new EndlessOnScrollListener(manager) {
             @Override
             public void onLoadMore(int currentPage) {
@@ -68,14 +74,27 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
                 mPresenter.fetchTimeLineMoreOnePage();
             }
         });
+        */
 
-        mRvTimeLineList.setLayoutManager(layoutManager);
+        //mRvTimeLineList.setLayoutManager(layoutManager);
         mAdapter=new StoryListAdapter(mStoryList,getContext());
+        mNewAdapter=new StoryListNewAdapter(mRvTimeLineList,mStoryList);
 
         mRvTimeLineList.setAdapter(mAdapter);
+        //mRvTimeLineList.setAdapter(mNewAdapter);
 
 
         mPresenter.fetchTimeLine();
+
+        mAdapter.setOnItemClickListener(new BaseRvAdapter.MyItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Story story=mStoryList.get(position);
+                Intent toStoryDetailActivity=new Intent(getActivity(),StoryDetailActivity.class);
+                toStoryDetailActivity.putExtra(KEY_STORY,story);
+                startActivity(toStoryDetailActivity);
+            }
+        });
 
     }
 
@@ -92,16 +111,20 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
 
     @Override
     public void onTimeLineFetched(List<Story> storyList) {
+        Log.i(TAG,"onTimeLineFetched size:"+storyList.size());
         mSwipeRefresh.setRefreshing(false);
         mStoryList.clear();
         mStoryList.addAll(storyList);
         mAdapter.notifyDataSetChanged();
+        //mNewAdapter.notifyDataSetChanged();
     }
 
     @Override
     public void onTimeLineMoreOnePageFetched(List<Story> storyList) {
+        Log.i(TAG,"onTimeLineMoreOnePageFetched");
         mStoryList.addAll(storyList);
         mAdapter.notifyDataSetChanged();
+        //mNewAdapter.notifyDataSetChanged();
     }
 
     @Override

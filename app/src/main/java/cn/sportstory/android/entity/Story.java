@@ -1,14 +1,16 @@
 package cn.sportstory.android.entity;
 
 import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * Created by Tamas on 2017/7/9.
  */
 
-public class Story {
+public class Story implements Serializable {
     public static final int TYPE_PURE_TEXT=1;//纯文本
     public static final int TYPE_SINGLE_PICTUR=2;//单图+文字（可选）
     public static final int TYPE_MULTI_PICTUR=3;//多图+文字（可选）

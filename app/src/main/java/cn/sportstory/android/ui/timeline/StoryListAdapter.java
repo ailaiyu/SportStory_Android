@@ -15,6 +15,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
+import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerPreviewActivity;
+import cn.bingoogolapple.photopicker.activity.BGAPhotoPreviewActivity;
 import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
 import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Story;
@@ -26,7 +29,7 @@ import cn.sportstory.android.ui.base.BaseRvAdapter;
 /**
  * Created by Tamas on 2016/4/23.
  */
-public class StoryListAdapter extends BaseRvAdapter {
+public class StoryListAdapter extends BaseRvAdapter  {
 
 
     private static final String TAG=StoryListAdapter.class.getName();
@@ -54,7 +57,7 @@ public class StoryListAdapter extends BaseRvAdapter {
 
     @Override
     public void onBindViewHolder(BaseRvViewHolder vh, int position) {
-        Story item=mStoryList.get(position);
+        final Story item=mStoryList.get(position);
 
         SimpleItemViewHolder viewHolder=(SimpleItemViewHolder)vh;
 
@@ -67,6 +70,13 @@ public class StoryListAdapter extends BaseRvAdapter {
             viewHolder.tvText.setText(item.getText());
         }
 
+        viewHolder.snplGrid.setDelegate(viewHolder);
+
+        viewHolder.tvLikeNum.setText(item.getLikeNum()+"赞");
+        viewHolder.tvCommentNum.setText(item.getCommentNum()+"评论");
+
+
+
         mImageLoader.displayImage(item.getAvatar(),viewHolder.ivAvatar,mContext);
 
         switch (item.getType()){
@@ -75,7 +85,15 @@ public class StoryListAdapter extends BaseRvAdapter {
                 viewHolder.snplGrid.setVisibility(View.GONE);
                 break;
             case Story.TYPE_SINGLE_PICTUR:
-                if(item.getImageUrlList().size()==1)mImageLoader.displayImage(item.getImageUrlList().get(0),viewHolder.ivSinglePic,mContext);
+                if(item.getImageUrlList().size()==1){
+                    mImageLoader.displayImage(item.getImageUrlList().get(0),viewHolder.ivSinglePic,mContext);
+                    viewHolder.ivSinglePic.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            mContext.startActivity(BGAPhotoPreviewActivity.newIntent(mContext,null,item.getImageUrlList().get(0)));
+                        }
+                    });
+                }
                 viewHolder.ivSinglePic.setVisibility(View.VISIBLE);
                 viewHolder.snplGrid.setVisibility(View.GONE);
                 break;
@@ -95,9 +113,11 @@ public class StoryListAdapter extends BaseRvAdapter {
     public int getItemCount() {
         return (this.mStoryList!= null) ? this.mStoryList.size() : 0;
     }
-    //final static
-    protected  class SimpleItemViewHolder extends BaseRvViewHolder {
 
+
+    //final static
+    protected  class SimpleItemViewHolder extends BaseRvViewHolder implements BGASortableNinePhotoLayout.Delegate{
+        private static final int REQUEST_CODE_PHOTO_PREVIEW=1;
 
         @BindView(R.id.iv_avatar)
         ImageView ivAvatar;
@@ -109,10 +129,30 @@ public class StoryListAdapter extends BaseRvAdapter {
         BGASortableNinePhotoLayout snplGrid;
         @BindView(R.id.iv_single_pic)
         ImageView ivSinglePic;
+        @BindView(R.id.tv_like_num)
+        TextView tvLikeNum;
+        @BindView(R.id.tv_comment_num)
+        TextView tvCommentNum;
 
         public SimpleItemViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
+        }
+
+        @Override
+        public void onClickAddNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, ArrayList<String> models) {
+
+        }
+
+        @Override
+        public void onClickDeleteNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, String model, ArrayList<String> models) {
+
+        }
+
+        @Override
+        public void onClickNinePhotoItem(BGASortableNinePhotoLayout sortableNinePhotoLayout, View view, int position, String model, ArrayList<String> models) {
+            mContext.startActivity(BGAPhotoPreviewActivity.newIntent(mContext,null,models,position));
+            //mContext.startActivity(BGAPhotoPickerPreviewActivity.newIntent(mContext, snplGrid.getMaxItemCount(), models, models, position, false));
         }
     }
 

@@ -137,6 +137,7 @@
 
     <!--朋友圈-->
     <string name="post_timeline">发表动态</string>
+    <string name="story_dtail">详情</string>
 
     <!--权限-->
     <string name="request_explanation_access_location">申请定位</string>

@@ -361,6 +361,9 @@
         <activity android:name=".ui.login.SetSportsScoreActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
+        <activity android:name=".ui.timeline.StoryDetailActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
 
         <provider
             android:name="android.support.v4.content.FileProvider"

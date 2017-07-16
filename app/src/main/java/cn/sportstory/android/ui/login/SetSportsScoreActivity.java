@@ -25,6 +25,7 @@ import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Sport;
 import cn.sportstory.android.ui.base.CustomLinearLayoutManager;
+import cn.sportstory.android.ui.home.HomeActivity;
 
 /**
  * Created by Tamas on 2017/7/9.
@@ -77,8 +78,8 @@ public class SetSportsScoreActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_to_main_activity)
     void onBtnToMainActivityClicked(){
-        Intent toMainActivity=new Intent(SetSportsScoreActivity.this, MainActivity.class);
-        startActivity(toMainActivity);
+        Intent toHomeActivity=new Intent(SetSportsScoreActivity.this, HomeActivity.class);
+        startActivity(toHomeActivity);
         finish();
     }
 

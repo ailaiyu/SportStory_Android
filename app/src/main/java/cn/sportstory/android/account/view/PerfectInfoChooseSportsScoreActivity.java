@@ -9,6 +9,7 @@ import android.view.View;
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.ui.home.HomeActivity;
 
 /**
  * Created by aaron on 2017/5/14.
@@ -33,7 +34,7 @@ public class PerfectInfoChooseSportsScoreActivity extends BaseActivity implement
         Intent intent = new Intent();
         switch (v.getId()){
             case R.id.btn_perfect_info_sports_score_finish:
-                intent.setClass(this, MainActivity.class);
+                intent.setClass(this, HomeActivity.class);
                 startActivity(intent);
                 break;
         }

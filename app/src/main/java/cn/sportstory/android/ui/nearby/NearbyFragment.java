@@ -127,12 +127,14 @@ public class NearbyFragment extends Fragment implements NearbyContract.View{
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        /*
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
         }
+        */
     }
 
     @Override
@@ -152,8 +154,8 @@ public class NearbyFragment extends Fragment implements NearbyContract.View{
      * to the activity and potentially other fragments contained in that
      * activity.
      * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
+     * "http://developer.android.com/training/basics/fragmen
+     * See the Android Training lesson <a href=ts/communicating.html"
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {

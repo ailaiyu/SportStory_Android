@@ -9,4 +9,6 @@ public class TestApiUrl {
 
     public static final String TIME_LINE="api_timeline3.json";
     public static final String TIME_LINE_2="timeline_2.json";
+
+    public static final String STORY_COMMENT="api_comment.json";
 }

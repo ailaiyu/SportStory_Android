@@ -1,10 +1,8 @@
 package cn.sportstory.android.ui.timeline;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,7 +22,7 @@ import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.ui.addmoment.AddMomentActivity;
 import cn.sportstory.android.ui.base.BaseFragment;
 import cn.sportstory.android.ui.base.BaseRvAdapter;
-import cn.sportstory.android.ui.base.EndlessOnScrollListener;
+import cn.sportstory.android.ui.timeline.detail.StoryDetailActivity;
 
 /**
  * Created by Tamas on 2017/7/9.

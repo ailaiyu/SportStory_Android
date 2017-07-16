@@ -2,6 +2,7 @@ package cn.sportstory.android.api;
 
 import cn.sportstory.android.constants.TestApiUrl;
 import cn.sportstory.android.constants.UrlConstants;
+import cn.sportstory.android.entity.Comment;
 import cn.sportstory.android.entity.GernericResultWithData;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.entity.TestResult;
@@ -20,5 +21,8 @@ public interface StoryApi {
 
     @GET(TestApiUrl.TIME_LINE)
     Flowable<GernericResultWithData<Story>> getTimeLine();
+
+    @GET(TestApiUrl.STORY_COMMENT)
+    Flowable<GernericResultWithData<Comment>> getComment();
 
 }

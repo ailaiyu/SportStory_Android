@@ -2,6 +2,7 @@ package cn.sportstory.android.repository;
 
 import cn.sportstory.android.api.StoryApi;
 import cn.sportstory.android.api.request.NearbyRequest;
+import cn.sportstory.android.entity.Comment;
 import cn.sportstory.android.entity.GernericResultWithData;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.entity.TestResult;
@@ -38,6 +39,9 @@ public class StoryRepository {
     }
     public Flowable<GernericResultWithData<Story>> getTimeLineMoreOnePage(){
         return mStoryApi.getTimeLinePage2();
+    }
+    public Flowable<GernericResultWithData<Comment>> getCommentByStoryId(){
+        return mStoryApi.getComment();
     }
 
 

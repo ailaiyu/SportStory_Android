@@ -361,7 +361,7 @@
         <activity android:name=".ui.login.SetSportsScoreActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
-        <activity android:name=".ui.timeline.StoryDetailActivity"
+        <activity android:name=".ui.timeline.detail.StoryDetailActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
 

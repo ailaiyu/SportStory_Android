@@ -144,4 +144,7 @@
     <string name="request_explanation_read_contacts">申请读取通讯录</string>
     <string name="request_explanation_WRITE_EXTERNAL_STORAGE">申请存储空间权限</string>
     <string name="request_explanation_camera">申请相机权限</string>
+
+
+    <string name="test_comment_content">回复<font color='#FF0000'>高圆圆</font>我帅吗</string>
 </resources>

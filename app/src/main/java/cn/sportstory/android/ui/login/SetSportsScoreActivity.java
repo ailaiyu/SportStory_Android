@@ -23,9 +23,12 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
+import cn.sportstory.android.constants.TestConstants;
 import cn.sportstory.android.entity.Sport;
 import cn.sportstory.android.ui.base.CustomLinearLayoutManager;
 import cn.sportstory.android.ui.home.HomeActivity;
+import cn.sportstory.android.util.JsonUtil;
+import cn.sportstory.android.util.SPUtil;
 
 /**
  * Created by Tamas on 2017/7/9.
@@ -55,7 +58,7 @@ public class SetSportsScoreActivity extends AppCompatActivity {
         Intent intent=getIntent();
         String jsonStr=intent.getStringExtra(ChooseSportsActivity.KEY_JSON_STR);
 
-        List<Sport> sportList=getListFromJSON(jsonStr,Sport[].class);
+        List<Sport> sportList= JsonUtil.getListFromJSON(jsonStr,Sport[].class);
         mSportList.addAll(sportList);
         Log.i(TAG,"list size:"+sportList.size());
 
@@ -78,14 +81,14 @@ public class SetSportsScoreActivity extends AppCompatActivity {
 
     @OnClick(R.id.btn_to_main_activity)
     void onBtnToMainActivityClicked(){
+
+        String jsonStr=new Gson().toJson(mSportList);
+        SPUtil.getInstance(getApplicationContext()).putString(TestConstants.KEY_SPORT,jsonStr);
+
         Intent toHomeActivity=new Intent(SetSportsScoreActivity.this, HomeActivity.class);
         startActivity(toHomeActivity);
-        finish();
-    }
 
-    private   <T> List<T> getListFromJSON(String json, Class<T[]> type) {
-        T[] list = new Gson().fromJson(json, type);
-        return Arrays.asList(list);
+        finish();
     }
 
 

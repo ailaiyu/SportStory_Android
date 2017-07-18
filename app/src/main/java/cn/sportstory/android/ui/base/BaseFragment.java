@@ -14,7 +14,7 @@ import io.reactivex.disposables.Disposable;
  */
 
 public abstract class BaseFragment extends Fragment {
-    private static final String TAG="BaseFragment";
+    private static final String TAG=BaseFragment.class.getName();
     private CompositeDisposable mDisposables;
 
     //如果复写，必须super

@@ -21,4 +21,6 @@ public class TestConstants {
             "https://img3.doubanio.com/icon/ul66576541-31.jpg",
     };
 
+    public static final String KEY_SPORT="selected_sports";
+
 }

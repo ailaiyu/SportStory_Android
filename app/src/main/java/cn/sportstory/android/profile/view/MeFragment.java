@@ -17,6 +17,7 @@ import android.widget.TextView;
 import cn.sportstory.android.R;
 import cn.sportstory.android.settings.view.SettingsActivity;
 import cn.sportstory.android.timeline.view.TimelineContentList;
+import cn.sportstory.android.ui.profile.SportScoreFragment;
 
 import static cn.sportstory.android.profile.view.FollowersListActivity.FRAGMENT_TAG;
 
@@ -41,7 +42,7 @@ public class MeFragment extends Fragment {
     private ViewGroup content;
 
     private ProfileAlbumFragment albumFragment;
-    private ProfileSportsFragment sportsFragment;
+    private SportScoreFragment sportsFragment;
     private TimelineContentList timelineFragment;
     private FragmentTransaction fragmentTransaction;
 
@@ -232,7 +233,7 @@ public class MeFragment extends Fragment {
             case FRAGMENT_DATA:
                 if (sportsFragment == null)
                 {
-                    sportsFragment = new ProfileSportsFragment();
+                    sportsFragment = new SportScoreFragment();
                     fragmentTransaction.add(R.id.fl_profile_content, sportsFragment).commit();
                 }else
                 {

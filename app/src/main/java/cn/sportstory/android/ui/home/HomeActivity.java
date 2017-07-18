@@ -1,5 +1,6 @@
 package cn.sportstory.android.ui.home;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -17,6 +18,7 @@ import cn.sportstory.android.R;
 import cn.sportstory.android.chat.view.ChatFragment;
 import cn.sportstory.android.chat.view.ConversationFragment;
 import cn.sportstory.android.profile.view.MeFragment;
+import cn.sportstory.android.ui.addmoment.AddMomentActivity;
 import cn.sportstory.android.ui.base.BaseActivity;
 import cn.sportstory.android.ui.base.CustomPagerAdapter;
 import cn.sportstory.android.ui.base.CustomViewPager;
@@ -81,9 +83,6 @@ public class HomeActivity extends BaseActivity implements HomeContract.View{
 
             }
         });
-
-
-
     }
 
     @OnClick({R.id.rl_menu_nearby,R.id.rl_menu_timeline, R.id.rl_menu_chat, R.id.rl_menu_me})
@@ -98,6 +97,13 @@ public class HomeActivity extends BaseActivity implements HomeContract.View{
             }
         }
     }
+
+    @OnClick(R.id.rl_menu_post)
+    void onNavPostStoryClicked(View view){
+        Intent toAddMomentActivity=new Intent(this, AddMomentActivity.class);
+        startActivity(toAddMomentActivity);
+    }
+
     private void deSelectAllNavItem() {
         for (RelativeLayout iv : mNavIvList) {
             iv.setSelected(false);

@@ -23,6 +23,7 @@ import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Sport;
 import cn.sportstory.android.ui.base.BaseRvAdapter;
 import cn.sportstory.android.ui.base.CustomGridLayoutManager;
+import cn.sportstory.android.util.NotifyUtil;
 
 /**
  * Created by Tamas on 2017/7/9
@@ -42,6 +43,8 @@ public class ChooseSportsActivity extends AppCompatActivity {
     List<Sport> mSportList;
 
     SportListAdapter mAdapter;
+
+    private int mSelectedSportNum;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,9 +74,14 @@ public class ChooseSportsActivity extends AppCompatActivity {
                 if(view.isSelected()){
                     view.setSelected(false);
                     item.setSelected(false);
+                    mSelectedSportNum--;
+                }else if(mSelectedSportNum==3){
+                    NotifyUtil.showSnackMsg(view,"只能3项运动哦");
+                    return;
                 }else{
                     view.setSelected(true);
                     item.setSelected(true);
+                    mSelectedSportNum++;
                 }
             }
         });

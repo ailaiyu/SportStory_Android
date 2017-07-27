@@ -93,9 +93,11 @@ public class NearbyPresenter implements NearbyContract.Presenter {
 
             }
         };
+        /*
         mUserRepository.getNearbyUserList(nearbyRequest)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+                */
     }
 }

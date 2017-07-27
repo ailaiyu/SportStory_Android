@@ -1,81 +1,60 @@
 package cn.sportstory.android.entity;
 
+import com.google.gson.annotations.Expose;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  * Created by Tamas on 2017/7/15.
  */
-public class Story {
-
+public class Story implements Serializable{
     public static final int TYPE_PURE_TEXT=1;//纯文本
     public static final int TYPE_SINGLE_PICTUR=2;//单图+文字（可选）
     public static final int TYPE_MULTI_PICTUR=3;//多图+文字（可选）
 
-    private long id;
-    private long userId;
-    private String nickname;
-    private String imageUrls;
-    private String content;
-    private int type;
-    private long createDate;
-
+    private String nickName;//昵称
+    private String avatar;//头像图片url
+    private String text;//文本
+    private String images;//图片
     private int commentNum;//评论数
     private int likeNum;//赞数
-    private String avatar;
+    private long timeStamp;//创建时间戳
+    @Expose//Gson忽略
+    private int type;//类型
+    @Expose
+    private ArrayList<String> imageUrlList;
 
-
-    public long getId() {
-        return id;
+    public String getNickName() {
+        return nickName;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setNickName(String nickName) {
+        this.nickName = nickName;
     }
 
-    public long getUserId() {
-        return userId;
+    public String getAvatar() {
+        return avatar;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getText() {
+        return text;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public void setText(String text) {
+        this.text = text;
     }
 
-    public String getImageUrls() {
-        return imageUrls;
+    public String getImages() {
+        return images;
     }
 
-    public void setImageUrls(String imageUrls) {
-        this.imageUrls = imageUrls;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public long getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(long createDate) {
-        this.createDate = createDate;
+    public void setImages(String images) {
+        this.images = images;
     }
 
     public int getCommentNum() {
@@ -94,11 +73,28 @@ public class Story {
         this.likeNum = likeNum;
     }
 
-    public String getAvatar() {
-        return avatar;
+    public long getTimeStamp() {
+        return timeStamp;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setTimeStamp(long timeStamp) {
+        this.timeStamp = timeStamp;
     }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public ArrayList<String> getImageUrlList() {
+        return imageUrlList;
+    }
+
+    public void setImageUrlList(ArrayList<String> imageUrlList) {
+        this.imageUrlList = imageUrlList;
+    }
+
 }

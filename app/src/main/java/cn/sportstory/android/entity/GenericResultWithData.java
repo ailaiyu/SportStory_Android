@@ -1,19 +1,16 @@
 package cn.sportstory.android.entity;
 
-import java.util.List;
-
 /**
- * Created by Tamas on 2017/7/9.
+ * Created by Tamas on 2017/7/12.
  */
+public class GenericResultWithData<T> extends GenericResult{
+    T data;
 
-public class GenericResultWithData<T> extends GenericResult {
-    List<T> dataList ;
-
-    public List<T> getDataList() {
-        return dataList;
+    public T getData() {
+        return data;
     }
 
-    public void setDataList(List<T> dataList) {
-        this.dataList = dataList;
+    public void setData(T data) {
+        this.data = data;
     }
 }

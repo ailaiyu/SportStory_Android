@@ -13,6 +13,7 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public abstract class BaseActivity extends AppCompatActivity {
 
+    private ProgressDialog mProgressDialog;
 
     CompositeDisposable mDisposables=new CompositeDisposable();
 
@@ -38,6 +39,16 @@ public abstract class BaseActivity extends AppCompatActivity {
 
     public CompositeDisposable subscribeEvents(){
         return null;
+    }
+
+    public void showMsg(String msg,boolean cancleable) {
+        mProgressDialog = ProgressDialog.show(this, null, msg, true, cancleable, null);
+    }
+
+    public void hideMsg() {
+        if (mProgressDialog != null) {
+            mProgressDialog.dismiss();
+        }
     }
 
 

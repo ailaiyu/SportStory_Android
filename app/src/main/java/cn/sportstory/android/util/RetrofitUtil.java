@@ -20,12 +20,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitUtil {
-    private static Retrofit sV2Retrofit;
+    private static Retrofit sLocalRetrofit;
     private static Retrofit sTestRetrofit;
 
     static {
-        sV2Retrofit = new Retrofit.Builder()
-                .baseUrl(UrlConstants.DOMAIN)
+        sLocalRetrofit = new Retrofit.Builder()
+                .baseUrl(TestApiUrl.LOCAL_DOMAIN)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(genericClient())
@@ -62,7 +62,7 @@ public class RetrofitUtil {
 
 
     public static Retrofit getRetrofit(){
-        return sV2Retrofit;
+        return sLocalRetrofit;
     }
     public static Retrofit getTestRetrofit(){
         return sTestRetrofit;

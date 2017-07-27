@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 
 import cn.sportstory.android.entity.GenericResultWithData;
+import cn.sportstory.android.entity.GenericResultWithList;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.repository.StoryRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -52,10 +53,10 @@ public class TimeLinePresenter implements TimeLineContract.Presenter {
         Disposable disposable=mStoryRepository.getTimeLine()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<GenericResultWithData<Story>>() {
+                .subscribe(new Consumer<GenericResultWithList<Story>>() {
                     @Override
-                    public void accept(GenericResultWithData<Story> storyGernericResultWithData) throws Exception {
-                        List<Story> storyList=storyGernericResultWithData.getDataList();
+                    public void accept(GenericResultWithList<Story> storyGernericResultWithList) throws Exception {
+                        List<Story> storyList=storyGernericResultWithList.getList();
                         if(storyList==null)storyList=new ArrayList<Story>();
                         for(Story item:storyList){
                             ArrayList<String> imageUrlList=new ArrayList<String>();
@@ -95,10 +96,10 @@ public class TimeLinePresenter implements TimeLineContract.Presenter {
         Disposable disposable=mStoryRepository.getTimeLineMoreOnePage()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<GenericResultWithData<Story>>() {
+                .subscribe(new Consumer<GenericResultWithList<Story>>() {
                     @Override
-                    public void accept(GenericResultWithData<Story> storyGernericResultWithData) throws Exception {
-                        List<Story> storyList=storyGernericResultWithData.getDataList();
+                    public void accept(GenericResultWithList<Story> storyGernericResultWithList) throws Exception {
+                        List<Story> storyList=storyGernericResultWithList.getList();
                         if(storyList==null)storyList=new ArrayList<Story>();
                         for(Story item:storyList){
                             ArrayList<String> imageUrlList=new ArrayList<String>();

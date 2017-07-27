@@ -26,13 +26,13 @@ import retrofit2.http.Path;
 public interface StoryApi {
 
     @GET(TestApiUrl.TIME_LINE_2)
-    Flowable<GenericResultWithData<Story>> getTimeLinePage2();
+    Flowable<GenericResultWithList<Story>> getTimeLinePage2();
 
     @GET(TestApiUrl.TIME_LINE)
-    Flowable<GenericResultWithData<Story>> getTimeLine();
+    Flowable<GenericResultWithList<Story>> getTimeLine();
 
     @GET(TestApiUrl.STORY_COMMENT)
-    Flowable<GenericResultWithData<Comment>> getComment();
+    Flowable<GenericResultWithList<Comment>> getComment();
 
 
     @POST("timeline")

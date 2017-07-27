@@ -3,6 +3,7 @@ package cn.sportstory.android.repository;
 import cn.sportstory.android.api.StoryApi;
 import cn.sportstory.android.entity.Comment;
 import cn.sportstory.android.entity.GenericResultWithData;
+import cn.sportstory.android.entity.GenericResultWithList;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.util.RetrofitUtil;
 import io.reactivex.Flowable;
@@ -32,13 +33,13 @@ public class StoryRepository {
         return sInstance;
     }
 
-    public Flowable<GenericResultWithData<Story>> getTimeLine(){
+    public Flowable<GenericResultWithList<Story>> getTimeLine(){
         return mStoryApi.getTimeLine();
     }
-    public Flowable<GenericResultWithData<Story>> getTimeLineMoreOnePage(){
+    public Flowable<GenericResultWithList<Story>> getTimeLineMoreOnePage(){
         return mStoryApi.getTimeLinePage2();
     }
-    public Flowable<GenericResultWithData<Comment>> getCommentByStoryId(){
+    public Flowable<GenericResultWithList<Comment>> getCommentByStoryId(){
         return mStoryApi.getComment();
     }
 

@@ -1,19 +1,19 @@
 package cn.sportstory.android.entity;
 
 /**
- * Created by Tamas on 2017/7/6.
+ * Created by Tamas on 2017/7/12.
  */
-
 public class GenericResult {
-    int code;
-    String message;
+    private int status;
+    private String message;
 
-    public int getCode() {
-        return code;
+
+    public int getStatus() {
+        return status;
     }
 
-    public void setCode(int code) {
-        this.code = code;
+    public void setStatus(int status) {
+        this.status = status;
     }
 
     public String getMessage() {

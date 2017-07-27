@@ -19,6 +19,7 @@ import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
 import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Comment;
 import cn.sportstory.android.entity.GenericResultWithData;
+import cn.sportstory.android.entity.GenericResultWithList;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.repository.StoryRepository;
 import cn.sportstory.android.tools.ImageLoader;
@@ -143,10 +144,10 @@ public class StoryDetailActivity extends BaseActivity {
         Disposable disposable=mStoryRepository.getCommentByStoryId()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<GenericResultWithData<Comment>>() {
+                .subscribe(new Consumer<GenericResultWithList<Comment>>() {
                     @Override
-                    public void accept(@NonNull GenericResultWithData<Comment> commentGernericResultWithData) throws Exception {
-                        List<Comment> commentList=commentGernericResultWithData.getDataList();
+                    public void accept(@NonNull GenericResultWithList<Comment> commentGernericResultWithList) throws Exception {
+                        List<Comment> commentList=commentGernericResultWithList.getList();
                         if(commentList==null)commentList=new ArrayList<Comment>();
                         onCommentListFetched(commentList);
                         Log.i(TAG,"onNext when fetchCommentList size:"+commentList.size());

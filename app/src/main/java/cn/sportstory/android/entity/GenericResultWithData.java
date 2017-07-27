@@ -6,7 +6,7 @@ import java.util.List;
  * Created by Tamas on 2017/7/9.
  */
 
-public class GernericResultWithData<T> extends GenericResult {
+public class GenericResultWithData<T> extends GenericResult {
     List<T> dataList ;
 
     public List<T> getDataList() {

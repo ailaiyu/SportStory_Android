@@ -1,27 +1,22 @@
-package cn.sportstory.android.ui.login;
+package cn.sportstory.android.ui.login.perfectinfo;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.constants.TestConstants;
 import cn.sportstory.android.entity.Sport;

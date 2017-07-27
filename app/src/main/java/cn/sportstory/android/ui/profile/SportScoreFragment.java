@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,10 +17,9 @@ import cn.sportstory.android.R;
 import cn.sportstory.android.constants.TestConstants;
 import cn.sportstory.android.entity.Sport;
 import cn.sportstory.android.ui.base.BaseFragment;
-import cn.sportstory.android.ui.login.ScoreListAdapter;
+import cn.sportstory.android.ui.login.perfectinfo.ScoreListAdapter;
 import cn.sportstory.android.util.JsonUtil;
 import cn.sportstory.android.util.SPUtil;
-import io.reactivex.disposables.Disposable;
 
 /**
  * Created by Tamas on 2017/7/17.

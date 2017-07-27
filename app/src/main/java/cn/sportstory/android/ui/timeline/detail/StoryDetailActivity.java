@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
 import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Comment;
-import cn.sportstory.android.entity.GernericResultWithData;
+import cn.sportstory.android.entity.GenericResultWithData;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.repository.StoryRepository;
 import cn.sportstory.android.tools.ImageLoader;
@@ -143,9 +143,9 @@ public class StoryDetailActivity extends BaseActivity {
         Disposable disposable=mStoryRepository.getCommentByStoryId()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<GernericResultWithData<Comment>>() {
+                .subscribe(new Consumer<GenericResultWithData<Comment>>() {
                     @Override
-                    public void accept(@NonNull GernericResultWithData<Comment> commentGernericResultWithData) throws Exception {
+                    public void accept(@NonNull GenericResultWithData<Comment> commentGernericResultWithData) throws Exception {
                         List<Comment> commentList=commentGernericResultWithData.getDataList();
                         if(commentList==null)commentList=new ArrayList<Comment>();
                         onCommentListFetched(commentList);

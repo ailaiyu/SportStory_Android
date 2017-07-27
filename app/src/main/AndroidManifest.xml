@@ -355,10 +355,10 @@
         <activity android:name=".ui.addmoment.AddMomentActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
-        <activity android:name=".ui.login.ChooseSportsActivity"
+        <activity android:name=".ui.login.perfectinfo.ChooseSportsActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
-        <activity android:name=".ui.login.SetSportsScoreActivity"
+        <activity android:name=".ui.login.perfectinfo.SetSportsScoreActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
         <activity android:name=".ui.timeline.detail.StoryDetailActivity"

@@ -1,27 +1,20 @@
 package cn.sportstory.android.ui.timeline;
 
 import android.content.Context;
-import android.support.design.widget.FloatingActionButton;
 import android.util.Log;
-
-import org.reactivestreams.Publisher;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import cn.sportstory.android.entity.GernericResultWithData;
+import cn.sportstory.android.entity.GenericResultWithData;
 import cn.sportstory.android.entity.Story;
 import cn.sportstory.android.repository.StoryRepository;
-import io.reactivex.Flowable;
-import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -59,9 +52,9 @@ public class TimeLinePresenter implements TimeLineContract.Presenter {
         Disposable disposable=mStoryRepository.getTimeLine()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<GernericResultWithData<Story>>() {
+                .subscribe(new Consumer<GenericResultWithData<Story>>() {
                     @Override
-                    public void accept(GernericResultWithData<Story> storyGernericResultWithData) throws Exception {
+                    public void accept(GenericResultWithData<Story> storyGernericResultWithData) throws Exception {
                         List<Story> storyList=storyGernericResultWithData.getDataList();
                         if(storyList==null)storyList=new ArrayList<Story>();
                         for(Story item:storyList){
@@ -102,9 +95,9 @@ public class TimeLinePresenter implements TimeLineContract.Presenter {
         Disposable disposable=mStoryRepository.getTimeLineMoreOnePage()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Consumer<GernericResultWithData<Story>>() {
+                .subscribe(new Consumer<GenericResultWithData<Story>>() {
                     @Override
-                    public void accept(GernericResultWithData<Story> storyGernericResultWithData) throws Exception {
+                    public void accept(GenericResultWithData<Story> storyGernericResultWithData) throws Exception {
                         List<Story> storyList=storyGernericResultWithData.getDataList();
                         if(storyList==null)storyList=new ArrayList<Story>();
                         for(Story item:storyList){

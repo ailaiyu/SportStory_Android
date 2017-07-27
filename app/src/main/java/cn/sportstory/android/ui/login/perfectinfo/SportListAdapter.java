@@ -1,4 +1,4 @@
-package cn.sportstory.android.ui.login;
+package cn.sportstory.android.ui.login.perfectinfo;
 
 import android.view.LayoutInflater;
 import android.view.View;

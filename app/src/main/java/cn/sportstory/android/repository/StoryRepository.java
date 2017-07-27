@@ -1,11 +1,9 @@
 package cn.sportstory.android.repository;
 
 import cn.sportstory.android.api.StoryApi;
-import cn.sportstory.android.api.request.NearbyRequest;
 import cn.sportstory.android.entity.Comment;
-import cn.sportstory.android.entity.GernericResultWithData;
+import cn.sportstory.android.entity.GenericResultWithData;
 import cn.sportstory.android.entity.Story;
-import cn.sportstory.android.entity.TestResult;
 import cn.sportstory.android.util.RetrofitUtil;
 import io.reactivex.Flowable;
 
@@ -34,13 +32,13 @@ public class StoryRepository {
         return sInstance;
     }
 
-    public Flowable<GernericResultWithData<Story>> getTimeLine(){
+    public Flowable<GenericResultWithData<Story>> getTimeLine(){
         return mStoryApi.getTimeLine();
     }
-    public Flowable<GernericResultWithData<Story>> getTimeLineMoreOnePage(){
+    public Flowable<GenericResultWithData<Story>> getTimeLineMoreOnePage(){
         return mStoryApi.getTimeLinePage2();
     }
-    public Flowable<GernericResultWithData<Comment>> getCommentByStoryId(){
+    public Flowable<GenericResultWithData<Comment>> getCommentByStoryId(){
         return mStoryApi.getComment();
     }
 

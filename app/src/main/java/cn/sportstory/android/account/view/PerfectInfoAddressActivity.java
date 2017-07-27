@@ -8,13 +8,12 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
-import android.widget.TabHost;
 import android.widget.TextView;
 
 import cn.sportstory.android.BaseActivity;
 import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
-import cn.sportstory.android.ui.login.ChooseSportsActivity;
+import cn.sportstory.android.ui.login.perfectinfo.ChooseSportsActivity;
 
 /**
  * Created by aaron on 2017/5/13.

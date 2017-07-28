@@ -1,8 +1,10 @@
 package cn.sportstory.android.ui.base;
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import io.reactivex.disposables.CompositeDisposable;
@@ -41,14 +43,29 @@ public abstract class BaseActivity extends AppCompatActivity {
         return null;
     }
 
-    public void showMsg(String msg,boolean cancleable) {
+    public void showProgress(String msg,boolean cancleable) {
         mProgressDialog = ProgressDialog.show(this, null, msg, true, cancleable, null);
     }
 
-    public void hideMsg() {
+    public void hideProgress() {
         if (mProgressDialog != null) {
             mProgressDialog.dismiss();
         }
+    }
+
+    public void showDialog(String title,String msg) {
+        hideProgress();
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage(msg);
+        builder.setTitle(title);
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setCancelable(true);
+        builder.create().show();
     }
 
 

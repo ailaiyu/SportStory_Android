@@ -28,7 +28,7 @@ import pub.devrel.easypermissions.EasyPermissions;
  * Created by Tamas on 2017/7/9.
  */
 
-public class AddMomentActivity extends AppCompatActivity implements EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate  {
+public class AddMomentActivity extends AppCompatActivity implements AddMomentContract.View,EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate  {
     private static final String TAG=AddMomentActivity.class.getName();
 
     private static final int REQUEST_CODE_PERMISSION_PHOTO_PICKER = 1;
@@ -39,6 +39,8 @@ public class AddMomentActivity extends AppCompatActivity implements EasyPermissi
     Toolbar mToolbar;
     @BindView(R.id.snpl_moment_add_photos)
     BGASortableNinePhotoLayout mPhotosSnpl;
+
+    private AddMomentContract.Presenter mPresenter;
 
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -59,11 +61,15 @@ public class AddMomentActivity extends AppCompatActivity implements EasyPermissi
             }
         });
 
+        new AddMomentPresenter(this,getApplicationContext());
+
     }
 
     @OnClick(R.id.tv_post)
-    void onTvPostClicked(View view){
-        finish();
+    void onTvPostClicked(){
+        List<String >imagePathList=mPhotosSnpl.getData();
+        mPresenter.postMoment(imagePathList,"content");
+        //finish();
     }
 
     @Override
@@ -123,4 +129,8 @@ public class AddMomentActivity extends AppCompatActivity implements EasyPermissi
     }
 
 
+    @Override
+    public void setPresenter(AddMomentContract.Presenter presenter) {
+        mPresenter=presenter;
+    }
 }

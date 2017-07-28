@@ -1,6 +1,7 @@
 package cn.sportstory.android.api;
 
 import cn.sportstory.android.entity.GenericResultWithData;
+import io.reactivex.Flowable;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 
@@ -11,12 +12,12 @@ import retrofit2.http.Header;
 public interface QiniuApi {
 
     @GET("qiniu/avatar")
-    GenericResultWithData<String> getAvatarToken(@Header("token")String token);
+    Flowable<GenericResultWithData<String>> getAvatarToken(@Header("token")String token);
 
     @GET("qiniu/background")
-    GenericResultWithData<String> getBackgroundToken(@Header("token")String token);
+    Flowable<GenericResultWithData<String>> getBackgroundToken(@Header("token")String token);
 
     @GET("qiniu/timeline")
-    GenericResultWithData<String> getTimelineToken(@Header("token")String token);
+    Flowable<GenericResultWithData<String>> getTimelineToken(@Header("token")String token);
 
 }

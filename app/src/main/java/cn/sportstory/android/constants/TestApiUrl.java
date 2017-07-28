@@ -12,6 +12,6 @@ public class TestApiUrl {
 
     public static final String STORY_COMMENT="api_comment.json";
 
-    public static final String LOCAL_DOMAIN="http://192.168.1.104:8888/";
+    public static final String LOCAL_DOMAIN="http://192.168.137.1:8888/";
 
 }

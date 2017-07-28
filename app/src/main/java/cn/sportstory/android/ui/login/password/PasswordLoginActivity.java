@@ -10,6 +10,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import cn.sportstory.android.R;
+import cn.sportstory.android.entity.CurrentAccount;
 import cn.sportstory.android.ui.base.BaseActivity;
 import cn.sportstory.android.ui.home.HomeActivity;
 
@@ -20,6 +21,7 @@ import cn.sportstory.android.ui.home.HomeActivity;
 public class PasswordLoginActivity extends BaseActivity implements PasswordLoginContract.View {
     PasswordLoginContract.Presenter mPresenter;
 
+    private CurrentAccount mCurrentAccount;
 
     @BindView(R.id.et_account)
     EditText mEtAccount;
@@ -29,16 +31,25 @@ public class PasswordLoginActivity extends BaseActivity implements PasswordLogin
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        mCurrentAccount=CurrentAccount.getInstance(getApplicationContext());
+        if(mCurrentAccount.isValid()){
+            toHomeActivity();
+        }
         setContentView(R.layout.activity_login_password);
         ButterKnife.bind(this);
-
         new PasswordLoginPresenter(this,getApplicationContext());
 
     }
 
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        mPresenter.unsubscribe();
+    }
+
     @OnClick(R.id.btn_login_with_password)
     void onBtnLoginWithPasswordClicked(View view){
-        showMsg("正在登陆",false);
+        showProgress("正在登陆",false);
         String account=mEtAccount.getEditableText().toString();
         String password=mEtPassword.getEditableText().toString();
         mPresenter.login(account,password);
@@ -51,14 +62,22 @@ public class PasswordLoginActivity extends BaseActivity implements PasswordLogin
 
     @Override
     public void onLoginSuccess() {
-        hideMsg();
-        Intent toHomeActivity=new Intent(this, HomeActivity.class);
-        startActivity(toHomeActivity);
+
+        hideProgress();
+        toHomeActivity();
 
     }
 
     @Override
     public void onLoginFail(String msg) {
+        //hideProgress();//TODO promote user infomation
+        showDialog("登陆失败",msg);
+
+    }
+
+    private void toHomeActivity(){
+        Intent toHomeActivity=new Intent(PasswordLoginActivity.this,HomeActivity.class);
+        startActivity(toHomeActivity);
 
     }
 }

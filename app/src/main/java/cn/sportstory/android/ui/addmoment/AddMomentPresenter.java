@@ -93,6 +93,13 @@ public class AddMomentPresenter implements AddMomentContract.Presenter {
     上传图片到七牛服务器
      */
     private void uploadImagesToQiniuServer(List<String>imagePathList, final String qiniuToken, final String content){
+        if(imagePathList.size()==0){//没有图片的情况
+            StoryRequest storyRequest=new StoryRequest();
+            storyRequest.setImageUrls(";");
+            storyRequest.setText(content);
+            uploadStoryToSportStoryServer(storyRequest);
+            return;
+        }
         final List<String> keyList=new ArrayList<>();
         mValidSize=imagePathList.size();
         //TODO 对keyList排序，否则图片顺序不是用户事先预想好的
@@ -108,7 +115,6 @@ public class AddMomentPresenter implements AddMomentContract.Presenter {
                         QiniuResult qiniuResult=new Gson().fromJson(jsonObject.toString(),QiniuResult.class);
                         keyList.add(qiniuResult.getKey());
                         if(keyList.size()==mValidSize){
-                            //TODO 上传动态到SportStory服务器
                             StoryRequest storyRequest=new StoryRequest();
                             StringBuilder sb=new StringBuilder();
                             for(String key:keyList){

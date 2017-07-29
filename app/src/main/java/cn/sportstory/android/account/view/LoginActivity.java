@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import cn.sportstory.android.BaseActivity;
-import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.account.contract.LoginTaskContract;
 import cn.sportstory.android.account.contract.SendVCodeTaskContract;
@@ -166,7 +165,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener{
 
         @Override
         public void loginSuccess() {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            //startActivity(new Intent(LoginActivity.this, MainActivity.class));
             finish();
         }
 

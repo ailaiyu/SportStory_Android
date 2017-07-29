@@ -9,7 +9,6 @@ import com.google.gson.Gson;
 
 import java.io.IOException;
 
-import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 import cn.sportstory.android.account.tools.UserTokenHelper;
 import cn.sportstory.android.common.baseinterface.BaseView;
@@ -37,7 +36,7 @@ public class ResponseParser {
         if (status_code == TOKEN_OVERDUE) {
             AccountHelper.changeLoginStatus(ctx, false);
             Toast.makeText(ctx, ctx.getString(R.string.relogin), Toast.LENGTH_SHORT).show();
-            view.getViewContext().startActivity(new Intent(view.getViewContext(), MainActivity.class));
+            //view.getViewContext().startActivity(new Intent(view.getViewContext(), MainActivity.class));
         }else if (status_code == RESPONSE_ERR){
             try {
                 String err = response.errorBody().string();

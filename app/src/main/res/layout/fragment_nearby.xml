@@ -50,11 +50,12 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <GridView
-        android:id="@+id/gv_nearby_fragment"
+    <android.support.v7.widget.RecyclerView
+        android:padding="5dp"
+        android:id="@+id/rv_nearby"
         android:layout_width="match_parent"
         android:numColumns="3"
         android:layout_height="wrap_content">
 
-    </GridView>
+    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

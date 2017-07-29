@@ -6,7 +6,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import cn.sportstory.android.BaseActivity;
-import cn.sportstory.android.MainActivity;
 import cn.sportstory.android.R;
 
 public class LoginWithPasswordActivity extends BaseActivity implements View.OnClickListener{
@@ -36,7 +35,7 @@ public class LoginWithPasswordActivity extends BaseActivity implements View.OnCl
         {
             case R.id.btn_login_with_psd_login:
                 // TODO: 2017/5/13 登录
-                intent.setClass(this, MainActivity.class);
+                //intent.setClass(this, MainActivity.class);
                 startActivity(intent);
                 finish();
                 break;

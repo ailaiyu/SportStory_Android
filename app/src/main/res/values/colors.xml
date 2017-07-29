@@ -27,7 +27,7 @@
 
 
 
-    <!--conversation item 颜色-->
+    <!--conversation item_nearby_user 颜色-->
     <color name="conversation_nickname_color">#FF242424</color>
     <color name="conversation_time_color">#FF595959</color>
     <color name="conversation_msg_color">#FFB5B5B5</color>

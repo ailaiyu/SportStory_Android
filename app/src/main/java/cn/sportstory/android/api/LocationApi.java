@@ -20,6 +20,6 @@ public interface LocationApi {
     @PUT("location")
     Flowable<GenericResult> updateUserLocation(@Header("token")String token,@Body LocationRequest locationRequest);
 
-    @GET("{lat}/{lng}/{page}")
+    @GET("location/{lat}/{lng}/{page}")
     Flowable<GenericResultWithList<SimpleUserInfoWithLocation>>getNearbyUserList(@Header("token")String token,@Path("lat")double lat,@Path("lng")double lng,@Path("page")int page);
 }

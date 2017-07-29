@@ -58,17 +58,16 @@ public class ImageLoader {
     }
 
     private void displayNormalImage(String picUrl, final ImageView imageView, Context context){
-        Glide
-                .with(context)
+        Glide.with(context)
                 .load(picUrl)
-                .error(R.mipmap.ic_launcher)
-                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_blank)
+                .placeholder(R.mipmap.ic_blank)
                 .centerCrop()
                 .dontAnimate()
                 .listener(new RequestListener<String, GlideDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-                        imageView.setImageResource(R.mipmap.ic_launcher);
+                        imageView.setImageResource(R.mipmap.ic_blank);
                         return false;
                     }
 
@@ -82,17 +81,16 @@ public class ImageLoader {
     }
 
     private void displayGifImage(String picUrl, final ImageView imageView, Context context){
-        Glide
-                .with(context)
+        Glide.with(context)
                 .load(picUrl)
                 .asGif()
-                .error(R.mipmap.ic_launcher)
-                .placeholder(R.mipmap.ic_launcher)
+                .error(R.mipmap.ic_blank)
+                .placeholder(R.mipmap.ic_blank)
                 .centerCrop()
                 .listener(new RequestListener<String, GifDrawable>() {
                     @Override
                     public boolean onException(Exception e, String model, Target<GifDrawable> target, boolean isFirstResource) {
-                        imageView.setImageResource(R.mipmap.ic_launcher);
+                        imageView.setImageResource(R.mipmap.ic_blank);
                         return false;
                     }
 

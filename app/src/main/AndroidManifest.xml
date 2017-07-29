@@ -274,12 +274,6 @@
             </intent-filter>
         </receiver>
 
-        <activity android:name="cn.sportstory.android.MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait">
-        </activity>
         <activity android:name=".account.view.LoginWithPasswordActivity"
             android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>

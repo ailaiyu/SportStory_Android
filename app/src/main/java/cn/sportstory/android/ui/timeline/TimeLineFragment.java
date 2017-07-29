@@ -45,7 +45,6 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
     SwipeRefreshLayout mSwipeRefresh;
 
     private StoryListAdapter mAdapter;
-    private StoryListNewAdapter mNewAdapter;
 
 
     @Nullable
@@ -61,25 +60,11 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
         new TimeLinePresenter(this,getContext());
 
         mSwipeRefresh.setOnRefreshListener(this);
-        RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(getContext(),LinearLayoutManager.VERTICAL,false);
         LinearLayoutManager manager=new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false);
         mRvTimeLineList.setLayoutManager(manager);
-        /*
-        mRvTimeLineList.setOnScrollListener(new EndlessOnScrollListener(manager) {
-            @Override
-            public void onLoadMore(int currentPage) {
-                Log.i(TAG,"onLoadMore");
-                mPresenter.fetchTimeLineMoreOnePage();
-            }
-        });
-        */
-
-        //mRvTimeLineList.setLayoutManager(layoutManager);
         mAdapter=new StoryListAdapter(mStoryList,getContext());
-        mNewAdapter=new StoryListNewAdapter(mRvTimeLineList,mStoryList);
 
         mRvTimeLineList.setAdapter(mAdapter);
-        //mRvTimeLineList.setAdapter(mNewAdapter);
 
 
         mPresenter.fetchTimeLine();
@@ -114,7 +99,6 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
         mStoryList.clear();
         mStoryList.addAll(storyList);
         mAdapter.notifyDataSetChanged();
-        //mNewAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -122,7 +106,6 @@ public class TimeLineFragment extends BaseFragment implements TimeLineContract.V
         Log.i(TAG,"onTimeLineMoreOnePageFetched");
         mStoryList.addAll(storyList);
         mAdapter.notifyDataSetChanged();
-        //mNewAdapter.notifyDataSetChanged();
     }
 
     @Override

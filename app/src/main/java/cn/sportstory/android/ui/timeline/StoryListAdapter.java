@@ -61,13 +61,13 @@ public class StoryListAdapter extends BaseRvAdapter  {
 
         SimpleItemViewHolder viewHolder=(SimpleItemViewHolder)vh;
 
-        viewHolder.tvNickname.setText(item.getNickName());
+        viewHolder.tvNickname.setText(item.getNickname());
 
-        if("".equals(item.getText())){
+        if("".equals(item.getContent())){
             viewHolder.tvText.setVisibility(View.GONE);
         }else{
             viewHolder.tvText.setVisibility(View.VISIBLE);
-            viewHolder.tvText.setText(item.getText());
+            viewHolder.tvText.setText(item.getContent());
         }
 
         viewHolder.snplGrid.setDelegate(viewHolder);

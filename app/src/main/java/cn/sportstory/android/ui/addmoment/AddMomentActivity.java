@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.io.File;
@@ -21,14 +22,16 @@ import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerActivity;
 import cn.bingoogolapple.photopicker.activity.BGAPhotoPickerPreviewActivity;
 import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
 import cn.sportstory.android.R;
+import cn.sportstory.android.ui.base.BaseActivity;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
+import retrofit2.http.Body;
 
 /**
  * Created by Tamas on 2017/7/9.
  */
 
-public class AddMomentActivity extends AppCompatActivity implements AddMomentContract.View,EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate  {
+public class AddMomentActivity extends BaseActivity implements AddMomentContract.View,EasyPermissions.PermissionCallbacks, BGASortableNinePhotoLayout.Delegate  {
     private static final String TAG=AddMomentActivity.class.getName();
 
     private static final int REQUEST_CODE_PERMISSION_PHOTO_PICKER = 1;
@@ -39,6 +42,8 @@ public class AddMomentActivity extends AppCompatActivity implements AddMomentCon
     Toolbar mToolbar;
     @BindView(R.id.snpl_moment_add_photos)
     BGASortableNinePhotoLayout mPhotosSnpl;
+    @BindView(R.id.et_content)
+    EditText mEtContent;
 
     private AddMomentContract.Presenter mPresenter;
 
@@ -68,8 +73,8 @@ public class AddMomentActivity extends AppCompatActivity implements AddMomentCon
     @OnClick(R.id.tv_post)
     void onTvPostClicked(){
         List<String >imagePathList=mPhotosSnpl.getData();
-        mPresenter.postMoment(imagePathList,"content");
-        //finish();
+        mPresenter.postMoment(imagePathList,mEtContent.getEditableText().toString());
+        showProgress("正在发送",false);
     }
 
     @Override
@@ -132,5 +137,16 @@ public class AddMomentActivity extends AppCompatActivity implements AddMomentCon
     @Override
     public void setPresenter(AddMomentContract.Presenter presenter) {
         mPresenter=presenter;
+    }
+
+    @Override
+    public void onPostMomentSuccess() {
+        //TODO 提醒TimelineFragment更新UI
+        hideProgress();finish();
+    }
+
+    @Override
+    public void onPostMomentFail(String msg) {
+        showDialog("发送失败",msg);
     }
 }

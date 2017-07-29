@@ -97,14 +97,14 @@ public class StoryDetailActivity extends BaseActivity {
         }
 
         mImageLoader.displayImage(mStory.getAvatar(),mIvAvatar,mContext);
-        mTvNickname.setText(mStory.getNickName());
+        mTvNickname.setText(mStory.getNickname());
         mTvLikeNum.setText(mStory.getLikeNum()+"赞");
         mTvCommentNum.setText(mStory.getCommentNum()+"评论");
-        if("".equals(mStory.getText())){
+        if("".equals(mStory.getContent())){
             mTvText.setVisibility(View.GONE);
         }else{
             mTvText.setVisibility(View.VISIBLE);
-            mTvText.setText(mStory.getText());
+            mTvText.setText(mStory.getContent());
         }
         switch (mStory.getType()){
             case Story.TYPE_PURE_TEXT:

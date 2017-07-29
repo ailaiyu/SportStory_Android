@@ -7,8 +7,6 @@ public class StoryRequest {
 
     private String imageUrls;
     private String text;
-    private int type;
-    private long createDate;
 
 
 
@@ -26,22 +24,6 @@ public class StoryRequest {
 
     public void setText(String text) {
         this.text = text;
-    }
-
-    public int getType() {
-        return type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
-    public long getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(long createDate) {
-        this.createDate = createDate;
     }
 
 }

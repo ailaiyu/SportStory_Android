@@ -28,13 +28,13 @@ public class RetrofitUtil {
                 .baseUrl(TestApiUrl.LOCAL_DOMAIN)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(genericClient())
+                //.client(genericClient())
                 .build();
         sTestRetrofit=new Retrofit.Builder()
                 .baseUrl(TestApiUrl.DOMAIN)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(genericClient())
+                //.client(genericClient())
                 .build();
 
     }
@@ -48,7 +48,6 @@ public class RetrofitUtil {
                                 .addHeader("Content-Type", "application/json; charset=UTF-8")
                                 .addHeader("Accept-Encoding", "utf-8, deflate")
                                 .addHeader("Connection", "keep-alive")
-                                .addHeader("token","cbe1715f7c7a4f5a9f7d8e88bbcf41ff")
                                 .build();
                         return chain.proceed(request);
                     }

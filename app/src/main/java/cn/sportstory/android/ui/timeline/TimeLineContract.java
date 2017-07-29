@@ -17,6 +17,5 @@ public interface TimeLineContract {
     }
     interface Presenter extends BasePresenter{
         void fetchTimeLine();
-        void fetchTimeLineMoreOnePage();
     }
 }

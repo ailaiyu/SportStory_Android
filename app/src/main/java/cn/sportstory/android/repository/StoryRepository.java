@@ -1,7 +1,9 @@
 package cn.sportstory.android.repository;
 
 import cn.sportstory.android.api.StoryApi;
+import cn.sportstory.android.api.request.StoryRequest;
 import cn.sportstory.android.entity.Comment;
+import cn.sportstory.android.entity.GenericResult;
 import cn.sportstory.android.entity.GenericResultWithData;
 import cn.sportstory.android.entity.GenericResultWithList;
 import cn.sportstory.android.entity.Story;
@@ -20,7 +22,7 @@ public class StoryRepository {
     private StoryApi mStoryApi;
 
     private StoryRepository(){
-        mStoryApi= RetrofitUtil.getTestRetrofit().create(StoryApi.class);
+        mStoryApi= RetrofitUtil.getRetrofit().create(StoryApi.class);
     }
     public static StoryRepository getInstance(){
         if(sInstance==null){
@@ -33,14 +35,14 @@ public class StoryRepository {
         return sInstance;
     }
 
-    public Flowable<GenericResultWithList<Story>> getTimeLine(){
-        return mStoryApi.getTimeLine();
-    }
-    public Flowable<GenericResultWithList<Story>> getTimeLineMoreOnePage(){
-        return mStoryApi.getTimeLinePage2();
+    public Flowable<GenericResultWithList<Story>> getTimeLine(String token,int page){
+        return mStoryApi.getStoryList(token,page);
     }
     public Flowable<GenericResultWithList<Comment>> getCommentByStoryId(){
-        return mStoryApi.getComment();
+        return null;
+    }
+    public Flowable<GenericResult> postStory(String token, StoryRequest storyRequest){
+        return mStoryApi.postStory(token,storyRequest);
     }
 
 

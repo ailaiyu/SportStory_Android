@@ -3,6 +3,7 @@ package cn.sportstory.android.ui.addmoment;
 import android.content.Context;
 import android.util.Log;
 
+import com.google.gson.Gson;
 import com.qiniu.android.http.ResponseInfo;
 import com.qiniu.android.storage.UpCompletionHandler;
 import com.qiniu.android.storage.UploadManager;
@@ -10,12 +11,18 @@ import com.qiniu.android.storage.UploadOptions;
 
 import org.json.JSONObject;
 
+import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import cn.sportstory.android.api.request.StoryRequest;
 import cn.sportstory.android.entity.CurrentAccount;
+import cn.sportstory.android.entity.GenericResult;
 import cn.sportstory.android.entity.GenericResultWithData;
 import cn.sportstory.android.entity.QiniuFactory;
+import cn.sportstory.android.entity.QiniuResult;
+import cn.sportstory.android.repository.StoryRepository;
 import cn.sportstory.android.repository.UserRepository;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
@@ -40,6 +47,9 @@ public class AddMomentPresenter implements AddMomentContract.Presenter {
     private CurrentAccount mCurrentAccount;
 
     private UserRepository mUserRepository;
+    private StoryRepository mStoryRepository;
+
+    private int mValidSize;
 
     public AddMomentPresenter(AddMomentContract.View view, Context ctx){
         mView=view;
@@ -48,6 +58,7 @@ public class AddMomentPresenter implements AddMomentContract.Presenter {
         mDisposables=new CompositeDisposable();
         mUserRepository=UserRepository.getInstance();
         mCurrentAccount=CurrentAccount.getInstance(mContext);
+        mStoryRepository=StoryRepository.getInstance();
     }
 
     @Override
@@ -58,13 +69,13 @@ public class AddMomentPresenter implements AddMomentContract.Presenter {
 
     @Override
     public void postMoment(List<String> imagePathList, String content) {
-        getQiniuToken(imagePathList);
+        getQiniuToken(imagePathList,content);
     }
 
     /*
     获取气牛Token
      */
-    private void getQiniuToken(final List<String >imagePathList){
+    private void getQiniuToken(final List<String >imagePathList, final String content){
         Disposable disposable=mUserRepository.getQiniuTimelineToken(mCurrentAccount.getToken())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -72,7 +83,7 @@ public class AddMomentPresenter implements AddMomentContract.Presenter {
                     @Override
                     public void accept(@NonNull GenericResultWithData<String> stringGenericResultWithData) throws Exception {
                         String qiniuToken=stringGenericResultWithData.getData();
-                        uploadImagesToQiniuServer(imagePathList,qiniuToken);
+                        uploadImagesToQiniuServer(imagePathList,qiniuToken,content);
                     }
                 });
         mDisposables.add(disposable);
@@ -81,21 +92,66 @@ public class AddMomentPresenter implements AddMomentContract.Presenter {
     /*
     上传图片到七牛服务器
      */
-    private void uploadImagesToQiniuServer(List<String>imagePathList,String qiniuToken){
+    private void uploadImagesToQiniuServer(List<String>imagePathList, final String qiniuToken, final String content){
+        final List<String> keyList=new ArrayList<>();
+        mValidSize=imagePathList.size();
+        //TODO 对keyList排序，否则图片顺序不是用户事先预想好的
         UploadManager uploadManager=QiniuFactory.getUploadManager();
         for(String imagePath:imagePathList){
+            File imageFile=new File(imagePath);
+            if(!imageFile.exists())mValidSize--;
             String key= UUID.randomUUID().toString();
             uploadManager.put(imagePath, null, qiniuToken, new UpCompletionHandler() {
                 @Override
                 public void complete(String s, ResponseInfo responseInfo, JSONObject jsonObject) {
                     if(responseInfo.isOK()){
-                        Log.i(TAG,"上传完成，key："+s);
+                        QiniuResult qiniuResult=new Gson().fromJson(jsonObject.toString(),QiniuResult.class);
+                        keyList.add(qiniuResult.getKey());
+                        if(keyList.size()==mValidSize){
+                            //TODO 上传动态到SportStory服务器
+                            StoryRequest storyRequest=new StoryRequest();
+                            StringBuilder sb=new StringBuilder();
+                            for(String key:keyList){
+                                sb.append(key+";");
+                            }
+                            storyRequest.setImageUrls(sb.toString());
+                            storyRequest.setText(content);
+                            uploadStoryToSportStoryServer(storyRequest);
+                        }
                     }else{
-                        Log.e(TAG,"上传失败，json："+jsonObject.toString());
+                        Log.e(TAG,"上传失败，json：");
+                        mValidSize--;
                     }
 
                 }
             },null);
         }
+    }
+
+    private void uploadStoryToSportStoryServer(StoryRequest storyRequest){
+
+        mStoryRepository.postStory(mCurrentAccount.getToken(),storyRequest)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<GenericResult>() {
+                    @Override
+                    public void accept(@NonNull GenericResult genericResult) throws Exception {
+                        if (genericResult.getStatus() == 1) {
+                            //成功
+                            Log.i(TAG, "发布动态成功");
+                            mView.onPostMomentSuccess();
+                        } else {
+                            Log.e(TAG, "发布动态失败");
+                            mView.onPostMomentFail(genericResult.getMessage());
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(@NonNull Throwable throwable) throws Exception {
+                        Log.e(TAG,"IO异常"+throwable.getMessage());
+                        mView.onPostMomentFail("IO异常");
+                    }
+                });
+
     }
 }

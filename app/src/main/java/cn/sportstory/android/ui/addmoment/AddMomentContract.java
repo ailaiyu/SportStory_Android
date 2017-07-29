@@ -11,7 +11,8 @@ import cn.sportstory.android.ui.base.BaseView;
 
 public interface AddMomentContract {
     interface View extends BaseView<Presenter>{
-
+        void onPostMomentSuccess();
+        void onPostMomentFail(String msg);
     }
     interface Presenter extends BasePresenter{
         void postMoment(List<String> imagePathList,String content);

@@ -2,102 +2,124 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="?attr/selectableItemBackground"
     android:orientation="horizontal"
     android:padding="@dimen/padding_story"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/iv_avatar"
-        android:src="@mipmap/ic_default_avatar"
-        android:layout_width="@dimen/width_story_avatar"
-        android:layout_height="@dimen/width_story_avatar" />
-
-    <LinearLayout
-        android:id="@+id/ll_multi_pic"
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp">
-
-        <TextView
-            android:id="@+id/tv_story_nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/text_primary"
-            android:textStyle="bold"
-            tools:text="运动故事" />
-
-        <TextView
-            android:id="@+id/tv_story_text"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:padding="5dp"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:textColor="@color/text_primary"
-            tools:text="今天跑了10公里，非常棒！" />
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp">
-
-            <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
-                android:id="@+id/snpl_story_grid"
-                style="@style/WrapWrap"
-                app:bga_snpl_deleteDrawableOverlapQuarter="false"
-                app:bga_snpl_editable="false"
-                app:bga_snpl_itemCornerRadius="0dp"
-                app:bga_snpl_itemSpanCount="3"
-                app:bga_snpl_itemWhiteSpacing="4dp"
-                app:bga_snpl_itemWidth="0dp"
-                app:bga_snpl_maxItemCount="9"
-                app:bga_snpl_otherWhiteSpacing="100dp"
-                app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_dark"
-                app:bga_snpl_plusDrawable="@mipmap/bga_pp_ic_plus"
-                app:bga_snpl_plusEnable="false"
-                app:bga_snpl_sortable="false" />
-
+            android:layout_height="wrap_content">
             <ImageView
-                android:id="@+id/iv_single_pic"
+                android:id="@+id/iv_avatar"
+                android:src="@mipmap/ic_default_avatar"
+                android:layout_width="@dimen/width_story_avatar"
+                android:layout_height="@dimen/width_story_avatar" />
+            <LinearLayout
+                android:id="@+id/ll_multi_pic"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                tools:src="@mipmap/ic_default_image" />
-        </FrameLayout>
+                android:orientation="vertical"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right|center_vertical">
+                <TextView
+                    android:id="@+id/tv_story_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:textStyle="bold"
+                    tools:text="运动故事" />
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:src="@mipmap/like" />
+                <TextView
+                    android:id="@+id/tv_story_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/text_primary"
+                    tools:text="今天跑了10公里，非常棒！" />
 
-            <TextView
-                android:id="@+id/tv_like_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="12赞" />
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp">
 
-            <ImageView
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="10dp"
-                android:src="@mipmap/comment" />
+                    <cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout
+                        android:id="@+id/snpl_story_grid"
+                        style="@style/WrapWrap"
+                        app:bga_snpl_deleteDrawableOverlapQuarter="false"
+                        app:bga_snpl_editable="false"
+                        app:bga_snpl_itemCornerRadius="0dp"
+                        app:bga_snpl_itemSpanCount="3"
+                        app:bga_snpl_itemWhiteSpacing="4dp"
+                        app:bga_snpl_itemWidth="0dp"
+                        app:bga_snpl_maxItemCount="9"
+                        app:bga_snpl_otherWhiteSpacing="100dp"
+                        app:bga_snpl_placeholderDrawable="@mipmap/bga_pp_ic_holder_dark"
+                        app:bga_snpl_plusDrawable="@mipmap/bga_pp_ic_plus"
+                        app:bga_snpl_plusEnable="false"
+                        app:bga_snpl_sortable="false" />
 
-            <TextView
-                android:id="@+id/tv_comment_num"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                tools:text="5评论" />
+                    <ImageView
+                        android:id="@+id/iv_single_pic"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        tools:src="@mipmap/ic_default_image" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="5dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right|center_vertical">
+                    <LinearLayout
+                        android:id="@+id/ll_like_wrapper"
+                        android:background="?attr/selectableItemBackground"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:src="@mipmap/like" />
+
+                        <TextView
+                            android:id="@+id/tv_like_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="12赞" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_comment_wrapper"
+                        android:background="?attr/selectableItemBackground"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent">
+                        <ImageView
+                            android:layout_width="15dp"
+                            android:layout_height="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:src="@mipmap/comment" />
+
+                        <TextView
+                            android:id="@+id/tv_comment_num"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            tools:text="5评论" />
+                    </LinearLayout>
+
+
+
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
-
-    </LinearLayout>
-
+    </android.support.v7.widget.CardView>
 
 </LinearLayout>

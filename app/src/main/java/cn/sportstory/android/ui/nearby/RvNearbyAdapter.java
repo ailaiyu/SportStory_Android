@@ -46,11 +46,26 @@ public class RvNearbyAdapter extends BaseRvAdapter {
         RvNearbyAdapter.SimpleItemViewHolder viewHolder=(RvNearbyAdapter.SimpleItemViewHolder)holder;
         //viewHolder.ivAvatar.setImageResource(R.mipmap.avatar);
         mImageLoader.displayImage(item.getAvatarUrl(),viewHolder.ivAvatar,mContext);
+
         viewHolder.tvDistance.setText("5KM");
         viewHolder.tvNickname.setText(item.getNickname());
         viewHolder.ivSport1.setImageResource(R.mipmap.pingpong_free);
         viewHolder.ivSport2.setImageResource(R.mipmap.baolingqiu_free);
         viewHolder.ivSport3.setImageResource(R.mipmap.juzhong_free);
+
+        viewHolder.ivGender.setVisibility(View.VISIBLE);
+        switch (item.getGender()){
+            case 1:
+                viewHolder.ivGender.setImageResource(R.mipmap.ic_man);
+                break;
+            case 2:
+                viewHolder.ivGender.setImageResource(R.mipmap.ic_female);
+                break;
+            default:
+                viewHolder.ivGender.setVisibility(View.INVISIBLE);
+                break;
+
+        }
     }
 
     @Override
@@ -64,6 +79,8 @@ public class RvNearbyAdapter extends BaseRvAdapter {
         ImageView ivAvatar;
         @BindView(R.id.tv_nearby_nickname)
         TextView tvNickname;
+        @BindView(R.id.iv_gender)
+        ImageView ivGender;
         @BindView(R.id.tv_nearby_distance)
         TextView tvDistance;
         @BindView(R.id.iv_nearby_sport1)

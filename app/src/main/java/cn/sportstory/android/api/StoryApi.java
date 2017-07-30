@@ -36,17 +36,17 @@ public interface StoryApi {
 
 
     @POST("comment")
-    Flowable<GenericResult> addComment(@Body CommentRequest commentRequest);
+    Flowable<GenericResult> addComment(@Header("token")String token,@Body CommentRequest commentRequest);
 
     @GET("comment/{storyId}/{page}")
-    Flowable<GenericResultWithList<Comment>> getCommentList(@Path("storyId")long storyId, @Path("page")int page);
+    Flowable<GenericResultWithList<Comment>> getCommentList(@Header("token")String token,@Path("storyId")long storyId, @Path("page")int page);
 
 
     @POST("like")
-    Flowable<GenericResult> addLike(@Body LikeRequest likeRequest);
+    Flowable<GenericResult> addLike(@Header("token")String token,@Body LikeRequest likeRequest);
 
     @GET("like/{storyId}/{page}")
-    Flowable<GenericResultWithList<Like>> getLikeList(@Path("storyId")long storyId, @Path("page")int page);
+    Flowable<GenericResultWithList<Like>> getLikeList(@Header("token")String token,@Path("storyId")long storyId, @Path("page")int page);
 
 
 

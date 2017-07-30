@@ -1,10 +1,11 @@
 package cn.sportstory.android.ui.nearby;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,19 +16,25 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import cn.sportstory.android.R;
-import cn.sportstory.android.entity.SimpleUserInfo;
 import cn.sportstory.android.entity.SimpleUserInfoWithLocation;
+import cn.sportstory.android.ui.nearby.filter.NearbyFilterActivity;
+import cn.sportstory.android.ui.nearby.filter.NearbySearchActivity;
 
 
-public class NearbyFragment extends Fragment implements NearbyContract.View{
+public class NearbyFragment extends Fragment implements NearbyContract.View,SwipeRefreshLayout.OnRefreshListener{
 
     @BindView(R.id.rv_nearby)
     RecyclerView mRvNearby;
 
+
     private RvNearbyAdapter mAdapter;
     private List<SimpleUserInfoWithLocation> mNearbyUserList;
     private NearbyContract.Presenter mPresenter;
+
+    @BindView(R.id.swipe_nearby)
+    SwipeRefreshLayout mSwipeRefresh;
 
 
     @Nullable
@@ -48,6 +55,7 @@ public class NearbyFragment extends Fragment implements NearbyContract.View{
         mRvNearby.setAdapter(mAdapter);
         new NearbyPresenter(this,getContext());
         mPresenter.fetchNearbyUserList();
+        mSwipeRefresh.setOnRefreshListener(this);
 
 
     }
@@ -59,8 +67,25 @@ public class NearbyFragment extends Fragment implements NearbyContract.View{
 
     @Override
     public void onNearbyUserListFetched(List<SimpleUserInfoWithLocation> userInfoList) {
+        mSwipeRefresh.setRefreshing(false);
         mNearbyUserList.clear();
         mNearbyUserList.addAll(userInfoList);
         mAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onRefresh() {
+        mPresenter.fetchNearbyUserList();
+    }
+
+    @OnClick(R.id.iv_filter)
+    void onIvFilterClicked(){
+        Intent toFilterActivity=new Intent(getActivity(),NearbyFilterActivity.class);
+        startActivity(toFilterActivity);
+    }
+    @OnClick(R.id.iv_search)
+    void onIvSearchClicked(){
+        Intent toNearbySearchActivity=new Intent(getActivity(),NearbySearchActivity.class);
+        startActivity(toNearbySearchActivity);
     }
 }

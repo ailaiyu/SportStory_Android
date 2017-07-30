@@ -46,9 +46,9 @@ public class DetailCommentAdapter extends BaseRvAdapter {
         Comment item=mCommentList.get(position);
         SimpleItemViewHolder viewHolder=(SimpleItemViewHolder)holder;
 
-        viewHolder.tvContent.setText(Html.fromHtml(getContent(item.getTo(),item.getContent())));
-        viewHolder.tvFrom.setText(item.getFrom());
-        mImageLoader.displayImage(item.getAvatar(),viewHolder.ivAvatar,mContext);
+        viewHolder.tvContent.setText(Html.fromHtml(getContent(item.getToName(),item.getContent())));
+        viewHolder.tvFrom.setText(item.getFromName());
+        mImageLoader.displayImage(item.getAvatarUrl(),viewHolder.ivAvatar,mContext);
 
     }
 

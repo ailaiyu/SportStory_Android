@@ -8,7 +8,7 @@ public class SimpleUserInfo {
     private String nickname;
     private String avatarUrl;
     private String slogan;
-    private String gender;
+    private int gender;
     private String province;
     private String city;
     private String district;
@@ -52,11 +52,11 @@ public class SimpleUserInfo {
         this.slogan = slogan;
     }
 
-    public String getGender() {
+    public int getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(int gender) {
         this.gender = gender;
     }
 

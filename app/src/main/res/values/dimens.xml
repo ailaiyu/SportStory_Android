@@ -44,5 +44,5 @@
     <!--动态-->
     <dimen name="fab_margin">20dp</dimen>
     <dimen name="width_story_avatar">65dp</dimen>
-    <dimen name="padding_story">20dp</dimen>
+    <dimen name="padding_story">10dp</dimen>
 </resources>

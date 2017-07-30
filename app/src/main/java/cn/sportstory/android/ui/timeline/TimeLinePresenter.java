@@ -70,7 +70,7 @@ public class TimeLinePresenter implements TimeLineContract.Presenter {
                             String[] imageArray=imageKeys.split(";");
                             for(String key:imageArray){
                                 imageUrlList.add(TestApiUrl.QINIU_REPO_TIMELINE_PREFIX+key);
-                                Log.i(TAG,"图片Url："+TestApiUrl.QINIU_REPO_TIMELINE_PREFIX+key);
+                                //Log.i(TAG,"图片Url："+TestApiUrl.QINIU_REPO_TIMELINE_PREFIX+key);
                             }
                             item.setImageUrlList(imageUrlList);
                             switch (imageUrlList.size()){//设置动态类型 纯文字、单图、多图

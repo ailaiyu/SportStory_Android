@@ -4,34 +4,69 @@ package cn.sportstory.android.entity;
  * Created by Tamas on 2017/7/26.
  */
 public class Comment {
-    private String avatar;
-    private String from;
-    private String to;
+    private long id;
+    private long fromId;
+    private long toId;
+    private long createDate;
+    private String fromName;
+    private String toName;
     private String content;
-    private String timestamp;
+    private String avatarUrl;
 
-    public String getAvatar() {
-        return avatar;
+    public String getAvatarUrl() {
+        return avatarUrl;
     }
 
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
     }
 
-    public String getFrom() {
-        return from;
+    public long getId() {
+        return id;
     }
 
-    public void setFrom(String from) {
-        this.from = from;
+    public void setId(long id) {
+        this.id = id;
     }
 
-    public String getTo() {
-        return to;
+    public long getFromId() {
+        return fromId;
     }
 
-    public void setTo(String to) {
-        this.to = to;
+    public void setFromId(long fromId) {
+        this.fromId = fromId;
+    }
+
+    public long getToId() {
+        return toId;
+    }
+
+    public void setToId(long toId) {
+        this.toId = toId;
+    }
+
+    public long getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(long createDate) {
+        this.createDate = createDate;
+    }
+
+    public String getFromName() {
+        return fromName;
+    }
+
+    public void setFromName(String fromName) {
+        this.fromName = fromName;
+    }
+
+    public String getToName() {
+        return toName;
+    }
+
+    public void setToName(String toName) {
+        this.toName = toName;
     }
 
     public String getContent() {
@@ -40,13 +75,5 @@ public class Comment {
 
     public void setContent(String content) {
         this.content = content;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
     }
 }

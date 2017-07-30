@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <ImageView
-                android:id="@+id/search"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:id="@+id/iv_search"
                 android:padding="10dp"
                 android:layout_marginLeft="10dp"
                 android:src="@mipmap/search"
@@ -36,7 +37,8 @@
                 style="@style/toolBarTextViewStyle"
                 android:text="@string/nearby_title" />
             <ImageView
-                android:id="@+id/filter"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:id="@+id/iv_filter"
                 android:padding="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -50,12 +52,16 @@
 
     </android.support.v7.widget.Toolbar>
 
-    <android.support.v7.widget.RecyclerView
-        android:padding="5dp"
-        android:id="@+id/rv_nearby"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_nearby"
         android:layout_width="match_parent"
-        android:numColumns="3"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent" >
+        <android.support.v7.widget.RecyclerView
+            android:padding="5dp"
+            android:id="@+id/rv_nearby"
+            android:layout_width="match_parent"
+            android:numColumns="3"
+            android:layout_height="match_parent"/>
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-    </android.support.v7.widget.RecyclerView>
 </LinearLayout>

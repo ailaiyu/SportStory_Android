@@ -357,6 +357,12 @@
         <activity android:name=".ui.home.HomeActivity"
             android:screenOrientation="portrait"
             android:exported="true"/>
+        <activity android:name=".ui.nearby.filter.NearbyFilterActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
+        <activity android:name=".ui.nearby.filter.NearbySearchActivity"
+            android:screenOrientation="portrait"
+            android:exported="true"/>
 
         <activity android:name=".ui.login.password.PasswordLoginActivity"
             android:screenOrientation="portrait"

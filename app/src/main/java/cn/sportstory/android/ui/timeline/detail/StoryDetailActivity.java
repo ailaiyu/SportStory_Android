@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 import cn.bingoogolapple.photopicker.widget.BGASortableNinePhotoLayout;
 import cn.sportstory.android.R;
 import cn.sportstory.android.entity.Comment;
+import cn.sportstory.android.entity.CurrentAccount;
 import cn.sportstory.android.entity.GenericResultWithData;
 import cn.sportstory.android.entity.GenericResultWithList;
 import cn.sportstory.android.entity.Story;
@@ -42,6 +43,8 @@ public class StoryDetailActivity extends BaseActivity {
 
     private ImageLoader mImageLoader;
     private Context mContext;
+
+    private CurrentAccount mCurrentAccount;
 
     private List<Comment> mCommentList;
 
@@ -81,6 +84,7 @@ public class StoryDetailActivity extends BaseActivity {
 
         mStoryRepository=StoryRepository.getInstance();
         mDisposables=new CompositeDisposable();
+        mCurrentAccount=CurrentAccount.getInstance(getApplicationContext());
 
         mImageLoader=ImageLoader.getInstance();
         mContext=getApplicationContext();
@@ -141,7 +145,7 @@ public class StoryDetailActivity extends BaseActivity {
     }
 
     private void fetchCommentList(){
-        Disposable disposable=mStoryRepository.getCommentByStoryId()
+        Disposable disposable=mStoryRepository.getCommentByStoryId(mCurrentAccount.getToken(),mStory.getId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Consumer<GenericResultWithList<Comment>>() {

@@ -38,8 +38,8 @@ public class StoryRepository {
     public Flowable<GenericResultWithList<Story>> getTimeLine(String token,int page){
         return mStoryApi.getStoryList(token,page);
     }
-    public Flowable<GenericResultWithList<Comment>> getCommentByStoryId(){
-        return null;
+    public Flowable<GenericResultWithList<Comment>> getCommentByStoryId(String token,long storyId){
+        return mStoryApi.getCommentList(token,storyId,1);
     }
     public Flowable<GenericResult> postStory(String token, StoryRequest storyRequest){
         return mStoryApi.postStory(token,storyRequest);

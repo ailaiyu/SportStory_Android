@@ -34,6 +34,7 @@ public class PasswordLoginActivity extends BaseActivity implements PasswordLogin
         mCurrentAccount=CurrentAccount.getInstance(getApplicationContext());
         if(mCurrentAccount.isValid()){
             toHomeActivity();
+            finish();
         }
         setContentView(R.layout.activity_login_password);
         ButterKnife.bind(this);
